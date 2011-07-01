@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd"
+[
+    <!ENTITY space " ">
+    <!ENTITY separators ",&#59;">
+    <!ENTITY ns_punctuators "!&#37;&space;&amp;()+-/.*&lt;=&gt;?[]{|}~^&separators;">
+    <!ENTITY punctuators ":&ns_punctuators;">
+    <!-- printf-like format strings conversion specifiers -->
+    <!ENTITY convspec "diouxXeEfFgGaAcsP&#37;">
+]>
+<language name="C++" section="Sources"
+          version="1.47.7" kateversion="2.4"
+          indenter="cstyle"
+          mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
+          extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc;*.moc"
+          priority="10">
+<!--
+##########################################################################
+## Fixes by Sebastian Pipping (webmaster@hartwork.org)
+##
+## NOTE: Keep in sync with C highlighter! (c.xml)
+##########################################################################
+## Complete list of fixes by Alex Turbov (I.zaufi@gmail.com)
+## can be found at:
+## http://kde-files.org/content/show.php?content=90660
+##########################################################################
+-->
+  <highlighting>
+    <list name="keywords">
+      <item> alignof </item>
+      <item> asm </item>
+      <item> auto </item>
+      <item> break </item>
+      <item> case </item>
+      <item> catch </item>
+      <item> class </item>
+      <item> constexpr </item>
+      <item> const_cast </item>
+      <item> continue </item>
+      <item> decltype </item>
+      <item> default </item>
+      <item> delete </item>
+      <item> do </item>
+      <item> dynamic_cast</item>
+      <item> else </item>
+      <item> enum </item>
+      <item> explicit </item>
+      <item> export </item> <!-- Unused but reserved for future use -->
+      <item> false </item>
+      <item> friend </item>
+      <item> for </item>
+      <item> goto </item>
+      <item> if </item>
+      <item> inline </item>
+      <item> namespace </item>
+      <item> new </item>
+      <item> noexcept </item>
+      <item> nullptr </item>
+      <item> operator </item>
+      <item> private </item>
+      <item> protected </item>
+      <item> public </item>
+      <item> reinterpret_cast </item>
+      <item> return </item>
+      <item> sizeof </item>
+      <item> static_assert </item>
+      <item> static_cast </item>
+      <item> struct </item>
+      <item> switch </item>
+      <item> template </item>
+      <item> this </item>
+      <item> throw </item>
+      <item> true </item>
+      <item> try </item>
+      <item> typedef </item>
+      <item> typeid </item>
+      <item> typename </item>
+      <item> union </item>
+      <item> using </item>
+      <item> virtual </item>
+      <item> while </item>
+      <!-- Alternative operators (see 2.12) -->
+      <item> and </item>
+      <item> and_eq </item>
+      <item> bitand </item>
+      <item> bitor </item>
+      <item> compl </item>
+      <item> not </item>
+      <item> not_eq </item>
+      <item> or </item>
+      <item> or_eq </item>
+      <item> xor </item>
+      <item> xor_eq </item>
+    </list>
+
+    <list name="extensions">
+      <item> K_DCOP </item>
+      <item> Q_ARG </item>
+      <item> Q_ASSERT </item>
+      <item> Q_ASSERT_X </item>
+      <item> Q_CHECK_PTR </item>
+      <item> Q_CLASSINFO </item>
+      <item> Q_CLEANUP_RESOURCE </item>
+      <item> Q_D </item>
+      <item> Q_DECLARE_FLAGS </item>
+      <item> Q_DECLARE_FLAGS </item>
+      <item> Q_DECLARE_INTERFACE </item>
+      <item> Q_DECLARE_METATYPE </item>
+      <item> Q_DECLARE_OPERATORS_FOR_FLAGS </item>
+      <item> Q_DECLARE_PRIVATE </item>
+      <item> Q_DECLARE_PUBLIC </item>
+      <item> Q_DECLARE_SHARED </item>
+      <item> Q_DECLARE_TYPEINFO </item>
+      <item> Q_DISABLE_COPY </item>
+      <item> Q_ENUMS </item>
+      <item> Q_EXPORT </item>
+      <item> Q_FLAGS </item>
+      <item> Q_FOREACH </item>
+      <item> Q_FOREVER </item>
+      <item> Q_GADGET </item>
+      <item> Q_GLOBAL_STATIC </item>
+      <item> Q_GLOBAL_STATIC_WITH_ARGS </item>
+      <item> Q_INIT_RESOURCE </item>
+      <item> Q_INTERFACES </item>
+      <item> Q_INVOKABLE </item>
+      <item> Q_NOREPLY </item>
+      <item> Q_OBJECT </item>
+      <item> Q_OVERRIDE </item>
+      <item> Q_PRIVATE_SLOT </item>
+      <item> Q_PROPERTY </item>
+      <item> Q_Q </item>
+      <item> Q_RETURN_ARG </item>
+      <item> Q_SCRIPTABLE </item>
+      <item> Q_SETS </item>
+      <item> Q_SIGNALS </item>
+      <item> Q_SLOTS </item>
+      <item> Q_UNUSED </item>
+      <item> SIGNAL </item>
+      <item> SLOT </item>
+      <item> TRUE </item>
+      <item> FALSE </item>
+      <item> signals </item>
+      <item> slots </item>
+      <item> foreach </item>
+      <item> forever </item>
+      <item> qobject_cast </item>
+
+      <item> qint8 </item>
+      <item> qint16 </item>
+      <item> qint32 </item>
+      <item> qint64 </item>
+      <item> qlonglong </item>
+      <item> qptrdiff </item>
+      <item> qreal </item>
+      <item> quint8 </item>
+      <item> quint16 </item>
+      <item> quint32 </item>
+      <item> quint64 </item>
+      <item> quintptr </item>
+      <item> qulonglong </item>
+    </list>
+    <list name="types">
+      <item> bool </item>
+      <item> char </item>
+      <item> char16_t </item>
+      <item> char32_t </item>
+      <item> double </item>
+      <item> float </item>
+      <item> int </item>
+      <item> long </item>
+      <item> short </item>
+      <item> signed </item>
+      <item> unsigned </item>
+      <item> void </item>
+      <item> int8_t </item>
+      <item> int16_t </item>
+      <item> int32_t </item>
+      <item> int64_t </item>
+      <item> uint8_t </item>
+      <item> uint16_t </item>
+      <item> uint32_t </item>
+      <item> uint64_t </item>
+      <item> wchar_t </item>
+    </list>
+    <list name="modifiers">
+      <item> const </item>
+      <item> extern </item>
+      <item> mutable </item>
+      <item> register </item>
+      <item> static </item>
+      <item> thread_local </item>
+      <item> volatile </item>
+    </list>
+    <list name="GNU">
+      <!-- NOTE that __attribute__ handled separately -->
+      <item> __asm__ </item>
+      <item> __const__ </item>
+      <item> __extension__ </item>
+      <item> __inline__ </item>
+      <item> __label__ </item>
+      <item> __FUNCTION__ </item>
+      <item> __PRETTY_FUNCTION__ </item>
+      <item> __complex__ </item>
+      <item> __real__ </item>
+      <item> __restrict__ </item>
+      <item> __restrict </item>
+      <item> __imag__ </item>
+      <!-- NOTE From gcc's info: 6.6 Referring to a Type with `typeof' -->
+      <item> __typeof__ </item>
+      <item> typeof </item>
+      <!-- NOTE From gcc's info: 6.10 Additional Floating Types -->
+      <item> __float80 </item>
+      <item> __float128 </item>
+      <!-- NOTE From gcc's info: 7.9 Type Traits -->
+      <item> __has_nothrow_assign </item>
+      <item> __has_nothrow_copy </item>
+      <item> __has_nothrow_constructor </item>
+      <item> __has_trivial_assign </item>
+      <item> __has_trivial_copy </item>
+      <item> __has_trivial_constructor </item>
+      <item> __has_trivial_destructor </item>
+      <item> __has_virtual_destructor </item>
+      <item> __is_abstract </item>
+      <item> __is_base_of </item>
+      <item> __is_class </item>
+      <item> __is_empty </item>
+      <item> __is_enum </item>
+      <item> __is_pod </item>
+      <item> __is_polymorphic </item>
+      <item> __is_union </item>
+      <!-- NOTE From gcc's info: 6.35 -->
+      <item> __alignof__ </item>
+      <!-- NOTE From gcc's info: 6.49 -->
+      <item> __sync_fetch_and_add </item>
+      <item> __sync_fetch_and_sub </item>
+      <item> __sync_fetch_and_or </item>
+      <item> __sync_fetch_and_and </item>
+      <item> __sync_fetch_and_xor </item>
+      <item> __sync_fetch_and_nand </item>
+      <item> __sync_add_and_fetch </item>
+      <item> __sync_sub_and_fetch </item>
+      <item> __sync_or_and_fetch </item>
+      <item> __sync_and_and_fetch </item>
+      <item> __sync_xor_and_fetch </item>
+      <item> __sync_nand_and_fetch </item>
+      <item> __sync_bool_compare_and_swap </item>
+      <item> __sync_val_compare_and_swap </item>
+      <item> __sync_synchronize </item>
+      <item> __sync_lock_test_and_set </item>
+      <item> __sync_lock_release </item>
+      <!-- NOTE From gcc's info: 6.56 Thread-Local storage -->
+      <item> __thread </item>
+    </list>
+    <list name="StdMacros">
+      <item> __FILE__ </item>
+      <item> __LINE__ </item>
+      <item> __DATE__ </item>
+      <item> __TIME__ </item>
+      <item> __STDC__ </item>
+      <item> __STDC_VERSION__ </item>
+      <item> __STDC_HOSTED__ </item>
+      <item> __STDC_ISO_10646__ </item>
+      <item> __STDC_MB_MIGHT_NEQ_WC__ </item>
+      <item> __cplusplus </item>
+    </list>
+    <!-- From http://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html -->
+    <list name="GNUMacros">
+      <item> __COUNTER__ </item>
+      <item> __GFORTRAN__ </item>
+      <item> __GNUC__ </item>
+      <item> __GNUC_MINOR__ </item>
+      <item> __GNUC_PATCHLEVEL__ </item>
+      <item> __GNUG__ </item>
+      <item> __STRICT_ANSI__ </item>
+      <item> __BASE_FILE__ </item>
+      <item> __INCLUDE_LEVEL__ </item>
+      <item> __ELF__ </item>
+      <item> __VERSION__ </item>
+      <item> __OPTIMIZE__ </item>
+      <item> __OPTIMIZE_SIZE__ </item>
+      <item> __NO_INLINE__ </item>
+      <item> __GNUC_GNU_INLINE__ </item>
+      <item> __GNUC_STDC_INLINE__ </item>
+      <item> __CHAR_UNSIGNED__ </item>
+      <item> __WCHAR_UNSIGNED__ </item>
+      <item> __REGISTER_PREFIX__ </item>
+      <item> __USER_LABEL_PREFIX__ </item>
+      <item> __SIZE_TYPE__ </item>
+      <item> __PTRDIFF_TYPE__ </item>
+      <item> __WCHAR_TYPE__ </item>
+      <item> __WINT_TYPE__ </item>
+      <item> __INTMAX_TYPE__ </item>
+      <item> __UINTMAX_TYPE__ </item>
+      <item> __SIG_ATOMIC_TYPE__ </item>
+      <item> __INT8_TYPE__ </item>
+      <item> __INT16_TYPE__ </item>
+      <item> __INT32_TYPE__ </item>
+      <item> __INT64_TYPE__ </item>
+      <item> __UINT8_TYPE__ </item>
+      <item> __UINT16_TYPE__ </item>
+      <item> __UINT32_TYPE__ </item>
+      <item> __UINT64_TYPE__ </item>
+      <item> __INT_LEAST8_TYPE__ </item>
+      <item> __INT_LEAST16_TYPE__ </item>
+      <item> __INT_LEAST32_TYPE__ </item>
+      <item> __INT_LEAST64_TYPE__ </item>
+      <item> __UINT_LEAST8_TYPE__ </item>
+      <item> __UINT_LEAST16_TYPE__ </item>
+      <item> __UINT_LEAST32_TYPE__ </item>
+      <item> __UINT_LEAST64_TYPE__ </item>
+      <item> __INT_FAST8_TYPE__ </item>
+      <item> __INT_FAST16_TYPE__ </item>
+      <item> __INT_FAST32_TYPE__ </item>
+      <item> __INT_FAST64_TYPE__ </item>
+      <item> __UINT_FAST8_TYPE__ </item>
+      <item> __UINT_FAST16_TYPE__ </item>
+      <item> __UINT_FAST32_TYPE__ </item>
+      <item> __UINT_FAST64_TYPE__ </item>
+      <item> __INTPTR_TYPE__ </item>
+      <item> __UINTPTR_TYPE__ </item>
+      <item> __CHAR_BIT__ </item>
+      <item> __SCHAR_MAX__ </item>
+      <item> __WCHAR_MAX__ </item>
+      <item> __SHRT_MAX__ </item>
+      <item> __INT_MAX__ </item>
+      <item> __LONG_MAX__ </item>
+      <item> __LONG_LONG_MAX__ </item>
+      <item> __WINT_MAX__ </item>
+      <item> __SIZE_MAX__ </item>
+      <item> __PTRDIFF_MAX__ </item>
+      <item> __INTMAX_MAX__ </item>
+      <item> __UINTMAX_MAX__ </item>
+      <item> __SIG_ATOMIC_MAX__ </item>
+      <item> __INT8_MAX__ </item>
+      <item> __INT16_MAX__ </item>
+      <item> __INT32_MAX__ </item>
+      <item> __INT64_MAX__ </item>
+      <item> __UINT8_MAX__ </item>
+      <item> __UINT16_MAX__ </item>
+      <item> __UINT32_MAX__ </item>
+      <item> __UINT64_MAX__ </item>
+      <item> __INT_LEAST8_MAX__ </item>
+      <item> __INT_LEAST16_MAX__ </item>
+      <item> __INT_LEAST32_MAX__ </item>
+      <item> __INT_LEAST64_MAX__ </item>
+      <item> __UINT_LEAST8_MAX__ </item>
+      <item> __UINT_LEAST16_MAX__ </item>
+      <item> __UINT_LEAST32_MAX__ </item>
+      <item> __UINT_LEAST64_MAX__ </item>
+      <item> __INT_FAST8_MAX__ </item>
+      <item> __INT_FAST16_MAX__ </item>
+      <item> __INT_FAST32_MAX__ </item>
+      <item> __INT_FAST64_MAX__ </item>
+      <item> __UINT_FAST8_MAX__ </item>
+      <item> __UINT_FAST16_MAX__ </item>
+      <item> __UINT_FAST32_MAX__ </item>
+      <item> __UINT_FAST64_MAX__ </item>
+      <item> __INTPTR_MAX__ </item>
+      <item> __UINTPTR_MAX__ </item>
+      <item> __WCHAR_MIN__ </item>
+      <item> __WINT_MIN__ </item>
+      <item> __SIG_ATOMIC_MIN__ </item>
+      <item> __INT8_C </item>
+      <item> __INT16_C </item>
+      <item> __INT32_C </item>
+      <item> __INT64_C </item>
+      <item> __UINT8_C </item>
+      <item> __UINT16_C </item>
+      <item> __UINT32_C </item>
+      <item> __UINT64_C </item>
+      <item> __INTMAX_C </item>
+      <item> __UINTMAX_C </item>
+      <item> __SIZEOF_INT__ </item>
+      <item> __SIZEOF_LONG__ </item>
+      <item> __SIZEOF_LONG_LONG__ </item>
+      <item> __SIZEOF_SHORT__ </item>
+      <item> __SIZEOF_POINTER__ </item>
+      <item> __SIZEOF_FLOAT__ </item>
+      <item> __SIZEOF_DOUBLE__ </item>
+      <item> __SIZEOF_LONG_DOUBLE__ </item>
+      <item> __SIZEOF_SIZE_T__ </item>
+      <item> __SIZEOF_WCHAR_T__ </item>
+      <item> __SIZEOF_WINT_T__ </item>
+      <item> __SIZEOF_PTRDIFF_T__ </item>
+      <item> __DEPRECATED </item>
+      <item> __EXCEPTIONS </item>
+      <item> __GXX_RTTI </item>
+      <item> __USING_SJLJ_EXCEPTIONS__ </item>
+      <item> __GXX_EXPERIMENTAL_CXX0X__ </item>
+      <item> __GXX_WEAK__ </item>
+      <item> __NEXT_RUNTIME__ </item>
+      <item> __LP64__ </item>
+      <item> _LP64 </item>
+      <item> __SSP__ </item>
+      <item> __SSP_ALL__ </item>
+      <item> __TIMESTAMP__ </item>
+      <item> __GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 </item>
+      <item> __GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 </item>
+      <item> __GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 </item>
+      <item> __GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 </item>
+      <item> __GCC_HAVE_SYNC_COMPARE_AND_SWAP_16 </item>
+      <item> __GCC_HAVE_DWARF2_CFI_ASM </item>
+      <item> __VA_ARGS__ </item>
+    </list>
+
+    <contexts>
+      <context attribute="Normal Text" lineEndContext="#stay" name="Normal">
+        <DetectSpaces />
+        <RegExpr attribute="Preprocessor" context="Outscoped" String="(#|%\:|\?\?=)\s*if\s+(0|false)\s*" beginRegion="PP" firstNonSpace="true" />
+        <RegExpr attribute="Preprocessor" context="Inscoped" String="(#|%\:|\?\?=)\s*if\s+(1|true)\s*" beginRegion="PP" firstNonSpace="true" />
+        <IncludeRules context="Main" />
+      </context>
+
+      <context attribute="Normal Text" lineEndContext="#stay" name="Main">
+        <StringDetect attribute="GNU Extensions" context="AttrArgs" String="__attribute__" />
+        <StringDetect attribute="GNU Extensions" context="AttrArgs" String="__declspec" />
+        <keyword attribute="GNU Extensions" context="#stay" String="GNU" />
+        <RegExpr attribute="GNU Extensions" context="#stay" String="__builtin_[a-zA-Z0-9_]+" />
+        <DetectChar context="AfterHash" char="#" firstNonSpace="true" lookAhead="true" />
+        <Detect2Chars context="AfterHash" char="%" char1=":" firstNonSpace="true" lookAhead="true" />
+        <StringDetect context="AfterHash" String="??=" firstNonSpace="true" lookAhead="true" />
+        <StringDetect attribute="Region Marker" context="Region Marker" String="//BEGIN" beginRegion="Region1" firstNonSpace="true" />
+        <StringDetect attribute="Region Marker" context="Region Marker" String="//END" endRegion="Region1" firstNonSpace="true" />
+        <keyword attribute="Keyword" context="#stay" String="keywords" />
+        <keyword attribute="QT/KDE Extensions" context="#stay" String="extensions" />
+        <StringDetect attribute="Standard Classes" context="Standard Classes" String="std::" />
+        <StringDetect attribute="Boost Stuff" context="Boost Stuff" String="boost::" />
+        <StringDetect attribute="Boost Stuff" context="Boost Stuff" String="BOOST_" />
+        <StringDetect attribute="Internals" context="InternalsNS" String="detail::" />
+        <StringDetect attribute="Internals" context="InternalsNS" String="details::" />
+        <StringDetect attribute="Internals" context="InternalsNS" String="aux::" />
+        <StringDetect attribute="Internals" context="InternalsNS" String="internals::" />
+        <keyword attribute="Data Type" context="#stay" String="types" />
+        <keyword attribute="Type Modifiers" context="#stay" String="modifiers" />
+        <keyword attribute="Standard Macros" context="#stay" String="StdMacros" />
+        <keyword attribute="GNU Macros" context="#stay" String="GNUMacros" />
+        <DetectChar attribute="String" context="String" char="&quot;" />
+        <Detect2Chars attribute="String" context="String" char="U" char1="&quot;" />
+        <Detect2Chars attribute="String" context="String" char="u" char1="&quot;" />
+        <Detect2Chars attribute="String" context="String" char="L" char1="&quot;" />
+        <StringDetect attribute="String" context="String" String="u8&quot;" />
+        <RegExpr attribute="String" context="RawString" String="(u|u8|U|L)?R&quot;([^\(]{0,16})\(" lookAhead="true" />
+        <RegExpr attribute="Error" context="#stay" String="(u|u8|U|L)?R&quot;([^\(]{16,})\(" />
+        <DetectChar attribute="String" context="Char Literal" char="'" />
+        <Detect2Chars attribute="String" context="Char Literal" char="L" char1="'" />
+        <Detect2Chars attribute="String" context="U-Char Literal" char="u" char1="'" />
+        <Detect2Chars attribute="String" context="U-Char Literal" char="U" char1="'" />
+        <RegExpr attribute="Internals" context="#stay" String="_[a-zA-Z0-9_]+" />
+        <RegExpr attribute="Internals" context="#stay" String="[a-zA-Z][a-zA-Z0-9_]*__\b" />
+        <RegExpr attribute="Data Members (m_*)" context="#stay" String="[a-zA-Z][a-zA-Z0-9_]*_\b" />
+        <RegExpr attribute="Data Members (m_*)" context="#stay" String="m_[a-zA-Z0-9_]+" />
+        <RegExpr attribute="Globals (g_*)" context="#stay" String="g_[a-zA-Z0-9_]+" />
+        <RegExpr attribute="Statics (s_*)" context="#stay" String="s_[a-zA-Z0-9_]+" />
+        <RegExpr attribute="CONSTS/MACROS" context="#stay" String="[A-Z][A-Z0-9_]{2,}\b" />
+        <RegExpr attribute="Types (*_t/*_type)" context="#stay" String="[a-zA-Z][a-zA-Z0-9_]*_t(ype)?\b" />
+        <DetectIdentifier />
+        <Float attribute="Float" context="#stay">
+          <AnyChar String="fFlL" attribute="Float" context="#stay" />
+        </Float>
+        <HlCOct attribute="Octal" context="#stay" />
+        <HlCHex attribute="Hex" context="#stay" />
+        <Int attribute="Decimal" context="#stay">
+          <StringDetect attribute="Decimal" context="#stay" String="ULL" insensitive="true" />
+          <StringDetect attribute="Decimal" context="#stay" String="LUL" insensitive="true" />
+          <StringDetect attribute="Decimal" context="#stay" String="LLU" insensitive="true" />
+          <StringDetect attribute="Decimal" context="#stay" String="UL" insensitive="true" />
+          <StringDetect attribute="Decimal" context="#stay" String="LU" insensitive="true" />
+          <StringDetect attribute="Decimal" context="#stay" String="LL" insensitive="true" />
+          <StringDetect attribute="Decimal" context="#stay" String="U" insensitive="true" />
+          <StringDetect attribute="Decimal" context="#stay" String="L" insensitive="true" />
+        </Int>
+        <IncludeRules context="##Doxygen" />
+        <IncludeRules context="AlignedComments" />
+        <Detect2Chars attribute="Comment" context="Commentar 2" char="/" char1="*" beginRegion="Comment" />
+        <DetectChar attribute="Symbol" context="#stay" char="{" beginRegion="Brace1" />
+        <DetectChar attribute="Symbol" context="#stay" char="}" endRegion="Brace1" />
+        <AnyChar attribute="Separator Symbol" context="#stay" String="&separators;" />
+        <AnyChar attribute="Symbol" context="#stay" String="&punctuators;" />
+        <DetectChar attribute="Error" context="#stay" char="#" />
+        <DetectChar attribute="Error" context="#stay" char="$" />
+        <Detect2Chars attribute="Error" context="#stay" char="%" char1=":" />
+        <StringDetect attribute="Error" String="??=" />
+      </context>
+
+      <context attribute="String" lineEndContext="#pop" name="Char Literal">
+        <IncludeRules context="Universal Char" />
+        <DetectChar attribute="String Char" context="Simple Esc" char="\" />
+        <DetectChar attribute="String" context="#pop" char="'" />
+      </context>
+
+      <context attribute="String" lineEndContext="#pop" name="U-Char Literal">
+        <IncludeRules context="Universal Char" />
+        <DetectChar attribute="String Char" context="Simple Esc" char="\" />
+        <DetectChar attribute="String" context="#pop" char="'" />
+        <RegExpr attribute="Error" context="#stay" String="[^']{2,}" />
+        <RegExpr attribute="String" context="#stay" String=".{1}" />
+      </context>
+
+      <context attribute="String Char" lineEndContext="#pop" name="Simple Esc">
+        <AnyChar attribute="String Char" context="#pop" String="tnvbrfa'&quot;\" />
+        <RegExpr attribute="String Char" context="#pop" String="[0-7]{1,3}" />
+        <RegExpr attribute="String Char" context="#pop" String="x[0-9A-Fa-f]{1,}" />
+        <RegExpr attribute="String" context="#pop" String="." />
+      </context>
+
+      <context attribute="String Char" lineEndContext="#pop" name="Universal Char">
+        <RegExpr attribute="String Char" context="#stay" String="\\u[0-9A-Fa-f]{4}" />
+        <RegExpr attribute="Error" context="#stay" String="\\u.{0,3}" />
+        <RegExpr attribute="String Char" context="#stay" String="\\U[0-9A-Fa-f]{8}" />
+        <RegExpr attribute="Error" context="#stay" String="\\U.{0,7}" />
+      </context>
+
+      <context attribute="String" lineEndContext="#pop" name="String">
+        <LineContinue attribute="String" context="#stay" />
+        <HlCStringChar attribute="String Char" context="#stay" />
+        <IncludeRules context="Universal Char" />
+        <RegExpr attribute="String Char" context="#stay" String="%[^&quot;&convspec;]*[&convspec;]" />
+        <DetectChar attribute="String" context="#pop" char="&quot;" />
+      </context>
+
+      <context attribute="String" lineEndContext="#stay" name="RawString" dynamic="true">
+        <LineContinue attribute="String" context="#stay" />
+        <RegExpr attribute="String Char" context="#stay" String="%[^&quot;&convspec;]*[&convspec;]" />
+        <RegExpr attribute="String" context="#pop" String="\)%2&quot;" dynamic="true"/>
+      </context>
+
+      <context attribute="GNU Extensions" lineEndContext="#pop" name="AttrArgs">
+        <Detect2Chars attribute="GNU Extensions" context="#stay" char="(" char1="(" />
+        <Detect2Chars attribute="GNU Extensions" context="#pop" char=")" char1=")" />
+        <DetectChar attribute="GNU Extensions" context="Close" char="(" />
+      </context>
+      <context attribute="GNU Extensions" lineEndContext="#stay" name="Close">
+        <DetectChar attribute="GNU Extensions" context="#pop" char=")" />
+      </context>
+
+      <context lineEndContext="#pop" name="DetectIdentifierEnd" attribute="Normal Text">
+        <AnyChar context="#pop" String="&punctuators;" attribute="Symbol" />
+      </context>
+
+      <context attribute="Region Marker" lineEndContext="#pop" name="Region Marker" />
+
+      <context lineEndContext="#pop" name="DetectNSEnd" attribute="Normal Text">
+        <DetectIdentifier context="#stay" />
+        <AnyChar context="#pop" String="&separators;" attribute="Separator Symbol" />
+        <AnyChar context="#pop" String="&ns_punctuators;" attribute="Symbol" />
+      </context>
+
+      <context attribute="Standard Classes" lineEndContext="#pop" name="Standard Classes">
+        <IncludeRules context="DetectNSEnd" />
+      </context>
+
+      <context attribute="Boost Stuff" lineEndContext="#pop" name="Boost Stuff">
+        <IncludeRules context="DetectNSEnd" />
+      </context>
+
+      <context attribute="Internals" lineEndContext="#pop" name="InternalsNS">
+        <IncludeRules context="DetectNSEnd" />
+      </context>
+
+      <context attribute="Comment" lineEndContext="#pop" name="Commentar 1">
+        <LineContinue attribute="Comment" context="#stay" />
+        <DetectSpaces />
+        <IncludeRules context="##Alerts" />
+        <DetectIdentifier />
+      </context>
+
+      <context attribute="Comment" lineEndContext="#stay" name="Commentar 2">
+        <DetectSpaces />
+        <Detect2Chars attribute="Comment" context="#pop" char="*" char1="/" endRegion="Comment" />
+        <IncludeRules context="##Alerts" />
+        <DetectIdentifier />
+      </context>
+
+      <context attribute="Error" lineEndContext="#pop" name="AfterHash">
+        <!-- define, elif, else, endif, error, if, ifdef, ifndef, include, include_next, line, pragma, undef, warning -->
+        <RegExpr attribute="Preprocessor" context="Preprocessor" String="(#|%\:|\?\?=)\s*if(?:def|ndef)?(?=\s+\S)" insensitive="true" beginRegion="PP" firstNonSpace="true" />
+        <RegExpr attribute="Preprocessor" context="Preprocessor" String="(#|%\:|\?\?=)\s*endif" insensitive="true" endRegion="PP" firstNonSpace="true" />
+        <RegExpr attribute="Preprocessor" context="Define" String="(#|%\:|\?\?=)\s*define.*((?=\\))" insensitive="true" firstNonSpace="true" />
+        <RegExpr attribute="Preprocessor" context="Preprocessor" String="(#|%\:|\?\?=)\s*(?:el(?:se|if)|include(?:_next)?|define|undef|line|error|warning|pragma)" insensitive="true" firstNonSpace="true" />
+        <RegExpr attribute="Preprocessor" context="Preprocessor" String="(#|%\:|\?\?=)\s+[0-9]+" insensitive="true" firstNonSpace="true" />
+      </context>
+
+      <context attribute="Preprocessor" lineEndContext="#pop" name="Preprocessor">
+        <LineContinue attribute="Preprocessor" context="#stay" />
+        <keyword attribute="Standard Macros" context="#stay" String="StdMacros" />
+        <keyword attribute="GNU Macros" context="#stay" String="GNUMacros" />
+        <RangeDetect attribute="Prep. Lib" context="#stay" char="&quot;" char1="&quot;" />
+        <RangeDetect attribute="Prep. Lib" context="#stay" char="&lt;" char1="&gt;" />
+        <IncludeRules context="##Doxygen" />
+        <Detect2Chars attribute="Comment" context="Commentar/Preprocessor" char="/" char1="*" beginRegion="Comment2" />
+        <IncludeRules context="AlignedComments" />
+      </context>
+
+      <context attribute="Preprocessor" lineEndContext="#pop" name="Define">
+        <LineContinue attribute="Preprocessor" context="#stay" />
+        <keyword attribute="Standard Macros" context="#stay" String="StdMacros" />
+        <keyword attribute="GNU Macros" context="#stay" String="GNUMacros" />
+      </context>
+
+      <context attribute="Comment" lineEndContext="#stay" name="Commentar/Preprocessor">
+        <DetectSpaces />
+        <Detect2Chars attribute="Comment" context="#pop" char="*" char1="/" endRegion="Comment2" />
+        <DetectIdentifier />
+      </context>
+
+      <context attribute="Comment" lineEndContext="#stay" name="Outscoped Common" >
+        <DetectSpaces />
+        <IncludeRules context="##Alerts" />
+        <DetectIdentifier />
+        <IncludeRules context="##Doxygen" />
+        <IncludeRules context="AlignedComments" />
+        <!-- Do not try to detect "C" style comments inside outscoped text
+             to prevent incorrect highlighting in case of overlapped (or not closed properly)
+             comment block...
+
+             <Detect2Chars attribute="Comment" context="Commentar 2" char="/" char1="*" beginRegion="Comment" />
+        -->
+        <RegExpr attribute="Comment" context="Outscoped intern" String="(#|%\:|\?\?=)\s*if" beginRegion="PP" firstNonSpace="true" />
+      </context>
+
+      <context attribute="Comment" lineEndContext="#stay" name="Outscoped" >
+        <IncludeRules context="Outscoped Common" />
+        <RegExpr attribute="Preprocessor" context="#pop" String="(#|%\:|\?\?=)\s*el(?:se|if)" firstNonSpace="true" />
+        <RegExpr attribute="Preprocessor" context="#pop" String="(#|%\:|\?\?=)\s*endif" endRegion="PP" firstNonSpace="true" />
+      </context>
+
+      <context attribute="Comment" lineEndContext="#stay" name="Outscoped 2" >
+        <IncludeRules context="Outscoped Common" />
+        <RegExpr attribute="Preprocessor" context="#pop#pop" String="(#|%\:|\?\?=)\s*endif" endRegion="PP" firstNonSpace="true" />
+      </context>
+
+      <context attribute="Normal Text" lineEndContext="#stay" name="Inscoped" >
+        <DetectSpaces />
+        <RegExpr attribute="Preprocessor" context="Outscoped" String="(#|%\:|\?\?=)\s*if\s+(0|false)\s*" beginRegion="PP" firstNonSpace="true" />
+        <RegExpr attribute="Preprocessor" context="Outscoped 2" String="(#|%\:|\?\?=)\s*el(?:se|if)" firstNonSpace="true" />
+        <IncludeRules context="Main" />
+      </context>
+
+      <context attribute="Comment" lineEndContext="#stay" name="Outscoped intern">
+        <DetectSpaces />
+        <IncludeRules context="##Alerts" />
+        <DetectIdentifier />
+        <IncludeRules context="##Doxygen" />
+        <IncludeRules context="AlignedComments" />
+        <Detect2Chars attribute="Comment" context="Commentar 2" char="/" char1="*" beginRegion="Comment" />
+        <RegExpr attribute="Comment" context="Outscoped intern" String="(#|%\:|\?\?=)\s*if" beginRegion="PP" firstNonSpace="true" />
+        <RegExpr attribute="Comment" context="#pop" String="(#|%\:|\?\?=)\s*endif" endRegion="PP" firstNonSpace="true" />
+      </context>
+
+      <context name="AlignedComments" lineEndContext="#stay" attribute="Comment">
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="0" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="4" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="8" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="12" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="16" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="20" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="24" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="28" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="32" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="36" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="40" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="44" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="48" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="52" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="56" char="/" char1="/" />
+        <Detect2Chars attribute="Region Marker" context="Commentar 1" column="60" char="/" char1="/" />
+        <Detect2Chars attribute="Comment" context="Commentar 1" char="/" char1="/" />
+      </context>
+    </contexts>
+
+    <itemDatas>
+      <itemData name="Normal Text"       defStyleNum="dsNormal" spellChecking="false" />
+      <itemData name="Keyword"           defStyleNum="dsKeyword" spellChecking="false" />
+      <itemData name="Data Type"         defStyleNum="dsDataType" spellChecking="false" />
+      <itemData name="Type Modifiers"    defStyleNum="dsDataType" spellChecking="false" />
+      <itemData name="Decimal"           defStyleNum="dsDecVal" spellChecking="false" />
+      <itemData name="Octal"             defStyleNum="dsBaseN" spellChecking="false" />
+      <itemData name="Hex"               defStyleNum="dsBaseN" spellChecking="false" />
+      <itemData name="Float"             defStyleNum="dsFloat" spellChecking="false" />
+      <itemData name="Char"              defStyleNum="dsChar" spellChecking="false" />
+      <itemData name="String"            defStyleNum="dsString" />
+      <itemData name="String Char"       defStyleNum="dsChar" />
+      <itemData name="Comment"           defStyleNum="dsComment" spellChecking="false" />
+      <itemData name="Symbol"            defStyleNum="dsNormal" spellChecking="false" />
+      <itemData name="Separator Symbol"  defStyleNum="dsNormal" spellChecking="false" />
+      <itemData name="Data Members (m_*)" defStyleNum="dsNormal" spellChecking="false" />
+      <itemData name="Globals (g_*)"     defStyleNum="dsNormal" spellChecking="false" />
+      <itemData name="Statics (s_*)"     defStyleNum="dsNormal" spellChecking="false" />
+      <itemData name="Types (*_t/*_type)" defStyleNum="dsNormal" spellChecking="false" />
+      <itemData name="CONSTS/MACROS"     defStyleNum="dsNormal" spellChecking="false" />
+      <itemData name="Preprocessor"      defStyleNum="dsOthers" spellChecking="false" />
+      <itemData name="Prep. Lib"         defStyleNum="dsOthers" spellChecking="false" />
+      <itemData name="Standard Macros"   defStyleNum="dsOthers" spellChecking="false" />
+      <itemData name="GNU Macros"        defStyleNum="dsOthers" spellChecking="false" />
+      <itemData name="GNU Extensions"    defStyleNum="dsKeyword" color="#0095ff" selColor="#0095ff" bold="0" italic="1" spellChecking="false" />
+      <itemData name="QT/KDE Extensions" defStyleNum="dsKeyword" color="#0095ff" selColor="#0095ff" bold="0" italic="1" spellChecking="false" />
+      <itemData name="Standard Classes"  defStyleNum="dsNormal" color="#59ff00" selColor="#59ff00" bold="0" italic="0" spellChecking="false" />
+      <itemData name="Boost Stuff"       defStyleNum="dsNormal" color="#23a45b" selColor="#23a45b" bold="0" italic="0" spellChecking="false" />
+      <itemData name="Internals"         defStyleNum="dsNormal" color="#808080" selColor="#808080" bold="0" italic="0" spellChecking="false" />
+      <itemData name="Region Marker"     defStyleNum="dsRegionMarker" spellChecking="false" />
+      <itemData name="Error"             defStyleNum="dsError" spellChecking="false" />
+    </itemDatas>
+  </highlighting>
+  <general>
+    <comments>
+      <comment name="singleLine" start="//" />
+      <comment name="multiLine" start="/*" end="*/" region="Comment" />
+    </comments>
+    <keywords casesensitive="1" />
+  </general>
+</language>
