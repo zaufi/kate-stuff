@@ -30,6 +30,7 @@
   <highlighting>
     <list name="alerts_hi">
       <item> ALERT </item>
+      <item> ATTENTION </item>
       <item> DANGER </item>
       <item> HACK </item>
       <item> SECURITY </item>
