@@ -1,5 +1,7 @@
 What it this
 ============
+Alex Turbov <I.zaufi@gmail.com>
+:Author Initials: Alex Turbov
 
 In this repository I keep my kate editor syntax files and snippets.
 
