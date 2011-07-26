@@ -43,6 +43,7 @@
       <item> TODO </item>
       <item> TBD </item>
       <item> WARNING </item>
+      <item> NOLINT </item>
     </list>
     <list name="alerts_lo">
       <item> ### </item>

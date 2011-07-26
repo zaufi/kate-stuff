@@ -9,7 +9,7 @@
     <!ENTITY convspec "diouxXeEfFgGaAcsP&#37;">
 ]>
 <language name="C++" section="Sources"
-          version="1.49.1" kateversion="2.4"
+          version="1.49.2" kateversion="2.4"
           indenter="cstyle"
           mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
           extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc;*.moc"
@@ -91,6 +91,13 @@
       <item> or_eq </item>
       <item> xor </item>
       <item> xor_eq </item>
+    </list>
+    <!-- This keyword may appear in InternalsNS context. For example in code:
+      details::some_class::template some_templated_static();
+      and it should be displayed as keyword, not like part of details namespace...
+      -->
+    <list name="template">
+      <item> template </item>
     </list>
 
     <list name="extensions">
@@ -540,6 +547,8 @@
       <context attribute="Region Marker" lineEndContext="#pop" name="Region Marker" />
 
       <context lineEndContext="#pop" name="DetectNSEnd" attribute="Normal Text">
+        <keyword attribute="Keyword" context="#stay" String="template" />
+        <AnyChar context="#stay" String="&space;" attribute="Normal Text" />
         <DetectIdentifier context="#stay" />
         <AnyChar context="#pop" String="&separators;" attribute="Separator Symbol" />
         <AnyChar context="#pop" String="&ns_punctuators;" attribute="Symbol" />
