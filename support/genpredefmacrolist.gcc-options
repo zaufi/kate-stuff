@@ -1,0 +1,51 @@
+# x86/x86-64 CPUs
+-mtune=generic
+-march=native
+-march=i386 -m32
+-march=i486 -m32
+-march=i586 -m32        # pentium
+-march=pentium-mmx -m32
+-march=pentiumpro -m32
+-march=i686 -m32
+-march=pentium2 -m32
+-march=pentium3 -m32    # pentium3m
+-march=pentium-m -m32
+-march=pentium4 -m32    # pentium4m
+-march=prescott -m32
+-march=nocona
+-march=nocona -m32
+-march=core2
+-march=core2 -m32
+-march=corei7
+-march=corei7 -m32
+-march=corei7-avx
+-march=corei7-avx -m32
+-march=atom
+-march=atom -m32
+-march=k6 -m32
+-march=k6-2 -m32
+-march=k6-3 -m32
+-march=athlon -m32      # athlon-tbird
+-march=athlon-xp -m32
+-march=k8               # opteron, athlon64, athlon-fx
+-march=k8 -m32
+-march=k8-sse3          # opteron-sse3, athlon64-sse3
+-march=k8-sse3 -m32
+-march=amdfam10         # barcelona
+-march=amdfam10 -m32
+-march=winchip-c6 -m32
+-march=winchip2 -m32
+-march=c3 -m32
+-march=c3-2 -m32
+-march=geode -m32
+
+# C++ specific options
+-std=c++0x
+
+# Optimization options
+-O
+-O0
+-O1
+-O2
+-O3
+-Os
