@@ -9,7 +9,7 @@
     <!ENTITY convspec "diouxXeEfFgGaAcsP&#37;">
 ]>
 <language name="C++" section="Sources"
-          version="1.49.3" kateversion="2.4"
+          version="1.49.4" kateversion="2.4"
           indenter="cstyle"
           mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
           extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc;*.moc"
@@ -47,6 +47,7 @@
       <item> explicit </item>
       <item> export </item> <!-- Unused but reserved for future use -->
       <item> false </item>
+      <item> final </item> <!-- According N3272 -->
       <item> friend </item>
       <item> for </item>
       <item> goto </item>
@@ -57,6 +58,7 @@
       <item> noexcept </item>
       <item> nullptr </item>
       <item> operator </item>
+      <item> override </item> <!-- According N3272 -->
       <item> private </item>
       <item> protected </item>
       <item> public </item>
@@ -719,10 +721,10 @@
 
       <context lineEndContext="#pop" name="DetectNSEnd" attribute="Normal Text">
         <keyword attribute="Keyword" context="#stay" String="template" />
-        <AnyChar context="#stay" String="&space;" attribute="Normal Text" />
         <DetectIdentifier context="#stay" />
         <AnyChar context="#pop" String="&separators;" attribute="Separator Symbol" />
         <AnyChar context="#pop" String="&ns_punctuators;" attribute="Symbol" />
+        <AnyChar context="#stay" String="&space;" attribute="Normal Text" />
       </context>
 
       <context attribute="Standard Classes" lineEndContext="#pop" name="Standard Classes">
