@@ -1,9 +1,11 @@
 What it this
-------------
+============
 
 In this repository I keep my kate editor syntax files and snippets.
 
   - To install syntax files just symlink them from work copy to `~/.kde4/share/apps/katepart/syntax` directory.
   - To install code snippets symlink 'em to `~/.kde4/share/apps/ktexteditor_snippets/data` directory.
 
-Changelog for C++ syntax is here: http://kde-files.org/content/show.php/fixed+C%2B%2B+highlighting+%28C%2B%2B0x+ready%29?content=90660
+Changelog for C++ syntax is here: http://kde-files.org/content/show.php?content=90660
+
+Changelog for GNU GCC specific snippets is here: http://kde-files.org/content/show.php?content=144138
