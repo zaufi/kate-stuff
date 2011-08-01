@@ -220,6 +220,10 @@
       <!-- NOTE From gcc's info: 6.10 Additional Floating Types -->
       <item> __float80 </item>
       <item> __float128 </item>
+      <!-- NOTE 6.12 Decimal Floating Types -->
+      <item> _Decimal32 </item>
+      <item> _Decimal64 </item>
+      <item> _Decimal128 </item>
       <!-- NOTE From gcc's info: 7.9 Type Traits -->
       <item> __has_nothrow_assign </item>
       <item> __has_nothrow_copy </item>
@@ -633,6 +637,7 @@
         <RegExpr attribute="Statics (s_*)" context="#stay" String="s_[a-zA-Z0-9_]+" />
         <RegExpr attribute="CONSTS/MACROS" context="#stay" String="[A-Z][A-Z0-9_]{2,}\b" />
         <RegExpr attribute="Types (*_t/*_type)" context="#stay" String="[a-zA-Z][a-zA-Z0-9_]*_t(ype)?\b" />
+        <Detect2Chars attribute="GNU Extensions" context="Binary constant" char="0" char1="b" />
         <DetectIdentifier />
         <Float attribute="Float" context="#stay">
           <AnyChar String="fFlL" attribute="Float" context="#stay" />
@@ -660,6 +665,14 @@
         <DetectChar attribute="Error" context="#stay" char="$" />
         <Detect2Chars attribute="Error" context="#stay" char="%" char1=":" />
         <StringDetect attribute="Error" String="??=" />
+      </context>
+
+      <!-- 6.57 Binary constants using the `0b' prefix -->
+      <context attribute="GNU Extensions" lineEndContext="#pop" name="Binary constant">
+        <AnyChar attribute="GNU Extensions" context="#stay" String="01" />
+        <RegExpr attribute="Error" context="#stay" String="[a-zA-Z0-9_]+" />
+        <AnyChar context="#pop" String="&separators;" attribute="Separator Symbol" />
+        <AnyChar context="#pop" String="&punctuators;" attribute="Symbol" />
       </context>
 
       <context attribute="String" lineEndContext="#pop" name="Char Literal">

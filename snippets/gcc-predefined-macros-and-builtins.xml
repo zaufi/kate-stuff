@@ -1,4 +1,5 @@
 <snippets namespace="gcc:" license="BSD" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com>" name="gcc predefined macros and builtins">
+  <!-- Predefined macros version 1.0 -->
   <item><match>_FORTIFY_SOURCE</match><fillin>_FORTIFY_SOURCE</fillin></item>
   <item><match>_GNU_SOURCE</match><fillin>_GNU_SOURCE</fillin></item>
   <item><match>_LP64</match><fillin>_LP64</fillin></item>
@@ -303,4 +304,970 @@
   <item><match>i386</match><fillin>i386</fillin></item>
   <item><match>linux</match><fillin>linux</fillin></item>
   <item><match>unix</match><fillin>unix</fillin></item>
+
+  <item>
+    <match>__attribute__</match>
+    <fillin>__attribute__((${attr}))</fillin>
+  </item>
+  <item>
+    <match>__alignof__</match>
+    <displayarguments>(var)</displayarguments>
+    <fillin>__alignof__(${var})</fillin>
+  </item>
+
+  <!-- Type traits -->
+  <item>
+    <match>__has_nothrow_assign</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__has_nothrow_assign(${type})</fillin>
+  </item>
+  <item>
+    <match>__has_nothrow_copy</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__has_nothrow_copy(${type})</fillin>
+  </item>
+  <item>
+    <match>__has_nothrow_constructor</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__has_nothrow_constructor(${type})</fillin>
+  </item>
+  <item>
+    <match>__has_trivial_assign</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__has_trivial_assign(${type})</fillin>
+  </item>
+  <item>
+    <match>__has_trivial_copy</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__has_trivial_copy(${type})</fillin>
+  </item>
+  <item>
+    <match>__has_trivial_constructor</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__has_trivial_constructor(${type})</fillin>
+  </item>
+  <item>
+    <match>__has_trivial_destructor</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__has_trivial_destructor(${type})</fillin>
+  </item>
+  <item>
+    <match>__has_virtual_destructor</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__has_virtual_destructor(${type})</fillin>
+  </item>
+  <item>
+    <match>__is_abstract</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__is_abstract(${type})</fillin>
+  </item>
+  <item>
+    <match>__is_base_of</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__is_base_of(${type})</fillin>
+  </item>
+  <item>
+    <match>__is_class</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__is_class(${type})</fillin>
+  </item>
+  <item>
+    <match>__is_empty</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__is_empty(${type})</fillin>
+  </item>
+  <item>
+    <match>__is_enum</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__is_enum(${type})</fillin>
+  </item>
+  <item>
+    <match>__is_pod</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__is_pod(${type})</fillin>
+  </item>
+  <item>
+    <match>__is_polymorphic</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__is_polymorphic(${type})</fillin>
+  </item>
+  <item>
+    <match>__is_union</match>
+    <displayarguments> (type)</displayarguments>
+    <fillin>__is_union(${type})</fillin>
+  </item>
+  <!-- Builtin functions -->
+  <!-- 6.5 Constructing Function Calls -->
+  <item>
+    <displayprefix>void* </displayprefix>
+    <match>__builtin_apply_args</match>
+    <displayarguments>()</displayarguments>
+    <fillin>__builtin_apply_args()</fillin>
+  </item>
+  <item>
+    <displayprefix>void* </displayprefix>
+    <match>__builtin_apply</match>
+    <displayarguments>(void (*FUNCTION)(), void* ARGUMENTS, size_t SIZE)</displayarguments>
+    <fillin>__builtin_apply(${function}, ${args}, ${size})</fillin>
+  </item>
+  <item>
+    <displayprefix>void </displayprefix>
+    <match>__builtin_return</match>
+    <displayarguments>(void* RESULT)</displayarguments>
+    <fillin>__builtin_return()</fillin>
+  </item>
+  <item>
+    <match>__builtin_va_arg_pack</match>
+    <displayarguments>()</displayarguments>
+    <fillin>__builtin_va_arg_pack()</fillin>
+  </item>
+  <item>
+    <match>__builtin_va_arg_pack_len</match>
+    <displayarguments>()</displayarguments>
+    <fillin>__builtin_va_arg_pack_len()</fillin>
+  </item>
+  <!-- 6.46 Getting the Return or Frame Address of a Function -->
+  <item>
+    <displayprefix>void* </displayprefix>
+    <match>__builtin_return_address</match>
+    <displayarguments>(unsigned LEVEL)</displayarguments>
+    <fillin>__builtin_return_address(${level})</fillin>
+  </item>
+  <item>
+    <displayprefix>void* </displayprefix>
+    <match>__builtin_extract_return_address</match>
+    <displayarguments>(void* ADDRESS)</displayarguments>
+    <fillin>__builtin_extract_return_address(${address})</fillin>
+  </item>
+  <item>
+    <displayprefix>void* </displayprefix>
+    <match>__builtin_frame_address</match>
+    <displayarguments>(unsigned LEVEL)</displayarguments>
+    <fillin>__builtin_frame_address(${level})</fillin>
+  </item>
+  <!-- 6.48 Offsetof -->
+  <item>
+    <displayprefix>off_t </displayprefix>
+    <match>__builtin_offsetof</match>
+    <displayarguments>(TYPE, MEMBER)</displayarguments>
+    <fillin>__builtin_offsetof(${type}, ${member})</fillin>
+  </item>
+  <!-- 6.50 Object Size Checking Builtins -->
+  <item>
+    <displayprefix>size_t </displayprefix>
+    <match>__builtin_object_size</match>
+    <displayarguments>(void* PTR, int TYPE), TYPE=0..3</displayarguments>
+    <fillin>__builtin_object_size(${ptr}, ${type})</fillin>
+  </item>
+  <!-- 6.49 Built-in functions for atomic memory access -->
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_fetch_and_add</match>
+    <displayarguments>(TYPE* ptr, TYPE value)</displayarguments>
+    <fillin>__sync_fetch_and_add(${ptr}, ${value})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_fetch_and_sub</match>
+    <displayarguments>(TYPE* ptr, TYPE value)</displayarguments>
+    <fillin>__sync_fetch_and_sub(${ptr}, ${value})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_fetch_and_or</match>
+    <displayarguments>(TYPE* ptr, TYPE value)</displayarguments>
+    <fillin>__sync_fetch_and_or(${ptr}, ${value})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_fetch_and_and</match>
+    <displayarguments>(TYPE* ptr, TYPE value)</displayarguments>
+    <fillin>__sync_fetch_and_and(${ptr}, ${value})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_fetch_and_xor</match>
+    <displayarguments>(TYPE* ptr, TYPE value)</displayarguments>
+    <fillin>__sync_fetch_and_xor(${ptr}, ${value})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_fetch_and_nand</match>
+    <displayarguments>(TYPE* ptr, TYPE value)</displayarguments>
+    <fillin>__sync_fetch_and_nand(${ptr}, ${value})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_add_and_fetch</match>
+    <displayarguments>(TYPE* ptr, TYPE value)</displayarguments>
+    <fillin>__sync_add_and_fetch(${ptr}, ${value})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_sub_and_fetch</match>
+    <displayarguments>(TYPE* ptr, TYPE value)</displayarguments>
+    <fillin>__sync_sub_and_fetch(${ptr}, ${value})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_or_and_fetch</match>
+    <displayarguments>(TYPE* ptr, TYPE value)</displayarguments>
+    <fillin>__sync_or_and_fetch(${ptr}, ${value})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_xor_and_fetch</match>
+    <displayarguments>(TYPE* ptr, TYPE value)</displayarguments>
+    <fillin>__sync_xor_and_fetch(${ptr}, ${value})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_and_and_fetch</match>
+    <displayarguments>(TYPE* ptr, TYPE value)</displayarguments>
+    <fillin>__sync_and_and_fetch(${ptr}, ${value})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_nand_and_fetch</match>
+    <displayarguments>(TYPE* ptr, TYPE value)</displayarguments>
+    <fillin>__sync_nand_and_fetch(${ptr}, ${value})</fillin>
+  </item>
+  <item>
+    <displayprefix>bool </displayprefix>
+    <match>__sync_bool_compare_and_swap</match>
+    <displayarguments>(bool* ptr, bool new_value, bool old_value)</displayarguments>
+    <fillin>__sync_bool_compare_and_swap(${ptr}, ${new_value}, ${old_value})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_val_compare_and_swap</match>
+    <displayarguments>(TYPE* ptr, TYPE new_value, TYPE old_value)</displayarguments>
+    <fillin>__sync_val_compare_and_swap(${ptr}, ${new_value}, ${old_value})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__sync_lock_test_and_set</match>
+    <displayarguments>(TYPE* ptr, TYPE value)</displayarguments>
+    <fillin>__sync_lock_test_and_set(${ptr}, ${value})</fillin>
+  </item>
+  <item>
+    <displayprefix>void </displayprefix>
+    <match>__sync_lock_release</match>
+    <displayarguments>(TYPE* ptr)</displayarguments>
+    <fillin>__sync_lock_release(${ptr})</fillin>
+  </item>
+  <item>
+    <displayprefix>void </displayprefix>
+    <match>__sync_synchronize</match>
+    <displayarguments>()</displayarguments>
+    <fillin>__sync_synchronize()</fillin>
+  </item>
+
+  <!-- 6.51 Other built-in functions provided by GCC -->
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_types_compatible_p</match>
+    <displayarguments>(TYPE1, TYPE2)</displayarguments>
+    <fillin>__builtin_types_compatible_p(${type1}, ${type2})</fillin>
+  </item>
+  <item>
+    <displayprefix>TYPE </displayprefix>
+    <match>__builtin_choose_expr</match>
+    <displayarguments>(CONST-EXPR, EXPR1, EXPR2)</displayarguments>
+    <fillin>__builtin_choose_expr(${const_expr}, ${expr1}, ${expr2})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_constant_p</match>
+    <displayarguments>(EXPR)</displayarguments>
+    <fillin>__builtin_constant_p(${expr})</fillin>
+  </item>
+  <item>
+    <displayprefix>long </displayprefix>
+    <match>__builtin_expect</match>
+    <displayarguments>(long EXP, long CONST)</displayarguments>
+    <fillin>__builtin_expect(${expr}, ${const})</fillin>
+  </item>
+  <item>
+    <displayprefix>void </displayprefix>
+    <match>__builtin_trap</match>
+    <displayarguments>()</displayarguments>
+    <fillin>__builtin_trap()</fillin>
+  </item>
+  <item>
+    <displayprefix>void </displayprefix>
+    <match>__builtin_unrecheable</match>
+    <displayarguments>()</displayarguments>
+    <fillin>__builtin_unrecheable()</fillin>
+  </item>
+  <item>
+    <displayprefix>void </displayprefix>
+    <match>__builtin__clear_cache</match>
+    <displayarguments>(char* BEGIN, char* END)</displayarguments>
+    <fillin>__builtin__clear_cache(${begin}, ${end})</fillin>
+  </item>
+  <item>
+    <displayprefix>void </displayprefix>
+    <match>__builtin_prefetch</match>
+    <displayarguments>(const void* ADDRESS[, RW=0|1, LOCALITY=0..3])</displayarguments>
+    <fillin>__builtin_prefetch(${addr})</fillin>
+  </item>
+  <!-- TODO There is a set of float/double (not so interesting) builtins to add
+       ... I'll do this later, cuz too lazy now
+    -->
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_ffs</match>
+    <displayarguments>(unsigned)</displayarguments>
+    <fillin>__builtin_ffs(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_clz</match>
+    <displayarguments>(unsigned)</displayarguments>
+    <fillin>__builtin_clz(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_ctz</match>
+    <displayarguments>(unsigned)</displayarguments>
+    <fillin>__builtin_ctz(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_popcount</match>
+    <displayarguments>(unsigned)</displayarguments>
+    <fillin>__builtin_popcount(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_parity</match>
+    <displayarguments>(unsigned)</displayarguments>
+    <fillin>__builtin_parity(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_ffsl</match>
+    <displayarguments>(unsigned long)</displayarguments>
+    <fillin>__builtin_ffsl(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_clzl</match>
+    <displayarguments>(unsigned long)</displayarguments>
+    <fillin>__builtin_clzl(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_ctzl</match>
+    <displayarguments>(unsigned long)</displayarguments>
+    <fillin>__builtin_ctzl(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_popcountl</match>
+    <displayarguments>(unsigned long)</displayarguments>
+    <fillin>__builtin_popcountl(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_parityl</match>
+    <displayarguments>(unsigned long)</displayarguments>
+    <fillin>__builtin_parityl(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_ffsll</match>
+    <displayarguments>(unsigned long long)</displayarguments>
+    <fillin>__builtin_ffsll(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_clzll</match>
+    <displayarguments>(unsigned long long)</displayarguments>
+    <fillin>__builtin_clzll(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_ctzll</match>
+    <displayarguments>(unsigned long long)</displayarguments>
+    <fillin>__builtin_ctzll(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_popcountll</match>
+    <displayarguments>(unsigned long long)</displayarguments>
+    <fillin>__builtin_popcountll(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int </displayprefix>
+    <match>__builtin_parityll</match>
+    <displayarguments>(unsigned long long)</displayarguments>
+    <fillin>__builtin_parityll(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>double </displayprefix>
+    <match>__builtin_powi</match>
+    <displayarguments>(double, int)</displayarguments>
+    <fillin>__builtin_powi(${arg}, ${degree})</fillin>
+  </item>
+  <item>
+    <displayprefix>float </displayprefix>
+    <match>__builtin_powf</match>
+    <displayarguments>(float, int)</displayarguments>
+    <fillin>__builtin_powif(${arg}, ${degree})</fillin>
+  </item>
+  <item>
+    <displayprefix>long double </displayprefix>
+    <match>__builtin_powil</match>
+    <displayarguments>(long double, int)</displayarguments>
+    <fillin>__builtin_powil(${arg}, ${degree})</fillin>
+  </item>
+  <item>
+    <displayprefix>int32_t </displayprefix>
+    <match>__builtin_bswap32</match>
+    <displayarguments>(int32_t)</displayarguments>
+    <fillin>__builtin_bswap32(${arg})</fillin>
+  </item>
+  <item>
+    <displayprefix>int64_t </displayprefix>
+    <match>__builtin_bswap64</match>
+    <displayarguments>(int64_t)</displayarguments>
+    <fillin>__builtin_bswap64(${arg})</fillin>
+  </item>
+  <!-- 6.52 Built-in Functions Specific to Particular Target Machines -->
+  <!-- TODO Here is a lot of target specific builtins. I'll add them later (when needed) -->
+
+
+  <!-- Attributes -->
+  <!-- 6.29 Declaring Attributes of Functions -->
+  <item>
+    <match>attr:alias</match>
+    <displayarguments>("TARGET")</displayarguments>
+    <fillin>alias("${target}")</fillin>
+  </item>
+  <item>
+    <match>attr:aligned</match>
+    <displayarguments>(ALIGMENT)</displayarguments>
+    <fillin>aligned(${aligment})</fillin>
+  </item>
+  <item>
+    <match>attr:alloc_size</match>
+    <displayarguments>(sz1[, sz2])</displayarguments>
+    <fillin>alloc_size(${sz1}, ${sz2})</fillin>
+  </item>
+  <item>
+    <match>attr:always_inline</match>
+    <fillin>always_inline</fillin>
+  </item>
+  <item>
+    <match>attr:gnu_inline</match>
+    <fillin>gnu_inline</fillin>
+  </item>
+  <item>
+    <match>attr:artificial</match>
+    <fillin>artificial</fillin>
+  </item>
+  <item>
+    <match>attr:bank_switch</match>
+    <fillin>bank_switch</fillin>
+  </item>
+  <item>
+    <match>attr:flatten</match>
+    <fillin>flatten</fillin>
+  </item>
+  <item>
+    <match>attr:error</match>
+    <displayarguments>("MESSAGE")</displayarguments>
+    <fillin>error("${message}")</fillin>
+  </item>
+  <item>
+    <match>attr:warning</match>
+    <displayarguments>("MESSAGE")</displayarguments>
+    <fillin>warning("${message}")</fillin>
+  </item>
+  <item>
+    <match>attr:cdecl</match>
+    <fillin>cdecl</fillin>
+  </item>
+  <item>
+    <match>attr:const</match>
+    <fillin>const</fillin>
+  </item>
+  <item>
+    <match>attr:constructor</match>
+    <fillin>constructor</fillin>
+  </item>
+  <item>
+    <match>attr:constructor</match>
+    <displayarguments>(PRIORITY)</displayarguments>
+    <fillin>constructor(${priority})</fillin>
+  </item>
+  <item>
+    <match>attr:destructor</match>
+    <fillin>destructor</fillin>
+  </item>
+  <item>
+    <match>attr:destructor</match>
+    <displayarguments>(PRIORITY)</displayarguments>
+    <fillin>destructor(${priority})</fillin>
+  </item>
+  <item>
+    <match>attr:deprecated</match>
+    <fillin>deprecated</fillin>
+  </item>
+  <item>
+    <match>attr:deprecated</match>
+    <displayarguments>(MESSAGE)</displayarguments>
+    <fillin>deprecated("${message}")</fillin>
+  </item>
+  <item>
+    <match>attr:disinterrupt</match>
+    <fillin>disinterrupt</fillin>
+  </item>
+  <item>
+    <match>attr:dllexport</match>
+    <fillin>dllexport</fillin>
+  </item>
+  <item>
+    <match>attr:dllimport</match>
+    <fillin>dllimport</fillin>
+  </item>
+  <item>
+    <match>attr:eightbit_data</match>
+    <fillin>eightbit_data</fillin>
+  </item>
+  <item>
+    <match>attr:exceptoin_handler</match>
+    <fillin>exceptoin_handler</fillin>
+  </item>
+  <item>
+    <match>attr:externaly_visible</match>
+    <fillin>externaly_visible</fillin>
+  </item>
+  <item>
+    <match>attr:far</match>
+    <fillin>far</fillin>
+  </item>
+  <item>
+    <match>attr:fast_interrupt</match>
+    <fillin>fast_interrupt</fillin>
+  </item>
+  <item>
+    <match>attr:fastcall</match>
+    <fillin>fastcall</fillin>
+  </item>
+  <item>
+    <match>attr:format</match>
+    <displayarguments>(printf|scanf|strfitme|strfmon|gnu_printf|gnu_scanf|gnu_strftime, STRING-INDEX, FIRST-TO-CHECK)</displayarguments>
+    <fillin>format(${archetype:printf}, ${string_index}, ${first_to_check})</fillin>
+  </item>
+  <item>
+    <match>attr:format_arg</match>
+    <displayarguments>(STRING-INDEX)</displayarguments>
+    <fillin>format_arg(${string_index})</fillin>
+  </item>
+  <item>
+    <match>attr:function_vector</match>
+    <displayarguments>(N)</displayarguments>
+    <fillin>function_vector(${N})</fillin>
+  </item>
+  <item>
+    <match>attr:interrupt</match>
+    <fillin>interrupt</fillin>
+  </item>
+  <item>
+    <match>attr:interrupt</match>
+    <displayarguments>("IRQ|FIQ|SWI|ABORT|UNDEF")</displayarguments>
+    <fillin>interrupt("${kind|IRQ}")</fillin>
+  </item>
+  <item>
+    <match>attr:interrupt_handler</match>
+    <fillin>interrupt_handler</fillin>
+  </item>
+  <item>
+    <match>attr:interrupt_thread</match>
+    <fillin>interrupt_thread</fillin>
+  </item>
+  <item>
+    <match>attr:isr</match>
+    <fillin>isr</fillin>
+  </item>
+  <item>
+    <match>attr:kspisup</match>
+    <fillin>kspisup</fillin>
+  </item>
+  <item>
+    <match>attr:l1_text</match>
+    <fillin>l1_text</fillin>
+  </item>
+  <item>
+    <match>attr:l2</match>
+    <fillin>l2</fillin>
+  </item>
+  <item>
+    <match>attr:long_call</match>
+    <fillin>long_call</fillin>
+  </item>
+  <item>
+    <match>attr:short_call</match>
+    <fillin>short_call</fillin>
+  </item>
+  <item>
+    <match>attr:longcall</match>
+    <fillin>longcall</fillin>
+  </item>
+  <item>
+    <match>attr:shortcall</match>
+    <fillin>shortcall</fillin>
+  </item>
+  <item>
+    <match>attr:near</match>
+    <fillin>near</fillin>
+  </item>
+  <item>
+    <match>attr:malloc</match>
+    <fillin>malloc</fillin>
+  </item>
+  <item>
+    <match>attr:mips16</match>
+    <fillin>mips16</fillin>
+  </item>
+  <item>
+    <match>attr:nomips16</match>
+    <fillin>nomips16</fillin>
+  </item>
+  <item>
+    <match>attr:model</match>
+    <displayarguments>(MODEL-NAME)</displayarguments>
+    <fillin>model(${model})</fillin>
+  </item>
+  <item>
+    <match>attr:ms_abi</match>
+    <fillin>ms_abi</fillin>
+  </item>
+  <item>
+    <match>attr:sysv_abi</match>
+    <fillin>sysv_abi</fillin>
+  </item>
+  <item>
+    <match>attr:mshoock_prologue</match>
+    <fillin>mshoock_prologue</fillin>
+  </item>
+  <item>
+    <match>attr:naked</match>
+    <fillin>naked</fillin>
+  </item>
+  <item>
+    <match>attr:nesting</match>
+    <fillin>nesting</fillin>
+  </item>
+  <item>
+    <match>attr:nmi_handler</match>
+    <fillin>nmi_handler</fillin>
+  </item>
+  <item>
+    <match>attr:no_instrument_function</match>
+    <fillin>no_instrument_function</fillin>
+  </item>
+  <item>
+    <match>attr:noinline</match>
+    <fillin>noinline</fillin>
+  </item>
+  <item>
+    <match>attr:noclone</match>
+    <fillin>noclone</fillin>
+  </item>
+  <item>
+    <match>attr:nonnull</match>
+    <fillin>nonnull</fillin>
+  </item>
+  <item>
+    <match>attr:nonnull</match>
+    <displayarguments>(ARG-INDEX, ...)</displayarguments>
+    <fillin>nonnull(${arg_index})</fillin>
+  </item>
+  <item>
+    <match>attr:noreturn</match>
+    <fillin>noreturn</fillin>
+  </item>
+  <item>
+    <match>attr:nothrow</match>
+    <fillin>nothrow</fillin>
+  </item>
+  <item>
+    <match>attr:optimize</match>
+    <displayarguments>(NUMBERS|OPTION-STRINGS)</displayarguments>
+    <fillin>optimize(${options})</fillin>
+  </item>
+  <item>
+    <match>attr:pcs</match>
+    <displayarguments>("aapcs|aapcs-vfp")</displayarguments>
+    <fillin>pcs("${convention:aapcs}")</fillin>
+  </item>
+  <item>
+    <match>attr:pure</match>
+    <fillin>pure</fillin>
+  </item>
+  <item>
+    <match>attr:hot</match>
+    <fillin>hot</fillin>
+  </item>
+  <item>
+    <match>attr:cold</match>
+    <fillin>cold</fillin>
+  </item>
+  <item>
+    <match>attr:regparam</match>
+    <displayarguments>(NUMBER)</displayarguments>
+    <fillin>regparam(${number})</fillin>
+  </item>
+  <item>
+    <match>attr:sseregparam</match>
+    <fillin>sseregparam</fillin>
+  </item>
+  <item>
+    <match>attr:force_align_arg_pointer</match>
+    <fillin>force_align_arg_pointer</fillin>
+  </item>
+  <item>
+    <match>attr:resbank</match>
+    <fillin>resbank</fillin>
+  </item>
+  <item>
+    <match>attr:return_twice</match>
+    <fillin>return_twice</fillin>
+  </item>
+  <item>
+    <match>attr:saveall</match>
+    <fillin>saveall</fillin>
+  </item>
+  <item>
+    <match>attr:section</match>
+    <displayarguments>(SECTION-NAME)</displayarguments>
+    <fillin>section("${section_name}")</fillin>
+  </item>
+  <item>
+    <match>attr:sentiel</match>
+    <displayarguments>(POSITION)</displayarguments>
+    <fillin>sentiel(${position})</fillin>
+  </item>
+  <item>
+    <match>attr:signal</match>
+    <fillin>signal</fillin>
+  </item>
+  <item>
+    <match>attr:sp_switch</match>
+    <displayarguments>(VAR-NAME)</displayarguments>
+    <fillin>sp_switch("${var_name}")</fillin>
+  </item>
+  <item>
+    <match>attr:stdcall</match>
+    <fillin>stdcall</fillin>
+  </item>
+  <item>
+    <match>attr:syscall_linkage</match>
+    <fillin>syscall_linkage</fillin>
+  </item>
+  <item>
+    <match>attr:target</match>
+    <displayarguments>("OPTION[, OPTION, ...]")</displayarguments>
+    <fillin>target("${options}")</fillin>
+  </item>
+  <item>
+    <match>attr:tiny_data</match>
+    <fillin>tiny_data</fillin>
+  </item>
+  <item>
+    <match>attr:trap_exit</match>
+    <fillin>trap_exit</fillin>
+  </item>
+  <item>
+    <match>attr:used</match>
+    <fillin>used</fillin>
+  </item>
+  <item>
+    <match>attr:version_id</match>
+    <displayarguments>("STRING")</displayarguments>
+    <fillin>version_id("${stirng}")</fillin>
+  </item>
+  <item>
+    <match>attr:visibility</match>
+    <displayarguments>("default|hidden|protected|interrnal")</displayarguments>
+    <fillin>visibility("${type:default}")</fillin>
+  </item>
+  <item>
+    <match>attr:vliw</match>
+    <fillin>vliw</fillin>
+  </item>
+  <item>
+    <match>attr:warn_unused_result</match>
+    <fillin>warn_unused_result</fillin>
+  </item>
+  <item>
+    <match>attr:weak</match>
+    <fillin>weak</fillin>
+  </item>
+  <item>
+    <match>attr:weakref</match>
+    <fillin>weakref</fillin>
+  </item>
+  <item>
+    <match>attr:weakref</match>
+    <displayarguments>("TARGET-SYMBOL")</displayarguments>
+    <fillin>weakref("${target}")</fillin>
+  </item>
+  <!-- 6.36 Specifying Attributes of Variables -->
+  <item>
+    <match>attr:cleanup</match>
+    <displayarguments>("FUNCTION-NAME")</displayarguments>
+    <fillin>cleanup("${function}")</fillin>
+  </item>
+  <item>
+    <match>attr:common</match>
+    <fillin>common</fillin>
+  </item>
+  <item>
+    <match>attr:nocommon</match>
+    <fillin>nocommon</fillin>
+  </item>
+  <item>
+    <match>attr:mode</match>
+    <displayarguments>(byte|word|pointer)</displayarguments>
+    <fillin>mode("${mode:bute}")</fillin>
+  </item>
+  <item>
+    <match>attr:packed</match>
+    <fillin>packed</fillin>
+  </item>
+  <item>
+    <match>attr:shared</match>
+    <fillin>shared</fillin>
+  </item>
+  <item>
+    <match>attr:tls_model</match>
+    <displayarguments>("global-dynamic|local-dynamic|initial-exec|local-exec")</displayarguments>
+    <fillin>tls_model("${model|global-dynamic}")</fillin>
+  </item>
+  <item>
+    <match>attr:unused</match>
+    <fillin>unused</fillin>
+  </item>
+  <item>
+    <match>attr:vector_size</match>
+    <displayarguments>(BYTES)</displayarguments>
+    <fillin>vector_size(${bytes})</fillin>
+  </item>
+  <item>
+    <match>attr:selectany</match>
+    <fillin>selectany</fillin>
+  </item>
+  <item>
+    <match>attr:ms_struct</match>
+    <fillin>ms_struct</fillin>
+  </item>
+  <item>
+    <match>attr:gcc_struct</match>
+    <fillin>gcc_struct</fillin>
+  </item>
+  <!-- 6.37 Specifying Attributes of Types -->
+  <item>
+    <match>attr:transparent_union</match>
+    <fillin>__transparent_union__</fillin>
+  </item>
+  <item>
+    <match>attr:may_alias</match>
+    <fillin>__may_alias__</fillin>
+  </item>
+
+  <!-- Pragma -->
+  <item>
+    <match>pragma:ms_struct</match>
+    <displayarguments> on|off</displayarguments>
+    <fillin>#pragma ms_struct ${val}</fillin>
+  </item>
+  <item>
+    <match>pragma:pack</match>
+    <displayarguments>(N)</displayarguments>
+    <fillin>#pragma pack(${val})</fillin>
+  </item>
+  <item>
+    <match>pragma:pack</match>
+    <displayarguments>(push, N)</displayarguments>
+    <fillin>#pragma pack(push, ${val})</fillin>
+  </item>
+  <item>
+    <match>pragma:pack</match>
+    <displayarguments>(pop)</displayarguments>
+    <fillin>#pragma pack(pop)</fillin>
+  </item>
+  <item>
+    <match>pragma:weak</match>
+    <displayarguments>SYMBOL</displayarguments>
+    <fillin>#pragma weak ${symbol}</fillin>
+  </item>
+  <item>
+    <match>pragma:weak</match>
+    <displayarguments>SYMBOL1 = SYMBOL2</displayarguments>
+    <fillin>#pragma weak ${symbol1} = ${symbol2}</fillin>
+  </item>
+  <item>
+    <match>pragma:message</match>
+    <displayarguments> "STRING"</displayarguments>
+    <fillin>#pragma message "${string}"</fillin>
+  </item>
+  <item>
+    <match>pragma:diagnostic</match>
+    <displayarguments> KIND "OPTION", where KIND=error|warning|ignored</displayarguments>
+    <fillin>#pragma GCC diagnostic ${kind} "${option}"</fillin>
+  </item>
+  <item>
+    <match>pragma:visibility push</match>
+    <displayarguments>(VISIBILITY), where VISIBILITY=default, protected, interrnal, hidden</displayarguments>
+    <fillin>#pragma GCC visibility push(${visibility})</fillin>
+  </item>
+  <item>
+    <match>pragma:visibility pop</match>
+    <fillin>#pragma GCC visibility pop</fillin>
+  </item>
+  <item>
+    <match>pragma:push_macro</match>
+    <displayarguments>("MACRO-NAME")</displayarguments>
+    <fillin>#pragma GCC push_macro("${name}")</fillin>
+  </item>
+  <item>
+    <match>pragma:pop_macro</match>
+    <displayarguments>("MACRO-NAME")</displayarguments>
+    <fillin>#pragma GCC pop_macro("${name}")</fillin>
+  </item>
+  <!-- NOTE Documentation claims that push/pop options work starting from 4.4
+            but actually gcc has bug in implementation. It really works starting from 4.5
+    -->
+  <item>
+    <displayprefix>gcc >= 4.5</displayprefix>
+    <match>pragma:target</match>
+    <displayarguments>("STRING"...)</displayarguments>
+    <fillin>#pragma GCC target("${string}")</fillin>
+  </item>
+  <item>
+    <displayprefix>gcc >= 4.5</displayprefix>
+    <match>pragma:optimize</match>
+    <displayarguments>("STRING"...)</displayarguments>
+    <fillin>#pragma GCC optimize("${string}")</fillin>
+  </item>
+  <item>
+    <displayprefix>gcc >= 4.5</displayprefix>
+    <match>pragma:push_options</match>
+    <fillin>#pragma GCC push_options</fillin>
+  </item>
+  <item>
+    <displayprefix>gcc >= 4.5</displayprefix>
+    <match>pragma:pop_options</match>
+    <fillin>#pragma GCC pop_options</fillin>
+  </item>
+  <item>
+    <displayprefix>gcc >= 4.4</displayprefix>
+    <match>pragma:reset_options</match>
+    <fillin>#pragma GCC reset_options</fillin>
+  </item>
 </snippets>
