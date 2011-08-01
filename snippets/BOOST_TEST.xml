@@ -1,4 +1,4 @@
-<snippets namespace="" license="BSD" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com>" name="boost::test by zaufi">
+<snippets namespace="" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com>" name="boost::test by zaufi">
  <item>
   <displayprefix></displayprefix>
   <match>BOOST_TEST_MESSAGE</match>

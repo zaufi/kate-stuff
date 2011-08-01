@@ -1,4 +1,4 @@
-<snippets namespace="gcc:" license="BSD" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com>" name="gcc predefined macros and builtins">
+<snippets namespace="gcc:" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com>" name="gcc predefined macros and builtins">
   <!-- Predefined macros version 1.0 -->
   <item><match>_FORTIFY_SOURCE</match><fillin>_FORTIFY_SOURCE</fillin></item>
   <item><match>_GNU_SOURCE</match><fillin>_GNU_SOURCE</fillin></item>
