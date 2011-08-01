@@ -3,7 +3,7 @@
   <displayprefix></displayprefix>
   <match>BOOST_TEST_MESSAGE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (std::cout compatible expression)</displayarguments>
+  <displayarguments>(std::cout compatible expression)</displayarguments>
   <fillin>BOOST_TEST_MESSAGE("${msg}");
 ${cursor}</fillin>
  </item>
@@ -11,7 +11,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_TEST_CHECKPOINT</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (std::cout compatible expression)</displayarguments>
+  <displayarguments>(std::cout compatible expression)</displayarguments>
   <fillin>BOOST_TEST_CHECKPOINT("${msg}");
 ${cursor}</fillin>
  </item>
@@ -19,7 +19,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_TEST_PASSPOINT</match>
   <displaypostfix></displaypostfix>
-  <displayarguments></displayarguments>
+  <displayarguments>()</displayarguments>
   <fillin>BOOST_TEST_PASSPOINT();
 ${cursor}</fillin>
  </item>
@@ -27,7 +27,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_FAIL</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (message)</displayarguments>
+  <displayarguments>(message)</displayarguments>
   <fillin>BOOST_FAIL("${msg}");
 ${cursor}</fillin>
  </item>
@@ -35,7 +35,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (expr)</displayarguments>
+  <displayarguments>(expr)</displayarguments>
   <fillin>BOOST_WARN(${expr});
 ${cursor}</fillin>
  </item>
@@ -43,7 +43,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (expr)</displayarguments>
+  <displayarguments>(expr)</displayarguments>
   <fillin>BOOST_CHECK(${expr});
 ${cursor}</fillin>
  </item>
@@ -59,7 +59,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_MESSAGE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (expr, msg)</displayarguments>
+  <displayarguments>(expr, msg)</displayarguments>
   <fillin>BOOST_WARN_MESSAGE(${expr}, "${msg}");
 ${cursor}</fillin>
  </item>
@@ -67,7 +67,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_MESSAGE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (expr, msg)</displayarguments>
+  <displayarguments>(expr, msg)</displayarguments>
   <fillin>BOOST_CHECK_MESSAGE(${expr}, "${msg}");
 ${cursor}</fillin>
  </item>
@@ -75,7 +75,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_MESSAGE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (expr, msg)</displayarguments>
+  <displayarguments>(expr, msg)</displayarguments>
   <fillin>BOOST_REQUIRE_MESSAGE(${expr}, "${msg}");
 ${cursor}</fillin>
  </item>
@@ -83,7 +83,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_BITWISE_EQUAL</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_WARN_BITWISE_EQUAL(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -91,7 +91,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_BITWISE_EQUAL</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_CHECK_BITWISE_EQUAL(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -99,7 +99,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_BITWISE_EQUAL</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_REQUIRE_BITWISE_EQUAL(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -107,7 +107,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_EQUAL</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_WARN_EQUAL(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -115,7 +115,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_EQUAL</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_CHECK_EQUAL(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -123,7 +123,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_EQUAL</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_REQUIRE_EQUAL(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -131,7 +131,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_EQUAL_COLLECTIONS</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left_begin, left_end, right_begin, right_end)</displayarguments>
+  <displayarguments>(left_begin, left_end, right_begin, right_end)</displayarguments>
   <fillin>BOOST_WARN_EQUAL_COLLECTIONS(${left}.begin(), %{left}.end(), ${right}.begin(), %{right}.end());
 ${cursor}</fillin>
  </item>
@@ -139,7 +139,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_EQUAL_COLLECTIONS</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left_begin, left_end, right_begin, right_end)</displayarguments>
+  <displayarguments>(left_begin, left_end, right_begin, right_end)</displayarguments>
   <fillin>BOOST_CHECK_EQUAL_COLLECTIONS(${left}.begin(), %{left}.end(), ${right}.begin(), %{right}.end());
 ${cursor}</fillin>
  </item>
@@ -147,7 +147,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_EQUAL_COLLECTIONS</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left_begin, left_end, right_begin, right_end)</displayarguments>
+  <displayarguments>(left_begin, left_end, right_begin, right_end)</displayarguments>
   <fillin>BOOST_REQUIRE_EQUAL_COLLECTIONS(${left}.begin(), %{left}.end(), ${right}.begin(), %{right}.end());
 ${cursor}</fillin>
  </item>
@@ -155,7 +155,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_GE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_WARN_GE(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -163,7 +163,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_GE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_CHECK_GE(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -171,7 +171,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_GE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_REQUIRE_GE(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -179,7 +179,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_GT</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_WARN_GT(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -187,7 +187,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_GT</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_CHECK_GT(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -195,7 +195,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_GT</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_REQUIRE_GT(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -203,7 +203,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_LE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_WARN_LE(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -211,7 +211,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_LE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_CHECK_LE(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -219,7 +219,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_LE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_REQUIRE_LE(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -227,7 +227,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_LT</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_WARN_LT(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -235,7 +235,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_LT</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_CHECK_LT(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -243,7 +243,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_LT</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_REQUIRE_LT(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -251,7 +251,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_NE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_WARN_NE(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -259,7 +259,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_NE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_CHECK_NE(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -267,7 +267,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_NE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right)</displayarguments>
+  <displayarguments>(left, right)</displayarguments>
   <fillin>BOOST_REQUIRE_NE(${left}, ${right});
 ${cursor}</fillin>
  </item>
@@ -275,7 +275,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_THROW</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (expr, excpt)</displayarguments>
+  <displayarguments>(expr, excpt)</displayarguments>
   <fillin>BOOST_WARN_THROW(${expr}, ${excpt:std::exception});
 ${cursor}</fillin>
  </item>
@@ -283,7 +283,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_THROW</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (expr, excpt)</displayarguments>
+  <displayarguments>(expr, excpt)</displayarguments>
   <fillin>BOOST_CHECK_THROW(${expr}, ${excpt:std::exception});
 ${cursor}</fillin>
  </item>
@@ -291,7 +291,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_THROW</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (expr, excpt)</displayarguments>
+  <displayarguments>(expr, excpt)</displayarguments>
   <fillin>BOOST_REQUIRE_THROW(${expr}, ${excpt:std::exception});
 ${cursor}</fillin>
  </item>
@@ -299,7 +299,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_NO_THROW</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (expr, excpt)</displayarguments>
+  <displayarguments>(expr, excpt)</displayarguments>
   <fillin>BOOST_WARN_NO_THROW(${expr}, ${excpt:std::exception});
 ${cursor}</fillin>
  </item>
@@ -307,7 +307,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_NO_THROW</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (expr, excpt)</displayarguments>
+  <displayarguments>(expr, excpt)</displayarguments>
   <fillin>BOOST_CHECK_NO_THROW(${expr}, ${excpt:std::exception});
 ${cursor}</fillin>
  </item>
@@ -315,7 +315,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_NO_THROW</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (expr, excpt)</displayarguments>
+  <displayarguments>(expr, excpt)</displayarguments>
   <fillin>BOOST_REQUIRE_NO_THROW(${expr}, ${excpt:std::exception});
 ${cursor}</fillin>
  </item>
@@ -323,7 +323,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_CLOSE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right, tolerance)</displayarguments>
+  <displayarguments>(left, right, tolerance)</displayarguments>
   <fillin>BOOST_WARN_CLOSE(${left}, ${right}, ${tolerance:0.0001});
 ${cursor}</fillin>
  </item>
@@ -331,7 +331,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_CLOSE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right, tolerance)</displayarguments>
+  <displayarguments>(left, right, tolerance)</displayarguments>
   <fillin>BOOST_CHECK_CLOSE(${left}, ${right}, ${tolerance:0.0001});
 ${cursor}</fillin>
  </item>
@@ -339,7 +339,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_CLOSE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right, tolerance)</displayarguments>
+  <displayarguments>(left, right, tolerance)</displayarguments>
   <fillin>BOOST_REQUIRE_CLOSE(${left}, ${right}, ${tolerance:0.0001});
 ${cursor}</fillin>
  </item>
@@ -347,7 +347,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_CLOSE_FRACTION</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right, tolerance)</displayarguments>
+  <displayarguments>(left, right, tolerance)</displayarguments>
   <fillin>BOOST_WARN_CLOSE_FRACTION(${left}, ${right}, ${tolerance:0.0001});
 ${cursor}</fillin>
  </item>
@@ -355,7 +355,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_CLOSE_FRACTION</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right, tolerance)</displayarguments>
+  <displayarguments>(left, right, tolerance)</displayarguments>
   <fillin>BOOST_CHECK_CLOSE_FRACTION(${left}, ${right}, ${tolerance:0.0001});
 ${cursor}</fillin>
  </item>
@@ -363,7 +363,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_CLOSE_FRACTION</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (left, right, tolerance)</displayarguments>
+  <displayarguments>(left, right, tolerance)</displayarguments>
   <fillin>BOOST_REQUIRE_CLOSE_FRACTION(${left}, ${right}, ${tolerance:0.0001});
 ${cursor}</fillin>
  </item>
@@ -371,7 +371,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_PREDICATE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (predicate, args_pp_seq)</displayarguments>
+  <displayarguments>(predicate, args_pp_seq)</displayarguments>
   <fillin>BOOST_WARN_PREDICATE(${pred}, (${p1}));
 ${cursor}</fillin>
  </item>
@@ -379,7 +379,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_PREDICATE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (predicate, args_pp_seq)</displayarguments>
+  <displayarguments>(predicate, args_pp_seq)</displayarguments>
   <fillin>BOOST_CHECK_PREDICATE(${pred}, (${p1}));
 ${cursor}</fillin>
  </item>
@@ -387,7 +387,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_PREDICATE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (predicate, args_pp_seq)</displayarguments>
+  <displayarguments>(predicate, args_pp_seq)</displayarguments>
   <fillin>BOOST_REQUIRE_PREDICATE(${pred}, (${p1}));
 ${cursor}</fillin>
  </item>
@@ -395,7 +395,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_WARN_SMALL</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (value, tolerance)</displayarguments>
+  <displayarguments>(value, tolerance)</displayarguments>
   <fillin>BOOST_WARN_SMALL(${value}, ${tolerance:0.0001});
 ${cursor}</fillin>
  </item>
@@ -403,7 +403,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_SMALL</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (value, tolerance)</displayarguments>
+  <displayarguments>(value, tolerance)</displayarguments>
   <fillin>BOOST_CHECK_SMALL(${value}, ${tolerance:0.0001});
 ${cursor}</fillin>
  </item>
@@ -411,7 +411,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_SMALL</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (value, tolerance)</displayarguments>
+  <displayarguments>(value, tolerance)</displayarguments>
   <fillin>BOOST_REQUIRE_SMALL(${value}, ${tolerance:0.0001});
 ${cursor}</fillin>
  </item>
@@ -419,7 +419,7 @@ ${cursor}</fillin>
   <displayprefix></displayprefix>
   <match>BOOST_AUTO_TEST_CASE</match>
   <displaypostfix></displaypostfix>
-  <displayarguments> (name)</displayarguments>
+  <displayarguments>(name)</displayarguments>
   <fillin>BOOST_AUTO_TEST_CASE(${name:Test}) {
 	${cursor}
 }</fillin>
