@@ -1,5 +1,5 @@
 What it this
-============
+------------
 
 In this repository I keep my kate editor syntax files and snippets.
 
