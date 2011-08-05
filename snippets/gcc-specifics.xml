@@ -305,6 +305,8 @@
   <item><match>linux</match><fillin>linux</fillin></item>
   <item><match>unix</match><fillin>unix</fillin></item>
 
+  <item><match>__PRETTY_FUNCTION__</match><fillin>_PRETTY_FUNCTION__</fillin></item>
+
   <item>
     <match>__attribute__</match>
     <fillin>__attribute__((${attr}))</fillin>
