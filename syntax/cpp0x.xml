@@ -275,6 +275,7 @@
       <item> __STDC_ISO_10646__ </item>
       <item> __STDC_MB_MIGHT_NEQ_WC__ </item>
       <item> __cplusplus </item>
+      <item> __func__ </item>
     </list>
     <!-- From http://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html
          plus a lot of platform specific predefines found by my script
