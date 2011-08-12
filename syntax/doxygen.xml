@@ -29,7 +29,7 @@
  -->
 
 <language name="Doxygen"
-          version="1.31.2"
+          version="1.32.1"
           kateversion="2.4"
           section="Markup"
           extensions="*.dox;*.doxygen"
@@ -46,30 +46,33 @@
     <list name="TagOnly">
       <item> \arg </item>              <item> @arg </item>
       <item> \author </item>           <item> @author </item>
+      <item> \authors </item>          <item> @authors </item>
+      <item> \brief </item>            <item> @brief </item>
+      <item> \bug </item>              <item> @bug </item>
       <item> \callgraph </item>        <item> @callgraph </item>
       <item> \callergraph </item>      <item> @callergraph </item>
+      <item> \date </item>             <item> @date </item>
+      <item> \deprecated </item>       <item> @deprecated </item>
       <item> \details </item>          <item> @details </item>
       <item> \else </item>             <item> @else </item>
       <item> \endcond </item>          <item> @endcond </item>
       <item> \endhtmlonly </item>      <item> @endhtmlonly </item>
       <item> \endif </item>            <item> @endif </item>
+      <item> \enditernal </item>       <item> @enditernal </item>
       <item> \endlatexonly </item>     <item> @endlatexonly </item>
       <item> \endlink </item>          <item> @endlink </item>
       <item> \endmanonly </item>       <item> @endmanonly </item>
+      <item> \endrtfonly </item>       <item> @endrtfonly </item>
       <item> \endxmlonly </item>       <item> @endxmlonly </item>
       <item> \f[ </item>               <item> @f[ </item>
       <item> \f] </item>               <item> @f] </item>
       <item> \f$ </item>               <item> @f$ </item>
+      <!-- TODO Add @f{environment}{ and @f} -->
       <item> \hideinitializer </item>  <item> @hideinitializer </item>
       <item> \htmlonly </item>         <item> @htmlonly </item>
-      <item> \interface </item>        <item> @interface </item>
+      <!-- TODO @internal is a candidate to be handled separately, cuz may introduce folding region -->
       <item> \internal </item>         <item> @internal </item>
       <item> \invariant </item>        <item> @invariant </item>
-      <item> \~ </item>                <item> @~ </item>
-      <item> \@ </item>                <item> @@ </item>
-      <item> \$ </item>                <item> @$ </item>
-      <item> \\ </item>                <item> @\ </item>
-      <item> \# </item>                <item> @# </item>
       <item> \latexonly </item>        <item> @latexonly </item>
       <item> \li </item>               <item> @li </item>
       <item> \manonly </item>          <item> @manonly </item>
@@ -87,19 +90,35 @@
       <item> \remarks </item>          <item> @remarks </item>
       <item> \return </item>           <item> @return </item>
       <item> \returns </item>          <item> @returns </item>
+      <item> \result </item>           <item> @result </item>
+      <item> \rtfonly </item>          <item> @rtfonly </item>
+      <item> \sa </item>               <item> @sa </item>
+      <item> \see </item>              <item> @see </item>
+      <item> \short </item>            <item> @short </item>
       <item> \showinitializer </item>  <item> @showinitializer </item>
       <item> \since </item>            <item> @since </item>
       <item> \test </item>             <item> @test </item>
+      <item> \version </item>          <item> @version </item>
       <item> \xmlonly </item>          <item> @xmlonly </item>
+      <!-- TODO Introduce separate context for @~ ? -->
+      <item> \# </item>                <item> @# </item>
+      <item> \$ </item>                <item> @$ </item>
+      <item> \% </item>                <item> @% </item>
+      <item> \&amp; </item>            <item> @&amp; </item>
+      <item> \&gt; </item>             <item> @&gt; </item>
+      <item> \&lt; </item>             <item> @&lt; </item>
+      <item> \&quot; </item>           <item> @&quot; </item>
+      <item> \:: </item>               <item> @:: </item>
+      <item> \@ </item>                <item> @@ </item>
+      <item> \\ </item>                <item> @\ </item>
+      <item> \~ </item>                <item> @~ </item>
     </list>
 
     <list name="TagWord">
-      <item> \addtogroup </item>       <item> @addtogroup </item>
       <item> \a </item>                <item> @a </item>
       <item> \anchor </item>           <item> @anchor </item>
       <item> \b </item>                <item> @b </item>
       <item> \c </item>                <item> @c </item>
-      <item> \class </item>            <item> @class </item>
       <item> \cond </item>             <item> @cond </item>
       <item> \copybrief </item>        <item> @copybrief </item>
       <item> \copydetails </item>      <item> @copydetails </item>
@@ -107,7 +126,6 @@
       <item> \def </item>              <item> @def </item>
       <item> \dir </item>              <item> @dir </item>
       <item> \dontinclude </item>      <item> @dontinclude </item>
-      <item> \dotfile </item>          <item> @dotfile </item>
       <item> \e </item>                <item> @e </item>
       <item> \elseif </item>           <item> @elseif </item>
       <item> \em </item>               <item> @em </item>
@@ -129,30 +147,44 @@
       <item> \p </item>                <item> @p </item>
       <item> \package </item>          <item> @package </item>
       <item> \property </item>         <item> @property </item>
-      <item> \protocol </item>         <item> @prtocol </item>
-      <item> \ref </item>              <item> @ref </item>
+      <item> \relatedalso </item>      <item> @relatedalso </item>
       <item> \relatesalso </item>      <item> @relatesalso </item>
+      <item> \related </item>          <item> @related </item>
       <item> \relates </item>          <item> @relates </item>
       <item> \retval </item>           <item> @retval </item>
       <item> \throw </item>            <item> @throw </item>
       <item> \throws </item>           <item> @throws </item>
       <item> \verbinclude </item>      <item> @verbinclude </item>
       <item> \version </item>          <item> @version </item>
+      <!-- TODO Introduce separate context for @xrefitem? -->
       <item> \xrefitem </item>         <item> @xrefitem </item>
     </list>
     <list name="TagParam">
       <item> \param </item>            <item> @param </item>
+      <!-- TODO @tparam has no optional direction actually! -->
       <item> \tparam </item>           <item> @tparam </item>
     </list>
+    <!-- TODO Better (separate?) highlighting for @image required -->
     <list name="TagWordWord">
       <item> \image </item>            <item> @image </item>
     </list>
+      <!-- TODO @union, @struct, @protocol, @interface, @class, @category
+           actually takes 3 params, 1 mandatory and 2 optional
+        -->
+      <!-- TODO @headerfile actually takes 2 params, where last one is optional -->
     <list name="TagWordString">
+      <item> \addtogroup </item>       <item> @addtogroup </item>
       <item> \category </item>         <item> @category </item>
+      <item> \class </item>            <item> @class </item>
+      <item> \dotfile </item>          <item> @dotfile </item>
       <item> \defgroup </item>         <item> @defgroup </item>
+      <item> \interface </item>        <item> @interface </item>
       <item> \headerfile </item>       <item> @headerfile </item>
+      <item> \mscfile </item>          <item> @mscfile </item>
       <item> \page </item>             <item> @page </item>
       <item> \paragraph </item>        <item> @paragraph </item>
+      <item> \protocol </item>         <item> @prtocol </item>
+      <item> \ref </item>              <item> @ref </item>
       <item> \section </item>          <item> @section </item>
       <item> \struct </item>           <item> @struct </item>
       <item> \subpage </item>          <item> @subpage </item>
@@ -163,10 +195,6 @@
     </list>
     <list name="TagString">
       <item> \addindex </item>         <item> @addindex </item>
-      <item> \brief </item>            <item> @brief </item>
-      <item> \bug </item>              <item> @bug </item>
-      <item> \date </item>             <item> @date </item>
-      <item> \deprecated </item>       <item> @deprecated </item>
       <item> \fn </item>               <item> @fn </item>
       <item> \ingroup </item>          <item> @ingroup </item>
       <item> \line </item>             <item> @line </item>
@@ -174,9 +202,6 @@
       <item> \name </item>             <item> @name </item>
       <item> \overload </item>         <item> @overload </item>
       <item> \par </item>              <item> @par </item>
-      <item> \sa </item>               <item> @sa </item>
-      <item> \see </item>              <item> @see </item>
-      <item> \short </item>            <item> @short </item>
       <item> \skip </item>             <item> @skip </item>
       <item> \skipline </item>         <item> @skipline </item>
       <item> \typedef </item>          <item> @typedef </item>
@@ -197,12 +222,18 @@
     </list>
 
     <contexts>
-    <!-- different formats:
-      @tag                     : TagOnly
-      @tag rest_of_line        : TagString
-      @tag <word>              : TagWord
-      @tag <word> <word>       : TagWordWord
-      @tag <word> rest_of_line : TagWordString
+    <!--
+      Different types of recognized command formats:
+      (w/ params specified according doxygen manual (http://www.stack.nl/~dimitri/doxygen/commands.html))
+
+      @tag                       : TagOnly
+      @tag <word>                : TagWord
+      @tag (rest_of_line)        : TagString
+      @tag {paragraph}           : TagOnly
+      @tag <word> <word>         : TagWordWord
+      @tag <word> (rest_of_line) : TagWordString
+
+      TODO Not all commands are handled properly nowadays :( Need few more contexts...
     -->
       <context attribute="Normal Text" lineEndContext="#stay" name="Normal">
         <RegExpr attribute="Comment" context="LineComment" String="//(!|(/(?=[^/]|$)))&lt;?" />
@@ -399,10 +430,7 @@
       </context>
 
       <context name="SL_DetectComment" lineEndContext="#pop">
-        <!-- ALERT: Why Detect2Chars doesn't work?? :(( -->
-        <!-- <Detect2Chars attribute="Comment" context="#pop#pop" char="*" char1="/" endRegion="BlockComment" /> -->
-        <RegExpr attribute="Comment" context="#pop#pop" String="^\s*(\*/)" endRegion="BlockComment" />
-        <RegExpr attribute="Comment" context="#stay" String="^\s*(\*|//(!|(/(?=[^/]|$)))&lt;?)" />
+        <Detect2Chars attribute="Comment" context="#pop#pop" char="*" char1="/" endRegion="BlockComment" />
       </context>
 
       <context attribute="Code" lineEndContext="#stay" name="Code">
