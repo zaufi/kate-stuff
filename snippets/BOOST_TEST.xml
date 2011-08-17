@@ -1,4 +1,5 @@
 <snippets namespace="" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com>" name="boost::test by zaufi">
+  <!-- Version 1.1 -->
  <item>
   <displayprefix></displayprefix>
   <match>BOOST_TEST_MESSAGE</match>
@@ -415,6 +416,7 @@ ${cursor}</fillin>
   <fillin>BOOST_REQUIRE_SMALL(${value}, ${tolerance:0.0001});
 ${cursor}</fillin>
  </item>
+
  <item>
   <displayprefix></displayprefix>
   <match>BOOST_AUTO_TEST_CASE</match>
@@ -424,4 +426,71 @@ ${cursor}</fillin>
 	${cursor}
 }</fillin>
  </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BOOST_AUTO_TEST_CASE_TEMPLATE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(test_case_name, formal_type_param_name, collection_of_types)</displayarguments>
+  <fillin>BOOST_AUTO_TEST_CASE_TEMPLATE(${test_case_name:Test}, ${formal_type_param_name:T}, ${collection_of_types}) {
+	${cursor}
+}</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BOOST_FIXTURE_TEST_CASE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(test_case_name, fixture_name)</displayarguments>
+  <fillin>BOOST_FIXTURE_TEST_CASE((${test_case_name:Test}, ${fixture_name})) {
+  ${cursor}
+}</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BOOST_AUTO_TEST_SUITE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(test_suite_name)</displayarguments>
+  <fillin>BOOST_AUTO_TEST_SUITE(${test_suite_name})
+${cursor}
+BOOST_AUTO_TEST_SUITE_END()                                 // End of${test_suite_name/^/ /}</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BOOST_FIXTURE_TEST_SUITE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(test_suite_name, fixture_name)</displayarguments>
+  <fillin>BOOST_FIXTURE_TEST_SUITE(${test_suite_name}, ${fixture_name})
+${cursor}
+BOOST_AUTO_TEST_SUITE_END()                                 // End of${test_suite_name/^/ /}</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BOOST_GLOBAL_FIXTURE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(fixture_name)</displayarguments>
+  <fillin>BOOST_GLOBAL_FIXTURE(${fixture_name});
+${cursor}</fillin>
+ </item>
+
+ <item>
+  <displayprefix></displayprefix>
+  <match>boost::unit_test::unit_test_log.set_stream</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(std::ostream&amp; str)</displayarguments>
+  <fillin>boost::unit_test::unit_test_log.set_stream(${stream});${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>boost::unit_test::unit_test_log.set_threshold_level</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(boost::unit_test::log_level level), log_debug|log_warning|...</displayarguments>
+  <fillin>boost::unit_test::unit_test_log.set_threshold_level(boost::unit_test::${level:log_debug});${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>boost::unit_test::unit_test_log.set_format</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(boost::unit_test::output_format fmt), CLF|XML</displayarguments>
+  <fillin>boost::unit_test::unit_test_log.set_format(boost::unit_test::${fmt:XML});${cursor}</fillin>
+ </item>
+
 </snippets>
