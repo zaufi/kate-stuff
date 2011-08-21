@@ -1,0 +1,1282 @@
+<snippets namespace="pp:" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com>" name="BOOST_PREPROCESSOR by zaufi">
+ <!-- Version 1.0 -->
+ <script>function ppGuard() {
+  var filename = document.fileName().toUpperCase();
+  filename = filename.replace(/[\.\-]/, '_');
+  return filename;
+}</script>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ADD</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_ADD(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>AND</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(p, q)</displayarguments>
+  <fillin>BOOST_PP_AND(${p}, ${q})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>APPLY</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(p)</displayarguments>
+  <fillin>BOOST_PP_APPLY(${p})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ARRAY_DATA</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(array)</displayarguments>
+  <fillin>BOOST_PP_ARRAY_DATA(${array})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ARRAY_ELEM</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(i, array)</displayarguments>
+  <fillin>BOOST_PP_ARRAY_ELEM(${i}, ${array})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ARRAY_INSERT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(array, i, elem)</displayarguments>
+  <fillin>BOOST_PP_ARRAY_INSERT(${array}, ${i}, ${elem})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ARRAY_POP_BACK</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(array)</displayarguments>
+  <fillin>BOOST_PP_ARRAY_POP_BACK(${array})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ARRAY_POP_FRONT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(array)</displayarguments>
+  <fillin>BOOST_PP_ARRAY_POP_FRONT(${array})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ARRAY_PUSH_BACK</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(array, elem)</displayarguments>
+  <fillin>BOOST_PP_ARRAY_PUSH_BACK(${array}, ${elem})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ARRAY_PUSH_FRONT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(array, elem)</displayarguments>
+  <fillin>BOOST_PP_ARRAY_PUSH_FRONT(${array}, ${elem})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ARRAY_REMOVE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(array, i)</displayarguments>
+  <fillin>BOOST_PP_ARRAY_REMOVE(${array}, ${i})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ARRAY_REPLACE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(array, i, elem)</displayarguments>
+  <fillin>BOOST_PP_ARRAY_REPLACE(${array}, ${i}, ${elem})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ARRAY_REVERSE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(array)</displayarguments>
+  <fillin>BOOST_PP_ARRAY_REVERSE(${array})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ARRAY_SIZE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(array)</displayarguments>
+  <fillin>BOOST_PP_ARRAY_SIZE(${array})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ASSERT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(cond)</displayarguments>
+  <fillin>BOOST_PP_ASSERT(${cond})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ASSERT_MSG</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(cond, "msg")</displayarguments>
+  <fillin>BOOST_PP_ASSERT_MSG(${cond}, "${msg}")</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BITAND</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_BITAND(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BITNOR</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_BITNOR(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BITAND</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_BITAND(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BITOR</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_BITOR(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BITXOR</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_BITXOR(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BOOL</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x)</displayarguments>
+  <fillin>BOOST_PP_BOOL(${x})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>CAT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(a, B)</displayarguments>
+  <fillin>BOOST_PP_CAT(${a}, ${b})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>COMMA</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_COMMA()</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>COMMA_IF</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(cond)</displayarguments>
+  <fillin>BOOST_PP_COMMA_IF(${cond})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>COMPL</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x)</displayarguments>
+  <fillin>BOOST_PP_COMPL(${x})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>COUNTER</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>BOOST_PP_COUNTER</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>DIV</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_DIV(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>EMPTY</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_EMPTY()</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ENUM</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, macro, data)</displayarguments>
+  <fillin>BOOST_PP_ENUM(${count}, ${macro}, ${data})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ENUM_BINARY_PARAMS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, p1, p2)</displayarguments>
+  <fillin>BOOST_PP_ENUM_BINARY_PARAMS(${count}, ${p1}, ${p2})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ENUM_PARAMS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, param)</displayarguments>
+  <fillin>BOOST_PP_ENUM_PARAMS(${count}, ${param})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ENUM_PARAMS_WITH_A_DEFAULT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, param, def)</displayarguments>
+  <fillin>BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(${count}, ${param}, ${def})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ENUM_PARAMS_WITH_DEFAULTS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, param, def)</displayarguments>
+  <fillin>BOOST_PP_ENUM_PARAMS_WITH_DEFAULTS(${count}, ${param}, ${def})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ENUM_SHIFTED</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, macro, data)</displayarguments>
+  <fillin>BOOST_PP_ENUM_SHIFTED(${count}, ${macro}, ${data})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ENUM_SHIFTED_BINARY_PARAMS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, p1, p2)</displayarguments>
+  <fillin>BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS(${count}, ${p1}, ${p2})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ENUM_SHIFTED_PARAMS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, param)</displayarguments>
+  <fillin>BOOST_PP_ENUM_SHIFTED_PARAMS(${count}, ${param})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ENUM_TRAILING</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, macro, data)</displayarguments>
+  <fillin>BOOST_PP_ENUM_TRAILING(${count}, ${macro}, ${data})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ENUM_TRAILING_BINARY_PARAMS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, p1, p2)</displayarguments>
+  <fillin>BOOST_PP_ENUM_TRAILING_BINARY_PARAMS(${count}, ${p1}, ${p2})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ENUM_TRAILING_PARAMS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, param)</displayarguments>
+  <fillin>BOOST_PP_ENUM_TRAILING_PARAMS(${count}, ${param})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>EQUAL</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_EQUAL(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>EXPAND</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x)</displayarguments>
+  <fillin>BOOST_PP_EXPAND(${x})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>EXPR_IF</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(cond, expr)</displayarguments>
+  <fillin>BOOST_PP_EXPR_IF(${cond}, ${expr})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>EXPR_IIF</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(bit, expr)</displayarguments>
+  <fillin>BOOST_PP_EXPR_IIF(${bit}, ${expr})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>FOR</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(state, pred, op, macro)</displayarguments>
+  <fillin>BOOST_PP_FOR(${state}, ${pred}, ${op}, ${macro})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>FRAME_FINISH</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(i)</displayarguments>
+  <fillin>BOOST_PP_FRAME_FINISH(${i})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>FRAME_FLAGS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(i)</displayarguments>
+  <fillin>BOOST_PP_FRAME_FLAGS(${i})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>FRAME_START</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(i)</displayarguments>
+  <fillin>BOOST_PP_FRAME_START(${i})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>GREATER</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_GREATER(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>IDENTITY</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(item)</displayarguments>
+  <fillin>BOOST_PP_IDENTITY(${item})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>IF</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(cond, t, f)</displayarguments>
+  <fillin>BOOST_PP_IF(${cond}, ${t}, ${f})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>IIF</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(bit, t, f)</displayarguments>
+  <fillin>BOOST_PP_IIF(${bit}, ${t}, ${f})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>INC</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x)</displayarguments>
+  <fillin>BOOST_PP_INC(${x})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>INCLUDE_SELF</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_INCLUDE_SELF()</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>INTERCEPT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>BOOST_PP_INTERCEPT</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>INDIRECT_SELF</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments> filename</displayarguments>
+  <fillin>BOOST_PP_INDIRECT_SELF ${filename/^/ /}</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>INTERCEPT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>BOOST_PP_INTERCEPT</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>IS_ITERATING</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>BOOST_PP_IS_ITERATING</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>IS_SELFISH</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>BOOST_PP_IS_SELFISH</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ITERATE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_ITERATE()</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ITERATION</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_ITERATION()</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ITERATION_DEPTH</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_ITERATION_DEPTH()</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ITERATION_FINISH</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_ITERATION_FINISH()</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ITERATION_FLAGS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_ITERATION_FLAGS()</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ITERATION_LIMITS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(start, finish)</displayarguments>
+  <fillin>BOOST_PP_ITERATION_LIMITS(${start}, ${finish})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ITERATION_PARAMS</match>
+  <displaypostfix> x = current iteration depth + 1, c = [3|4], flags is optional</displaypostfix>
+  <displayarguments>_x(c, start, finish, filename [, flags])</displayarguments>
+  <fillin>BOOST_PP_ITERATION_PARAMS_${x}(${c|3}, (${start}, ${finish}, ${filename}, ${flags}))</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>ITERATION_START</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_ITERATION_START()</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LESS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_LESS(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LESS_EQUAL</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_LESS_EQUAL(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_APPEND</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(a, b)</displayarguments>
+  <fillin>BOOST_PP_LIST_APPEND(${a}, ${b})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_AT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(list, index)</displayarguments>
+  <fillin>BOOST_PP_LIST_AT(${list}, ${index})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_CAT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(list)</displayarguments>
+  <fillin>BOOST_PP_LIST_CAT(${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_CONS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(head, tail)</displayarguments>
+  <fillin>BOOST_PP_LIST_CONS(${head}, ${tail})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_ENUM</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(list)</displayarguments>
+  <fillin>BOOST_PP_LIST_ENUM(${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_ENUM_R</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(r, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_ENUM_R(${r}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_FILTER</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(pred, data, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_FILTER(${pred}, ${data}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_FIRST</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(list)</displayarguments>
+  <fillin>BOOST_PP_LIST_FIRST(${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_FIRST_N</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_FIRST_N(${count}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_FOLD_LEFT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(op, state, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_FOLD_LEFT(${op}, ${state}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_FOLD_LEFT_2ND</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(op, state, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_FOLD_LEFT_2ND(${op}, ${state}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_FOLD_RIGHT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(op, state, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_FOLD_RIGHT(${op}, ${state}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_FOLD_RIGHT_2ND</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(op, state, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_FOLD_RIGHT_2ND(${op}, ${state}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_FOR_EACH</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(macro, data, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_FOR_EACH(${macro}, ${data}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_FOR_EACH_I</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(macro, data, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_FOR_EACH_I(${macro}, ${data}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_FOR_EACH_PRODUCT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(macro, size, tuple)</displayarguments>
+  <fillin>BOOST_PP_LIST_FOR_EACH_PRODUCT(${macro}, ${size}, ${tuple})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_FOR_EACH_PRODUCT_R</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(r, macro, size, tuple)</displayarguments>
+  <fillin>BOOST_PP_LIST_FOR_EACH_PRODUCT_R(${r}, ${macro}, ${size}, ${tuple})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_FOR_EACH_R</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(r, macro, data, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_FOR_EACH_R(${r}, ${macro}, ${data}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_FOR_EACH_I_R</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(r, macro, data, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_FOR_EACH_I_R(${r}, ${macro}, ${data}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_IS_CONS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(list)</displayarguments>
+  <fillin>BOOST_PP_LIST_IS_CONS(${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_IS_NIL</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(list)</displayarguments>
+  <fillin>BOOST_PP_LIST_IS_NIL(${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_NIL</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>BOOST_PP_LIST_NIL</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_REST</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(list)</displayarguments>
+  <fillin>BOOST_PP_LIST_REST(${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_REST_N</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_REST_N(${count}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_REVERSE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(list)</displayarguments>
+  <fillin>BOOST_PP_LIST_REVERSE(${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_SIZE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(list)</displayarguments>
+  <fillin>BOOST_PP_LIST_SIZE(${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_TO_TUPLE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(list)</displayarguments>
+  <fillin>BOOST_PP_LIST_TO_TUPLE(${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_TO_TUPLE_R</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(r, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_TO_TUPLE_R(${r}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LIST_TRANSFORM</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(op, data, list)</displayarguments>
+  <fillin>BOOST_PP_LIST_TRANSFORM(${op}, ${data}, ${list})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LOCAL_ITERATE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_LOCAL_ITERATE()</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LOCAL_LIMITS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(start, finish)</displayarguments>
+  <fillin>BOOST_PP_LOCAL_LIMITS(${start}, ${finish})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LOCAL_MACRO</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(n)</displayarguments>
+  <fillin>BOOST_PP_LOCAL_MACRO(${n})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LPAREN</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_LPAREN()</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>LPAREN_IF</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(cond)</displayarguments>
+  <fillin>BOOST_PP_LPAREN_IF(${cond})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>MAX</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_MAX(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>MIN</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_MIN(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>MOD</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_MOD(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>MUL</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_MUL(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>NIL</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_NIL()</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>NOR</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(p, q)</displayarguments>
+  <fillin>BOOST_PP_NOR(${p}, ${q})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>NOT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x)</displayarguments>
+  <fillin>BOOST_PP_NOT(${x})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>NOT_EQUAL</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_NOT_EQUAL(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>OR</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(p, q)</displayarguments>
+  <fillin>BOOST_PP_OR(${p}, ${q})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>RELATIVE_FINISH</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(i)</displayarguments>
+  <fillin>BOOST_PP_RELATIVE_FINISH(${i})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>RELATIVE_FLAGS</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(i)</displayarguments>
+  <fillin>BOOST_PP_RELATIVE_FLAGS(${i})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>RELATIVE_FINISH</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(i)</displayarguments>
+  <fillin>BOOST_PP_RELATIVE_FINISH(${i})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>RELATIVE_ITERATION</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(i)</displayarguments>
+  <fillin>BOOST_PP_RELATIVE_ITERATION(${i})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>RELATIVE_START</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(i)</displayarguments>
+  <fillin>BOOST_PP_RELATIVE_START(${i})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>REPEAT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, macro, data)</displayarguments>
+  <fillin>BOOST_PP_REPEAT(${count}, ${macro}, ${data})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>REPEAT_1ST</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, macro, data)</displayarguments>
+  <fillin>BOOST_PP_REPEAT_1ST(${count}, ${macro}, ${data})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>REPEAT_2ND</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, macro, data)</displayarguments>
+  <fillin>BOOST_PP_REPEAT_2ND(${count}, ${macro}, ${data})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>REPEAT_3RD</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(count, macro, data)</displayarguments>
+  <fillin>BOOST_PP_REPEAT_3RD(${count}, ${macro}, ${data})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>REPEAT_FROM_TO</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(from, to, macro, data)</displayarguments>
+  <fillin>BOOST_PP_REPEAT_FROM_TO(${from}, ${to}, ${macro}, ${data})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>REPEAT_FROM_TO_1ST</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(from, to, macro, data)</displayarguments>
+  <fillin>BOOST_PP_REPEAT_FROM_TO_1ST(${from}, ${to}, ${macro}, ${data})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>REPEAT_FROM_TO_2ND</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(from, to, macro, data)</displayarguments>
+  <fillin>BOOST_PP_REPEAT_FROM_TO_2ND(${from}, ${to}, ${macro}, ${data})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>REPEAT_FROM_TO_3RD</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(from, to, macro, data)</displayarguments>
+  <fillin>BOOST_PP_REPEAT_FROM_TO_3RD(${from}, ${to}, ${macro}, ${data})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>RPAREN</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_RPAREN()</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>RPAREN_IF</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(cond)</displayarguments>
+  <fillin>BOOST_PP_RPAREN_IF(${cond})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_CAT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_CAT(${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_CAT_S</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(s, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_CAT_S(${s}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_ELEM</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(i, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_ELEM(${i}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_ENUM</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_ENUM(${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_FILTER</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(pred, data, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_FILTER(${pred}, ${data}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_FILTER_S</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(s, pred, data, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_FILTER_S(${s}, ${pred}, ${data}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_FIRST</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(n, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_FIRST(${n}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_FOLD_LEFT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(op, state, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_FOLD_LEFT(${op}, ${state}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_FOLD_RIGHT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(op, state, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_FOLD_RIGHT(${op}, ${state}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_FOR_EACH</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(macro, data, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_FOR_EACH(${macro}, ${data}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_FOR_EACH_I</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(macro, data, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_FOR_EACH_I(${macro}, ${data}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_FOR_EACH_I_R</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(r, macro, data, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_FOR_EACH_I_R(${r}, ${macro}, ${data}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_FOR_EACH_PRODUCT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(macro, seqs)</displayarguments>
+  <fillin>BOOST_PP_SEQ_FOR_EACH_PRODUCT(${macro}, ${seqs})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_FOR_EACH_PRODUCT_R</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(r, macro, seqs)</displayarguments>
+  <fillin>BOOST_PP_SEQ_FOR_EACH_PRODUCT_R(${r}, ${macro}, ${seqs})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_FOR_EACH_R</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(r, macro, data, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_FOR_EACH_R(${r}, ${macro}, ${data}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_HEAD</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_HEAD(${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_INSERT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq, i, elem)</displayarguments>
+  <fillin>BOOST_PP_SEQ_INSERT(${seq}, ${i}, ${elem})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_NIL</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>BOOST_PP_SEQ_NIL</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_POP_BACK</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_POP_BACK(${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_POP_FRONT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_POP_FRONT(${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_PUSH_BACK</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq, elem)</displayarguments>
+  <fillin>BOOST_PP_SEQ_PUSH_BACK(${seq}, ${elem})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_PUSH_FRONT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq, elem)</displayarguments>
+  <fillin>BOOST_PP_SEQ_PUSH_FRONT(${seq}, ${elem})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_REMOVE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq, i)</displayarguments>
+  <fillin>BOOST_PP_SEQ_REMOVE(${seq}, ${i})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_REPLACE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq, i, elem)</displayarguments>
+  <fillin>BOOST_PP_SEQ_REPLACE(${seq}, ${i}, ${elem})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_REST_N</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(n, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_REST_N(${n}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_REVERSE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_REVERSE(${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_REVERSE_S</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(s, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_REVERSE_S(${s}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_SIZE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_SIZE(${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_SUBSEQ</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq, i, len)</displayarguments>
+  <fillin>BOOST_PP_SEQ_SUBSEQ(${seq}, ${i}, ${len})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_TAIL</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_TAIL(${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_TO_ARRAY</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_TO_ARRAY(${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_TO_TUPLE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_TO_TUPLE(${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_TRANSFORM</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(op, data, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_TRANSFORM(${op}, ${data}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SEQ_TRANSFORM_S</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(s, op, data, seq)</displayarguments>
+  <fillin>BOOST_PP_SEQ_TRANSFORM_S(${s}, ${op}, ${data}, ${seq})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SLOT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(i)</displayarguments>
+  <fillin>BOOST_PP_SLOT(${i})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>STRINGIZE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(text)</displayarguments>
+  <fillin>BOOST_PP_STRINGIZE(${text})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>SUB</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(x, y)</displayarguments>
+  <fillin>BOOST_PP_SUB(${x}, ${y})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>TUPLE_EAT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(size)</displayarguments>
+  <fillin>BOOST_PP_TUPLE_EAT(${size})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>TUPLE_ELEM</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(size, i, tuple)</displayarguments>
+  <fillin>BOOST_PP_TUPLE_ELEM(${size}, ${i}, ${tuple})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>TUPLE_REM</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(size)</displayarguments>
+  <fillin>BOOST_PP_TUPLE_REM(${size})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>TUPLE_REM_CTOR</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(size, tuple)</displayarguments>
+  <fillin>BOOST_PP_TUPLE_REM_CTOR(${size}, ${tuple})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>TUPLE_REVERSE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(size, tuple)</displayarguments>
+  <fillin>BOOST_PP_TUPLE_REVERSE(${size}, ${tuple})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>TUPLE_TO_LIST</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(size, tuple)</displayarguments>
+  <fillin>BOOST_PP_TUPLE_TO_LIST(${size}, ${tuple})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>TUPLE_TO_SEQ</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(size, tuple)</displayarguments>
+  <fillin>BOOST_PP_TUPLE_TO_SEQ(${size}, ${tuple})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>UPDATE_COUNTER</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>()</displayarguments>
+  <fillin>BOOST_PP_UPDATE_COUNTER(${size}, ${tuple})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>VALUE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>BOOST_PP_VALUE</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>WHILE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(pred, op, state)</displayarguments>
+  <fillin>BOOST_PP_WHILE(${pred}, ${op}, ${state})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>XOR</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(p, q)</displayarguments>
+  <fillin>BOOST_PP_XOR(${p}, ${q})</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>WSTRINGIZE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(text)</displayarguments>
+  <fillin>BOOST_PP_WSTRINGIZE(${text})</fillin>
+ </item>
+ <item>
+  <displayprefix>self #include iteration snippet</displayprefix>
+  <match>iteration</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>#if !BOOST_PP_IS_ITERATING
+#  ifndef __${guard`ppGuard`}__
+#    define __${guard}__
+
+#    define BOOST_PP_ITERATION_PARAMS_1 (3, (${start}, ${finish}), "${filename}"))
+${cursor}
+// Include self...
+#    include BOOST_PP_ITERATE()
+#  endif                                                    // __${guard}__
+#else                                                       // !BOOST_PP_IS_ITERATING
+#  define N BOOST_PP_ITERATION()
+
+#  undef N
+#endif                                                      // BOOST_PP_IS_ITERATING
+</fillin>
+ </item>
+ <item>
+  <displayprefix>[FILTER predicate] </displayprefix>
+  <match>define PRED</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(State, Data, Elem)</displayarguments>
+  <fillin>#define ${PRED}(${State}, ${Data}, ${Elem})</fillin>
+ </item>
+ <item>
+  <displayprefix>[REPEAT macro] </displayprefix>
+  <match>define REPEAT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(Z, N, Text)</displayarguments>
+  <fillin>#define ${REPEAT}(${Z}, ${N}, ${Text})</fillin>
+ </item>
+ <item>
+  <displayprefix>[FOLD operation] </displayprefix>
+  <match>define OP</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(S, State, Elem)</displayarguments>
+  <fillin>#define ${OP}(${S}, ${State}, ${Elem})</fillin>
+ </item>
+</snippets>
