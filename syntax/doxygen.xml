@@ -416,7 +416,7 @@
         <DetectChar attribute="Types" context="#pop#pop" char="&quot;" />
       </context>
 
-      <context name="SL_DetectEnv" lineEndContext="#pop">
+      <context attribute="Comment" name="SL_DetectEnv" lineEndContext="#pop">
         <RegExpr attribute="Tags" context="Code" String="[@\\]code\b" beginRegion="Code" />
         <RegExpr attribute="Tags" context="Verbatim" String="[@\\]verbatim\b" beginRegion="Verbatim" />
         <RegExpr attribute="Tags" context="Formula" String="[@\\]f\[" beginRegion="Formula" />
@@ -429,8 +429,10 @@
         <RegExpr attribute="Entities" context="#stay" String="&amp;[A-Za-z]+&#59;" />
       </context>
 
-      <context name="SL_DetectComment" lineEndContext="#pop">
+      <context attribute="Comment" name="SL_DetectComment" lineEndContext="#pop">
         <Detect2Chars attribute="Comment" context="#pop#pop" char="*" char1="/" endRegion="BlockComment" />
+        <DetectChar attribute="Comment" context="#stay" char="*" />
+        <StringDetect attribute="Comment" context="#stay" String="///" />
       </context>
 
       <context attribute="Code" lineEndContext="#stay" name="Code">
@@ -467,7 +469,7 @@
       <itemData name="Custom Tags"   defStyleNum="dsNormal"  color="#458C61" bold="1" italic="0" />
       <itemData name="Word"         defStyleNum="dsKeyword" color="#0095ff" bold="1" italic="0" />
       <itemData name="HTML Tag"     defStyleNum="dsKeyword" color="#000000" bold="1" italic="0" />
-      <itemData name="Entities"     defStyleNum="dsNumber" color="#4086C0" bold="1" italic="1" />
+      <itemData name="Entities"     defStyleNum="dsOthers" color="#4086C0" bold="1" italic="1" />
       <itemData name="Description"  defStyleNum="dsString"  color="#ff0000" />
       <itemData name="Comment"      defStyleNum="dsComment" color="#0000ff" italic="1" />
       <itemData name="Region"       defStyleNum="dsRegionMarker" />
