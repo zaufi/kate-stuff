@@ -1,5 +1,5 @@
 <snippets namespace="" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com>" name="boost::test by zaufi">
-  <!-- Version 1.1 -->
+  <!-- Version 1.1.1 -->
  <item>
   <displayprefix></displayprefix>
   <match>BOOST_TEST_MESSAGE</match>
@@ -440,7 +440,7 @@ ${cursor}</fillin>
   <match>BOOST_FIXTURE_TEST_CASE</match>
   <displaypostfix></displaypostfix>
   <displayarguments>(test_case_name, fixture_name)</displayarguments>
-  <fillin>BOOST_FIXTURE_TEST_CASE((${test_case_name:Test}, ${fixture_name})) {
+  <fillin>BOOST_FIXTURE_TEST_CASE(${test_case_name:Test}, ${fixture_name}) {
   ${cursor}
 }</fillin>
  </item>
