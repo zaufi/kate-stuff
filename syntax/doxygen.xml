@@ -29,7 +29,7 @@
  -->
 
 <language name="Doxygen"
-          version="1.32.2"
+          version="1.32.3"
           kateversion="2.4"
           section="Markup"
           extensions="*.dox;*.doxygen"
@@ -186,6 +186,7 @@
       <item> \protocol </item>         <item> @prtocol </item>
       <item> \ref </item>              <item> @ref </item>
       <item> \section </item>          <item> @section </item>
+      <item> \snippet </item>          <item> @snippet </item>
       <item> \struct </item>           <item> @struct </item>
       <item> \subpage </item>          <item> @subpage </item>
       <item> \subsection </item>       <item> @subsection </item>
