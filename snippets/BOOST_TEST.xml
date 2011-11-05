@@ -1,5 +1,5 @@
 <snippets namespace="" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com>" name="boost::test by zaufi">
-  <!-- Version 1.1.2 -->
+  <!-- Version 1.2 -->
  <item>
   <displayprefix></displayprefix>
   <match>BOOST_TEST_MESSAGE</match>
@@ -261,6 +261,27 @@
  </item>
  <item>
   <displayprefix></displayprefix>
+  <match>BOOST_WARN_EXCEPTION</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(expr, excpt, predicate)</displayarguments>
+  <fillin>BOOST_WARN_EXCEPTION(${expr}, ${excpt:std::exception}, ${predicate});${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BOOST_CHECK_EXCEPTION</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(expr, excpt, predicate)</displayarguments>
+  <fillin>BOOST_CHECK_EXCEPTION(${expr}, ${excpt:std::exception}, ${predicate});${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BOOST_REQUIRE_EXCEPTION</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(expr, excpt, predicate)</displayarguments>
+  <fillin>BOOST_REQUIRE_EXCEPTION(${expr}, ${excpt:std::exception}, ${predicate});${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
   <match>BOOST_WARN_NO_THROW</match>
   <displaypostfix></displaypostfix>
   <displayarguments>(expr, excpt)</displayarguments>
@@ -363,6 +384,35 @@
   <displaypostfix></displaypostfix>
   <displayarguments>(value, tolerance)</displayarguments>
   <fillin>BOOST_REQUIRE_SMALL(${value}, ${tolerance:0.0001});${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BOOST_IS_DEFINED</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(symbol)</displayarguments>
+  <fillin>BOOST_CHECK(BOOST_IS_DEFINED(${symbol}));${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix></displayprefix>
+  <match>BOOST_DONT_PRINT_LOG_VALUE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(the_type)</displayarguments>
+  <fillin>BOOST_DONT_PRINT_LOG_VALUE(${the_type})${cursor}</fillin>
+ </item>
+
+ <item>
+  <displayprefix>boost &gt; 1.47.0</displayprefix>
+  <match>BOOST_TEST_INFO</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(context_descr)</displayarguments>
+  <fillin>BOOST_TEST_INFO(${context_descr});${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>boost &gt; 1.47.0</displayprefix>
+  <match>BOOST_TEST_CONTEXT</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(context_descr)</displayarguments>
+  <fillin>BOOST_TEST_CONTEXT(${context_descr});${cursor}</fillin>
  </item>
 
  <item>
