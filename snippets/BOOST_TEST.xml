@@ -394,10 +394,10 @@
  </item>
  <item>
   <displayprefix></displayprefix>
-  <match>BOOST_DONT_PRINT_LOG_VALUE</match>
+  <match>BOOST_TEST_DONT_PRINT_LOG_VALUE</match>
   <displaypostfix></displaypostfix>
   <displayarguments>(the_type)</displayarguments>
-  <fillin>BOOST_DONT_PRINT_LOG_VALUE(${the_type})${cursor}</fillin>
+  <fillin>BOOST_TEST_DONT_PRINT_LOG_VALUE(${the_type})${cursor}</fillin>
  </item>
 
  <item>
@@ -458,7 +458,8 @@ BOOST_AUTO_TEST_SUITE_END()                                 // End of${test_suit
   <displayarguments>(test_suite_name, fixture_name)</displayarguments>
   <fillin>BOOST_FIXTURE_TEST_SUITE(${test_suite_name}, ${fixture_name})
 ${cursor}
-BOOST_AUTO_TEST_SUITE_END()                                 // End of${test_suite_name/^/ /}</fillin>
+BOOST_AUTO_TEST_SUITE_END()                                 // End of${test_suite_name/^/ /}
+</fillin>
  </item>
  <item>
   <displayprefix></displayprefix>
