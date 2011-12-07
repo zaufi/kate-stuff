@@ -9,7 +9,7 @@
     <!ENTITY convspec "diouxXeEfFgGaAcsP&#37;">
 ]>
 <language name="C++" section="Sources"
-          version="1.49.4" kateversion="2.4"
+          version="1.49.5" kateversion="2.4"
           indenter="cstyle"
           mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
           extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc;*.moc"
@@ -665,7 +665,9 @@
         <DetectChar attribute="Error" context="#stay" char="#" />
         <DetectChar attribute="Error" context="#stay" char="$" />
         <Detect2Chars attribute="Error" context="#stay" char="%" char1=":" />
-        <StringDetect attribute="Error" String="??=" />
+        <StringDetect attribute="Error" String="??=" context="#stay" />
+        <DetectChar attribute="Error" context="#stay" char="\\" />
+        <DetectChar attribute="Error" context="#stay" char="@" />
       </context>
 
       <!-- 6.57 Binary constants using the `0b' prefix -->
@@ -788,7 +790,8 @@
       </context>
 
       <context attribute="Preprocessor" lineEndContext="#pop" name="Define">
-        <LineContinue attribute="Preprocessor" context="#stay" />
+        <LineContinue attribute="Separator Symbol" context="#stay" />
+        <DetectChar attribute="Error" context="#stay" char="\\" />
         <keyword attribute="Standard Macros" context="#stay" String="StdMacros" />
         <keyword attribute="GNU Macros" context="#stay" String="GNUMacros" />
       </context>
