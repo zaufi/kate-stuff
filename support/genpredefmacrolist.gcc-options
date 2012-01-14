@@ -41,6 +41,8 @@
 
 # C++ specific options
 -std=c++0x
+-pthread
+-fPIC
 
 # Optimization options
 -O

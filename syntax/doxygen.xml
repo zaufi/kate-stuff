@@ -29,7 +29,7 @@
  -->
 
 <language name="Doxygen"
-          version="1.32.3"
+          version="1.32.4"
           kateversion="2.4"
           section="Markup"
           extensions="*.dox;*.doxygen"
@@ -196,6 +196,7 @@
     </list>
     <list name="TagString">
       <item> \addindex </item>         <item> @addindex </item>
+      <item> \copyright </item>        <item> @copyright </item>
       <item> \fn </item>               <item> @fn </item>
       <item> \ingroup </item>          <item> @ingroup </item>
       <item> \line </item>             <item> @line </item>

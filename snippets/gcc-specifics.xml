@@ -1,8 +1,9 @@
 <snippets namespace="gcc:" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com>" name="gcc predefined macros and builtins">
-  <!-- Predefined macros version 1.0 -->
+  <!-- Predefined GCC stuff version 1.0.1 -->
   <item><match>_FORTIFY_SOURCE</match><fillin>_FORTIFY_SOURCE</fillin></item>
   <item><match>_GNU_SOURCE</match><fillin>_GNU_SOURCE</fillin></item>
   <item><match>_LP64</match><fillin>_LP64</fillin></item>
+  <item><match>_REENTRANT</match><fillin>_REENTRANT</fillin></item>
   <item><match>__3dNOW_A__</match><fillin>__3dNOW_A__</fillin></item>
   <item><match>__3dNOW__</match><fillin>__3dNOW__</fillin></item>
   <item><match>__ABM__</match><fillin>__ABM__</fillin></item>
@@ -156,6 +157,7 @@
   <item><match>__PRAGMA_REDEFINE_EXTNAME</match><fillin>__PRAGMA_REDEFINE_EXTNAME</fillin></item>
   <item><match>__PTRDIFF_MAX__</match><fillin>__PTRDIFF_MAX__</fillin></item>
   <item><match>__PTRDIFF_TYPE__</match><fillin>__PTRDIFF_TYPE__</fillin></item>
+  <item><match>__PIC__</match><fillin>__PIC__</fillin></item>
   <item><match>__REGISTER_PREFIX__</match><fillin>__REGISTER_PREFIX__</fillin></item>
   <item><match>__SCHAR_MAX__</match><fillin>__SCHAR_MAX__</fillin></item>
   <item><match>__SHRT_MAX__</match><fillin>__SHRT_MAX__</fillin></item>
@@ -275,6 +277,7 @@
   <item><match>__pentium_mmx__</match><fillin>__pentium_mmx__</fillin></item>
   <item><match>__pentiumpro</match><fillin>__pentiumpro</fillin></item>
   <item><match>__pentiumpro__</match><fillin>__pentiumpro__</fillin></item>
+  <item><match>__pic__</match><fillin>__pic__</fillin></item>
   <item><match>__tune_amdfam10__</match><fillin>__tune_amdfam10__</fillin></item>
   <item><match>__tune_athlon__</match><fillin>__tune_athlon__</fillin></item>
   <item><match>__tune_athlon_sse__</match><fillin>__tune_athlon_sse__</fillin></item>
