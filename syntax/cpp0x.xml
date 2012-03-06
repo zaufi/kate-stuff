@@ -9,7 +9,7 @@
     <!ENTITY convspec "diouxXeEfFgGaAcsP&#37;">
 ]>
 <language name="C++" section="Sources"
-          version="1.49.6" kateversion="2.4"
+          version="1.49.7" kateversion="2.4"
           indenter="cstyle"
           mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
           extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc;*.moc"
@@ -121,6 +121,7 @@
       <item> Q_DECLARE_SHARED </item>
       <item> Q_DECLARE_TYPEINFO </item>
       <item> Q_DISABLE_COPY </item>
+      <item> Q_EMIT </item>
       <item> Q_ENUMS </item>
       <item> Q_EXPORT </item>
       <item> Q_FLAGS </item>
@@ -141,7 +142,9 @@
       <item> Q_RETURN_ARG </item>
       <item> Q_SCRIPTABLE </item>
       <item> Q_SETS </item>
+      <item> Q_SIGNAL </item>
       <item> Q_SIGNALS </item>
+      <item> Q_SLOT </item>
       <item> Q_SLOTS </item>
       <item> Q_UNUSED </item>
       <item> SIGNAL </item>
@@ -293,6 +296,7 @@
       <item> __AVX__ </item>
       <item> __BASE_FILE__ </item>
       <item> __BIGGEST_ALIGNMENT__ </item>
+      <item> __BMI__ </item>
       <item> __BYTE_ORDER__ </item>
       <item> __CHAR16_TYPE__ </item>
       <item> __CHAR32_TYPE__ </item>
@@ -358,6 +362,9 @@
       <item> __FLT_MIN_EXP__ </item>
       <item> __FLT_MIN__ </item>
       <item> __FLT_RADIX__ </item>
+      <item> __FMA4__ </item>
+      <item> __FP_FAST_FMA </item>
+      <item> __FP_FAST_FMAF </item>
       <item> __GCC_HAVE_DWARF2_CFI_ASM </item>
       <item> __GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 </item>
       <item> __GCC_HAVE_SYNC_COMPARE_AND_SWAP_16 </item>
@@ -426,6 +433,7 @@
       <item> __LONG_LONG_MAX__ </item>
       <item> __LONG_MAX__ </item>
       <item> __LP64__ </item>
+      <item> __LWP__ </item>
       <item> __MMX__ </item>
       <item> __NEXT_RUNTIME__ </item>
       <item> __NO_INLINE__ </item>
@@ -435,8 +443,8 @@
       <item> __ORDER_LITTLE_ENDIAN__ </item>
       <item> __ORDER_PDP_ENDIAN__ </item>
       <item> __PCLMUL__ </item>
-      <item> __POPCNT__ </item>
       <item> __PIC__ </item>
+      <item> __POPCNT__ </item>
       <item> __PRAGMA_REDEFINE_EXTNAME </item>
       <item> __PTRDIFF_MAX__ </item>
       <item> __PTRDIFF_TYPE__ </item>
@@ -472,7 +480,10 @@
       <item> __SSP_ALL__ </item>
       <item> __SSP__ </item>
       <item> __SSSE3__ </item>
+      <item> __STDC_HOSTED__ </item>
+      <item> __STDC__ </item>
       <item> __STRICT_ANSI__ </item>
+      <item> __TBM__ </item>
       <item> __TIMESTAMP__ </item>
       <item> __UINT16_C </item>
       <item> __UINT16_MAX__ </item>
@@ -518,6 +529,7 @@
       <item> __WINT_MAX__ </item>
       <item> __WINT_MIN__ </item>
       <item> __WINT_TYPE__ </item>
+      <item> __XOP__ </item>
       <item> __amd64 </item>
       <item> __amd64__ </item>
       <item> __amdfam10 </item>
@@ -527,10 +539,15 @@
       <item> __athlon_sse__ </item>
       <item> __atom </item>
       <item> __atom__ </item>
+      <item> __bdver1 </item>
+      <item> __bdver1__ </item>
+      <item> __btver1 </item>
+      <item> __btver1__ </item>
       <item> __core2 </item>
       <item> __core2__ </item>
       <item> __corei7 </item>
       <item> __corei7__ </item>
+      <item> __cplusplus </item>
       <item> __geode </item>
       <item> __geode__ </item>
       <item> __gnu_linux__ </item>
@@ -564,6 +581,8 @@
       <item> __tune_athlon__ </item>
       <item> __tune_athlon_sse__ </item>
       <item> __tune_atom__ </item>
+      <item> __tune_bdver1__ </item>
+      <item> __tune_btver1__ </item>
       <item> __tune_core2__ </item>
       <item> __tune_corei7__ </item>
       <item> __tune_geode__ </item>

@@ -29,7 +29,7 @@
  -->
 
 <language name="Doxygen"
-          version="1.32.4"
+          version="1.32.5"
           kateversion="2.4"
           section="Markup"
           extensions="*.dox;*.doxygen"
@@ -97,6 +97,7 @@
       <item> \short </item>            <item> @short </item>
       <item> \showinitializer </item>  <item> @showinitializer </item>
       <item> \since </item>            <item> @since </item>
+      <item> \tableofcontents </item>  <item> @tableofcontents </item>
       <item> \test </item>             <item> @test </item>
       <item> \version </item>          <item> @version </item>
       <item> \xmlonly </item>          <item> @xmlonly </item>

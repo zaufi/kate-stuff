@@ -39,6 +39,14 @@
 -march=c3-2 -m32
 -march=geode -m32
 
+# introduced by gcc 4.6.x
+-march=btver1
+-march=btver1 -m32
+-march=bdver1
+-march=bdver1 -m32
+-mtbm
+-mbmi
+
 # C++ specific options
 -std=c++0x
 -pthread
