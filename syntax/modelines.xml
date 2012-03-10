@@ -4,6 +4,11 @@
     <!ENTITY space " ">
     <!ENTITY end "&#59;">
 ]>
+<!--
+  Copyright (c) 2012 by Alex Turbov (i.zaufi@gmail.com)
+
+  Homepage: http://kde-files.org/content/show.php?content=90660
+  -->
 <language name="Modelines"
           version="0.1"
           kateversion="2.4"

@@ -6,6 +6,11 @@
     <!ENTITY ns_punctuators "!&#37;&space;&amp;()+-/.*&lt;=&gt;?[]{|}~^&separators;">
     <!ENTITY punctuators ":&ns_punctuators;">
 ]>
+<!--
+  Copyright (c) 2012 by Alex Turbov (i.zaufi@gmail.com)
+
+  Homepage: http://kde-files.org/content/show.php?content=90660
+  -->
 <language name="GCCExtensions" version="0.1"
           kateversion="2.4"
           section="Sources"
