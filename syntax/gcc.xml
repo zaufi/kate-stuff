@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE language SYSTEM "language.dtd">
+<!DOCTYPE language SYSTEM "language.dtd"
+[
+    <!ENTITY space " ">
+    <!ENTITY separators ",&#59;">
+    <!ENTITY ns_punctuators "!&#37;&space;&amp;()+-/.*&lt;=&gt;?[]{|}~^&separators;">
+    <!ENTITY punctuators ":&ns_punctuators;">
+]>
 <language name="GCCExtensions" version="0.1"
           kateversion="2.4"
           section="Sources"
-          author="Alex Turbov (i.zaufi@gmail.com)"
+          extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc;"
           mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr;text/x-csrc"
+          author="Alex Turbov (i.zaufi@gmail.com)"
+          license="LGPL"
+          hidden="true"
           priority="5">
 <!--
   The main purpose of this file is to hold GNU gcc extensions syntax in a single place,
@@ -410,10 +419,7 @@
     <item> unix </item>
   </list>
   <contexts>
-    <!-- This context can be used from other (alternative) C/C++ syntax files
-        To use it just <IncludeRules context="DetectGccExtensions##GCCExtensions" />
-      -->
-    <context lineEndContext="#stay" name="DetectGccExtensions">
+    <context lineEndContext="#stay" name="DetectGccExtensions" attribute="Normal Text">
       <keyword attribute="GNU Macros" context="#stay" String="GNUMacros" />
       <StringDetect attribute="GNU Extensions" context="AttrArgs" String="__attribute__" />
       <StringDetect attribute="GNU Extensions" context="AttrArgs" String="__declspec" />
@@ -422,7 +428,7 @@
       <Detect2Chars attribute="GNU Extensions" context="Binary constant" char="0" char1="b" />
     </context>
 
-    <context lineEndContext="#stay" name="GNUMacros">
+    <context lineEndContext="#stay" name="GNUMacros" attribute="">
       <keyword attribute="GNU Macros" context="#stay" String="GNUMacros" />
     </context>
 
@@ -440,13 +446,14 @@
     <context attribute="GNU Extensions" lineEndContext="#pop" name="Binary constant">
       <AnyChar attribute="GNU Extensions" context="#stay" String="01" />
       <RegExpr attribute="Error" context="#stay" String="[a-zA-Z0-9_]+" />
-      <AnyChar context="#pop" String="&separators;" attribute="Separator Symbol" />
-      <AnyChar context="#pop" String="&punctuators;" attribute="Symbol" />
+      <AnyChar context="#pop" String="&separators;" />
+      <AnyChar context="#pop" String="&punctuators;" />
     </context>
 
   </contexts>
 
   <itemDatas>
+    <itemData name="Normal Text" defStyleNum="dsNormal"/>
     <itemData name="GNU Macros" defStyleNum="dsOthers" spellChecking="false" />
     <itemData name="GNU Extensions" defStyleNum="dsOthers" italic="1" spellChecking="false" />
   </itemDatas>

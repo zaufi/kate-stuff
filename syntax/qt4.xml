@@ -9,8 +9,9 @@
           kateversion="2.4"
           section="Sources"
           extensions="*.moc"
-          author="Alex Turbov (i.zaufi@gmail.com)"
           mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
+          author="Alex Turbov (i.zaufi@gmail.com)"
+          license="LGPL"
           priority="5">
 <!--
   The main purpose of this file is to hold Qt extensions syntax in a single place,
