@@ -100,34 +100,38 @@
       <LineContinue attribute="Error" context="#pop" />
     </context>
 
-    <context name="Modeline" attribute="Comment" lineEndContext="#pop">
+    <context name="Modeline" attribute="Comment" lineEndContext="#pop#pop">
       <DetectSpaces />
       <keyword String="Booleans" context="Booleans" attribute="Variable Name" />
       <keyword String="Integrals" context="Integrals" attribute="Variable Name" />
       <keyword String="Strings" context="Strings" attribute="Variable Name" />
-      <DetectIdentifier attribute="Error" context="#stay" />
+      <DetectSpaces />
+      <RegExpr context="#stay" String="\S*" attribute="Error" />
     </context>
 
-    <context name="Booleans" attribute="Comment" lineEndContext="#pop">
+    <context name="Booleans" attribute="Comment" lineEndContext="#pop#pop#pop">
       <DetectSpaces />
       <keyword String="True" attribute="Boolean True" context="#stay" />
       <keyword String="False" attribute="Boolean False" context="#stay" />
+      <DetectSpaces />
       <DetectChar char="&end;" context="#pop" attribute="Variable Name" />
-      <RegExpr context="#pop#pop" String=".*" attribute="Error" />
+      <RegExpr context="#pop" String="\S*" attribute="Error" />
     </context>
 
-    <context name="Integrals" attribute="Comment" lineEndContext="#pop">
+    <context name="Integrals" attribute="Comment" lineEndContext="#pop#pop#pop">
       <DetectSpaces />
       <Int attribute="Integral Value" context="#stay" />
+      <DetectSpaces />
       <DetectChar char="&end;" context="#pop" attribute="Variable Name" />
-      <RegExpr context="#pop#pop" String=".*" attribute="Error" />
+      <RegExpr context="#pop" String="\S*" attribute="Error" />
     </context>
 
-    <context name="Strings" attribute="String Value" lineEndContext="#pop">
+    <context name="Strings" attribute="String Value" lineEndContext="#pop#pop#pop">
       <DetectSpaces />
       <RegExpr String="[^&end;&space;]" context="#stay" />
+      <DetectSpaces />
       <DetectChar char="&end;" context="#pop" attribute="Variable Name" />
-      <RegExpr context="#pop#pop" String=".*" attribute="Error" />
+      <RegExpr context="#pop" String="\S*" attribute="Error" />
     </context>
 
   </contexts>
