@@ -161,6 +161,8 @@
         <DetectChar context="AfterHash" char="#" firstNonSpace="true" lookAhead="true" />
         <Detect2Chars context="AfterHash" char="%" char1=":" firstNonSpace="true" lookAhead="true" />
         <StringDetect context="AfterHash" String="??=" firstNonSpace="true" lookAhead="true" />
+        <Detect2Chars attribute="Error" context="#stay" char="%" char1=":" />
+        <StringDetect attribute="Error" String="??=" context="#stay" />
         <StringDetect attribute="Region Marker" context="Region Marker" String="//BEGIN" beginRegion="Region1" firstNonSpace="true" />
         <StringDetect attribute="Region Marker" context="Region Marker" String="//END" endRegion="Region1" firstNonSpace="true" />
         <keyword attribute="Keyword" context="#stay" String="keywords" />
@@ -220,9 +222,6 @@
         <AnyChar attribute="Symbol" context="#stay" String="&punctuators;" />
         <DetectChar attribute="Error" context="#stay" char="#" />
         <DetectChar attribute="Error" context="#stay" char="$" />
-        <Detect2Chars attribute="Error" context="#stay" char="%" char1=":" />
-        <StringDetect attribute="Error" String="??=" context="#stay" />
-        <DetectChar attribute="Error" context="#stay" char="\\" />
         <DetectChar attribute="Error" context="#stay" char="@" />
       </context>
 

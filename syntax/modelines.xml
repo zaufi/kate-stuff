@@ -10,7 +10,7 @@
   Homepage: http://kde-files.org/content/show.php?content=90660
   -->
 <language name="Modelines"
-          version="0.1"
+          version="0.3"
           kateversion="2.4"
           section="Other"
           extensions=""
@@ -24,6 +24,8 @@
 
   NOTE Default colors are set to 'Comment', so if u don't want to highight it,
   just leave colors as is...
+
+  TODO Support for other modelines? emacs/vim??
 -->
 <highlighting>
   <list name="ModelineStartKeyword">
@@ -41,6 +43,7 @@
     <item> icon-border </item>
     <item> keep-extra-spaces </item>
     <item> line-numbers </item>
+    <item> newline-at-eof </item>                           <!-- Since KDE 4.9 -->
     <item> overwrite-mode </item>
     <item> persistent-selection </item>
     <item> remove-trailing-space </item>
@@ -97,54 +100,49 @@
     <context name="Normal" attribute="Comment" lineEndContext="#pop">
       <DetectSpaces />
       <keyword String="ModelineStartKeyword" context="Modeline" attribute="Keyword" />
-      <LineContinue attribute="Error" context="#pop" />
+      <LineContinue context="#pop" />
     </context>
 
-    <context name="Modeline" attribute="Comment" lineEndContext="#pop#pop">
+    <context name="Modeline" attribute="Comment" lineEndContext="#pop">
       <DetectSpaces />
-      <keyword String="Booleans" context="Booleans" attribute="Variable Name" />
-      <keyword String="Integrals" context="Integrals" attribute="Variable Name" />
-      <keyword String="Strings" context="Strings" attribute="Variable Name" />
-      <DetectSpaces />
-      <RegExpr context="#stay" String="\S*" attribute="Error" />
+      <keyword String="Booleans" context="Booleans" attribute="Variable" />
+      <keyword String="Integrals" context="Integrals" attribute="Variable" />
+      <keyword String="Strings" context="Strings" attribute="Variable" />
+      <LineContinue context="#pop" />
     </context>
 
-    <context name="Booleans" attribute="Comment" lineEndContext="#pop#pop#pop">
+    <context name="Booleans" attribute="Comment" lineEndContext="#pop">
       <DetectSpaces />
       <keyword String="True" attribute="Boolean True" context="#stay" />
       <keyword String="False" attribute="Boolean False" context="#stay" />
-      <DetectSpaces />
-      <DetectChar char="&end;" context="#pop" attribute="Variable Name" />
-      <RegExpr context="#pop" String="\S*" attribute="Error" />
+      <DetectChar char="&end;" context="#pop" attribute="Variable" />
+      <LineContinue context="#pop" />
     </context>
 
-    <context name="Integrals" attribute="Comment" lineEndContext="#pop#pop#pop">
+    <context name="Integrals" attribute="Comment" lineEndContext="#pop">
       <DetectSpaces />
-      <Int attribute="Integral Value" context="#stay" />
-      <DetectSpaces />
-      <DetectChar char="&end;" context="#pop" attribute="Variable Name" />
-      <RegExpr context="#pop" String="\S*" attribute="Error" />
+      <Int attribute="Number" context="#stay" />
+      <DetectChar char="&end;" context="#pop" attribute="Variable" />
+      <LineContinue context="#pop" />
     </context>
 
-    <context name="Strings" attribute="String Value" lineEndContext="#pop#pop#pop">
+    <context name="Strings" attribute="String" lineEndContext="#pop">
       <DetectSpaces />
       <RegExpr String="[^&end;&space;]" context="#stay" />
-      <DetectSpaces />
-      <DetectChar char="&end;" context="#pop" attribute="Variable Name" />
-      <RegExpr context="#pop" String="\S*" attribute="Error" />
+      <DetectChar char="&end;" context="#pop" attribute="Variable" />
+      <LineContinue context="#pop" />
     </context>
 
   </contexts>
 
   <itemDatas>
     <itemData name="Comment" defStyleNum="dsComment" spellChecking="true" />
-    <itemData name="Error" defStyleNum="dsError" spellChecking="false" />
     <itemData name="Keyword" defStyleNum="dsKeyword" spellChecking="false" />
-    <itemData name="Variable Name" defStyleNum="dsFunction" spellChecking="false" />
+    <itemData name="Variable" defStyleNum="dsFunction" spellChecking="false" />
     <itemData name="Boolean True" defStyleNum="dsOthers" spellChecking="false" />
     <itemData name="Boolean False" defStyleNum="dsOthers" spellChecking="false" />
-    <itemData name="Integral Value" defStyleNum="dsDecVal" spellChecking="false" />
-    <itemData name="String Value" defStyleNum="dsString" spellChecking="false" />
+    <itemData name="Number" defStyleNum="dsDecVal" spellChecking="false" />
+    <itemData name="String" defStyleNum="dsString" spellChecking="false" />
   </itemDatas>
 
 </highlighting>
