@@ -11,7 +11,6 @@ C++:Data Members (m_*)=0,ff79d298,ff79d298,0,0,0,0,,,,---
 C++:Data Type=2,ffa32c2c,ffa32c2c,0,0,0,0,,,,---
 C++:Decimal=3,ff4086c0,ff4086c0,0,0,0,0,,,,---
 C++:Error=13,ffe81717,ffe81717,0,0,0,1,,,,---
-C++:Extensions=1,ff0095ff,ffffffff,1,0,0,0,,,,---
 C++:Float=5,ff696df3,ff696df3,0,0,0,0,,,,---
 C++:GNU Extensions=1,ff0095ff,ff0095ff,0,1,0,0,,,,---
 C++:GNU Macros=9,ff42b779,ff163f29,0,0,0,0,,,,---
@@ -61,16 +60,15 @@ GCCExtensions:Normal Text=0,ffe3e3e3,ffe3e3e3,0,0,0,0,,,,---
 Modelines:Boolean False=9,ff845757,ff845757,0,1,0,0,,,,---
 Modelines:Boolean True=9,ff446544,ff446544,0,1,0,0,,,,---
 Modelines:Comment=8,ff777777,ff777777,0,1,0,0,,,,---
-Modelines:Error=13,ffe81717,ffe81717,0,0,0,1,,,,---
-Modelines:Number=3,ff555560,ff555560,0,1,0,0,,,,---
 Modelines:Keyword=1,ff777755,ff777755,1,1,0,0,,,,---
+Modelines:Number=3,ff555560,ff555560,0,1,0,0,,,,---
 Modelines:String=7,ff604460,ff604460,0,1,0,0,,,,---
 Modelines:Variable=11,ff676757,ff676757,0,1,0,0,,,,---
 Qt4/C++:Normal Text=0,ffe3e3e3,ffe3e3e3,0,0,0,0,,,,---
 Qt4/C++:Qt4 Classes=0,ff15cbc5,ff15cbc5,0,0,0,0,,,,---
 Qt4/C++:Qt4 Extensions=0,ff4875b7,ff4875b7,0,1,0,0,,,,---
 Qt4/C++:Qt4 Functions=0,ff4875b7,ff4875b7,0,0,0,0,,,,---
-Qt4/C++:Qt4 Macros=0,ff42b779,ff42b779,0,0,0,0,,,,---
+Qt4/C++:Qt4 Macros=0,ff0e8884,ff0e8884,0,0,0,0,,,,---
 Qt4/C++:Qt4 Types=0,ffa32c2c,ffa32c2c,0,0,0,0,,,,---
 
 [KateHLColors]

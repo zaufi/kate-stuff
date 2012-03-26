@@ -284,22 +284,22 @@
   <displayprefix></displayprefix>
   <match>BOOST_WARN_NO_THROW</match>
   <displaypostfix></displaypostfix>
-  <displayarguments>(expr, excpt)</displayarguments>
-  <fillin>BOOST_WARN_NO_THROW(${expr}, ${excpt:std::exception});${cursor}</fillin>
+  <displayarguments>(expr)</displayarguments>
+  <fillin>BOOST_WARN_NO_THROW(${expr});${cursor}</fillin>
  </item>
  <item>
   <displayprefix></displayprefix>
   <match>BOOST_CHECK_NO_THROW</match>
   <displaypostfix></displaypostfix>
-  <displayarguments>(expr, excpt)</displayarguments>
-  <fillin>BOOST_CHECK_NO_THROW(${expr}, ${excpt:std::exception});${cursor}</fillin>
+  <displayarguments>(expr)</displayarguments>
+  <fillin>BOOST_CHECK_NO_THROW(${expr});${cursor}</fillin>
  </item>
  <item>
   <displayprefix></displayprefix>
   <match>BOOST_REQUIRE_NO_THROW</match>
   <displaypostfix></displaypostfix>
-  <displayarguments>(expr, excpt)</displayarguments>
-  <fillin>BOOST_REQUIRE_NO_THROW(${expr}, ${excpt:std::exception});${cursor}</fillin>
+  <displayarguments>(expr)</displayarguments>
+  <fillin>BOOST_REQUIRE_NO_THROW(${expr});${cursor}</fillin>
  </item>
  <item>
   <displayprefix></displayprefix>
