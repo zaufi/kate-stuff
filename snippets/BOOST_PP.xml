@@ -1,4 +1,4 @@
-<snippets namespace="pp:" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com>" name="BOOST_PREPROCESSOR by zaufi">
+<snippets namespace="pp:" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;" name="BOOST_PREPROCESSOR by zaufi">
  <!-- Version 1.0 -->
  <script>function ppGuard() {
   var filename = document.fileName().toUpperCase();

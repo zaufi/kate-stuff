@@ -1,5 +1,5 @@
-<snippets namespace="" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com>" name="boost::test by zaufi">
-  <!-- Version 1.2.1 -->
+<snippets namespace="" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;" name="boost::test by zaufi">
+  <!-- Version 1.2.2 -->
  <item>
   <displayprefix></displayprefix>
   <match>BOOST_TEST_MESSAGE</match>
