@@ -39,6 +39,7 @@
     <item> block-selection </item>
     <item> bom </item>
     <item> byte-order-marker </item>
+    <item> dynamic-word-wrap </item>
     <item> folding-markers </item>
     <item> icon-border </item>
     <item> keep-extra-spaces </item>
@@ -84,7 +85,6 @@
     <item> bracket-highlight-color </item>
     <item> current-line-color </item>
     <item> default-dictionary </item>
-    <item> dynamic-word-wrap </item>
     <item> eol </item>
     <item> end-of-line </item> <!-- Valid settings are unix, mac and dos -->
     <item> font </item>
@@ -93,6 +93,7 @@
     <item> indent-mode </item>
     <item> scheme </item>
     <item> selection-color </item>
+    <item> syntax </item>
     <item> word-wrap-marker-color </item>
   </list>
 
