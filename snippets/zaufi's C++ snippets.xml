@@ -1,0 +1,206 @@
+<snippets namespace="z:" license="BSD" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;i.zaufi@gmail.com>" name="zaufi C++ snippets">
+ <script>function headerGuard() {
+  var filename = document.fileName().toUpperCase();
+  filename = filename.replace(/[\.\-]/, '_');
+  return filename;
+}</script>
+ <item>
+  <displayprefix>block</displayprefix>
+  <match>namespace</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>namespace ${name} {
+	${cursor}
+}                                                           // namespace  ${name/^/ /}
+</fillin>
+ </item>
+ <item>
+  <displayprefix>print</displayprefix>
+  <match>dump_memory</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments> (var[, size]) or (&amp;var)</displayarguments>
+  <fillin>std::cout &lt;&lt; "Dump of ${var}\n" &lt;&lt; dbg::dump_memory(${var}, ${size}) &lt;&lt; std::endl;${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>print</displayprefix>
+  <match>OUT_ANY_VAR</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>std::cout &lt;&lt; OUT_ANY_VAR(${var}) &lt;&lt; std::endl;${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>print</displayprefix>
+  <match>cout</match>
+  <displaypostfix>print expression to std::cout</displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>std::cout &lt;&lt; ${expr} &lt;&lt; std::endl;${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>print</displayprefix>
+  <match>type_name</match>
+  <displaypostfix>output typeid to std::cout</displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>std::cout &lt;&lt; dbg::type_name(${var}) &lt;&lt; std::endl;${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>block</displayprefix>
+  <match>try</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>try {
+  ${cursor}
+}
+catch (${expt:...}) {
+}</fillin>
+ </item>
+ <item>
+  <displayprefix>block</displayprefix>
+  <match>guard</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>#ifndef ${g`headerGuard`}
+#  define ${g/^/ /}
+%{cursor}
+#endif                                                      // ${g/^/ /}</fillin>
+ </item>
+ <item>
+  <displayprefix>printing</displayprefix>
+  <match>pretty</match>
+  <displaypostfix>output __PRETTY_FUNCTION__ to std::cout</displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; std::endl;${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>test</displayprefix>
+  <match>spam_struct</match>
+  <displaypostfix>sample struct w/ all ctors/assign spammed</displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>struct ${type}
+{
+    ${type}()
+    {
+        std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; std::endl;
+    }
+    ~${type}()
+    {
+        std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; std::endl;
+    }
+    ${type}(const ${type}&amp;)
+    {
+        std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; std::endl;
+    }
+    ${type}(${type}&amp;&amp;)
+    {
+        std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; std::endl;
+    }
+    ${type}&amp; operator=(const ${type}&amp;)
+    {
+        std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; std::endl;
+    }
+    ${type}&amp; operator=(${type}&amp;&amp;)
+    {
+        std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; std::endl;
+    }
+};
+${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>algorithm</displayprefix>
+  <match>find_if</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>auto it = std::find_if(
+    begin(${container})
+  , end(${container})
+  , [](const decltype(${container})::value_type&amp; v) 
+  {
+      return false;
+  });${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>snippet</displayprefix>
+  <match>streamable-left-shift</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>/// Make \c ${type} streamable
+std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, const ${type} ${value}) {
+  os &lt;&lt; ${value};
+  return os;
+}${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>snippet</displayprefix>
+  <match>binary-op-skeleton</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>/// Make \c ${type} ${less} comparable
+inline bool operator${op:&lt;}(const ${type@} p1, const ${type} p2) {
+  return p1${member:.} &lt; p2${member};
+}${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>snippet</displayprefix>
+  <match>member-accessors</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>${type} ${member};
+
+${type} ${member}() const
+{
+  return ${member};
+}
+void ${member}(${type} value)
+{
+  ${member} = value;
+}
+%{cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>print</displayprefix>
+  <match>expr</match>
+  <displaypostfix>print expression to std::cout</displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>std::cout &lt;&lt; "${expr@}=" &lt;&lt; ${expr} &lt;&lt; std::endl;%{cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>snippet</displayprefix>
+  <match>defaulted-copy-assign</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>/// ${op/./\u\0/} copy ctor
+${type@:type}(const ${type}&amp;) = ${op@:default};
+/// ${op/./\u\0/} copy-assign operator
+${type}&amp; operator=(const ${type}&amp;) = ${op};%{cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>snippet</displayprefix>
+  <match>defaulted-move-assign</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>/// ${op/./\u\0/} move ctor
+${type@:type}(${type}&amp;&amp;) = ${op@:default};
+/// ${op/./\u\0/} move-assign operator
+${type}&amp; operator=(${type}&amp;&amp;) = ${op};%{cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>qa</displayprefix>
+  <match>assert</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>assert("${Sanity check}" &amp;&amp; ${expr});</fillin>
+ </item>
+ <item>
+  <displayprefix>snippet</displayprefix>
+  <match>mvctor-member</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>${member}_(std::move(other.${member}_))${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>snippet</displayprefix>
+  <match>mvassign-member</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>${member}_ = std::move(other.${member}_);${cursor}</fillin>
+ </item>
+</snippets>
