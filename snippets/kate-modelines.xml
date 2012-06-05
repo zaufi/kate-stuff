@@ -1,0 +1,283 @@
+<snippets
+  namespace="kate:"
+  license="LGPL v3+"
+  filetypes="*"
+  snippetlicense="public domain"
+  authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;"
+  name="kate-modelines">
+
+  <!-- I don't want to remember all that names ... so let kate to help me :-) -->
+
+  <!-- Boolean items -->
+  <item>
+    <match>auto-brackets</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Set autoinsertion of bracket on or off</displaypostfix>
+    <fillin>auto-brackets ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>auto-insert-doxygen</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Autoinsert asterisk in doxygen comments</displaypostfix>
+    <fillin>auto-insert-doxygen ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>backspace-indents</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Pressing backspace in leading whitespace unindents</displaypostfix>
+    <fillin>backspace-indents ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>block-selection</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Enable block selection mode</displaypostfix>
+    <fillin>block-selection ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>byte-order-marker</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Enable the byte order marker when saving unicode files</displaypostfix>
+    <fillin>byte-order-marker ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>bom</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Enable the byte order marker when saving unicode files</displaypostfix>
+    <fillin>bom ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>dynamic-word-wrap</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Enable dynamic word wrap of long lines</displaypostfix>
+    <fillin>dynamic-word-wrap ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>folding-markers</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Enable folding markers in the editor border</displaypostfix>
+    <fillin>folding-markers ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>icon-border</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Enable the icon border in the editor view</displaypostfix>
+    <fillin>icon-border ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>keep-extra-spaces</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Allow odd indentation level</displaypostfix>
+    <fillin>keep-extra-spaces ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>line-numbers</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Show line numbers</displaypostfix>
+    <fillin>line-numbers ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>newline-at-eof</match>
+    <displayprefix>KDE>=4.9</displayprefix>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Insert newline at end of file on save</displaypostfix>
+    <fillin>newline-at-eof ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>overwrite-mode</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Enable overwrite mode in the document</displaypostfix>
+    <fillin>overwrite-mode ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>persistent-selection</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Enable persistent text selection</displaypostfix>
+    <fillin>persistent-selection ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>remove-trailing-space</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Remove trailing spaces when editing a line</displaypostfix>
+    <fillin>remove-trailing-space ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>replace-tabs-save</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Replace tabs with spaces when saving the document</displaypostfix>
+    <fillin>replace-tabs-save ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>replace-tabs</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Replace tabs with spaces</displaypostfix>
+    <fillin>replace-tabs ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>replace-trailing-space-save</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Remove trailing spaces when saving the document</displaypostfix>
+    <fillin>replace-trailing-space-save ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>space-indent</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Pressing backspace in leading whitespace unindents</displaypostfix>
+    <fillin>space-indent ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>show-tabs</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Visualize tabs and trailing spaces</displaypostfix>
+    <fillin>show-tabs ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>tab-indents</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Pressing TAB key indents</displaypostfix>
+    <fillin>tab-indents ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>word-wrap</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Enable word wrap while typing text</displaypostfix>
+    <fillin>word-wrap ${type:true};${cursor}</fillin>
+  </item>
+  <item>
+    <match>wrap-cursor</match>
+    <displayarguments> true|false</displayarguments>
+    <displaypostfix>Wrap the text cursor at the end of a line</displaypostfix>
+    <fillin>wrap-cursor ${type:true};${cursor}</fillin>
+  </item>
+
+  <!-- Integer items -->
+  <item>
+    <match>auto-center-lines</match>
+    <displayarguments> integer</displayarguments>
+    <displaypostfix>Set the number of autocenter lines</displaypostfix>
+    <fillin>auto-center-lines ${integer};${cursor}</fillin>
+  </item>
+  <item>
+    <match>font-size</match>
+    <displayarguments> integer</displayarguments>
+    <displaypostfix>Set the point size of the document font</displaypostfix>
+    <fillin>font-size ${integer};${cursor}</fillin>
+  </item>
+  <item>
+    <match>indent-width</match>
+    <displayarguments> integer</displayarguments>
+    <displaypostfix>Set the indentation depth for each indent level</displaypostfix>
+    <fillin>indent-width ${integer};${cursor}</fillin>
+  </item>
+  <item>
+    <match>smart-home</match>
+    <displayarguments> integer</displayarguments>
+    <displaypostfix>Enable smart home navigation</displaypostfix>
+    <fillin>smart-home ${integer};${cursor}</fillin>
+  </item>
+  <item>
+    <match>tab-width</match>
+    <displayarguments> integer</displayarguments>
+    <displaypostfix>Set the tab display width</displaypostfix>
+    <fillin>tab-width ${integer};${cursor}</fillin>
+  </item>
+  <item>
+    <match>undo-steps</match>
+    <displayarguments> integer</displayarguments>
+    <displaypostfix>Set the number of undo steps to remember</displaypostfix>
+    <fillin>undo-steps ${integer:0};${cursor}</fillin>
+  </item>
+  <item>
+    <match>word-wrap-column</match>
+    <displayarguments> integer</displayarguments>
+    <displaypostfix>Set the word wrap column</displaypostfix>
+    <fillin>word-wrap-column ${integer:72};${cursor}</fillin>
+  </item>
+
+  <!-- String items -->
+  <item>
+    <match>background-color</match>
+    <displayarguments> #color</displayarguments>
+    <displaypostfix>Set the document background color</displaypostfix>
+    <fillin>background-color #${color};${cursor}</fillin>
+  </item>
+  <item>
+    <match>bracket-highlight-color</match>
+    <displayarguments> #color</displayarguments>
+    <displaypostfix>Set the color for the bracket highlight</displaypostfix>
+    <fillin>bracket-highlight-color #${color};${cursor}</fillin>
+  </item>
+  <item>
+    <match>current-line-color</match>
+    <displayarguments> #color</displayarguments>
+    <displaypostfix>Set the background color for the current line</displaypostfix>
+    <fillin>current-line-color #${color};${cursor}</fillin>
+  </item>
+  <item>
+    <match>default-dictionary</match>
+    <displayarguments> lang</displayarguments>
+    <displaypostfix>Set the default dictionary used for spell checking</displaypostfix>
+    <fillin>default-dictionary ${lang:en_US};${cursor}</fillin>
+  </item>
+  <item>
+    <match>eol</match>
+    <displayarguments> unix|mac|dos</displayarguments>
+    <displaypostfix>Sets the end of line mode</displaypostfix>
+    <fillin>eol ${style:unix};${cursor}</fillin>
+  </item>
+  <item>
+    <match>end-of-line</match>
+    <displayarguments> unix|mac|dos</displayarguments>
+    <displaypostfix>Sets the end of line mode</displaypostfix>
+    <fillin>end-of-line ${style:unix};${cursor}</fillin>
+  </item>
+  <item>
+    <match>font</match>
+    <displayarguments> font-name</displayarguments>
+    <displaypostfix>Set the font of the document</displaypostfix>
+    <fillin>font ${font};${cursor}</fillin>
+  </item>
+  <item>
+    <match>hl</match>
+    <displayarguments> syntax-file</displayarguments>
+    <displaypostfix>Set the syntax highlighting</displaypostfix>
+    <fillin>hl ${syntax-file};${cursor}</fillin>
+  </item>
+  <item>
+    <match>icon-bar-color</match>
+    <displayarguments> #color</displayarguments>
+    <displaypostfix>Set the icon bar color</displaypostfix>
+    <fillin>icon-bar-color #${color};${cursor}</fillin>
+  </item>
+  <item>
+    <match>indent-mode</match>
+    <displayarguments> string</displayarguments>
+    <displaypostfix>Set the auto indentation style</displaypostfix>
+    <fillin>indent-mode ${string};${cursor}</fillin>
+  </item>
+  <item>
+    <match>scheme</match>
+    <displayarguments> string</displayarguments>
+    <displaypostfix>Set the color scheme</displaypostfix>
+    <fillin>scheme ${string};${cursor}</fillin>
+  </item>
+  <item>
+    <match>selection-color</match>
+    <displayarguments> #color</displayarguments>
+    <displaypostfix>Set the text selection color</displaypostfix>
+    <fillin>selection-color #${color};${cursor}</fillin>
+  </item>
+  <item>
+    <match>syntax</match>
+    <displayarguments> syntax-file</displayarguments>
+    <displaypostfix>Set the syntax highlighting</displaypostfix>
+    <fillin>syntax ${syntax-file};${cursor}</fillin>
+  </item>
+  <item>
+    <match>word-wrap-marker-color</match>
+    <displayarguments> #color</displayarguments>
+    <displaypostfix>Set the word wrap marker color</displaypostfix>
+    <fillin>word-wrap-marker-color #${color};${cursor}</fillin>
+  </item>
+
+</snippets>
+<!-- kate: indent-width 2; -->
