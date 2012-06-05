@@ -1,5 +1,12 @@
-<snippets namespace="gcc:" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;" name="gcc predefined macros and builtins">
-  <!-- Predefined GCC stuff version 1.0.1 -->
+<snippets
+  namespace="gcc:"
+  license="GPL"
+  filetypes="C++"
+  snippetlicense="public domain"
+  authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;"
+  name="gcc predefined macros and builtins"
+  >
+  <!-- Predefined GCC stuff version 1.0.2 -->
   <item><match>_FORTIFY_SOURCE</match><fillin>_FORTIFY_SOURCE</fillin></item>
   <item><match>_GNU_SOURCE</match><fillin>_GNU_SOURCE</fillin></item>
   <item><match>_LP64</match><fillin>_LP64</fillin></item>
@@ -8,9 +15,18 @@
   <item><match>__3dNOW__</match><fillin>__3dNOW__</fillin></item>
   <item><match>__ABM__</match><fillin>__ABM__</fillin></item>
   <item><match>__AES__</match><fillin>__AES__</fillin></item>
+  <item><match>__ATOMIC_ACQUIRE</match><fillin>__ATOMIC_ACQUIRE</fillin></item>
+  <item><match>__ATOMIC_ACQ_REL</match><fillin>__ATOMIC_ACQ_REL</fillin></item>
+  <item><match>__ATOMIC_CONSUME</match><fillin>__ATOMIC_CONSUME</fillin></item>
+  <item><match>__ATOMIC_RELAXED</match><fillin>__ATOMIC_RELAXED</fillin></item>
+  <item><match>__ATOMIC_RELEASE</match><fillin>__ATOMIC_RELEASE</fillin></item>
+  <item><match>__ATOMIC_SEQ_CST</match><fillin>__ATOMIC_SEQ_CST</fillin></item>
+  <item><match>__AVX2__</match><fillin>__AVX2__</fillin></item>
   <item><match>__AVX__</match><fillin>__AVX__</fillin></item>
   <item><match>__BASE_FILE__</match><fillin>__BASE_FILE__</fillin></item>
   <item><match>__BIGGEST_ALIGNMENT__</match><fillin>__BIGGEST_ALIGNMENT__</fillin></item>
+  <item><match>__BMI2__</match><fillin>__BMI2__</fillin></item>
+  <item><match>__BMI__</match><fillin>__BMI__</fillin></item>
   <item><match>__BYTE_ORDER__</match><fillin>__BYTE_ORDER__</fillin></item>
   <item><match>__CHAR16_TYPE__</match><fillin>__CHAR16_TYPE__</fillin></item>
   <item><match>__CHAR32_TYPE__</match><fillin>__CHAR32_TYPE__</fillin></item>
@@ -58,6 +74,7 @@
   <item><match>__DEPRECATED</match><fillin>__DEPRECATED</fillin></item>
   <item><match>__ELF__</match><fillin>__ELF__</fillin></item>
   <item><match>__EXCEPTIONS</match><fillin>__EXCEPTIONS</fillin></item>
+  <item><match>__F16C__</match><fillin>__F16C__</fillin></item>
   <item><match>__FINITE_MATH_ONLY__</match><fillin>__FINITE_MATH_ONLY__</fillin></item>
   <item><match>__FLOAT_WORD_ORDER__</match><fillin>__FLOAT_WORD_ORDER__</fillin></item>
   <item><match>__FLT_DECIMAL_DIG__</match><fillin>__FLT_DECIMAL_DIG__</fillin></item>
@@ -76,6 +93,22 @@
   <item><match>__FLT_MIN_EXP__</match><fillin>__FLT_MIN_EXP__</fillin></item>
   <item><match>__FLT_MIN__</match><fillin>__FLT_MIN__</fillin></item>
   <item><match>__FLT_RADIX__</match><fillin>__FLT_RADIX__</fillin></item>
+  <item><match>__FMA4__</match><fillin>__FMA4__</fillin></item>
+  <item><match>__FMA__</match><fillin>__FMA__</fillin></item>
+  <item><match>__FP_FAST_FMA</match><fillin>__FP_FAST_FMA</fillin></item>
+  <item><match>__FP_FAST_FMAF</match><fillin>__FP_FAST_FMAF</fillin></item>
+  <item><match>__FSGSBASE__</match><fillin>__FSGSBASE__</fillin></item>
+  <item><match>__GCC_ATOMIC_BOOL_LOCK_FREE</match><fillin>__GCC_ATOMIC_BOOL_LOCK_FREE</fillin></item>
+  <item><match>__GCC_ATOMIC_CHAR16_T_LOCK_FREE</match><fillin>__GCC_ATOMIC_CHAR16_T_LOCK_FREE</fillin></item>
+  <item><match>__GCC_ATOMIC_CHAR32_T_LOCK_FREE</match><fillin>__GCC_ATOMIC_CHAR32_T_LOCK_FREE</fillin></item>
+  <item><match>__GCC_ATOMIC_CHAR_LOCK_FREE</match><fillin>__GCC_ATOMIC_CHAR_LOCK_FREE</fillin></item>
+  <item><match>__GCC_ATOMIC_INT_LOCK_FREE</match><fillin>__GCC_ATOMIC_INT_LOCK_FREE</fillin></item>
+  <item><match>__GCC_ATOMIC_LLONG_LOCK_FREE</match><fillin>__GCC_ATOMIC_LLONG_LOCK_FREE</fillin></item>
+  <item><match>__GCC_ATOMIC_LONG_LOCK_FREE</match><fillin>__GCC_ATOMIC_LONG_LOCK_FREE</fillin></item>
+  <item><match>__GCC_ATOMIC_POINTER_LOCK_FREE</match><fillin>__GCC_ATOMIC_POINTER_LOCK_FREE</fillin></item>
+  <item><match>__GCC_ATOMIC_SHORT_LOCK_FREE</match><fillin>__GCC_ATOMIC_SHORT_LOCK_FREE</fillin></item>
+  <item><match>__GCC_ATOMIC_TEST_AND_SET_TRUEVAL</match><fillin>__GCC_ATOMIC_TEST_AND_SET_TRUEVAL</fillin></item>
+  <item><match>__GCC_ATOMIC_WCHAR_T_LOCK_FREE</match><fillin>__GCC_ATOMIC_WCHAR_T_LOCK_FREE</fillin></item>
   <item><match>__GCC_HAVE_DWARF2_CFI_ASM</match><fillin>__GCC_HAVE_DWARF2_CFI_ASM</fillin></item>
   <item><match>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1</match><fillin>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1</fillin></item>
   <item><match>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_16</match><fillin>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_16</fillin></item>
@@ -144,6 +177,8 @@
   <item><match>__LONG_LONG_MAX__</match><fillin>__LONG_LONG_MAX__</fillin></item>
   <item><match>__LONG_MAX__</match><fillin>__LONG_MAX__</fillin></item>
   <item><match>__LP64__</match><fillin>__LP64__</fillin></item>
+  <item><match>__LWP__</match><fillin>__LWP__</fillin></item>
+  <item><match>__LZCNT__</match><fillin>__LZCNT__</fillin></item>
   <item><match>__MMX__</match><fillin>__MMX__</fillin></item>
   <item><match>__NEXT_RUNTIME__</match><fillin>__NEXT_RUNTIME__</fillin></item>
   <item><match>__NO_INLINE__</match><fillin>__NO_INLINE__</fillin></item>
@@ -153,11 +188,12 @@
   <item><match>__ORDER_LITTLE_ENDIAN__</match><fillin>__ORDER_LITTLE_ENDIAN__</fillin></item>
   <item><match>__ORDER_PDP_ENDIAN__</match><fillin>__ORDER_PDP_ENDIAN__</fillin></item>
   <item><match>__PCLMUL__</match><fillin>__PCLMUL__</fillin></item>
+  <item><match>__PIC__</match><fillin>__PIC__</fillin></item>
   <item><match>__POPCNT__</match><fillin>__POPCNT__</fillin></item>
   <item><match>__PRAGMA_REDEFINE_EXTNAME</match><fillin>__PRAGMA_REDEFINE_EXTNAME</fillin></item>
   <item><match>__PTRDIFF_MAX__</match><fillin>__PTRDIFF_MAX__</fillin></item>
   <item><match>__PTRDIFF_TYPE__</match><fillin>__PTRDIFF_TYPE__</fillin></item>
-  <item><match>__PIC__</match><fillin>__PIC__</fillin></item>
+  <item><match>__RDRND__</match><fillin>__RDRND__</fillin></item>
   <item><match>__REGISTER_PREFIX__</match><fillin>__REGISTER_PREFIX__</fillin></item>
   <item><match>__SCHAR_MAX__</match><fillin>__SCHAR_MAX__</fillin></item>
   <item><match>__SHRT_MAX__</match><fillin>__SHRT_MAX__</fillin></item>
@@ -190,7 +226,13 @@
   <item><match>__SSP_ALL__</match><fillin>__SSP_ALL__</fillin></item>
   <item><match>__SSP__</match><fillin>__SSP__</fillin></item>
   <item><match>__SSSE3__</match><fillin>__SSSE3__</fillin></item>
+  <item><match>__STDC_HOSTED__</match><fillin>__STDC_HOSTED__</fillin></item>
+  <item><match>__STDC_UTF_16__</match><fillin>__STDC_UTF_16__</fillin></item>
+  <item><match>__STDC_UTF_32__</match><fillin>__STDC_UTF_32__</fillin></item>
+  <item><match>__STDC_VERSION__</match><fillin>__STDC_VERSION__</fillin></item>
+  <item><match>__STDC__</match><fillin>__STDC__</fillin></item>
   <item><match>__STRICT_ANSI__</match><fillin>__STRICT_ANSI__</fillin></item>
+  <item><match>__TBM__</match><fillin>__TBM__</fillin></item>
   <item><match>__TIMESTAMP__</match><fillin>__TIMESTAMP__</fillin></item>
   <item><match>__UINT16_C</match><fillin>__UINT16_C</fillin></item>
   <item><match>__UINT16_MAX__</match><fillin>__UINT16_MAX__</fillin></item>
@@ -236,6 +278,7 @@
   <item><match>__WINT_MAX__</match><fillin>__WINT_MAX__</fillin></item>
   <item><match>__WINT_MIN__</match><fillin>__WINT_MIN__</fillin></item>
   <item><match>__WINT_TYPE__</match><fillin>__WINT_TYPE__</fillin></item>
+  <item><match>__XOP__</match><fillin>__XOP__</fillin></item>
   <item><match>__amd64</match><fillin>__amd64</fillin></item>
   <item><match>__amd64__</match><fillin>__amd64__</fillin></item>
   <item><match>__amdfam10</match><fillin>__amdfam10</fillin></item>
@@ -245,10 +288,17 @@
   <item><match>__athlon_sse__</match><fillin>__athlon_sse__</fillin></item>
   <item><match>__atom</match><fillin>__atom</fillin></item>
   <item><match>__atom__</match><fillin>__atom__</fillin></item>
+  <item><match>__bdver1</match><fillin>__bdver1</fillin></item>
+  <item><match>__bdver1__</match><fillin>__bdver1__</fillin></item>
+  <item><match>__bdver2</match><fillin>__bdver2</fillin></item>
+  <item><match>__bdver2__</match><fillin>__bdver2__</fillin></item>
+  <item><match>__btver1</match><fillin>__btver1</fillin></item>
+  <item><match>__btver1__</match><fillin>__btver1__</fillin></item>
   <item><match>__core2</match><fillin>__core2</fillin></item>
   <item><match>__core2__</match><fillin>__core2__</fillin></item>
   <item><match>__corei7</match><fillin>__corei7</fillin></item>
   <item><match>__corei7__</match><fillin>__corei7__</fillin></item>
+  <item><match>__cplusplus</match><fillin>__cplusplus</fillin></item>
   <item><match>__geode</match><fillin>__geode</fillin></item>
   <item><match>__geode__</match><fillin>__geode__</fillin></item>
   <item><match>__gnu_linux__</match><fillin>__gnu_linux__</fillin></item>
@@ -282,6 +332,9 @@
   <item><match>__tune_athlon__</match><fillin>__tune_athlon__</fillin></item>
   <item><match>__tune_athlon_sse__</match><fillin>__tune_athlon_sse__</fillin></item>
   <item><match>__tune_atom__</match><fillin>__tune_atom__</fillin></item>
+  <item><match>__tune_bdver1__</match><fillin>__tune_bdver1__</fillin></item>
+  <item><match>__tune_bdver2__</match><fillin>__tune_bdver2__</fillin></item>
+  <item><match>__tune_btver1__</match><fillin>__tune_btver1__</fillin></item>
   <item><match>__tune_core2__</match><fillin>__tune_core2__</fillin></item>
   <item><match>__tune_corei7__</match><fillin>__tune_corei7__</fillin></item>
   <item><match>__tune_geode__</match><fillin>__tune_geode__</fillin></item>
@@ -1277,3 +1330,4 @@
     <fillin>#pragma GCC reset_options</fillin>
   </item>
 </snippets>
+<!-- kate: indent-width 2; tab-width 2; -->
