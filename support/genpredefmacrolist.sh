@@ -70,8 +70,13 @@ for cf in $option_files; do
 done
 
 # Find desired gcc binary (w/ default to `gcc`)
-gcc_bin=${CC:gcc}
+if [ ext = ".cc" ]; then
+    gcc_bin=${CC:-g++}
+else
+    gcc_bin=${CC:-gcc}
+fi
 gcc_bin=`which "$gcc_bin" 2>/dev/null`
+echo $gcc_bin
 if [ -x "$gcc_bin" ]; then
     einfo "Using gcc: $gcc_bin" >&2
 else
