@@ -137,13 +137,13 @@
   </contexts>
 
   <itemDatas>
-    <itemData name="Comment" defStyleNum="dsComment" spellChecking="true" />
-    <itemData name="Keyword" defStyleNum="dsKeyword" spellChecking="false" />
-    <itemData name="Variable" defStyleNum="dsFunction" spellChecking="false" />
-    <itemData name="Boolean True" defStyleNum="dsOthers" spellChecking="false" />
-    <itemData name="Boolean False" defStyleNum="dsOthers" spellChecking="false" />
-    <itemData name="Number" defStyleNum="dsDecVal" spellChecking="false" />
-    <itemData name="String" defStyleNum="dsString" spellChecking="false" />
+    <itemData name="Comment"       defStyleNum="dsComment"  spellChecking="true"  color="#e85848" />
+    <itemData name="Keyword"       defStyleNum="dsKeyword"  spellChecking="false" color="#777755" />
+    <itemData name="Variable"      defStyleNum="dsFunction" spellChecking="false" color="#676757" />
+    <itemData name="Boolean True"  defStyleNum="dsOthers"   spellChecking="false" color="#446544" />
+    <itemData name="Boolean False" defStyleNum="dsOthers"   spellChecking="false" color="#845757" />
+    <itemData name="Number"        defStyleNum="dsDecVal"   spellChecking="false" color="#555560" />
+    <itemData name="String"        defStyleNum="dsString"   spellChecking="false" color="#604460" />
   </itemDatas>
 
 </highlighting>

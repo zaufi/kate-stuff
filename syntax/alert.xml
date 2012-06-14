@@ -60,10 +60,10 @@
       </context>
     </contexts>
     <itemDatas>
-      <itemData name="Normal Text" defStyleNum="dsNormal"/>
-      <itemData name="Alert Level 1" defStyleNum="dsAlert"/>
-      <itemData name="Alert Level 2" defStyleNum="dsAlert"/>
-      <itemData name="Alert Level 3" defStyleNum="dsAlert"/>
+      <itemData name="Normal Text"   defStyleNum="dsNormal"/>
+      <itemData name="Alert Level 1" defStyleNum="dsAlert" color="#e85848" selColor="#e85848" backgroundColor="#451e1a" />
+      <itemData name="Alert Level 2" defStyleNum="dsAlert" color="#ca9219" selColor="#ca9219" backgroundColor="#451e1a" />
+      <itemData name="Alert Level 3" defStyleNum="dsAlert" color="#81ca2d" selColor="#81ca2d" />
     </itemDatas>
   </highlighting>
   <general>
