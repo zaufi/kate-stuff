@@ -11,15 +11,18 @@
 
   Homepage: http://kde-files.org/content/show.php?content=90660
   -->
-<language name="GCCExtensions" version="0.1"
-          kateversion="2.4"
-          section="Sources"
-          extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc;"
-          mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr;text/x-csrc"
-          author="Alex Turbov (i.zaufi@gmail.com)"
-          license="LGPL"
-          hidden="true"
-          priority="5">
+<language
+    name="GCCExtensions"
+    version="0.1"
+    kateversion="2.4"
+    section="Sources"
+    extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc;"
+    mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr;text/x-csrc"
+    author="Alex Turbov (i.zaufi@gmail.com)"
+    license="LGPL"
+    hidden="true"
+    priority="5"
+  >
 <!--
   The main purpose of this file is to hold GNU gcc extensions syntax in a single place,
   so later it can be included to other (C++ based) syntaxes.
@@ -501,4 +504,4 @@
   <keywords casesensitive="1"/>
 </general>
 </language>
-<!-- kate: indent-width 2; -->
+<!-- kate: indent-width 2; tab-width 2; -->

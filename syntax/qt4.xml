@@ -10,14 +10,17 @@
 
   Homepage: http://kde-files.org/content/show.php?content=90660
   -->
-<language name="Qt4/C++" version="0.1"
-          kateversion="2.4"
-          section="Sources"
-          extensions="*.moc"
-          mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
-          author="Alex Turbov (i.zaufi@gmail.com)"
-          license="LGPL"
-          priority="5">
+<language
+    name="Qt4/C++"
+    version="0.1"
+    kateversion="2.4"
+    section="Sources"
+    extensions="*.moc"
+    mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
+    author="Alex Turbov (i.zaufi@gmail.com)"
+    license="LGPL"
+    priority="5"
+  >
 <!--
   The main purpose of this file is to hold Qt extensions syntax in a single place,
   so later it can be included (using IncludeRules) to other (C++ based) syntaxes.
@@ -1288,4 +1291,4 @@
 </highlighting>
 
 </language>
-<!-- kate: indent-width 2; -->
+<!-- kate: indent-width 2; tab-width 2; -->

@@ -8,13 +8,17 @@
     <!-- printf-like format strings conversion specifiers -->
     <!ENTITY convspec "diouxXeEfFgGaAcsP&#37;">
 ]>
-<language name="C++" section="Sources"
-          version="1.49.8" kateversion="2.4"
-          indenter="cstyle"
-          mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
-          extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc;*.moc"
-          author="Alex Turbov (i.zaufi@gmail.com)"
-          priority="20">
+<language
+    name="C++"
+    section="Sources"
+    version="1.49.8"
+    kateversion="2.4"
+    indenter="cstyle"
+    mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
+    extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc;*.moc"
+    author="Alex Turbov (i.zaufi@gmail.com)"
+    priority="20"
+  >
 <!--
 ##########################################################################
 ## Fixes by Sebastian Pipping (webmaster@hartwork.org)
@@ -447,4 +451,4 @@
     <keywords casesensitive="1" />
   </general>
 </language>
-<!-- kate: indent-width 2; -->
+<!-- kate: indent-width 2; tab-width 2; -->
