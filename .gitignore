@@ -1,0 +1,3 @@
+*.py[co]
+*.kate-swp
+__pycache__
