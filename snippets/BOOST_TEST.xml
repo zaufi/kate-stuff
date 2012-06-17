@@ -1,4 +1,11 @@
-<snippets namespace="" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;" name="boost::test by zaufi">
+<snippets
+    namespace=""
+    license="GPL"
+    filetypes="C++"
+    snippetlicense="public domain"
+    authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;"
+    name="boost::test by zaufi"
+  >
   <!-- Version 1.2.2 -->
  <item>
   <displayprefix></displayprefix>
@@ -492,3 +499,4 @@ BOOST_AUTO_TEST_SUITE_END()                                 // End of${test_suit
  </item>
 
 </snippets>
+<!-- kate: indent-width 2; tab-width 2; -->

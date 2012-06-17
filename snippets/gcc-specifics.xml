@@ -1,10 +1,10 @@
 <snippets
-  namespace="gcc:"
-  license="GPL"
-  filetypes="C++"
-  snippetlicense="public domain"
-  authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;"
-  name="gcc predefined macros and builtins"
+    namespace="gcc:"
+    license="GPL"
+    filetypes="C++"
+    snippetlicense="public domain"
+    authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;"
+    name="gcc predefined macros, builtins, attributes and pragmas"
   >
   <!-- Predefined GCC stuff version 1.0.2 -->
   <item><match>_FORTIFY_SOURCE</match><fillin>_FORTIFY_SOURCE</fillin></item>

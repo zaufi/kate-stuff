@@ -1,4 +1,11 @@
-<snippets namespace="pp:" license="GPL" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;" name="BOOST_PREPROCESSOR by zaufi">
+<snippets
+    namespace="pp:"
+    license="GPL"
+    filetypes="C++"
+    snippetlicense="public domain"
+    authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;"
+    name="BOOST_PREPROCESSOR by zaufi"
+  >
  <!-- Version 1.0 -->
  <script>function ppGuard() {
   var filename = document.fileName().toUpperCase();
@@ -1280,3 +1287,4 @@ ${cursor}
   <fillin>#define ${OP}(${S}, ${State}, ${Elem})</fillin>
  </item>
 </snippets>
+<!-- kate: indent-width 2; tab-width 2; -->
