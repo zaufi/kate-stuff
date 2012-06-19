@@ -11,7 +11,7 @@
 <language
     name="C++"
     section="Sources"
-    version="1.49.8"
+    version="1.49.9"
     kateversion="2.4"
     indenter="cstyle"
     mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
@@ -154,14 +154,14 @@
     </list>
 
     <contexts>
-      <context attribute="Normal Text" lineEndContext="#stay" name="Normal">
+      <context name="Normal" attribute="Normal Text" lineEndContext="#stay">
         <DetectSpaces />
         <RegExpr attribute="Preprocessor" context="Outscoped" String="(#|%\:|\?\?=)\s*if\s+(0|false)\s*" beginRegion="PP" firstNonSpace="true" />
         <RegExpr attribute="Preprocessor" context="Inscoped" String="(#|%\:|\?\?=)\s*if\s+(1|true)\s*" beginRegion="PP" firstNonSpace="true" />
         <IncludeRules context="Main" />
       </context>
 
-      <context attribute="Normal Text" lineEndContext="#stay" name="Main">
+      <context name="Main" attribute="Normal Text" lineEndContext="#stay">
         <DetectChar context="AfterHash" char="#" firstNonSpace="true" lookAhead="true" />
         <Detect2Chars context="AfterHash" char="%" char1=":" firstNonSpace="true" lookAhead="true" />
         <StringDetect context="AfterHash" String="??=" firstNonSpace="true" lookAhead="true" />
@@ -169,6 +169,10 @@
         <StringDetect attribute="Error" String="??=" context="#stay" />
         <StringDetect attribute="Region Marker" context="Region Marker" String="//BEGIN" beginRegion="Region1" firstNonSpace="true" />
         <StringDetect attribute="Region Marker" context="Region Marker" String="//END" endRegion="Region1" firstNonSpace="true" />
+        <!-- ATTENTION Special case `operator""` cuz Kate doesn't recognize
+                       `operator` joined w/ quotes as a keyword here. BUG??
+          -->
+        <RegExpr attribute="Normal Text" context="UDLOperator" String="operator\s*&quot;&quot; _[0-9A-Za-z]*\b" lookAhead="true" />
         <keyword attribute="Keyword" context="#stay" String="keywords" />
         <StringDetect attribute="Standard Classes" context="Standard Classes" String="std::" />
         <StringDetect attribute="Boost Stuff" context="Boost Stuff" String="boost::" />
@@ -202,11 +206,14 @@
         <RegExpr attribute="CONSTS/MACROS" context="#stay" String="[A-Z][A-Z0-9_]{2,}\b" />
         <RegExpr attribute="Types (*_t/*_type)" context="#stay" String="[a-zA-Z][a-zA-Z0-9_]*_t(ype)?\b" />
         <DetectIdentifier />
+        <RegExpr attribute="Float" context="#stay" String="([0-9]+)*\.[0-9]+([Ee][\+\-]?[0-9]+)?_[0-9a-zA-Z]*\b" />
         <Float attribute="Float" context="#stay">
           <AnyChar String="fFlL" attribute="Float" context="#stay" />
+          <StringDetect attribute="Float" context="UDLFloatSuffix" String="_" insensitive="true" />
         </Float>
         <HlCOct attribute="Octal" context="#stay" />
         <HlCHex attribute="Hex" context="#stay" />
+        <RegExpr attribute="Decimal" context="#stay" String="[0-9]+_[0-9a-zA-Z]*\b" />
         <Int attribute="Decimal" context="#stay">
           <StringDetect attribute="Decimal" context="#stay" String="ULL" insensitive="true" />
           <StringDetect attribute="Decimal" context="#stay" String="LUL" insensitive="true" />
@@ -216,6 +223,7 @@
           <StringDetect attribute="Decimal" context="#stay" String="LL" insensitive="true" />
           <StringDetect attribute="Decimal" context="#stay" String="U" insensitive="true" />
           <StringDetect attribute="Decimal" context="#stay" String="L" insensitive="true" />
+          <StringDetect attribute="Decimal" context="UDLDecimalSuffix" String="_" />
         </Int>
         <IncludeRules context="##Doxygen" />
         <IncludeRules context="AlignedComments" />
@@ -229,13 +237,27 @@
         <DetectChar attribute="Error" context="#stay" char="@" />
       </context>
 
-      <context attribute="String" lineEndContext="#pop" name="Char Literal">
+      <context name="UDLOperator" attribute="Normal Text" lineEndContext="#pop">
+        <StringDetect attribute="Keyword" context="#stay" String="operator" />
+        <StringDetect attribute="String" context="#stay" String="&quot;&quot;" />
+        <DetectIdentifier context="#pop" />
+      </context>
+
+      <context name="UDLDecimalSuffix" attribute="Decimal" lineEndContext="#pop">
+        <DetectIdentifier />
+      </context>
+
+      <context name="UDLFloatSuffix" attribute="Float" lineEndContext="#pop">
+        <DetectIdentifier context="#pop" />
+      </context>
+
+      <context name="Char Literal" attribute="String" lineEndContext="#pop">
         <IncludeRules context="Universal Char" />
         <DetectChar attribute="String Char" context="Simple Esc" char="\" />
         <DetectChar attribute="String" context="#pop" char="'" />
       </context>
 
-      <context attribute="String" lineEndContext="#pop" name="U-Char Literal">
+      <context name="U-Char Literal" attribute="String" lineEndContext="#pop">
         <IncludeRules context="Universal Char" />
         <DetectChar attribute="String Char" context="Simple Esc" char="\" />
         <DetectChar attribute="String" context="#pop" char="'" />
@@ -243,41 +265,47 @@
         <RegExpr attribute="String" context="#stay" String=".{1}" />
       </context>
 
-      <context attribute="String Char" lineEndContext="#pop" name="Simple Esc">
+      <context  name="Simple Esc" attribute="String Char" lineEndContext="#pop">
         <AnyChar attribute="String Char" context="#pop" String="tnvbrfa'&quot;\" />
         <RegExpr attribute="String Char" context="#pop" String="[0-7]{1,3}" />
         <RegExpr attribute="String Char" context="#pop" String="x[0-9A-Fa-f]{1,}" />
         <RegExpr attribute="String" context="#pop" String="." />
       </context>
 
-      <context attribute="String Char" lineEndContext="#pop" name="Universal Char">
+      <context name="Universal Char" attribute="String Char" lineEndContext="#pop">
         <RegExpr attribute="String Char" context="#stay" String="\\u[0-9A-Fa-f]{4}" />
         <RegExpr attribute="Error" context="#stay" String="\\u.{0,3}" />
         <RegExpr attribute="String Char" context="#stay" String="\\U[0-9A-Fa-f]{8}" />
         <RegExpr attribute="Error" context="#stay" String="\\U.{0,7}" />
       </context>
 
-      <context attribute="String" lineEndContext="#pop" name="String">
+      <context name="String" attribute="String" lineEndContext="#pop">
         <LineContinue attribute="String" context="#stay" />
         <HlCStringChar attribute="String Char" context="#stay" />
         <IncludeRules context="Universal Char" />
         <RegExpr attribute="String Char" context="#stay" String="%[^&quot;&convspec;]*[&convspec;]" />
-        <DetectChar attribute="String" context="#pop" char="&quot;" />
+        <DetectChar attribute="String" context="UDLStringSuffix" char="&quot;" />
       </context>
 
-      <context attribute="String" lineEndContext="#stay" name="RawString" dynamic="true">
+      <context name="UDLStringSuffix" attribute="String" lineEndContext="#pop#pop">
+        <RegExpr attribute="String" context="#pop#pop" String="_[0-9A-Z-a-z]*\b" />
+        <!-- TODO Is there any better way to quit the current context ?? -->
+        <RegExpr context="#pop#pop" String=".*" lookAhead="true" />
+      </context>
+
+      <context name="RawString" attribute="String" lineEndContext="#stay" dynamic="true">
         <LineContinue attribute="String" context="#stay" />
         <RegExpr attribute="String Char" context="#stay" String="%[^&quot;&convspec;]*[&convspec;]" />
         <RegExpr attribute="String" context="#pop" String="\)%2&quot;" dynamic="true"/>
       </context>
 
-      <context lineEndContext="#pop" name="DetectIdentifierEnd" attribute="Normal Text">
+      <context name="DetectIdentifierEnd" attribute="Normal Text" lineEndContext="#pop">
         <AnyChar context="#pop" String="&punctuators;" attribute="Symbol" />
       </context>
 
-      <context attribute="Region Marker" lineEndContext="#pop" name="Region Marker" />
+      <context name="Region Marker" attribute="Region Marker" lineEndContext="#pop" />
 
-      <context lineEndContext="#pop" name="DetectNSEnd" attribute="Normal Text">
+      <context name="DetectNSEnd" attribute="Normal Text" lineEndContext="#pop">
         <keyword attribute="Keyword" context="#stay" String="template" />
         <DetectIdentifier context="#stay" />
         <AnyChar context="#pop" String="&separators;" attribute="Separator Symbol" />
@@ -285,19 +313,19 @@
         <AnyChar context="#stay" String="&space;" attribute="Normal Text" />
       </context>
 
-      <context attribute="Standard Classes" lineEndContext="#pop" name="Standard Classes">
+      <context name="Standard Classes" attribute="Standard Classes" lineEndContext="#pop">
         <IncludeRules context="DetectNSEnd" />
       </context>
 
-      <context attribute="Boost Stuff" lineEndContext="#pop" name="Boost Stuff">
+      <context name="Boost Stuff" attribute="Boost Stuff" lineEndContext="#pop">
         <IncludeRules context="DetectNSEnd" />
       </context>
 
-      <context attribute="Internals" lineEndContext="#pop" name="InternalsNS">
+      <context name="InternalsNS" attribute="Internals" lineEndContext="#pop">
         <IncludeRules context="DetectNSEnd" />
       </context>
 
-      <context attribute="Comment" lineEndContext="#pop" name="Commentar 1">
+      <context name="Commentar 1" attribute="Comment" lineEndContext="#pop">
         <LineContinue attribute="Comment" context="#stay" />
         <DetectSpaces />
         <IncludeRules context="##Alerts" />
@@ -305,7 +333,7 @@
         <DetectIdentifier />
       </context>
 
-      <context attribute="Comment" lineEndContext="#stay" name="Commentar 2">
+      <context name="Commentar 2" attribute="Comment" lineEndContext="#stay">
         <DetectSpaces />
         <Detect2Chars attribute="Comment" context="#pop" char="*" char1="/" endRegion="Comment" />
         <IncludeRules context="##Alerts" />
@@ -313,7 +341,7 @@
         <DetectIdentifier />
       </context>
 
-      <context attribute="Error" lineEndContext="#pop" name="AfterHash">
+      <context name="AfterHash" attribute="Error" lineEndContext="#pop">
         <!-- define, elif, else, endif, error, if, ifdef, ifndef, include, include_next, line, pragma, undef, warning -->
         <RegExpr attribute="Preprocessor" context="Preprocessor" String="(#|%\:|\?\?=)\s*if(?:def|ndef)?(?=\s+\S)" insensitive="true" beginRegion="PP" firstNonSpace="true" />
         <RegExpr attribute="Preprocessor" context="Preprocessor" String="(#|%\:|\?\?=)\s*endif" insensitive="true" endRegion="PP" firstNonSpace="true" />
@@ -322,7 +350,7 @@
         <RegExpr attribute="Preprocessor" context="Preprocessor" String="(#|%\:|\?\?=)\s+[0-9]+" insensitive="true" firstNonSpace="true" />
       </context>
 
-      <context attribute="Preprocessor" lineEndContext="#pop" name="Preprocessor">
+      <context name="Preprocessor" attribute="Preprocessor" lineEndContext="#pop">
         <LineContinue attribute="Preprocessor" context="#stay" />
         <keyword attribute="Standard Macros" context="#stay" String="StdMacros" />
         <IncludeRules context="GNUMacros##GCCExtensions" />
@@ -333,20 +361,20 @@
         <IncludeRules context="AlignedComments" />
       </context>
 
-      <context attribute="Preprocessor" lineEndContext="#pop" name="Define">
+      <context name="Define" attribute="Preprocessor" lineEndContext="#pop">
         <LineContinue attribute="Separator Symbol" context="#stay" />
         <DetectChar attribute="Error" context="#stay" char="\\" />
         <keyword attribute="Standard Macros" context="#stay" String="StdMacros" />
         <IncludeRules context="GNUMacros##GCCExtensions" />
       </context>
 
-      <context attribute="Comment" lineEndContext="#stay" name="Commentar/Preprocessor">
+      <context name="Commentar/Preprocessor" attribute="Comment" lineEndContext="#stay">
         <DetectSpaces />
         <Detect2Chars attribute="Comment" context="#pop" char="*" char1="/" endRegion="Comment2" />
         <DetectIdentifier />
       </context>
 
-      <context attribute="Comment" lineEndContext="#stay" name="Outscoped Common" >
+      <context name="Outscoped Common" attribute="Comment" lineEndContext="#stay">
         <DetectSpaces />
         <IncludeRules context="##Alerts" />
         <IncludeRules context="##Modelines" />
@@ -362,25 +390,25 @@
         <RegExpr attribute="Comment" context="Outscoped intern" String="(#|%\:|\?\?=)\s*if" beginRegion="PP" firstNonSpace="true" />
       </context>
 
-      <context attribute="Comment" lineEndContext="#stay" name="Outscoped" >
+      <context name="Outscoped" attribute="Comment" lineEndContext="#stay">
         <IncludeRules context="Outscoped Common" />
         <RegExpr attribute="Preprocessor" context="#pop" String="(#|%\:|\?\?=)\s*el(?:se|if)" firstNonSpace="true" />
         <RegExpr attribute="Preprocessor" context="#pop" String="(#|%\:|\?\?=)\s*endif" endRegion="PP" firstNonSpace="true" />
       </context>
 
-      <context attribute="Comment" lineEndContext="#stay" name="Outscoped 2" >
+      <context name="Outscoped 2" attribute="Comment" lineEndContext="#stay">
         <IncludeRules context="Outscoped Common" />
         <RegExpr attribute="Preprocessor" context="#pop#pop" String="(#|%\:|\?\?=)\s*endif" endRegion="PP" firstNonSpace="true" />
       </context>
 
-      <context attribute="Normal Text" lineEndContext="#stay" name="Inscoped" >
+      <context name="Inscoped" attribute="Normal Text" lineEndContext="#stay">
         <DetectSpaces />
         <RegExpr attribute="Preprocessor" context="Outscoped" String="(#|%\:|\?\?=)\s*if\s+(0|false)\s*" beginRegion="PP" firstNonSpace="true" />
         <RegExpr attribute="Preprocessor" context="Outscoped 2" String="(#|%\:|\?\?=)\s*el(?:se|if)" firstNonSpace="true" />
         <IncludeRules context="Main" />
       </context>
 
-      <context attribute="Comment" lineEndContext="#stay" name="Outscoped intern">
+      <context name="Outscoped intern" attribute="Comment" lineEndContext="#stay">
         <DetectSpaces />
         <IncludeRules context="##Alerts" />
         <IncludeRules context="##Modelines" />
@@ -414,33 +442,33 @@
     </contexts>
 
     <itemDatas>
-      <itemData name="Normal Text"       defStyleNum="dsNormal" spellChecking="false" />
-      <itemData name="Keyword"           defStyleNum="dsKeyword" spellChecking="false" />
-      <itemData name="Data Type"         defStyleNum="dsDataType" spellChecking="false" />
-      <itemData name="Type Modifiers"    defStyleNum="dsDataType" spellChecking="false" />
-      <itemData name="Decimal"           defStyleNum="dsDecVal" spellChecking="false" />
-      <itemData name="Octal"             defStyleNum="dsBaseN" spellChecking="false" />
-      <itemData name="Hex"               defStyleNum="dsBaseN" spellChecking="false" />
-      <itemData name="Float"             defStyleNum="dsFloat" spellChecking="false" />
-      <itemData name="Char"              defStyleNum="dsChar" spellChecking="false" />
-      <itemData name="String"            defStyleNum="dsString" />
-      <itemData name="String Char"       defStyleNum="dsChar" />
-      <itemData name="Comment"           defStyleNum="dsComment" spellChecking="false" />
-      <itemData name="Symbol"            defStyleNum="dsNormal" spellChecking="false" />
-      <itemData name="Separator Symbol"  defStyleNum="dsNormal" spellChecking="false" />
-      <itemData name="Data Members (m_*)" defStyleNum="dsNormal" spellChecking="false" />
-      <itemData name="Globals (g_*)"     defStyleNum="dsNormal" spellChecking="false" />
-      <itemData name="Statics (s_*)"     defStyleNum="dsNormal" spellChecking="false" />
-      <itemData name="Types (*_t/*_type)" defStyleNum="dsNormal" spellChecking="false" />
-      <itemData name="CONSTS/MACROS"     defStyleNum="dsNormal" spellChecking="false" />
-      <itemData name="Preprocessor"      defStyleNum="dsOthers" spellChecking="false" />
-      <itemData name="Prep. Lib"         defStyleNum="dsOthers" spellChecking="false" />
-      <itemData name="Standard Macros"   defStyleNum="dsOthers" spellChecking="false" />
-      <itemData name="Standard Classes"  defStyleNum="dsNormal" color="#59ff00" selColor="#59ff00" bold="0" italic="0" spellChecking="false" />
-      <itemData name="Boost Stuff"       defStyleNum="dsNormal" color="#23a45b" selColor="#23a45b" bold="0" italic="0" spellChecking="false" />
-      <itemData name="Internals"         defStyleNum="dsNormal" color="#808080" selColor="#808080" bold="0" italic="0" spellChecking="false" />
-      <itemData name="Region Marker"     defStyleNum="dsRegionMarker" spellChecking="false" />
-      <itemData name="Error"             defStyleNum="dsError" spellChecking="false" />
+      <itemData name="Normal Text"        defStyleNum="dsNormal"   spellChecking="false" />
+      <itemData name="Keyword"            defStyleNum="dsKeyword"  spellChecking="false" />
+      <itemData name="Data Type"          defStyleNum="dsDataType" spellChecking="false" />
+      <itemData name="Type Modifiers"     defStyleNum="dsDataType" spellChecking="false" />
+      <itemData name="Decimal"            defStyleNum="dsDecVal"   spellChecking="false" />
+      <itemData name="Octal"              defStyleNum="dsBaseN"    spellChecking="false" />
+      <itemData name="Hex"                defStyleNum="dsBaseN"    spellChecking="false" />
+      <itemData name="Float"              defStyleNum="dsFloat"    spellChecking="false" />
+      <itemData name="Char"               defStyleNum="dsChar"     spellChecking="false" />
+      <itemData name="String"             defStyleNum="dsString"   spellChecking="false" />
+      <itemData name="String Char"        defStyleNum="dsChar"     spellChecking="false" />
+      <itemData name="Comment"            defStyleNum="dsComment"  spellChecking="false" />
+      <itemData name="Symbol"             defStyleNum="dsNormal"   spellChecking="false" />
+      <itemData name="Separator Symbol"   defStyleNum="dsNormal"   spellChecking="false" />
+      <itemData name="Data Members (m_*)" defStyleNum="dsNormal"   spellChecking="false" />
+      <itemData name="Globals (g_*)"      defStyleNum="dsNormal"   spellChecking="false" />
+      <itemData name="Statics (s_*)"      defStyleNum="dsNormal"   spellChecking="false" />
+      <itemData name="Types (*_t/*_type)" defStyleNum="dsNormal"   spellChecking="false" />
+      <itemData name="CONSTS/MACROS"      defStyleNum="dsNormal"   spellChecking="false" />
+      <itemData name="Preprocessor"       defStyleNum="dsOthers"   spellChecking="false" />
+      <itemData name="Prep. Lib"          defStyleNum="dsOthers"   spellChecking="false" />
+      <itemData name="Standard Macros"    defStyleNum="dsOthers"   spellChecking="false" />
+      <itemData name="Standard Classes"   defStyleNum="dsNormal"   spellChecking="false" color="#59ff00" selColor="#59ff00" />
+      <itemData name="Boost Stuff"        defStyleNum="dsNormal"   spellChecking="false" color="#23a45b" selColor="#23a45b" />
+      <itemData name="Internals"          defStyleNum="dsNormal"   spellChecking="false" color="#808080" selColor="#808080" />
+      <itemData name="Region Marker"      defStyleNum="dsRegionMarker" spellChecking="false" />
+      <itemData name="Error"              defStyleNum="dsError"    spellChecking="false" />
     </itemDatas>
   </highlighting>
   <general>
