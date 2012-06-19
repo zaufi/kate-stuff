@@ -1,12 +1,8 @@
 cmake-script            := command+
-command                 := if-command | add-custom-command
-if-command              := 'if' '(' STRING ')'
-add-custom-command      := IDENTIFIER
-
-#add-custom-command      := 'add_custom_command' '(' signature-type ')'
-#signature-type          := output | target
-#
-#output-signature        := 'OUTPUT' STRINGS-LIST output-other-commands+
+command                 := add-custom-command
+add-custom-command      := {Command}'add_custom_command' '(' signature-type ')'
+signature-type          := output | target
+output-signature        := 'OUTPUT' STRINGS-LIST output-other-commands+
 #target-signature        := 'TARGET' IDENTIFIER target-other-commands+
 #
 #output-other-commands   := 'DEPENDS' IDENTIFIER | 'APPEND' | common-command*

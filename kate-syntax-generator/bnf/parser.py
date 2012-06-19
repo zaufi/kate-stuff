@@ -11,7 +11,10 @@ SPECIAL_TERMINALS = {
     'SPACE'
   , 'STRING'
   , 'IDENTIFIER'
+  , 'VARIABLE'
+  , 'EXPANSION'
   }
+
 
 class ParseError(Exception):
     pass
@@ -53,26 +56,37 @@ class Parser:
         else:
             count = CNT_ONE
         if count != CNT_ONE:
-            token = token[0:-1]                             # Strip multiplier if any
+            token = token[:-1]                              # Strip multiplier if any
 
         if not token:
             raise ParseError('Empty token found at line %d' % self.lineno)
 
+        # Try to get term attribute
+        if token[0] == '{':
+            # Yeah, seems some attribute present
+            if '}' in token:
+                closeIdx = token.index('}')
+                attribute = token[0:closeIdx].strip()
+                token = token[closeIdx + 1:].strip()
+                if not token:
+                    raise ParseError('Attribute {%s} does not belongs to any term' % attribute)
         # Is current token is a terminal symbol? (i.e. a word in single quotes)
         if token[0] == "'" and token[-1] == "'":
             # Yea!
-            token = token[1:-1].strip()
+            token = token[1:-1].strip()                     # Get it! (drop quotes)
             if token:
                 term = TerminalNode(token)
-                term.setCount(count)
             else:
                 raise ParseError('Empty terminal sequence found at line %d' % self.lineno)
         elif token in SPECIAL_TERMINALS:
             term = TerminalNode(token)
-            term.setCount(count)
-        else :
+        else:
             term = NonTerminalNode(token)
-            term.setCount(count)
+
+        # Attach attribute and count
+        term.setCount(count)
+        if attribute:
+            term.setAttribute(attribute)
         return term
 
 

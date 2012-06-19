@@ -10,14 +10,19 @@ CNT_ONE = 1
 CNT_ONE_OR_MORE = 2
 
 class Node:
+    subterms = list()                                       # List of subterms
+    alternatives = list()                                   # list of alternatives
+    count = CNT_ONE
+    attribute = None
+
     def __init__(self, name = None):
         self.name = name
-        self.subterms = list()                              # List of subterms
-        self.alternatives = list()                          # list of alternatives
-        self.count = CNT_ONE
 
     def setCount(self, count):
         self.count = count
+
+    def setAttribute(self, attr):
+        self.attribute = attr
 
     def appendSubterm(self, t):
         self.subterms.append(t)
