@@ -162,30 +162,32 @@
       </context>
 
       <context name="Main" attribute="Normal Text" lineEndContext="#stay">
+        <!-- Match preprocessor directives -->
         <DetectChar context="AfterHash" char="#" firstNonSpace="true" lookAhead="true" />
         <Detect2Chars context="AfterHash" char="%" char1=":" firstNonSpace="true" lookAhead="true" />
         <StringDetect context="AfterHash" String="??=" firstNonSpace="true" lookAhead="true" />
         <Detect2Chars attribute="Error" context="#stay" char="%" char1=":" />
         <StringDetect attribute="Error" String="??=" context="#stay" />
+        <!-- Match special comments for region markers -->
         <StringDetect attribute="Region Marker" context="Region Marker" String="//BEGIN" beginRegion="Region1" firstNonSpace="true" />
         <StringDetect attribute="Region Marker" context="Region Marker" String="//END" endRegion="Region1" firstNonSpace="true" />
         <!-- ATTENTION Special case `operator""` cuz Kate doesn't recognize
                        `operator` joined w/ quotes as a keyword here. BUG??
           -->
-        <RegExpr attribute="Normal Text" context="UDLOperator" String="operator\s*&quot;&quot; _[0-9A-Za-z]*\b" lookAhead="true" />
+        <RegExpr attribute="Normal Text" context="UDLOperator" String="operator\s*&quot;&quot; _[_0-9A-Za-z]*\b" lookAhead="true" />
+        <!-- Match keywords -->
         <keyword attribute="Keyword" context="#stay" String="keywords" />
-        <StringDetect attribute="Standard Classes" context="Standard Classes" String="std::" />
-        <StringDetect attribute="Boost Stuff" context="Boost Stuff" String="boost::" />
-        <StringDetect attribute="Boost Stuff" context="Boost Stuff" String="BOOST_" />
-        <StringDetect attribute="Internals" context="InternalsNS" String="detail::" />
-        <StringDetect attribute="Internals" context="InternalsNS" String="details::" />
-        <StringDetect attribute="Internals" context="InternalsNS" String="aux::" />
-        <StringDetect attribute="Internals" context="InternalsNS" String="internals::" />
-        <keyword attribute="Data Type" context="#stay" String="types" />
-        <keyword attribute="Type Modifiers" context="#stay" String="modifiers" />
-        <keyword attribute="Standard Macros" context="#stay" String="StdMacros" />
-        <IncludeRules context="DetectQt4Extensions##Qt4/C++" />
+        <!-- Match GCC extensions -->
         <IncludeRules context="DetectGccExtensions##GCCExtensions" />
+        <!-- Match numbers -->
+        <!-- ATTENTION Builtin number detectors have strange behaviour and definitely lack required features
+          -->
+        <RegExpr attribute="Float" context="#stay" String="[\+\-]?([0-9]+\.|\.[0-9]+|[0-9]+\.[0-9]+)([Ee][\+\-]?[0-9]+)?[FfLl]?" />
+        <RegExpr attribute="Decimal" context="#stay" String="[\+\-]?(0|[1-9][0-9]*)([Uu][Ll]{0,2}|[Ll]{0,2}[Uu]?|_[_0-9A-Za-z]*)?\b" />
+        <RegExpr attribute="Octal" context="#stay" String="[\+\-]?0[0-7]+([Uu][Ll]{0,2}|[Ll]{0,2}[Uu]?|_[_0-9A-Za-z]*)?\b" />
+        <RegExpr attribute="Hex" context="#stay" String="[\+\-]?0x[0-9A-Fa-f]+([Uu][Ll]{0,2}|[Ll]{0,2}[Uu]?|_[_0-9A-Za-z]*)?\b" />
+        <RegExpr attribute="Error" context="#stay" String="[\+\-]?(0|[1-9][0-9]*)[0-9A-Za-z][_0-9A-Za-z]*\b" />
+        <!-- Match string literals -->
         <DetectChar attribute="String" context="String" char="&quot;" />
         <Detect2Chars attribute="String" context="String" char="U" char1="&quot;" />
         <Detect2Chars attribute="String" context="String" char="u" char1="&quot;" />
@@ -197,6 +199,19 @@
         <Detect2Chars attribute="String" context="Char Literal" char="L" char1="'" />
         <Detect2Chars attribute="String" context="U-Char Literal" char="u" char1="'" />
         <Detect2Chars attribute="String" context="U-Char Literal" char="U" char1="'" />
+        <!-- Match Qt extensions -->
+        <IncludeRules context="DetectQt4Extensions##Qt4/C++" />
+        <!-- Match most used namespaces and styles -->
+        <StringDetect attribute="Standard Classes" context="Standard Classes" String="std::" />
+        <StringDetect attribute="Boost Stuff" context="Boost Stuff" String="boost::" />
+        <StringDetect attribute="Boost Stuff" context="Boost Stuff" String="BOOST_" />
+        <StringDetect attribute="Internals" context="InternalsNS" String="detail::" />
+        <StringDetect attribute="Internals" context="InternalsNS" String="details::" />
+        <StringDetect attribute="Internals" context="InternalsNS" String="aux::" />
+        <StringDetect attribute="Internals" context="InternalsNS" String="internals::" />
+        <keyword attribute="Data Type" context="#stay" String="types" />
+        <keyword attribute="Type Modifiers" context="#stay" String="modifiers" />
+        <keyword attribute="Standard Macros" context="#stay" String="StdMacros" />
         <RegExpr attribute="Internals" context="#stay" String="_[a-zA-Z0-9_]+" />
         <RegExpr attribute="Internals" context="#stay" String="[a-zA-Z][a-zA-Z0-9_]*__\b" />
         <RegExpr attribute="Data Members (m_*)" context="#stay" String="[a-z][a-zA-Z0-9_]*_\b" />
@@ -206,32 +221,17 @@
         <RegExpr attribute="CONSTS/MACROS" context="#stay" String="[A-Z][A-Z0-9_]{2,}\b" />
         <RegExpr attribute="Types (*_t/*_type)" context="#stay" String="[a-zA-Z][a-zA-Z0-9_]*_t(ype)?\b" />
         <DetectIdentifier />
-        <RegExpr attribute="Float" context="#stay" String="([0-9]+)*\.[0-9]+([Ee][\+\-]?[0-9]+)?_[0-9a-zA-Z]*\b" />
-        <Float attribute="Float" context="#stay">
-          <AnyChar String="fFlL" attribute="Float" context="#stay" />
-          <StringDetect attribute="Float" context="UDLFloatSuffix" String="_" insensitive="true" />
-        </Float>
-        <HlCOct attribute="Octal" context="#stay" />
-        <HlCHex attribute="Hex" context="#stay" />
-        <RegExpr attribute="Decimal" context="#stay" String="[0-9]+_[0-9a-zA-Z]*\b" />
-        <Int attribute="Decimal" context="#stay">
-          <StringDetect attribute="Decimal" context="#stay" String="ULL" insensitive="true" />
-          <StringDetect attribute="Decimal" context="#stay" String="LUL" insensitive="true" />
-          <StringDetect attribute="Decimal" context="#stay" String="LLU" insensitive="true" />
-          <StringDetect attribute="Decimal" context="#stay" String="UL" insensitive="true" />
-          <StringDetect attribute="Decimal" context="#stay" String="LU" insensitive="true" />
-          <StringDetect attribute="Decimal" context="#stay" String="LL" insensitive="true" />
-          <StringDetect attribute="Decimal" context="#stay" String="U" insensitive="true" />
-          <StringDetect attribute="Decimal" context="#stay" String="L" insensitive="true" />
-          <StringDetect attribute="Decimal" context="UDLDecimalSuffix" String="_" />
-        </Int>
+        <!-- Match comments -->
         <IncludeRules context="##Doxygen" />
         <IncludeRules context="AlignedComments" />
         <Detect2Chars attribute="Comment" context="Commentar 2" char="/" char1="*" beginRegion="Comment" />
+        <!-- Match scope regions -->
         <DetectChar attribute="Symbol" context="#stay" char="{" beginRegion="Brace1" />
         <DetectChar attribute="Symbol" context="#stay" char="}" endRegion="Brace1" />
+        <!-- Match punctuators -->
         <AnyChar attribute="Separator Symbol" context="#stay" String="&separators;" />
         <AnyChar attribute="Symbol" context="#stay" String="&punctuators;" />
+        <!-- Match invalid symbols -->
         <DetectChar attribute="Error" context="#stay" char="#" />
         <DetectChar attribute="Error" context="#stay" char="$" />
         <DetectChar attribute="Error" context="#stay" char="@" />
@@ -240,14 +240,6 @@
       <context name="UDLOperator" attribute="Normal Text" lineEndContext="#pop">
         <StringDetect attribute="Keyword" context="#stay" String="operator" />
         <StringDetect attribute="String" context="#stay" String="&quot;&quot;" />
-        <DetectIdentifier context="#pop" />
-      </context>
-
-      <context name="UDLDecimalSuffix" attribute="Decimal" lineEndContext="#pop">
-        <DetectIdentifier />
-      </context>
-
-      <context name="UDLFloatSuffix" attribute="Float" lineEndContext="#pop">
         <DetectIdentifier context="#pop" />
       </context>
 
@@ -288,7 +280,7 @@
       </context>
 
       <context name="UDLStringSuffix" attribute="String" lineEndContext="#pop#pop">
-        <RegExpr attribute="String" context="#pop#pop" String="_[0-9A-Z-a-z]*\b" />
+        <RegExpr attribute="String" context="#pop#pop" String="_[_0-9A-Z-a-z]*\b" />
         <!-- TODO Is there any better way to quit the current context ?? -->
         <RegExpr context="#pop#pop" String=".*" lookAhead="true" />
       </context>

@@ -57,6 +57,8 @@
     <item> _Decimal32 </item>
     <item> _Decimal64 </item>
     <item> _Decimal128 </item>
+    <!-- NOTE From gcc's info: 6.8 128-bits integers -->
+    <item> __int128 </item>
     <!-- NOTE From gcc's info: 7.9 Type Traits -->
     <item> __has_nothrow_assign </item>
     <item> __has_nothrow_copy </item>
@@ -96,6 +98,32 @@
     <item> __sync_lock_release </item>
     <!-- NOTE From gcc's info: 6.56 Thread-Local storage -->
     <item> __thread </item>
+    <!-- NOTE From gcc 4.7.x info: 6.52 -->
+    <item> __atomic_load_n </item>
+    <item> __atomic_load </item>
+    <item> __atomic_store_n </item>
+    <item> __atomic_store </item>
+    <item> __atomic_exchange_n </item>
+    <item> __atomic_exchange </item>
+    <item> __atomic_compare_exchange_n </item>
+    <item> __atomic_compare_exchange </item>
+    <item> __atomic_add_fetch </item>
+    <item> __atomic_sub_fetch </item>
+    <item> __atomic_and_fetch </item>
+    <item> __atomic_or_fetch </item>
+    <item> __atomic_xor_fetch </item>
+    <item> __atomic_nand_fetch </item>
+    <item> __atomic_fetch_add </item>
+    <item> __atomic_fetch_sub </item>
+    <item> __atomic_fetch_and </item>
+    <item> __atomic_fetch_or </item>
+    <item> __atomic_fetch_xor </item>
+    <item> __atomic_fetch_nand </item>
+    <item> __atomic_test_and_set </item>
+    <item> __atomic_clear </item>
+    <item> __atomic_thread_fence </item>
+    <item> __atomic_always_lock_free </item>
+    <item> __atomic_is_lock_free </item>
   </list>
   <!-- From http://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html
         plus a lot of platform specific predefines found by my script
@@ -457,35 +485,28 @@
     <item> unix </item>
   </list>
   <contexts>
-    <context lineEndContext="#stay" name="DetectGccExtensions" attribute="Normal Text">
+    <context name="DetectGccExtensions" attribute="Normal Text" lineEndContext="#stay">
       <keyword attribute="GNU Macros" context="#stay" String="GNUMacros" />
       <StringDetect attribute="GNU Extensions" context="AttrArgs" String="__attribute__" />
       <StringDetect attribute="GNU Extensions" context="AttrArgs" String="__declspec" />
       <keyword attribute="GNU Extensions" context="#stay" String="GNU" />
       <RegExpr attribute="GNU Extensions" context="#stay" String="__builtin_[a-zA-Z0-9_]+" />
-      <Detect2Chars attribute="GNU Extensions" context="Binary constant" char="0" char1="b" />
+      <!-- (gcc info 6.57) Binary constants using the `0b' prefix -->
+      <RegExpr attribute="GNU Extensions" context="#stay" String="0[Bb][01]+([Uu][Ll]{0,2}|[Ll]{0,2}[Uu]?|_[_0-9A-Za-z]*)?\b" />
     </context>
 
-    <context lineEndContext="#stay" name="GNUMacros" attribute="">
+    <context name="GNUMacros" attribute="Normal Text" lineEndContext="#stay">
       <keyword attribute="GNU Macros" context="#stay" String="GNUMacros" />
     </context>
 
-    <context attribute="GNU Extensions" lineEndContext="#pop" name="AttrArgs">
+    <context name="AttrArgs" attribute="GNU Extensions" lineEndContext="#pop">
       <Detect2Chars attribute="GNU Extensions" context="#stay" char="(" char1="(" />
       <Detect2Chars attribute="GNU Extensions" context="#pop" char=")" char1=")" />
       <DetectChar attribute="GNU Extensions" context="Close" char="(" />
     </context>
 
-    <context attribute="GNU Extensions" lineEndContext="#stay" name="Close">
+    <context name="Close" attribute="GNU Extensions" lineEndContext="#stay">
       <DetectChar attribute="GNU Extensions" context="#pop" char=")" />
-    </context>
-
-    <!-- 6.57 Binary constants using the `0b' prefix -->
-    <context attribute="GNU Extensions" lineEndContext="#pop" name="Binary constant">
-      <AnyChar attribute="GNU Extensions" context="#stay" String="01" />
-      <RegExpr attribute="Error" context="#stay" String="[a-zA-Z0-9_]+" />
-      <AnyChar context="#pop" String="&separators;" />
-      <AnyChar context="#pop" String="&punctuators;" />
     </context>
 
   </contexts>
