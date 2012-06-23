@@ -1,5 +1,7 @@
+/usr/bin/gcc
 <item> _FORTIFY_SOURCE </item>
 <item> _GNU_SOURCE </item>
+<item> _ILP32 </item>
 <item> _LP64 </item>
 <item> _REENTRANT </item>
 <item> __3dNOW_A__ </item>
@@ -66,6 +68,7 @@
 <item> __ELF__ </item>
 <item> __EXCEPTIONS </item>
 <item> __F16C__ </item>
+<item> __FAST_MATH__ </item>
 <item> __FINITE_MATH_ONLY__ </item>
 <item> __FLOAT_WORD_ORDER__ </item>
 <item> __FLT_DECIMAL_DIG__ </item>
@@ -117,6 +120,7 @@
 <item> __GXX_EXPERIMENTAL_CXX0X__ </item>
 <item> __GXX_RTTI </item>
 <item> __GXX_WEAK__ </item>
+<item> __ILP32__ </item>
 <item> __INCLUDE_LEVEL__ </item>
 <item> __INT16_C </item>
 <item> __INT16_MAX__ </item>
@@ -180,6 +184,7 @@
 <item> __ORDER_PDP_ENDIAN__ </item>
 <item> __PCLMUL__ </item>
 <item> __PIC__ </item>
+<item> __PIE__ </item>
 <item> __POPCNT__ </item>
 <item> __PRAGMA_REDEFINE_EXTNAME </item>
 <item> __PTRDIFF_MAX__ </item>
@@ -319,6 +324,7 @@
 <item> __pentiumpro </item>
 <item> __pentiumpro__ </item>
 <item> __pic__ </item>
+<item> __pie__ </item>
 <item> __tune_amdfam10__ </item>
 <item> __tune_athlon__ </item>
 <item> __tune_athlon_sse__ </item>

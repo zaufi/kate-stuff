@@ -71,6 +71,9 @@
 -std=gnu11
 -pthread
 -fPIC
+-fno-exceptions
+-fno-rtti
+-fpie
 
 # Optimization options
 -O
