@@ -517,7 +517,7 @@
   </contexts>
 
   <itemDatas>
-    <itemData name="Normal Text" defStyleNum="dsNormal"/>
+    <itemData name="Normal Text" defStyleNum="dsNormal" spellChecking="false"/>
     <itemData name="GNU Macros" defStyleNum="dsOthers" spellChecking="false" />
     <itemData name="GNU Extensions" defStyleNum="dsOthers" italic="1" spellChecking="false" />
   </itemDatas>

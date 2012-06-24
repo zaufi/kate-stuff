@@ -1281,12 +1281,12 @@
   </contexts>
 
   <itemDatas>
-    <itemData name="Normal Text" defStyleNum="dsNormal"/>
-    <itemData name="Qt4 Extensions" defStyleNum="dsNormal" />
-    <itemData name="Qt4 Types" defStyleNum="dsNormal" />
-    <itemData name="Qt4 Classes" defStyleNum="dsNormal" />
-    <itemData name="Qt4 Functions" defStyleNum="dsNormal" />
-    <itemData name="Qt4 Macros" defStyleNum="dsNormal" />
+    <itemData name="Normal Text"    defStyleNum="dsNormal" spellChecking="false" />
+    <itemData name="Qt4 Extensions" defStyleNum="dsNormal" spellChecking="false" />
+    <itemData name="Qt4 Types"      defStyleNum="dsNormal" spellChecking="false" />
+    <itemData name="Qt4 Classes"    defStyleNum="dsNormal" spellChecking="false" />
+    <itemData name="Qt4 Functions"  defStyleNum="dsNormal" spellChecking="false" />
+    <itemData name="Qt4 Macros"     defStyleNum="dsNormal" spellChecking="false" />
   </itemDatas>
 </highlighting>
 
