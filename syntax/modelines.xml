@@ -137,7 +137,7 @@
   </contexts>
 
   <itemDatas>
-    <itemData name="Comment"       defStyleNum="dsComment"  spellChecking="true"  color="#e85848" />
+    <itemData name="Comment"       defStyleNum="dsComment"  spellChecking="true" />
     <itemData name="Keyword"       defStyleNum="dsKeyword"  spellChecking="false" color="#777755" />
     <itemData name="Variable"      defStyleNum="dsFunction" spellChecking="false" color="#676757" />
     <itemData name="Boolean True"  defStyleNum="dsOthers"   spellChecking="false" color="#446544" />

@@ -96,7 +96,7 @@
     <item> __sync_synchronize </item>
     <item> __sync_lock_test_and_set </item>
     <item> __sync_lock_release </item>
-    <!-- NOTE From gcc's info: 6.56 Thread-Local storage -->
+    <!-- NOTE From gcc's info: 6.59 Thread-Local storage -->
     <item> __thread </item>
     <!-- NOTE From gcc 4.7.x info: 6.52 -->
     <item> __atomic_load_n </item>
@@ -517,9 +517,9 @@
   </contexts>
 
   <itemDatas>
-    <itemData name="Normal Text" defStyleNum="dsNormal" spellChecking="false"/>
-    <itemData name="GNU Macros" defStyleNum="dsOthers" spellChecking="false" />
-    <itemData name="GNU Extensions" defStyleNum="dsOthers" italic="1" spellChecking="false" />
+    <itemData name="Normal Text"    defStyleNum="dsNormal" spellChecking="false" />
+    <itemData name="GNU Macros"     defStyleNum="dsOthers" spellChecking="false" />
+    <itemData name="GNU Extensions" defStyleNum="dsOthers" spellChecking="false" italic="1" />
   </itemDatas>
 </highlighting>
 

@@ -443,9 +443,9 @@
       <itemData name="Hex"                defStyleNum="dsBaseN"    spellChecking="false" />
       <itemData name="Float"              defStyleNum="dsFloat"    spellChecking="false" />
       <itemData name="Char"               defStyleNum="dsChar"     spellChecking="false" />
-      <itemData name="String"             defStyleNum="dsString"   spellChecking="false" />
+      <itemData name="String"             defStyleNum="dsString"   spellChecking="true"  />
       <itemData name="String Char"        defStyleNum="dsChar"     spellChecking="false" />
-      <itemData name="Comment"            defStyleNum="dsComment"  spellChecking="false" />
+      <itemData name="Comment"            defStyleNum="dsComment"  spellChecking="true"  />
       <itemData name="Symbol"             defStyleNum="dsNormal"   spellChecking="false" />
       <itemData name="Separator Symbol"   defStyleNum="dsNormal"   spellChecking="false" />
       <itemData name="Data Members (m_*)" defStyleNum="dsNormal"   spellChecking="false" />
