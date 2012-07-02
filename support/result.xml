@@ -1,4 +1,5 @@
-/usr/bin/gcc
+<item> __FUNCTION__ </item>
+<item> __PRETTY_FUNCTION__ </item>
 <item> _FORTIFY_SOURCE </item>
 <item> _GNU_SOURCE </item>
 <item> _ILP32 </item>
