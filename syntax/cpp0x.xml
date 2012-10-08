@@ -11,7 +11,7 @@
 <language
     name="C++"
     section="Sources"
-    version="1.49.10"
+    version="1.50.1"
     kateversion="2.4"
     indenter="cstyle"
     mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
@@ -33,6 +33,7 @@
   <highlighting>
     <list name="keywords">
       <item> alignof </item>
+      <item> alignas </item>
       <item> asm </item>
       <item> auto </item>
       <item> break </item>
@@ -107,6 +108,12 @@
       <item> template </item>
     </list>
 
+    <!-- 7.6 Attributes -->
+    <list name="attributes">
+      <item> noreturn </item>
+      <item> carries_dependency </item>
+    </list>
+
     <list name="types">
       <item> bool </item>
       <item> char </item>
@@ -177,10 +184,12 @@
         <RegExpr attribute="Normal Text" context="UDLOperator" String="operator\s*&quot;&quot; _[_0-9A-Za-z]*\b" lookAhead="true" />
         <!-- Match keywords -->
         <keyword attribute="Keyword" context="#stay" String="keywords" />
+        <!-- Detect attributes -->
+        <Detect2Chars attribute="Normal Text" context="Attribute" char="[" char1="[" />
         <!-- Match GCC extensions -->
         <IncludeRules context="DetectGccExtensions##GCCExtensions" />
         <!-- Match numbers -->
-        <!-- ATTENTION Builtin number detectors have strange behaviour and definitely lack required features
+        <!-- ATTENTION Builtin number detectors have strange behaviour and definitely lack of required features
           -->
         <RegExpr attribute="Float" context="#stay" String="[\+\-]?([0-9]+\.|\.[0-9]+|[0-9]+\.[0-9]+)([Ee][\+\-]?[0-9]+)?[FfLl]?" />
         <RegExpr attribute="Decimal" context="#stay" String="[\+\-]?(0|[1-9][0-9]*)([Uu][Ll]{0,2}|[Ll]{0,2}[Uu]?|_[_0-9A-Za-z]*)?\b" />
@@ -283,6 +292,12 @@
         <RegExpr attribute="String" context="#pop#pop" String="_[_0-9A-Z-a-z]*\b" />
         <!-- TODO Is there any better way to quit the current context ?? -->
         <RegExpr context="#pop#pop" String=".*" lookAhead="true" />
+      </context>
+
+      <context name="Attribute" attribute="Attribute" lineEndContext="#stay">
+        <keyword attribute="Attribute" context="#stay" String="attributes" />
+        <Detect2Chars attribute="Normal Text" context="#pop" char="]" char1="]" />
+        <DetectIdentifier context="#stay" attribute="Error" />
       </context>
 
       <context name="RawString" attribute="String" lineEndContext="#stay" dynamic="true">
@@ -438,6 +453,7 @@
       <itemData name="Keyword"            defStyleNum="dsKeyword"  spellChecking="false" />
       <itemData name="Data Type"          defStyleNum="dsDataType" spellChecking="false" />
       <itemData name="Type Modifiers"     defStyleNum="dsDataType" spellChecking="false" />
+      <itemData name="Attribute"          defStyleNum="dsKeyword"  spellChecking="false" bold="false" italic="true" />
       <itemData name="Decimal"            defStyleNum="dsDecVal"   spellChecking="false" />
       <itemData name="Octal"              defStyleNum="dsBaseN"    spellChecking="false" />
       <itemData name="Hex"                defStyleNum="dsBaseN"    spellChecking="false" />

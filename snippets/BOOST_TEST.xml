@@ -427,8 +427,8 @@
   <match>BOOST_AUTO_TEST_CASE</match>
   <displaypostfix></displaypostfix>
   <displayarguments>(name)</displayarguments>
-  <fillin>BOOST_AUTO_TEST_CASE(${name:Test}) {
-	${cursor}
+  <fillin>BOOST_AUTO_TEST_CASE(${name:some}_test)
+{${cursor}
 }</fillin>
  </item>
  <item>
@@ -445,8 +445,8 @@
   <match>BOOST_FIXTURE_TEST_CASE</match>
   <displaypostfix></displaypostfix>
   <displayarguments>(test_case_name, fixture_name)</displayarguments>
-  <fillin>BOOST_FIXTURE_TEST_CASE(${test_case_name:Test}, ${fixture_name}) {
-  ${cursor}
+  <fillin>BOOST_FIXTURE_TEST_CASE(${test_case_name:Test}, ${fixture_name})
+{${cursor}
 }</fillin>
  </item>
  <item>
@@ -456,7 +456,8 @@
   <displayarguments>(test_suite_name)</displayarguments>
   <fillin>BOOST_AUTO_TEST_SUITE(${test_suite_name})
 ${cursor}
-BOOST_AUTO_TEST_SUITE_END()                                 // End of${test_suite_name/^/ /}</fillin>
+BOOST_AUTO_TEST_SUITE_END()                                 // End of${test_suite_name/^/ /}
+</fillin>
  </item>
  <item>
   <displayprefix></displayprefix>

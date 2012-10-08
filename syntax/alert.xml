@@ -25,6 +25,10 @@
 
  This file is included in every file that highlights the "alerts" keywords.
  That's why extensions and mimetype are empty.
+
+ Changes by Alex Turbov:
+  Introduce 3 alert levels and sort keywords according importance.
+  Few more keywords has been added.
 -->
 <language version="1.08" kateversion="2.3" name="Alerts" section="Other" extensions="" mimetype="" author="Dominik Haumann (dhdev@gmx.de)" license="LGPL" hidden="true">
   <highlighting>

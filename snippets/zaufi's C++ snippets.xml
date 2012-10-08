@@ -40,7 +40,7 @@
   <match>type_name</match>
   <displaypostfix>output typeid to std::cout</displaypostfix>
   <displayarguments></displayarguments>
-  <fillin>std::cout &lt;&lt; dbg::type_name(${var}) &lt;&lt; std::endl;${cursor}</fillin>
+  <fillin>std::cout &lt;&lt; dbg::type_name(${var}()) &lt;&lt; std::endl;${cursor}</fillin>
  </item>
  <item>
   <displayprefix>block</displayprefix>
@@ -202,5 +202,12 @@ ${type}&amp; operator=(${type}&amp;&amp;) = ${op};%{cursor}</fillin>
   <displaypostfix></displaypostfix>
   <displayarguments></displayarguments>
   <fillin>${member}_ = std::move(other.${member}_);${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>print</displayprefix>
+  <match>type_name_cxx11</match>
+  <displaypostfix>output typeid to std::cout (C++11 version)</displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>std::cout &lt;&lt; dbg::type_name(std::declval&lt;${var}>()) &lt;&lt; std::endl;${cursor}</fillin>
  </item>
 </snippets>
