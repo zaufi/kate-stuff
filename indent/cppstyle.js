@@ -46,47 +46,13 @@ function dbg()
 var gIndentWidth = 4;
 var gSameLineCommentStartAt = 60;
 var gMode = "C";
+var gBraceMap = {
+    '(': ')', ')': '('
+  , '<': '>', '>': '<'
+  , '{': '}', '}': '{'
+  , '[': ']', ']': '['
+  };
 //END global variables and functions
-
-//BEGIN String functions
-/**
- * Returns \c string without leading spaces.
- */
-String.prototype.ltrim = function()
-{
-    var i = 0;
-    for ( ; i < this.length && (this[i] == ' ' || this[i] == '\t'); ++i ) {
-        // continue
-    }
-    return this.substr(i);
-}
-/**
- * Returns \c string without trailing spaces.
- */
-String.prototype.rtrim = function()
-{
-    if ( this.length == 0 ) {
-        return "";
-    }
-    var i = this.length - 1;
-    for ( ; i >= 0 && (this[i] == ' ' || this[i] == '\t'); --i ) {
-        // continue
-    }
-    return this.substr(0, i + 1);
-}
-/**
- * Fills with \c size \c char's.
- * \return the string itself (for chain calls)
- */
-String.prototype.fill = function(char, size)
-{
-    var string = "";
-    for ( var i = 0; i < size; ++i ) {
-        string += char;
-    }
-    return string;
-}
-//END String functions
 
 /**
  * \brief Dump some document properties
@@ -99,46 +65,49 @@ function showDebugInfo()
     dbg("              gMode: ", gMode);
     dbg("                 hl: ", document.highlightingMode());
     dbg("          hl@cursor: ", document.highlightingModeAt(view.cursorPosition()));
-    dbg("firstVirtualColumn() = ", document.firstVirtualColumn(line));
-    dbg(" lastVirtualColumn() = ", document.lastVirtualColumn(line));
-    dbg("       firstColumn() = ", document.firstColumn(line));
-    dbg("        lastColumn() = ", document.lastColumn(line));
+    dbg("firstVirtualColumn() = ", document.firstVirtualColumn(c.line));
+    dbg(" lastVirtualColumn() = ", document.lastVirtualColumn(c.line));
+    dbg("       firstColumn() = ", document.firstColumn(c.line));
+    dbg("        lastColumn() = ", document.lastColumn(c.line));
 }
 
 /**
  * \brief Handle \c '/' key pressed
  *
- * ... possible it is start of a comment ...
+ * Check if is it start of a comment. Here is few cases possible:
+ * \li very first \c '/' -- do nothing
+ * \li just entered \c '/' is a second in a sequence. If no text before or some present after,
+ *     do nothing, otherwise align a \e same-line-comment to \c gSameLineCommentStartAt
+ *     position.
+ * \li just entered \c '/' is a 3rd in a sequence. If there is some text before and no after,
+ *     it looks like inlined doxygen comment, so append \c '<' char after. Do nothing otherwise.
  */
 function trySameLineComment(cursor)
 {
     var line = cursor.line;
     var column = cursor.column;
+    // Try to split line by comment
+    var match = /^([^\/]*)(\/\/+)(.*)$/.exec(document.line(line));
+    dbg("match_before  = '" + match[1] + "'");
+    dbg("match_comment = '" + match[2] + "'");
+    dbg("match_after   = '" + match[3] + "'");
 
-    // Possible it is start of the same-line-comment...
-    // check is there any text after cursor?
-    if (document.nextNonSpaceColumn(line, column) != -1)
-        // Yep, there is some text after current position...
-        // it looks like user wants to comment a part of the line.
-        return;
-    // ok, continue...
-    var prevColumn = column - 2;
-    if (prevColumn >= 0 && document.charAt(line, prevColumn) == '/')
+    if (match != null)                                      // Is matched?
     {
-        // Yeah, current char + previous one looks like "//",
-        // lets check is there any non space chars before?
-        var prevPrevColumn = prevColumn - 1;
-        if (prevPrevColumn >= 0 && document.prevNonSpaceColumn(line, prevPrevColumn) != -1)
+        if (match[2] == "///" && match[3].length == 0)
         {
-            // Ok, is there space between last char and 60th position?
-            if (prevColumn < gSameLineCommentStartAt)
+            // 3rd case here!
+            document.insertText(cursor, "< ");
+        }
+        else if (match[2] == "//" && match[1].length != 0 && match[3].length == 0)
+        {
+            // 2nd case here! Check if padding required
+            if (match[1].length < gSameLineCommentStartAt)
             {
-                var filler = String().fill(' ', gSameLineCommentStartAt - prevColumn) + "//";
+                var filler = String().fill(' ', gSameLineCommentStartAt - match[1].length) + "//";
                 document.editBegin();
-                // Remove "//" from the end of the line
-                document.removeText(line, prevColumn, line, column);
-                // Append "//" w/ leading padding
-                document.insertText(line, prevColumn, filler);
+                document.removeText(line, column - 2, line, column);
+                document.insertText(line, column - 2, filler);
                 document.editEnd();
             }
         }
@@ -146,7 +115,7 @@ function trySameLineComment(cursor)
 }
 
 /**
- * \brief Handler \c ENTER key
+ * \brief Handle \c ENTER key
  */
 function caretPressed(cursor)
 {
@@ -163,11 +132,6 @@ function caretPressed(cursor)
     var firstChar = document.charAt(line - 1, firstCharPos);
     var lastCharPos = document.firstColumn(line);
     var lastChar = document.charAt(line, lastCharPos);
-
-    dbg("first char position: " + (line - 1) + ", " + firstCharPos);
-    dbg(" last char position: " + (line) + ", " + lastCharPos);
-    dbg("         first char: '" + firstChar + "'");
-    dbg("          last char: '" + lastChar + "'");
 
     var isCurveBracketsMatched = (firstChar == '{' && lastChar == '}');
     var isBracketsMatched = isCurveBracketsMatched
@@ -207,8 +171,17 @@ function caretPressed(cursor)
     // Check if multiline comment continued on the line
     else if (document.firstChar(line - 1) == '*')
     {
+        var filler = String().fill(' ', document.firstColumn(line - 1));
         // Try to continue a C-style comment
-        document.insertText(line, 0, String().fill(' ', document.firstColumn(line - 1)) + "* ");
+        document.insertText(line, 0, filler + "* ");
+        result = filler.length;
+    }
+    else
+    {
+        var currentString = document.line(line - 1);
+        var r = /^(\s*)((if|for|while)\s*\(|do|else|(default|case\s+.*)\s*:).*$/.exec(currentString);
+        if (r != null)
+            result = r[1].length + gIndentWidth;
     }
     return result;
 }
@@ -229,7 +202,7 @@ function tryTemplate(cursor)
     var currentString = document.line(line);
     var prevWord = document.wordAt(line, column - 1);
     var isCloseAngleBracketNeeded = currentString.match(/^\s*template\s*<$/)
-      || prevWord.match(/[A-Za-z_][A-Za-z0-9_]*/)
+      || prevWord.match(/[A-Za-z_][A-Za-z0-9_]*/)           // Does a word before '<' looks like identifier?
       ;
     if (isCloseAngleBracketNeeded)
     {
@@ -243,7 +216,7 @@ function tryTemplate(cursor)
  *
  * If (just entered) comma is a first symbol on a line,
  * just move it on a half-tab left relative to a previus line
- * (if latter doesn't starts w/ comma).
+ * (if latter doesn't starts w/ comma or ':').
  * Do nothing otherwise.
  */
 function tryComma(cursor)
@@ -254,9 +227,56 @@ function tryComma(cursor)
 
     if (document.firstChar(line) == ',' && document.firstColumn(line) == (column - 1))
     {
-        result = document.firstColumn(line - 1) - (document.firstChar(line - 1) == ',' ? 0 : 2);
+        var prevLineFirstChar = document.firstChar(line - 1);
+        var mustMove = !(prevLineFirstChar == ',' || prevLineFirstChar == ':');
+        result = document.firstColumn(line - 1) - (mustMove ? 2 : 0);
         document.insertText(cursor, " ");                   // Add one space after comma
     }
+    return result;
+}
+
+/**
+ * \brief Try to align a given close bracket
+ */
+function tryCloseBracket(cursor, ch)
+{
+    var result = -2;
+    var line = cursor.line;
+    var column = cursor.column;
+
+    // Check if a given closing brace is a first char on a line
+    // (i.e. it is 'dangling' brace)...
+    if (document.firstChar(line) == ch && document.firstColumn(line) == (column - 1))
+    {
+        var braceCursor = new Cursor().invalid();
+        if (ch != '>')
+            braceCursor = document.anchor(line, column - 1, gBraceMap[ch]);
+            // TODO Otherwise, it seems we have a template parameters list...
+        if (braceCursor.isValid())
+            result = document.firstColumn(braceCursor.line);
+    }
+
+    return result;
+}
+
+/**
+ * \brief Indent new scope block
+ *
+ * ... try to unindent to be precise...
+ *
+ * \todo Deduplicate code w/ \c caretPressed()
+ */
+function tryBlock(cursor)
+{
+    var result = -2;
+    var line = cursor.line;
+    var column = cursor.column;
+
+    var currentString = document.line(line - 1);
+    var r = /^(\s*)((if|for|while)\s*\(|do|else|(default|case\s+.*)\s*:).*$/.exec(currentString);
+    dbg("r=",r)
+    if (r != null)
+        result = r[1].length;
     return result;
 }
 
@@ -302,6 +322,15 @@ function processChar(line, ch)
             break;
         case ',':
             result = tryComma(cursor);                      // Possible need to align parameters list
+            break;
+        case '}':
+        case ')':
+        case ']':
+        case '>':
+            result = tryCloseBracket(cursor, ch);           // Try to align a given close bracket
+            break;
+        case '{':
+            result = tryBlock(cursor);
             break;
         default:
             break;                                          // Nothing to do...
