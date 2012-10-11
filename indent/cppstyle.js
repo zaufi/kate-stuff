@@ -30,7 +30,7 @@
 // '#' is for preprocessor directives
 // ')' is for align dangling close bracket
 // ';' is for align `for' parts
-triggerCharacters = "{})/:;,#<>$";
+triggerCharacters = "{}()/:;,#<>";
 
 var debugMode = true;
 
@@ -54,21 +54,76 @@ var gBraceMap = {
   };
 //END global variables and functions
 
+
 /**
- * \brief Dump some document properties
+ * \brief Handle \c ENTER key
  */
-function showDebugInfo()
+function caretPressed(cursor)
 {
-    c = view.cursorPosition();
-    dbg("    Cursor position: ", c.line, ", ", c.column);
-    dbg("          MIME-type: ", document.mimeType());
-    dbg("              gMode: ", gMode);
-    dbg("                 hl: ", document.highlightingMode());
-    dbg("          hl@cursor: ", document.highlightingModeAt(view.cursorPosition()));
-    dbg("firstVirtualColumn() = ", document.firstVirtualColumn(c.line));
-    dbg(" lastVirtualColumn() = ", document.lastVirtualColumn(c.line));
-    dbg("       firstColumn() = ", document.firstColumn(c.line));
-    dbg("        lastColumn() = ", document.lastColumn(c.line));
+    var result = -1;
+    var line = cursor.line;
+    var column = cursor.column;
+
+    // Check if ENTER was hit between ()/{}/[]/<>
+    if (line - 1 < 0)
+        return result;                                      // Nothing (dunno) to do if no previous line...
+
+    var firstCharPos = document.lastColumn(line - 1);
+    var firstChar = document.charAt(line - 1, firstCharPos);
+    var lastCharPos = document.firstColumn(line);
+    var lastChar = document.charAt(line, lastCharPos);
+
+    var isCurveBracketsMatched = (firstChar == '{' && lastChar == '}');
+    var isBracketsMatched = isCurveBracketsMatched
+        || (firstChar == '[' && lastChar == ']')
+        || (firstChar == '(' && lastChar == ')')
+        || (firstChar == '<' && lastChar == '>')
+        ;
+    if (isBracketsMatched)
+    {
+        var currentIndentation = document.firstVirtualColumn(line - 1);
+        result = currentIndentation + gIndentWidth;
+        document.editBegin();
+        document.insertText(line, document.firstColumn(line), "\n");
+        document.indent(new Range(line + 1, 0, line + 1, 1), currentIndentation / gIndentWidth);
+        // Add half-tab (2 spaces) if matched not a curve bracket or
+        // open character isn't the only one on the line
+        var isOpenCharTheOnlyOnLine = (document.firstColumn(line - 1) == firstCharPos);
+        if (!(isCurveBracketsMatched || isOpenCharTheOnlyOnLine))
+            document.insertText(line + 1, document.firstColumn(line + 1), "  ");
+        document.editEnd();
+        view.setCursorPosition(line, result);
+    }
+    // Check if multiline comment was started on the line
+    else if (document.startsWith(line - 1, "/*", true))
+    {
+        var filler = String().fill(' ', document.firstColumn(line - 1) + 1);
+        var padding = filler + "* ";
+        // If next line doesn't looks like a continue of the current comment,
+        // then append comment closer also.
+        if (!document.startsWith(line + 1, "*", true))
+            padding += "\n" + filler + "*/\n";
+        document.insertText(line, 0, padding);
+        view.setCursorPosition(line, padding.length + 4);
+        result = filler.length;
+    }
+    // Check if multiline comment continued on the line
+    else if (document.firstChar(line - 1) == '*')
+    {
+        var filler = String().fill(' ', document.firstColumn(line - 1));
+        // Try to continue a C-style comment
+        document.insertText(line, 0, filler + "* ");
+        result = filler.length;
+    }
+    else
+    {
+        // Check if ENTER was pressed after some keywords...
+        var currentString = document.line(line - 1);
+        var r = /^(\s*)((if|for|while)\s*\(|do|else|(public|protected|private|default|case\s+.*)\s*:).*$/.exec(currentString);
+        if (r != null)
+            result = r[1].length + gIndentWidth;
+    }
+    return result;
 }
 
 /**
@@ -112,78 +167,6 @@ function trySameLineComment(cursor)
             }
         }
     }
-}
-
-/**
- * \brief Handle \c ENTER key
- */
-function caretPressed(cursor)
-{
-    var result = -1;
-    var line = cursor.line;
-    var column = cursor.column;
-
-    // Check if ENTER was hit between ()/{}/[]/<>
-    // 0) check if previous/next line is valid
-    if (line - 1 < 0 && line + 1 < document.lines())
-        return result;                                      // Nothing to do if no previous/next line...
-
-    var firstCharPos = document.lastColumn(line - 1);
-    var firstChar = document.charAt(line - 1, firstCharPos);
-    var lastCharPos = document.firstColumn(line);
-    var lastChar = document.charAt(line, lastCharPos);
-
-    var isCurveBracketsMatched = (firstChar == '{' && lastChar == '}');
-    var isBracketsMatched = isCurveBracketsMatched
-        || (firstChar == '[' && lastChar == ']')
-        || (firstChar == '(' && lastChar == ')')
-        || (firstChar == '<' && lastChar == '>')
-        ;
-    if (isBracketsMatched)
-    {
-        var currentIndentation = document.firstVirtualColumn(line - 1);
-        dbg("currentIndentation:", currentIndentation);
-        result = currentIndentation + gIndentWidth;
-        document.editBegin();
-        document.insertText(line, document.firstColumn(line), "\n");
-        document.indent(new Range(line + 1, 0, line + 1, 1), currentIndentation / gIndentWidth);
-        // Add half-tab (2 spaces) if matched not a curve bracket or
-        // open character isn't the only one on the line
-        var isOpenCharTheOnlyOnLine = (document.firstColumn(line - 1) == firstCharPos);
-        if (!(isCurveBracketsMatched || isOpenCharTheOnlyOnLine))
-            document.insertText(line + 1, document.firstColumn(line + 1), "  ");
-        document.editEnd();
-        view.setCursorPosition(line, result);
-    }
-    // Check if multiline comment was started on the line
-    else if (document.startsWith(line - 1, "/*", true))
-    {
-        var filler = String().fill(' ', document.firstColumn(line - 1) + 1);
-        var padding = filler + "* ";
-        // If next line doesn't looks like a continue of the current comment,
-        // then append comment closer also.
-        if (!document.startsWith(line + 1, "*", true))
-            padding += "\n" + filler + "*/\n";
-        document.insertText(line, 0, padding);
-        view.setCursorPosition(line, padding.length + 4);
-        result = filler.length;
-    }
-    // Check if multiline comment continued on the line
-    else if (document.firstChar(line - 1) == '*')
-    {
-        var filler = String().fill(' ', document.firstColumn(line - 1));
-        // Try to continue a C-style comment
-        document.insertText(line, 0, filler + "* ");
-        result = filler.length;
-    }
-    else
-    {
-        var currentString = document.line(line - 1);
-        var r = /^(\s*)((if|for|while)\s*\(|do|else|(default|case\s+.*)\s*:).*$/.exec(currentString);
-        if (r != null)
-            result = r[1].length + gIndentWidth;
-    }
-    return result;
 }
 
 /**
@@ -274,10 +257,97 @@ function tryBlock(cursor)
 
     var currentString = document.line(line - 1);
     var r = /^(\s*)((if|for|while)\s*\(|do|else|(default|case\s+.*)\s*:).*$/.exec(currentString);
-    dbg("r=",r)
     if (r != null)
         result = r[1].length;
     return result;
+}
+
+/**
+ * \brief Align preprocessor directives
+ */
+function tryPreprocessor(cursor)
+{
+    var result = -2;
+    var line = cursor.line;
+    var column = cursor.column;
+
+    // Check if just entered '#' is a first on a line
+    if (document.firstChar(line) == '#' && document.firstColumn(line) == (column - 1))
+    {
+        // Get current indentation level
+        var currentLine = line;
+        var currentLevel = 0;
+        while (currentLine >= 0)
+        {
+            currentLine--;
+            var currentLineText = document.line(currentLine);
+            if (currentLineText.search(/^\s*#\s*(if|ifdef|ifndef)\s+.*$/) != -1)
+                currentLevel++;
+            else if (currentLineText.search(/^\s*#\s*endif.*$/) != -1)
+                currentLevel--;
+        }
+        if (currentLevel > 0)
+        {
+            var padding = String().fill(' ', (currentLevel - 1) * 2 + 1);
+            document.insertText(cursor, padding);
+        }
+        result = 0;
+    }
+    return result;
+}
+
+/**
+ * \brief Try to align access modifiers or class initialization list
+ *
+ * Here is few cases possible:
+ * \li \c ':' pressed after a keyword \c public, \c protected or \c private.
+ *     Then align a current line to corresponsing class/struct definition.
+ *     Check a previous line and if it is not starts w/ \c '{' add a new line before.
+ * \li \c ':' is a first char on the line, then it looks like a class initialization
+ *     list.
+ */
+function tryColon(cursor)
+{
+    var result = -2;
+    var line = cursor.line;
+    var column = cursor.column;
+
+    // Check if just entered ':' is a first on a line
+    if (document.firstChar(line) == ':' && document.firstColumn(line) == (column - 1))
+    {
+        // Check if there a dangling ')' on a previous line
+        if (document.firstChar(line - 1) == ')')
+            result = document.firstColumn(line - 1);
+        else
+            result = document.firstVirtualColumn(line - 1) + 2;
+        document.insertText(cursor, " ");
+    }
+    else
+    {
+        var currentString = document.line(line);
+        if (currentString.search(/^\s*((public|protected|private)\s*(slots|Q_SLOTS)?|(signals|Q_SIGNALS)\s*):\s*$/) != -1)
+        {
+            var definitionCursor = document.anchor(line, 0, '{');
+            if (definitionCursor.isValid())
+            {
+                result = document.firstVirtualColumn(definitionCursor.line);
+            }
+        }
+    }
+    return result;
+}
+
+/**
+ * \brief Try to add space after keywords and before an open brace
+ */
+function tryOpenBrace(cursor)
+{
+    var line = cursor.line;
+    var column = cursor.column;
+    var wordBefore = document.wordAt(line, column - 1);
+    dbg("word before: '"+wordBefore+"'");
+    if (wordBefore.search(/(for|if|switch|while)/) != -1)
+        document.insertText(line, column - 1, " ");
 }
 
 /**
@@ -289,13 +359,6 @@ function tryBlock(cursor)
 function processChar(line, ch)
 {
     var result = -2;                                        // By default, do nothing...
-    // ATTENTION Special "trigger" char to SPAM debugging info
-    if (ch == '$')
-    {
-        showDebugInfo();
-        return result;
-    }
-
     var cursor = view.cursorPosition();
     if (!cursor)
         return result;
@@ -331,6 +394,15 @@ function processChar(line, ch)
             break;
         case '{':
             result = tryBlock(cursor);
+            break;
+        case '#':
+            result = tryPreprocessor(cursor);
+            break;
+        case ':':
+            result = tryColon(cursor);
+            break;
+        case '(':
+            tryOpenBrace(cursor);
             break;
         default:
             break;                                          // Nothing to do...
