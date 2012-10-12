@@ -2,10 +2,11 @@
  * name: C++/boost Style
  * license: LGPL
  * author: Alex Turbov <i.zaufi@gmail.com>
- * revision: 1
+ * revision: 1.0
  * kate-version: 3.4
  * type: indentation
  * priority: 10
+ * indent-languages: c++, java, javascript, php
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -54,20 +55,10 @@ var gBraceMap = {
   };
 //END global variables and functions
 
-
-/**
- * \brief Handle \c ENTER key
- */
-function caretPressed(cursor)
+function tryBraceSplit_ch(line)
 {
     var result = -1;
-    var line = cursor.line;
-    var column = cursor.column;
-
     // Check if ENTER was hit between ()/{}/[]/<>
-    if (line - 1 < 0)
-        return result;                                      // Nothing (dunno) to do if no previous line...
-
     var firstCharPos = document.lastColumn(line - 1);
     var firstChar = document.charAt(line - 1, firstCharPos);
     var lastCharPos = document.firstColumn(line);
@@ -94,35 +85,113 @@ function caretPressed(cursor)
         document.editEnd();
         view.setCursorPosition(line, result);
     }
+    return result;
+}
+
+function tryToAlignOpenBrace_ch(line)
+{
+    var result = -1;
+    var pos = document.lastColumn(line - 1);
+    var ch = document.charAt(line - 1, pos);
+    // Even if counterpart brace not found align the current line
+    // to one level deeper...
+    if (ch == '{' || ch == '(' || ch == '[')
+        result = pos + gIndentWidth;
+    return result;
+}
+
+/// Check if previous line introduced a multiline comment
+function tryMultilineCommentStart_ch(line)
+{
+    var result = -1;
     // Check if multiline comment was started on the line
-    else if (document.startsWith(line - 1, "/*", true))
+    if (document.startsWith(line - 1, "/*", true))
     {
-        var filler = String().fill(' ', document.firstColumn(line - 1) + 1);
+        var filler = String().fill(' ', document.firstVirtualColumn(line - 1) + 1);
         var padding = filler + "* ";
-        // If next line doesn't looks like a continue of the current comment,
-        // then append comment closer also.
-        if (!document.startsWith(line + 1, "*", true))
-            padding += "\n" + filler + "*/\n";
+        // If next line (if present) doesn't looks like a continue of the current comment,
+        // then append a comment closer also...
+        if ((line + 1) < document.lines())
+        {
+            if (!document.startsWith(line + 1, "*", true))
+                padding += "\n" + filler + "*/";
+        }
+        else padding += "\n" + filler + "*/\n";             // There is no a next line...
+
         document.insertText(line, 0, padding);
         view.setCursorPosition(line, padding.length + 4);
         result = filler.length;
     }
+    return result;
+}
+
+function tryMultilineCommentCont_ch(line)
+{
+    var result = -1;
     // Check if multiline comment continued on the line
-    else if (document.firstChar(line - 1) == '*')
+    var firstCharPos = document.firstColumn(line - 1);
+    dbg("line=",line);
+    dbg("fcp=",firstCharPos);
+    dbg("fc=",document.charAt(line - 1, firstCharPos));
+    if (document.charAt(line - 1, firstCharPos) == '*')
     {
-        var filler = String().fill(' ', document.firstColumn(line - 1));
-        // Try to continue a C-style comment
-        document.insertText(line, 0, filler + "* ");
-        result = filler.length;
+        if (document.charAt(line - 1, firstCharPos + 1) == '/')
+            // ENTER pressed after multiline comment: unindent 1 space!
+            result = firstCharPos - 1;
+        else
+        {
+            // Ok, ENTER pressed inside of the multiline comment:
+            // just append one more line...
+            var filler = String().fill(' ', document.firstColumn(line - 1));
+            // Try to continue a C-style comment
+            document.insertText(line, 0, filler + "* ");
+            result = filler.length;
+        }
     }
-    else
-    {
-        // Check if ENTER was pressed after some keywords...
-        var currentString = document.line(line - 1);
-        var r = /^(\s*)((if|for|while)\s*\(|do|else|(public|protected|private|default|case\s+.*)\s*:).*$/.exec(currentString);
-        if (r != null)
-            result = r[1].length + gIndentWidth;
-    }
+    return result;
+}
+
+function tryToAlignAsSomeKeywords_ch(line)
+{
+    var result = -1;
+    // Check if ENTER was pressed after some keywords...
+    var prevString = document.line(line - 1);
+    var r = /^(\s*)((if|for|while)\s*\(|do|else|(public|protected|private|default|case\s+.*)\s*:).*$/.exec(prevString);
+    if (r != null)
+        result = r[1].length + gIndentWidth;
+    return result;
+}
+
+/**
+ * \brief Handle \c ENTER key
+ *
+ * \todo Split into separate functions
+ */
+function caretPressed(cursor)
+{
+    var result = -1;
+    var line = cursor.line;
+
+    // Dunno what to do if previous line isn't available
+    if (line - 1 < 0)
+        return result;                                      // Nothing (dunno) to do if no previous line...
+
+    // Register all indent functions
+    var handlers = [
+        tryBraceSplit_ch
+      , tryToAlignOpenBrace_ch
+      , tryMultilineCommentStart_ch
+      , tryMultilineCommentCont_ch
+      , tryToAlignAsSomeKeywords_ch
+    ];
+
+    // Apply all all functions until result gets changed
+    for (
+        var i = 0
+      ; i < handlers.length && result == -1
+      ; result = handlers[i++](line)
+      );
+
     return result;
 }
 
@@ -143,16 +212,19 @@ function trySameLineComment(cursor)
     var column = cursor.column;
     // Try to split line by comment
     var match = /^([^\/]*)(\/\/+)(.*)$/.exec(document.line(line));
-    dbg("match_before  = '" + match[1] + "'");
-    dbg("match_comment = '" + match[2] + "'");
-    dbg("match_after   = '" + match[3] + "'");
 
     if (match != null)                                      // Is matched?
     {
+        dbg("match_before  = '" + match[1] + "'");
+        dbg("match_comment = '" + match[2] + "'");
+        dbg("match_after   = '" + match[3] + "'");
         if (match[2] == "///" && match[3].length == 0)
         {
             // 3rd case here!
-            document.insertText(cursor, "< ");
+            var filler = (match[1].length > 0)              // Is there any text before comment?
+                ? "< "                                      // turn it into inline-doxygen comment
+                : " ";                                      // just usual doxygen comment
+            document.insertText(cursor, filler);
         }
         else if (match[2] == "//" && match[1].length != 0 && match[3].length == 0)
         {
@@ -198,7 +270,7 @@ function tryTemplate(cursor)
  * \brief Try to align parameters list
  *
  * If (just entered) comma is a first symbol on a line,
- * just move it on a half-tab left relative to a previus line
+ * just move it on a half-tab left relative to a previous line
  * (if latter doesn't starts w/ comma or ':').
  * Do nothing otherwise.
  */
@@ -246,8 +318,6 @@ function tryCloseBracket(cursor, ch)
  * \brief Indent new scope block
  *
  * ... try to unindent to be precise...
- *
- * \todo Deduplicate code w/ \c caretPressed()
  */
 function tryBlock(cursor)
 {
@@ -255,10 +325,19 @@ function tryBlock(cursor)
     var line = cursor.line;
     var column = cursor.column;
 
-    var currentString = document.line(line - 1);
-    var r = /^(\s*)((if|for|while)\s*\(|do|else|(default|case\s+.*)\s*:).*$/.exec(currentString);
-    if (r != null)
-        result = r[1].length;
+    // Check for a dangling close brace on a previous line
+    // (this may mean that `for' or `if' or `while' w/ looong parameters list on it)
+    if (document.firstChar(line - 1) == ')')
+        result = Math.floor(document.firstColumn(line - 1) / gIndentWidth) * gIndentWidth;
+    else
+    {
+        // Otherwise, check for a keyword on the previous line and
+        // indent the started block to it...
+        var prevString = document.line(line - 1);
+        var r = /^(\s*)((if|for|while)\s*\(|do|else|(default|case\s+.*)\s*:).*$/.exec(prevString);
+        if (r != null)
+            result = r[1].length;
+    }
     return result;
 }
 
@@ -301,7 +380,7 @@ function tryPreprocessor(cursor)
  *
  * Here is few cases possible:
  * \li \c ':' pressed after a keyword \c public, \c protected or \c private.
- *     Then align a current line to corresponsing class/struct definition.
+ *     Then align a current line to corresponding class/struct definition.
  *     Check a previous line and if it is not starts w/ \c '{' add a new line before.
  * \li \c ':' is a first char on the line, then it looks like a class initialization
  *     list.
@@ -346,7 +425,7 @@ function tryOpenBrace(cursor)
     var column = cursor.column;
     var wordBefore = document.wordAt(line, column - 1);
     dbg("word before: '"+wordBefore+"'");
-    if (wordBefore.search(/(for|if|switch|while)/) != -1)
+    if (wordBefore.search(/\b(for|if|switch|while)\b/) != -1)
         document.insertText(line, column - 1, " ");
 }
 
@@ -419,7 +498,7 @@ function processChar(line, ch)
  * It gets three arguments: \c line, \c indentwidth in spaces and typed character
  *
  * Called for each newline (<tt>ch == \n</tt>) and all characters specified in
- * the global variable triggerCharacters. When calling \e Tools->Align
+ * the global variable \c triggerCharacters. When calling \e Tools->Align
  * the variable \c ch is empty, i.e. <tt>ch == ''</tt>.
  */
 function indent(line, indentWidth, ch)
