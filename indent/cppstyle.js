@@ -86,6 +86,8 @@ function tryBraceSplit_ch(line)
         document.editEnd();
         view.setCursorPosition(line, result);
     }
+    if (result != -1)
+        dbg("tryBraceSplit_ch result="+result);
     return result;
 }
 
@@ -99,6 +101,8 @@ function tryToAlignOpenBrace_ch(line)
 
     if (ch == '{' || ch == '(' || ch == '[' || ch == '<')
         result = pos + gIndentWidth;
+    if (result != -1)
+        dbg("tryToAlignOpenBrace_ch result="+result);
     return result;
 }
 
@@ -124,6 +128,8 @@ function tryMultilineCommentStart_ch(line)
         view.setCursorPosition(line, padding.length + 4);
         result = filler.length;
     }
+    if (result != -1)
+        dbg("tryMultilineCommentStart_ch result="+result);
     return result;
 }
 
@@ -148,6 +154,8 @@ function tryMultilineCommentCont_ch(line)
             result = filler.length;
         }
     }
+    if (result != -1)
+        dbg("tryMultilineCommentCont_ch result="+result);
     return result;
 }
 
@@ -160,6 +168,8 @@ function tryIndentAfterSomeKeywords_ch(line)
     var r = /^(\s*)((if|for|while)\s*\(|do|else|(public|protected|private|default|case\s+.*)\s*:).*$/.exec(prevString);
     if (r != null)
         result = r[1].length + gIndentWidth;
+    if (result != -1)
+        dbg("tryIndentAfterSomeKeywords_ch result="+result);
     return result;
 }
 
@@ -172,6 +182,8 @@ function tryDanglingSemicolon_ch(line)
     var r = /^(\s*)(([\)\]}]?\s*)*([\)\]]\s*))?;(\s*\/\/.*)?$/.exec(prevString);
     if (r != null)
         result = r[1].length - 2;
+    if (result != -1)
+        dbg("tryDanglingSemicolon_ch result="+result);
     return result;
 }
 
@@ -182,6 +194,47 @@ function tryMacroDefinition_ch(line)
     var prevString = document.line(line - 1);
     if (prevString.search(/^\s*#\s*define\s+.*\\$/) != -1)
         result = gIndentWidth;
+    if (result != -1)
+        dbg("tryMacroDefinition_ch result="+result);
+    return result;
+}
+
+/// Check if a current line has a text after cursor position
+/// and a previous one has a comment, then append a <em>"// "</em>
+/// before cursor and realign if latter was inline comment...
+function trySplitComment_ch(line)
+{
+    var result = -1;
+    if (document.lastColumn(line) != -1)
+    {
+        // Ok, current line has some text after...
+        // NOTE There is should be at least one space between
+        // the text and the comment
+        var match = /^(.*\s)(\/\/)(.*)$/.exec(document.line(line - 1));
+        for (var i = 0; i < match.length; ++i)
+            dbg(i+": '"+match[i]+"'");
+        if (match != null && 0 < match[3].trim().length)    // If matched and there is some text in a comment
+        {
+            if (0 < match[1].trim().length)                 // Is there some text before the comment?
+            {
+                // Align comment to gSameLineCommentStartAt
+                result = gSameLineCommentStartAt;
+            }
+            else
+            {
+                result = match[1].length;
+            }
+            var leadMatch = /^([^\s]*\s+).*$/.exec(match[3]);
+            var lead = "";
+            if (leadMatch != null)
+                lead = leadMatch[1];
+            else
+                lead = " ";
+            document.insertText(line, 0, "//" + lead);
+        }
+    }
+    if (result != -1)
+        dbg("trySplitComment_ch result="+result);
     return result;
 }
 
@@ -205,7 +258,8 @@ function caretPressed(cursor)
       , tryToAlignOpenBrace_ch
       , tryMultilineCommentStart_ch
       , tryMultilineCommentCont_ch
-      , tryIndentAfterSomeKeywords_ch
+      , trySplitComment_ch
+      , tryIndentAfterSomeKeywords_ch                       // NOTE It must follow after trySplitComment_ch!
       , tryDanglingSemicolon_ch
       , tryMacroDefinition_ch
     ];
@@ -243,15 +297,15 @@ function trySameLineComment(cursor)
         dbg("match_before  = '" + match[1] + "'");
         dbg("match_comment = '" + match[2] + "'");
         dbg("match_after   = '" + match[3] + "'");
-        if (match[2] == "///" && match[3].length == 0)
+        if (match[2] == "///" && match[3].trim().length == 0)
         {
             // 3rd case here!
-            var filler = (match[1].length > 0)              // Is there any text before comment?
+            var filler = (match[1].trim().length > 0)       // Is there any text before comment?
                 ? "< "                                      // turn it into inline-doxygen comment
                 : " ";                                      // just usual doxygen comment
             document.insertText(cursor, filler);
         }
-        else if (match[2] == "//" && match[1].length != 0 && match[3].length == 0)
+        else if (match[2] == "//" && 0 < match[1].trim().length && match[3].length == 0)
         {
             // 2nd case here! Check if padding required
             if (match[1].length < gSameLineCommentStartAt)
