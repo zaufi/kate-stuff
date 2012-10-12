@@ -31,7 +31,7 @@
 // '#' is for preprocessor directives
 // ')' is for align dangling close bracket
 // ';' is for align `for' parts
-triggerCharacters = "{}()/:;,#<>";
+triggerCharacters = "{}()<>/:;,#\\";
 
 var debugMode = true;
 
@@ -175,6 +175,16 @@ function tryDanglingSemicolon_ch(line)
     return result;
 }
 
+/// Check if \c ENTER hits after \c #define w/ a backslash
+function tryMacroDefinition_ch(line)
+{
+    var result = -1;
+    var prevString = document.line(line - 1);
+    if (prevString.search(/^\s*#\s*define\s+.*\\$/) != -1)
+        result = gIndentWidth;
+    return result;
+}
+
 /**
  * \brief Handle \c ENTER key
  *
@@ -197,6 +207,7 @@ function caretPressed(cursor)
       , tryMultilineCommentCont_ch
       , tryIndentAfterSomeKeywords_ch
       , tryDanglingSemicolon_ch
+      , tryMacroDefinition_ch
     ];
 
     // Apply all all functions until result gets changed
@@ -286,7 +297,7 @@ function tryTemplate(cursor)
  * If (just entered) comma is a first symbol on a line,
  * just move it on a half-tab left relative to a previous line
  * (if latter doesn't starts w/ comma or ':').
- * Do nothing otherwise.
+ * Do nothing otherwise. A space would be added after it anyway.
  */
 function tryComma(cursor)
 {
@@ -299,8 +310,8 @@ function tryComma(cursor)
         var prevLineFirstChar = document.firstChar(line - 1);
         var mustMove = !(prevLineFirstChar == ',' || prevLineFirstChar == ':');
         result = document.firstColumn(line - 1) - (mustMove ? 2 : 0);
-        document.insertText(cursor, " ");                   // Add one space after comma
     }
+    document.insertText(cursor, " ");                       // Always add one space after comma
     return result;
 }
 
@@ -348,7 +359,7 @@ function tryBlock(cursor)
         // Otherwise, check for a keyword on the previous line and
         // indent the started block to it...
         var prevString = document.line(line - 1);
-        var r = /^(\s*)((if|for|while)\s*\(|do|else|(default|case\s+.*)\s*:).*$/.exec(prevString);
+        var r = /^(\s*)((catch|if|for|while)\s*\(|do|else|try|(default|case\s+.*)\s*:).*$/.exec(prevString);
         if (r != null)
             result = r[1].length;
     }
@@ -431,7 +442,7 @@ function tryColon(cursor)
 }
 
 /**
- * \brief Try to add space after keywords and before an open brace
+ * \brief Try to add one space after keywords and before an open brace
  */
 function tryOpenBrace(cursor)
 {
@@ -439,8 +450,88 @@ function tryOpenBrace(cursor)
     var column = cursor.column;
     var wordBefore = document.wordAt(line, column - 1);
     dbg("word before: '"+wordBefore+"'");
-    if (wordBefore.search(/\b(for|if|switch|while)\b/) != -1)
+    if (wordBefore.search(/\b(catch|for|if|switch|while)\b/) != -1)
         document.insertText(line, column - 1, " ");
+}
+
+function getMacroRange(line)
+{
+    function stripLastCharAndRTrim(str)
+    {
+        return str.substring(0, str.length - 1).rtrim();
+    }
+    var maxLength = 0;
+    var macroStartLine = -1;
+    // Look up towards begining of a document
+    for (var i = line; i >= 0; --i)
+    {
+        var currentLineText = document.line(i);
+        dbg("up: '"+currentLineText+"'");
+        if (currentLineText.search(/^\s*#\s*define\s+.*\\$/) != -1)
+        {
+            macroStartLine = i;
+            maxLength = Math.max(maxLength, stripLastCharAndRTrim(currentLineText).length);
+            break;                                          // Ok, we've found the macro start!
+        }
+        else if (currentLineText.search(/\\$/) == -1)
+            break;                                          // Oops! No backslash found and #define still not reached!
+        maxLength = Math.max(maxLength, stripLastCharAndRTrim(currentLineText).length);
+    }
+
+    if (macroStartLine == -1)
+        return null;
+
+    // Look down towards end of the document
+    var macroEndLine = -1;
+    for (var i = line; i < document.lines(); ++i)
+    {
+        var currentLineText = document.line(i);
+        dbg("dw: '"+currentLineText+"'");
+        if (currentLineText.search(/\\$/) != -1)            // Make sure the current line have a '\' at the end
+        {
+            macroEndLine = i;
+            maxLength = Math.max(maxLength, stripLastCharAndRTrim(currentLineText).length);
+        }
+        else break;                                         // No backslash at the end --> end of macro!
+    }
+
+    if (macroEndLine == -1)
+        return null;
+
+    macroEndLine++;
+    return {
+        range: new Range(macroStartLine, 0, macroEndLine, 0)
+      , max: maxLength
+      };
+}
+
+/**
+ * \brief Try to align a backslashes in macro definition
+ *
+ * \note It is \b illegal to have smth after a backslash in source code!
+ */
+function tryBackslash(cursor)
+{
+    var line = cursor.line;
+    var result = getMacroRange(line);                       // Look up and down for macro definition range
+    if (result != null)
+    {
+        dbg("macroRange:",result.range);
+        dbg("maxLength:",result.max);
+        // Iterate over macro definition, strip backslash
+        // and add a padding string up to result.max length + backslash
+        document.editBegin();
+        for (var i = result.range.start.line; i < result.range.end.line; ++i)
+        {
+            var currentLineText = document.line(i);
+            var originalTextLength = currentLineText.length;
+            currentLineText = currentLineText.substring(0, currentLineText.length - 1).rtrim();
+            var textLength = currentLineText.length;
+            document.removeText(i, textLength, i, originalTextLength);
+            document.insertText(i, textLength, String().fill(' ', result.max - textLength + 1) + "\\");
+        }
+        document.editEnd();
+    }
 }
 
 /**
@@ -496,6 +587,9 @@ function processChar(line, ch)
             break;
         case '(':
             tryOpenBrace(cursor);
+            break;
+        case '\\':
+            tryBackslash(cursor);
             break;
         default:
             break;                                          // Nothing to do...
