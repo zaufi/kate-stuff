@@ -55,10 +55,11 @@ var gBraceMap = {
   };
 //END global variables and functions
 
+/// Check if \c ENTER was hit between ()/{}/[]/<>
 function tryBraceSplit_ch(line)
 {
     var result = -1;
-    // Check if ENTER was hit between ()/{}/[]/<>
+    // Get last char from previous line (opener) and a first from the current (closer)
     var firstCharPos = document.lastColumn(line - 1);
     var firstChar = document.charAt(line - 1, firstCharPos);
     var lastCharPos = document.firstColumn(line);
@@ -88,19 +89,20 @@ function tryBraceSplit_ch(line)
     return result;
 }
 
+/// Even if counterpart brace not found (\sa \c tryBraceSplit_ch), align the current line
+/// to one level deeper if last char on a previous line is one of open braces.
 function tryToAlignOpenBrace_ch(line)
 {
     var result = -1;
     var pos = document.lastColumn(line - 1);
     var ch = document.charAt(line - 1, pos);
-    // Even if counterpart brace not found align the current line
-    // to one level deeper...
-    if (ch == '{' || ch == '(' || ch == '[')
+
+    if (ch == '{' || ch == '(' || ch == '[' || ch == '<')
         result = pos + gIndentWidth;
     return result;
 }
 
-/// Check if previous line introduced a multiline comment
+/// Check if a multiline comment introduced on a previous line
 function tryMultilineCommentStart_ch(line)
 {
     var result = -1;
@@ -125,14 +127,12 @@ function tryMultilineCommentStart_ch(line)
     return result;
 }
 
+/// Check if \c ENTER was hit inside or at last line of a multiline comment
 function tryMultilineCommentCont_ch(line)
 {
     var result = -1;
     // Check if multiline comment continued on the line
     var firstCharPos = document.firstColumn(line - 1);
-    dbg("line=",line);
-    dbg("fcp=",firstCharPos);
-    dbg("fc=",document.charAt(line - 1, firstCharPos));
     if (document.charAt(line - 1, firstCharPos) == '*')
     {
         if (document.charAt(line - 1, firstCharPos + 1) == '/')
@@ -151,7 +151,8 @@ function tryMultilineCommentCont_ch(line)
     return result;
 }
 
-function tryToAlignAsSomeKeywords_ch(line)
+/// Indent a next line after some keywords
+function tryIndentAfterSomeKeywords_ch(line)
 {
     var result = -1;
     // Check if ENTER was pressed after some keywords...
@@ -159,6 +160,18 @@ function tryToAlignAsSomeKeywords_ch(line)
     var r = /^(\s*)((if|for|while)\s*\(|do|else|(public|protected|private|default|case\s+.*)\s*:).*$/.exec(prevString);
     if (r != null)
         result = r[1].length + gIndentWidth;
+    return result;
+}
+
+/// Try to indent a line right after a dangling semicolon
+/// (possible w/ leading close braces and comment after)
+function tryDanglingSemicolon_ch(line)
+{
+    var result = -1;
+    var prevString = document.line(line - 1);
+    var r = /^(\s*)(([\)\]}]?\s*)*([\)\]]\s*))?;(\s*\/\/.*)?$/.exec(prevString);
+    if (r != null)
+        result = r[1].length - 2;
     return result;
 }
 
@@ -182,7 +195,8 @@ function caretPressed(cursor)
       , tryToAlignOpenBrace_ch
       , tryMultilineCommentStart_ch
       , tryMultilineCommentCont_ch
-      , tryToAlignAsSomeKeywords_ch
+      , tryIndentAfterSomeKeywords_ch
+      , tryDanglingSemicolon_ch
     ];
 
     // Apply all all functions until result gets changed
