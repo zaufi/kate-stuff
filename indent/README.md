@@ -10,20 +10,17 @@ in a stricter way.
 
 Example:
 
-{% highlight c++ %}
     typedef typename boost::mpl::eval_if<
         boost::is_same<iter, boost::mpl::end<types_map>::type>
       , boost::mpl::int_<-1>
       , boost::mpl::distance<boost::mpl::begin<types_map>::type, iter>
       >::type type;
-{% endhighlight %}
 
 In practice I've noticed that this style can be used to format long function calls or even
 `for` statements. Actually everything that can be split into several lines could be formatted that way.
 And yes, it is convenient to have a delimiter (comma, semicolon, whatever) as leading character to
 make it visually noticeable.
 
-{% highlight c++ %}
     // Inheritance list formatting
     struct sample
       : public base_1
@@ -54,7 +51,6 @@ make it visually noticeable.
             }
         }
     };
-{% endhighlight %}
 
 It looks unusual for awhile :) but later it become "normal" and easily to read and edit :)
 Really! When you want to add one more parameter to a function declaration or change order it will
@@ -68,4 +64,9 @@ Features
 * align inline comments to 60th position after typing `'//'`
 * turn `'///'` into `'/// '` or `'///< '` depending on comment placement
 * indent preprocessor directives according nesting level of `#if`/`#endif`
+* take care of inline comments
+* turn `'/*'` or `'/**'` into multiline (doxygen style) comment
+* take care about backslashes alignment in preprocessor macro definitions
+* append a space after comma and some keywords (like `if`,  `for`,  `while`,  etc...)
+* align access modifiers
 *
