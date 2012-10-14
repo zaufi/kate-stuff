@@ -55,6 +55,32 @@ var gBraceMap = {
   };
 //END global variables and functions
 
+/// Try to keep same-line comment.
+/// I.e. if \c ENTER was hit on a line w/ inline comment and before it,
+/// try to keep it on a previous line...
+function tryToKeepInlineComment(line)
+{
+    dbg("current line: '"+document.line(line)+"'");
+    // Check is there any comment on the current line
+    var currentLineText = document.line(line);
+    var match = /^(.*\s)(\/\/)(.*)$/.exec(currentLineText);
+    if (match != null)
+    {
+        dbg("MATCHED!",match);
+        // Yep, try to move it on a previous line.
+        // NOTE The latter can't have a comment!
+        var lastPos = document.lastColumn(line - 1);
+        document.insertText(
+            line - 1
+          , lastPos + 1
+          , String().fill(' ', gSameLineCommentStartAt - lastPos - 1)
+              + "//"
+              + match[3]
+          );
+        document.removeText(line, match[1].rtrim().length, line, currentLineText.length);
+    }
+}
+
 /// Check if \c ENTER was hit between ()/{}/[]/<>
 /// \todo Match closing brace forward, put content between
 /// braces on a separate line and align a closing brace.
@@ -89,7 +115,10 @@ function tryBraceSplit_ch(line)
         view.setCursorPosition(line, result);
     }
     if (result != -1)
+    {
         dbg("tryBraceSplit_ch result="+result);
+        tryToKeepInlineComment(line);
+    }
     return result;
 }
 
@@ -113,7 +142,10 @@ function tryToAlignOpenBrace_ch(line)
             result += 2;
     }
     if (result != -1)
+    {
+        tryToKeepInlineComment(line);
         dbg("tryToAlignOpenBrace_ch result="+result);
+    }
     return result;
 }
 
@@ -217,7 +249,10 @@ function tryIndentAfterSomeKeywords_ch(line)
     if (r != null)
         result = r[1].length + gIndentWidth;
     if (result != -1)
+    {
+        tryToKeepInlineComment(line);
         dbg("tryIndentAfterSomeKeywords_ch result="+result);
+    }
     return result;
 }
 
@@ -236,7 +271,10 @@ function tryAfterDanglingSemicolon_ch(line)
     if (r != null)
         result = r[1].length - 2;
     if (result != -1)
+    {
+        tryToKeepInlineComment(line);
         dbg("tryDanglingSemicolon_ch result="+result);
+    }
     return result;
 }
 
@@ -266,8 +304,18 @@ function tryBeforeDanglingDelimiter_ch(line)
     if (halfTabUnindent)
         result = document.firstVirtualColumn(line - 1) - 2;
     if (result != -1)
+    {
+        tryToKeepInlineComment(line);
         dbg("tryBeforeDanglingDelimiter_ch result="+result);
+    }
     return result;
+}
+
+/// Wrap \c tryToKeepInlineComment as \e caret-handler
+function tryToKeepInlineComment_ch(line)
+{
+    tryToKeepInlineComment(line);
+    return -1;
 }
 
 /**
@@ -295,6 +343,7 @@ function caretPressed(cursor)
       , tryAfterDanglingSemicolon_ch
       , tryMacroDefinition_ch
       , tryBeforeDanglingDelimiter_ch
+      , tryToKeepInlineComment_ch
     ];
 
     // Apply all all functions until result gets changed
