@@ -60,13 +60,11 @@ var gBraceMap = {
 /// try to keep it on a previous line...
 function tryToKeepInlineComment(line)
 {
-    dbg("current line: '"+document.line(line)+"'");
     // Check is there any comment on the current line
     var currentLineText = document.line(line);
     var match = /^(.*\s)(\/\/)(.*)$/.exec(currentLineText);
     if (match != null)
     {
-        dbg("MATCHED!",match);
         // Yep, try to move it on a previous line.
         // NOTE The latter can't have a comment!
         var lastPos = document.lastColumn(line - 1);
