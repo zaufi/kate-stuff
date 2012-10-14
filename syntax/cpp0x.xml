@@ -13,23 +13,17 @@
     section="Sources"
     version="1.50.1"
     kateversion="2.4"
-    indenter="cstyle"
+    indenter="cppstyle"
     mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
     extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc;*.moc"
     author="Alex Turbov (i.zaufi@gmail.com)"
     priority="20"
   >
-<!--
-##########################################################################
-## Fixes by Sebastian Pipping (webmaster@hartwork.org)
-##
-## NOTE: Keep in sync with C highlighter! (c.xml)
-##########################################################################
-## Complete list of fixes by Alex Turbov (I.zaufi@gmail.com)
-## can be found at:
-## http://kde-files.org/content/show.php?content=90660
-##########################################################################
--->
+  <!--
+    Complete list of changes by Alex Turbov (I.zaufi@gmail.com)
+    can be found at:
+    http://kde-files.org/content/show.php?content=90660
+  -->
   <highlighting>
     <list name="keywords">
       <item> alignof </item>

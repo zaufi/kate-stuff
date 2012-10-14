@@ -56,6 +56,8 @@ var gBraceMap = {
 //END global variables and functions
 
 /// Check if \c ENTER was hit between ()/{}/[]/<>
+/// \todo Match closing brace forward, put content between
+/// braces on a separate line and align a closing brace.
 function tryBraceSplit_ch(line)
 {
     var result = -1;
@@ -93,6 +95,9 @@ function tryBraceSplit_ch(line)
 
 /// Even if counterpart brace not found (\sa \c tryBraceSplit_ch), align the current line
 /// to one level deeper if last char on a previous line is one of open braces.
+/// \code
+///     foo(|blah);
+/// \endcode
 function tryToAlignOpenBrace_ch(line)
 {
     var result = -1;
@@ -100,7 +105,13 @@ function tryToAlignOpenBrace_ch(line)
     var ch = document.charAt(line - 1, pos);
 
     if (ch == '{' || ch == '(' || ch == '[' || ch == '<')
-        result = pos + gIndentWidth;
+    {
+        result = document.firstColumn(line - 1) + gIndentWidth;
+        // Add 2 more spaces if line do not starts w/ identifier
+        // (i.e. it starts w/ some delimiter character, like comma & etc).
+        if (document.line(line - 1).search(/^\s*[A-Za-z_][A-Za-z0-9_]*/) == -1)
+            result += 2;
+    }
     if (result != -1)
         dbg("tryToAlignOpenBrace_ch result="+result);
     return result;
@@ -159,46 +170,6 @@ function tryMultilineCommentCont_ch(line)
     return result;
 }
 
-/// Indent a next line after some keywords
-function tryIndentAfterSomeKeywords_ch(line)
-{
-    var result = -1;
-    // Check if ENTER was pressed after some keywords...
-    var prevString = document.line(line - 1);
-    var r = /^(\s*)((if|for|while)\s*\(|do|else|(public|protected|private|default|case\s+.*)\s*:).*$/.exec(prevString);
-    if (r != null)
-        result = r[1].length + gIndentWidth;
-    if (result != -1)
-        dbg("tryIndentAfterSomeKeywords_ch result="+result);
-    return result;
-}
-
-/// Try to indent a line right after a dangling semicolon
-/// (possible w/ leading close braces and comment after)
-function tryDanglingSemicolon_ch(line)
-{
-    var result = -1;
-    var prevString = document.line(line - 1);
-    var r = /^(\s*)(([\)\]}]?\s*)*([\)\]]\s*))?;(\s*\/\/.*)?$/.exec(prevString);
-    if (r != null)
-        result = r[1].length - 2;
-    if (result != -1)
-        dbg("tryDanglingSemicolon_ch result="+result);
-    return result;
-}
-
-/// Check if \c ENTER hits after \c #define w/ a backslash
-function tryMacroDefinition_ch(line)
-{
-    var result = -1;
-    var prevString = document.line(line - 1);
-    if (prevString.search(/^\s*#\s*define\s+.*\\$/) != -1)
-        result = gIndentWidth;
-    if (result != -1)
-        dbg("tryMacroDefinition_ch result="+result);
-    return result;
-}
-
 /// Check if a current line has a text after cursor position
 /// and a previous one has a comment, then append a <em>"// "</em>
 /// before cursor and realign if latter was inline comment...
@@ -211,8 +182,6 @@ function trySplitComment_ch(line)
         // NOTE There is should be at least one space between
         // the text and the comment
         var match = /^(.*\s)(\/\/)(.*)$/.exec(document.line(line - 1));
-        for (var i = 0; i < match.length; ++i)
-            dbg(i+": '"+match[i]+"'");
         if (match != null && 0 < match[3].trim().length)    // If matched and there is some text in a comment
         {
             if (0 < match[1].trim().length)                 // Is there some text before the comment?
@@ -238,6 +207,69 @@ function trySplitComment_ch(line)
     return result;
 }
 
+/// Indent a next line after some keywords
+function tryIndentAfterSomeKeywords_ch(line)
+{
+    var result = -1;
+    // Check if ENTER was pressed after some keywords...
+    var prevString = document.line(line - 1);
+    var r = /^(\s*)((if|for|while)\s*\(|do|else|(public|protected|private|default|case\s+.*)\s*:).*$/.exec(prevString);
+    if (r != null)
+        result = r[1].length + gIndentWidth;
+    if (result != -1)
+        dbg("tryIndentAfterSomeKeywords_ch result="+result);
+    return result;
+}
+
+/// Try to indent a line right after a dangling semicolon
+/// (possible w/ leading close braces and comment after)
+/// \code
+///     foo(
+///         blah
+///     );|
+/// \endcode
+function tryAfterDanglingSemicolon_ch(line)
+{
+    var result = -1;
+    var prevString = document.line(line - 1);
+    var r = /^(\s*)(([\)\]}]?\s*)*([\)\]]\s*))?;(\s*\/\/.*)?$/.exec(prevString);
+    if (r != null)
+        result = r[1].length - 2;
+    if (result != -1)
+        dbg("tryDanglingSemicolon_ch result="+result);
+    return result;
+}
+
+/// Check if \c ENTER hits after \c #define w/ a backslash
+function tryMacroDefinition_ch(line)
+{
+    var result = -1;
+    var prevString = document.line(line - 1);
+    if (prevString.search(/^\s*#\s*define\s+.*\\$/) != -1)
+        result = gIndentWidth;
+    if (result != -1)
+        dbg("tryMacroDefinition_ch result="+result);
+    return result;
+}
+
+/// Try to align a line w leading delimiter symbol
+function tryBeforeDanglingDelimiter_ch(line)
+{
+    var result = -1;
+    var re_matchLeadingIdentifier = /^\s*[A-Za-z_][A-Za-z0-9_]*/;
+    var halfTabUnindent =
+        // if a previous line starts w/ an identifier
+        (document.line(line - 1).search(re_matchLeadingIdentifier) != -1)
+        // but the current one starts w/ a delimiter
+      && (document.line(line).search(re_matchLeadingIdentifier) == -1)
+      ;
+    if (halfTabUnindent)
+        result = document.firstVirtualColumn(line - 1) - 2;
+    if (result != -1)
+        dbg("tryBeforeDanglingDelimiter_ch result="+result);
+    return result;
+}
+
 /**
  * \brief Handle \c ENTER key
  *
@@ -260,8 +292,9 @@ function caretPressed(cursor)
       , tryMultilineCommentCont_ch
       , trySplitComment_ch
       , tryIndentAfterSomeKeywords_ch                       // NOTE It must follow after trySplitComment_ch!
-      , tryDanglingSemicolon_ch
+      , tryAfterDanglingSemicolon_ch
       , tryMacroDefinition_ch
+      , tryBeforeDanglingDelimiter_ch
     ];
 
     // Apply all all functions until result gets changed
