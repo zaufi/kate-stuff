@@ -124,21 +124,32 @@ function tryBraceSplit_ch(line)
 /// to one level deeper if last char on a previous line is one of open braces.
 /// \code
 ///     foo(|blah);
+///     // or
+///     {|
+///     // or
+///     smth<|blah, blah>
+///     // or
+///     array[|idx] = blah;
 /// \endcode
-function tryToAlignOpenBrace_ch(line)
+function tryToAlignAfterOpenBrace_ch(line)
 {
     var result = -1;
     var pos = document.lastColumn(line - 1);
     var ch = document.charAt(line - 1, pos);
 
-    if (ch == '{' || ch == '(' || ch == '[' || ch == '<')
-    {
+    if (ch == '{')
         result = document.firstColumn(line - 1) + gIndentWidth;
-        // Add 2 more spaces if line do not starts w/ identifier
-        // (i.e. it starts w/ some delimiter character, like comma & etc).
-        if (document.line(line - 1).search(/^\s*[A-Za-z_][A-Za-z0-9_]*/) == -1)
-            result += 2;
+    else if (ch == '(' || ch == '[')
+        result = document.firstColumn(line - 1) + gIndentWidth + 2;
+    else if (ch == '<')
+    {
+        // Does it looks like 'operator<<'?
+        if (document.charAt(line - 1, pos - 1) != '<')
+            result = document.firstColumn(line - 1) + gIndentWidth + 2;
+        else
+            result = document.firstColumn(line - 1) + 2;
     }
+
     if (result != -1)
     {
         tryToKeepInlineComment(line);
@@ -288,16 +299,15 @@ function tryMacroDefinition_ch(line)
     return result;
 }
 
-/// Try to align a line w leading delimiter symbol
+/// Try to align a line w/ a leading delimiter symbol (i.e. not an identifier and a brace)
 function tryBeforeDanglingDelimiter_ch(line)
 {
     var result = -1;
-    var re_matchLeadingIdentifier = /^\s*[A-Za-z_][A-Za-z0-9_]*/;
     var halfTabUnindent =
         // if a previous line starts w/ an identifier
-        (document.line(line - 1).search(re_matchLeadingIdentifier) != -1)
+        (document.line(line - 1).search(/^\s*[A-Za-z_][A-Za-z0-9_]*/) != -1)
         // but the current one starts w/ a delimiter
-      && (document.line(line).search(re_matchLeadingIdentifier) == -1)
+      && (document.line(line).search(/^\s*[~,!%&<=;:\-\^\?\/\+\*\.]/) != -1)
       ;
     if (halfTabUnindent)
         result = document.firstVirtualColumn(line - 1) - 2;
@@ -333,7 +343,7 @@ function caretPressed(cursor)
     // Register all indent functions
     var handlers = [
         tryBraceSplit_ch
-      , tryToAlignOpenBrace_ch
+      , tryToAlignAfterOpenBrace_ch                         // Handle {,[,(,< on a previous line
       , tryMultilineCommentStart_ch
       , tryMultilineCommentCont_ch
       , trySplitComment_ch
@@ -406,6 +416,7 @@ function trySameLineComment(cursor)
  * Here is a few cases possible:
  * \li user entered <em>"template &gt;</em>
  * \li user entered smth like <em>std::map&gt;</em>
+ * \li user wants to output smth to C++ I/O stream by typing <em>&gt;&gt;</em>
  */
 function tryTemplate(cursor)
 {
@@ -422,6 +433,11 @@ function tryTemplate(cursor)
     {
         document.insertText(cursor, ">");
         view.setCursorPosition(cursor);
+    }
+    else if (document.charAt(line, column - 2) == '<')
+    {
+        // Looks like case 3... add a space after operator<<
+        document.insertText(line, column, " ");
     }
 }
 

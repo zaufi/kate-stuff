@@ -60,13 +60,13 @@ like moving current line or selected block up/down by hotkey or having indenter 
 Features
 --------
 
-* support for boost-like formatting style
+* support for boost-like formatting style everywhere is possible
 * align inline comments to 60th position after typing `'//'`
 * turn `'///'` into `'/// '` or `'///< '` depending on comment placement
-* indent preprocessor directives according nesting level of `#if`/`#endif`
-* take care of inline comments
+* take care of inline comments when `ENTER` pressed on a commented line (before and/or after comment start)
 * turn `'/*'` or `'/**'` into multiline (doxygen style) comment
+* auto continue multiline comment on `ENTER`
+* indent preprocessor directives according nesting level of `#if`/`#endif`
 * take care about backslashes alignment in preprocessor macro definitions
-* append a space after comma and some keywords (like `if`,  `for`,  `while`,  etc...)
+* append a space after comma and some keywords (like `if`,  `for`,  `while`,  etc...) or `operator<<`
 * align access modifiers
-*
