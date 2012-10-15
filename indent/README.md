@@ -70,3 +70,11 @@ Features
 * take care about backslashes alignment in preprocessor macro definitions
 * append a space after comma or some keywords (like `if`,  `for`,  `while`,  etc...) or `operator<<`
 * align access modifiers
+
+
+TODO
+----
+
+Initially it was designed as typing helper and nowadays it lacks of align functionality (it's capable to
+align only inline comments). But I have plans to add some logic here to better align source code keeping
+C++/boost style in mind.
