@@ -31,7 +31,7 @@
 // '#' is for preprocessor directives
 // ')' is for align dangling close bracket
 // ';' is for align `for' parts
-triggerCharacters = "{}()<>/:;,#\\";
+triggerCharacters = "{}()<>/:;,#\\?|/%.";
 
 var debugMode = true;
 
@@ -54,6 +54,13 @@ var gBraceMap = {
   , '[': ']', ']': '['
   };
 //END global variables and functions
+
+/// Check if given line/column located withing a braces
+function isInsideBraces(line, column, ch)
+{
+    var cursor = document.anchor(line, column, ch);
+    return cursor.isValid();
+}
 
 /// Try to keep same-line comment.
 /// I.e. if \c ENTER was hit on a line w/ inline comment and before it,
@@ -297,20 +304,23 @@ function tryMacroDefinition_ch(line)
     return result;
 }
 
-/// Try to align a line w/ a leading delimiter symbol (i.e. not an identifier and a brace)
+/// Try to align a line w/ a leading (word) delimiter symbol
+/// (i.e. not an identifier and a brace)
 function tryBeforeDanglingDelimiter_ch(line)
 {
     var result = -1;
-    var halfTabUnindent =
+    var halfTabNeeded =
         // if a previous line starts w/ an identifier
         (document.line(line - 1).search(/^\s*[A-Za-z_][A-Za-z0-9_]*/) != -1)
         // but the current one starts w/ a delimiter (which is looks like operator)
       && (document.line(line).search(/^\s*[,%&<=:\|\-\?\/\+\*\.]/) != -1)
       ;
-    // check if we r at function call
-    var braceCursor = document.anchor(line, document.firstColumn(line), '(');
-    if (halfTabUnindent)
-        result = document.firstVirtualColumn(line - 1) + (braceCursor.isValid() ? -2 : 2);
+    // check if we r at function call or array index
+    var insideBraces = document.anchor(line, document.firstColumn(line), '(').isValid()
+      || document.anchor(line, document.firstColumn(line), '[').isValid()
+      ;
+    if (halfTabNeeded)
+        result = document.firstVirtualColumn(line - 1) + (insideBraces ? -2 : 2);
     if (result != -1)
     {
         tryToKeepInlineComment(line);
@@ -342,7 +352,7 @@ function caretPressed(cursor)
 
     // Register all indent functions
     var handlers = [
-        tryBraceSplit_ch
+        tryBraceSplit_ch                                    // Handle ENTER between braces
       , tryToAlignAfterOpenBrace_ch                         // Handle {,[,(,< on a previous line
       , tryMultilineCommentStart_ch
       , tryMultilineCommentCont_ch
@@ -465,6 +475,31 @@ function tryComma(cursor)
     return result;
 }
 
+function tryOperator(cursor, ch)
+{
+    var result = -2;
+    var line = cursor.line;
+    var column = cursor.column;
+
+    var halfTabNeeded = document.firstChar(line) == ch
+      && document.firstColumn(line) == (column - 1)
+      && document.line(line - 1).search(/^\s*[A-Za-z_][A-Za-z0-9_]*/) != -1
+      ;
+    dbg("halfTabNeeded=",halfTabNeeded);
+    if (halfTabNeeded)
+    {
+        // check if we r at function call or array index
+        var insideBraces = document.anchor(line, document.firstColumn(line), '(').isValid()
+          || document.anchor(line, document.firstColumn(line), '[').isValid()
+          ;
+        dbg("insideBraces=",insideBraces);
+        result = document.firstColumn(line - 1) + (insideBraces && ch != '.' ? -2 : 2);
+    }
+    if (ch == '?')
+        document.insertText(cursor, " ");                   // Add space only after '?' of a trenary operator
+    return result;
+}
+
 /**
  * \brief Try to align a given close bracket
  */
@@ -558,7 +593,7 @@ function tryPreprocessor(cursor)
  *     Then align a current line to corresponding class/struct definition.
  *     Check a previous line and if it is not starts w/ \c '{' add a new line before.
  * \li \c ':' is a first char on the line, then it looks like a class initialization
- *     list.
+ *     list or 2nd line of trenary operator.
  */
 function tryColon(cursor)
 {
@@ -569,9 +604,10 @@ function tryColon(cursor)
     // Check if just entered ':' is a first on a line
     if (document.firstChar(line) == ':' && document.firstColumn(line) == (column - 1))
     {
-        // Check if there a dangling ')' on a previous line
-        if (document.firstChar(line - 1) == ')')
-            result = document.firstColumn(line - 1);
+        // Check if there a dangling ')' or '?' (trenary operator) on a previous line
+        var ch = document.firstChar(line - 1);
+        if (ch == ')' || ch == '?')
+            result = document.firstVirtualColumn(line - 1);
         else
             result = document.firstVirtualColumn(line - 1) + 2;
         document.insertText(cursor, " ");
@@ -719,6 +755,13 @@ function processChar(line, ch)
             break;
         case ',':
             result = tryComma(cursor);                      // Possible need to align parameters list
+            break;
+        case '?':
+        case '|':
+        case '%':
+        case '/':
+        case '.':
+            result = tryOperator(cursor, ch);               // Possible need to align some operator
             break;
         case '}':
         case ')':

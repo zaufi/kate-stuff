@@ -68,5 +68,5 @@ Features
 * auto continue multiline comment on `ENTER`
 * indent preprocessor directives according nesting level of `#if`/`#endif`
 * take care about backslashes alignment in preprocessor macro definitions
-* append a space after comma and some keywords (like `if`,  `for`,  `while`,  etc...) or `operator<<`
+* append a space after comma or some keywords (like `if`,  `for`,  `while`,  etc...) or `operator<<`
 * align access modifiers
