@@ -292,6 +292,25 @@ function tryAfterDanglingSemicolon_ch(line)
     return result;
 }
 
+/// Check if \c ENTER pressed after equal sign
+/// \code
+///     blah =
+///         |blah
+/// \endcode
+function tryAfterEqualChar_ch(line)
+{
+    var result = -1;
+    var pos = document.lastColumn(line - 1);
+    if (document.charAt(line - 1, pos) == '=')
+        result = document.firstColumn(line - 1) + gIndentWidth;
+    if (result != -1)
+    {
+        tryToKeepInlineComment(line);
+        dbg("tryAfterEqualChar_ch result="+result);
+    }
+    return result;
+}
+
 /// Check if \c ENTER hits after \c #define w/ a backslash
 function tryMacroDefinition_ch(line)
 {
@@ -361,6 +380,7 @@ function caretPressed(cursor)
       , tryAfterDanglingSemicolon_ch
       , tryMacroDefinition_ch
       , tryBeforeDanglingDelimiter_ch
+      , tryAfterEqualChar_ch
       , tryToKeepInlineComment_ch
     ];
 
