@@ -137,15 +137,13 @@ function tryToAlignAfterOpenBrace_ch(line)
     var pos = document.lastColumn(line - 1);
     var ch = document.charAt(line - 1, pos);
 
-    if (ch == '{')
+    if (ch == '{' || ch == '(' || ch == '[')
         result = document.firstColumn(line - 1) + gIndentWidth;
-    else if (ch == '(' || ch == '[')
-        result = document.firstColumn(line - 1) + gIndentWidth + 2;
     else if (ch == '<')
     {
         // Does it looks like 'operator<<'?
         if (document.charAt(line - 1, pos - 1) != '<')
-            result = document.firstColumn(line - 1) + gIndentWidth + 2;
+            result = document.firstColumn(line - 1) + gIndentWidth;
         else
             result = document.firstColumn(line - 1) + 2;
     }
@@ -306,11 +304,13 @@ function tryBeforeDanglingDelimiter_ch(line)
     var halfTabUnindent =
         // if a previous line starts w/ an identifier
         (document.line(line - 1).search(/^\s*[A-Za-z_][A-Za-z0-9_]*/) != -1)
-        // but the current one starts w/ a delimiter
-      && (document.line(line).search(/^\s*[~,!%&<=;:\-\^\?\/\+\*\.]/) != -1)
+        // but the current one starts w/ a delimiter (which is looks like operator)
+      && (document.line(line).search(/^\s*[,%&<=:\|\-\?\/\+\*\.]/) != -1)
       ;
+    // check if we r at function call
+    var braceCursor = document.anchor(line, document.firstColumn(line), '(');
     if (halfTabUnindent)
-        result = document.firstVirtualColumn(line - 1) - 2;
+        result = document.firstVirtualColumn(line - 1) + (braceCursor.isValid() ? -2 : 2);
     if (result != -1)
     {
         tryToKeepInlineComment(line);
