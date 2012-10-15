@@ -791,6 +791,36 @@ function processChar(line, ch)
     return result;
 }
 
+/// Try to align inline comment if present
+function alignComment(line)
+{
+    // Check is there any comment on the current line
+    var currentLineText = document.line(line);
+    var match = /^(.*\s)(\/\/)(.*)$/.exec(currentLineText);
+    // If matched and there is some (non spaces) text before the comment,
+    // and comment isn't aligned yet
+    if (match != null && match[1].trim().length > 0 && match[1].length < gSameLineCommentStartAt)
+    {
+        document.removeText(line, match[1].length, line, document.line(line).length);
+        document.insertText(
+            line
+          , match[1].length
+          , String().fill(' ', gSameLineCommentStartAt - match[1].length)
+              + "//"
+              + match[3]
+          );
+    }
+}
+
+/// Try to align a given line
+/// \todo More actions
+function indentLine(line)
+{
+    alignComment(line);
+
+    return -2;
+}
+
 /**
  * \brief Process a newline or one of \c triggerCharacters character.
  *
@@ -814,7 +844,7 @@ function indent(line, indentWidth, ch)
     if (ch != "")
         return processChar(line, ch);
 
-    return -1;
+    return indentLine(line);
 }
 
 // kate: space-indent on; indent-width 4; replace-tabs on;
