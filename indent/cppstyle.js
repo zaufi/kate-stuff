@@ -259,9 +259,13 @@ function tryIndentAfterSomeKeywords_ch(line)
     var result = -1;
     // Check if ENTER was pressed after some keywords...
     var prevString = document.line(line - 1);
-    var r = /^(\s*)((if|for|while)\s*\(|do|else|(public|protected|private|default|case\s+.*)\s*:).*$/.exec(prevString);
+    var r = /^(\s*)((if|for|while)\s*\(|\bdo\b|\belse\b|(public|protected|private|default|case\s+.*)\s*:).*$/
+      .exec(prevString);
     if (r != null)
+    {
+        dbg("r=",r);
         result = r[1].length + gIndentWidth;
+    }
     if (result != -1)
     {
         tryToKeepInlineComment(line);
@@ -348,6 +352,16 @@ function tryBeforeDanglingDelimiter_ch(line)
     return result;
 }
 
+function tryPreprocessor_ch(line)
+{
+    var result = -1;
+    if (document.firstChar(line) == '#')
+    {
+        result = 0;
+    }
+    return result;
+}
+
 /// Wrap \c tryToKeepInlineComment as \e caret-handler
 function tryToKeepInlineComment_ch(line)
 {
@@ -381,6 +395,7 @@ function caretPressed(cursor)
       , tryMacroDefinition_ch
       , tryBeforeDanglingDelimiter_ch
       , tryAfterEqualChar_ch
+      , tryPreprocessor_ch
       , tryToKeepInlineComment_ch
     ];
 
@@ -832,11 +847,17 @@ function alignComment(line)
     }
 }
 
+function alignPreprocessor(line)
+{
+    return tryPreprocessor_ch(line);
+}
+
 /// Try to align a given line
 /// \todo More actions
 function indentLine(line)
 {
-    alignComment(line);
+    var result = alignPreprocessor(line);
+    alignComment(line);                                     // Always try to align inline comments
 
     return -2;
 }
@@ -860,6 +881,8 @@ function indent(line, indentWidth, ch)
 
     dbg("indentWidth: " + indentWidth);
     dbg("      gMode: " + gMode);
+    dbg("       line: " + line);
+    dbg("         ch: '" + ch + "'");
 
     if (ch != "")
         return processChar(line, ch);
