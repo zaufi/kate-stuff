@@ -47,6 +47,7 @@ function dbg()
 var gIndentWidth = 4;
 var gSameLineCommentStartAt = 60;
 var gMode = "C";
+var gAttr = "Normal Text";
 var gBraceMap = {
     '(': ')', ')': '('
   , '<': '>', '>': '<'
@@ -159,6 +160,56 @@ function tryToAlignAfterOpenBrace_ch(line)
     {
         tryToKeepInlineComment(line);
         dbg("tryToAlignOpenBrace_ch result="+result);
+    }
+    return result;
+}
+
+function tryToAlignBeforeCloseBrace_ch(line)
+{
+    var result = -1;
+    var pos = document.firstColumn(line);
+    var ch = document.charAt(line, pos);
+
+    if (ch == '}' || ch == ')' || ch == ']')
+    {
+        var openBracePos = document.anchor(line, pos, ch);
+        dbg("Found open brace @ "+openBracePos)
+        if (openBracePos.isValid())
+            result = document.firstColumn(openBracePos.line) + (ch == '}' ? 0 : 2);
+    }
+    else if (ch == '>')
+    {
+        // TBD
+    }
+
+    if (result != -1)
+    {
+        tryToKeepInlineComment(line);
+        dbg("tryToAlignBeforeCloseBrace_ch result="+result);
+    }
+    return result;
+}
+
+function tryToAlignBeforeComma_ch(line)
+{
+    var result = -1;
+    var pos = document.firstColumn(line);
+    var ch = document.charAt(line, pos);
+
+    if (line > 0 && (ch == ',' || ch == ';'))
+    {
+        var openBracePos = document.anchor(line, pos, '(');
+        if (!openBracePos.isValid())
+            openBracePos = document.anchor(line, pos, '[');
+
+        if (openBracePos.isValid())
+            result = document.firstColumn(openBracePos.line) + 2;
+    }
+
+    if (result != -1)
+    {
+        tryToKeepInlineComment(line);
+        dbg("tryToAlignBeforeCloseBrace_ch result="+result);
     }
     return result;
 }
@@ -386,10 +437,12 @@ function caretPressed(cursor)
     // Register all indent functions
     var handlers = [
         tryBraceSplit_ch                                    // Handle ENTER between braces
-      , tryToAlignAfterOpenBrace_ch                         // Handle {,[,(,< on a previous line
       , tryMultilineCommentStart_ch
       , tryMultilineCommentCont_ch
       , trySplitComment_ch
+      , tryToAlignAfterOpenBrace_ch                         // Handle {,[,(,< on a previous line
+      , tryToAlignBeforeCloseBrace_ch                       // Handle },],),> on a current line before cursor
+      , tryToAlignBeforeComma_ch                            // Handle ENTER pressed before comma or semicolon
       , tryIndentAfterSomeKeywords_ch                       // NOTE It must follow after trySplitComment_ch!
       , tryAfterDanglingSemicolon_ch
       , tryMacroDefinition_ch
@@ -827,7 +880,7 @@ function processChar(line, ch)
 }
 
 /// Try to align inline comment if present
-function alignComment(line)
+function alignInlineComment(line)
 {
     // Check is there any comment on the current line
     var currentLineText = document.line(line);
@@ -857,7 +910,7 @@ function alignPreprocessor(line)
 function indentLine(line)
 {
     var result = alignPreprocessor(line);
-    alignComment(line);                                     // Always try to align inline comments
+    alignInlineComment(line);                               // Always try to align inline comments
 
     return -2;
 }
@@ -878,9 +931,11 @@ function indent(line, indentWidth, ch)
     // NOTE Update some global variables
     gIndentWidth = indentWidth;
     gMode = document.highlightingModeAt(view.cursorPosition());
+    gAttr = document.attributeName(view.cursorPosition());
 
     dbg("indentWidth: " + indentWidth);
     dbg("      gMode: " + gMode);
+    dbg("      gAttr: " + gAttr);
     dbg("       line: " + line);
     dbg("         ch: '" + ch + "'");
 
