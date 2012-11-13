@@ -1,4 +1,10 @@
-[Highlighting C++11 - Schema Zaufi::dark]
+[Highlighting C++11/Qt4 - Schema Zaufi::dark]
+C++11/Qt4:Normal Text=0,ffe3e3e3,ffe3e3e3,0,0,0,0,,,,---
+C++11/Qt4:Qt4 Classes=0,ff15cbc5,ff15cbc5,0,0,0,0,,,,---
+C++11/Qt4:Qt4 Extensions=0,ff4875b7,ff4875b7,0,1,0,0,,,,---
+C++11/Qt4:Qt4 Functions=0,ff4875b7,ff4875b7,0,0,0,0,,,,---
+C++11/Qt4:Qt4 Macros=0,ff0e8884,ff0e8884,0,0,0,0,,,,---
+C++11/Qt4:Qt4 Types=0,ff7558ea,ff7558ea,0,0,0,0,,,,---
 Alerts:Alert Level 1=10,ffe85848,ffe85848,1,0,0,0,ff451e1a,,,---
 Alerts:Alert Level 2=10,ffca9219,ffca9219,1,0,0,0,ff451e1a,,,---
 Alerts:Alert Level 3=10,ff81ca2d,ff81ca2d,1,0,0,0,ff201f1f,,,---
@@ -70,5 +76,5 @@ Modelines:Variable=11,ff676757,ff676757,0,1,0,0,,,,---
 
 [KateHLColors]
 full schema=false
-highlight=C++11
+highlight=C++11/Qt4
 schema=Zaufi::dark
