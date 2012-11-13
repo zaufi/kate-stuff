@@ -231,7 +231,7 @@ function tryToAlignBeforeComma_ch(line)
     if (result != -1)
     {
         tryToKeepInlineComment(line);
-        dbg("tryToAlignBeforeCloseBrace_ch result="+result);
+        dbg("tryToAlignBeforeComma_ch result="+result);
     }
     return result;
 }
@@ -624,6 +624,26 @@ function tryComma(cursor)
     return result;
 }
 
+function trySemicolon(cursor)
+{
+    var result = -2;
+    var line = cursor.line;
+    var column = cursor.column;
+
+    if (document.firstChar(line) == ';' && document.firstColumn(line) == (column - 1))
+    {
+        // Check if we are inside a `for' statement
+        var openBracePos = document.anchor(line, column, '(');
+        if (openBracePos.isValid())
+        {
+            // Add a half-tab relative '('
+            result = document.firstColumn(openBracePos.line) + 2;
+            document.insertText(cursor, " ");
+        }
+    }
+    return result;
+}
+
 function tryOperator(cursor, ch)
 {
     var result = -2;
@@ -894,6 +914,9 @@ function processChar(line, ch)
             break;
         case ',':
             result = tryComma(cursor);                      // Possible need to align parameters list
+            break;
+        case ';':
+            result = trySemicolon(cursor);                  // Possible `for ()` loop speaded on few lines
             break;
         case '?':
         case '|':
