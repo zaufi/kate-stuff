@@ -87,6 +87,28 @@ function tryToKeepInlineComment(line)
     }
 }
 
+/// Return a current preprocessor indentation level
+/// \note <em>preprocessor indentation</em> means how deep the current line
+/// inside of \c #if directives.
+/// \warning Negative result means that smth wrong w/ a source code
+function getPreprocessorLevelAt(line)
+{
+    // Just follow towards start and count #if/#endif directives
+    var currentLine = line;
+    var result = 0;
+    while (currentLine >= 0)
+    {
+        currentLine--;
+        var currentLineText = document.line(currentLine);
+        if (currentLineText.search(/^\s*#\s*(if|ifdef|ifndef)\s+.*$/) != -1)
+            result++;
+        else if (currentLineText.search(/^\s*#\s*endif.*$/) != -1)
+            result--;
+    }
+    return result;
+}
+
+
 /// Check if \c ENTER was hit between ()/{}/[]/<>
 /// \todo Match closing brace forward, put content between
 /// braces on a separate line and align a closing brace.
@@ -245,9 +267,13 @@ function tryMultilineCommentStart_ch(line)
 function tryMultilineCommentCont_ch(line)
 {
     var result = -1;
-    // Check if multiline comment continued on the line
+    // Check if multiline comment continued on the line:
+    // 0) it starts w/ a start
+    // 1) and followed by a space (i.e. it doesn't looks like a dereference) or nothing
     var firstCharPos = document.firstColumn(line - 1);
-    if (document.charAt(line - 1, firstCharPos) == '*')
+    var prevLineFirstChar = document.charAt(line - 1, firstCharPos);
+    var prevLineSecondChar = document.charAt(line - 1, firstCharPos + 1);
+    if (prevLineFirstChar == '*' && (prevLineSecondChar == ' ' || prevLineSecondChar == -1))
     {
         if (document.charAt(line - 1, firstCharPos + 1) == '/')
             // ENTER pressed after multiline comment: unindent 1 space!
@@ -409,6 +435,43 @@ function tryPreprocessor_ch(line)
     if (document.firstChar(line) == '#')
     {
         result = 0;
+        var text = document.line(line);
+        // Get current depth level
+        var currentLevel = getPreprocessorLevelAt(line);
+        if (currentLevel > 0)
+        {
+            // How much spaces we have after hash?
+            var spacesCnt = 0;
+            var column = document.firstColumn(line) + 1;
+            var i = column;
+            for (; i < text.length; i++)
+            {
+                if (text[i] != ' ')
+                    break;
+                spacesCnt++;
+            }
+            var wordAfterHash = document.wordAt(line, i);
+            dbg("wordAfterHash='"+wordAfterHash+"'");
+            if (wordAfterHash[0] == '#')
+                wordAfterHash = wordAfterHash.substring(1, wordAfterHash.length);
+            if (wordAfterHash == "else" || wordAfterHash == "elif" || wordAfterHash == "endif")
+                currentLevel--;
+            var paddingLen = (currentLevel == 0) ? 0 : (currentLevel - 1) * 2 + 1;
+            if (spacesCnt < paddingLen)
+            {
+                var padding = String().fill(' ', paddingLen - spacesCnt);
+                document.insertText(line, column, padding);
+            }
+            else if (paddingLen < spacesCnt)
+            {
+                document.removeText(line, column, line, column + spacesCnt - paddingLen);
+            }
+        }
+    }
+    if (result != -1)
+    {
+        tryToKeepInlineComment(line);
+        dbg("tryPreprocessor_ch result="+result);
     }
     return result;
 }
@@ -422,8 +485,6 @@ function tryToKeepInlineComment_ch(line)
 
 /**
  * \brief Handle \c ENTER key
- *
- * \todo Split into separate functions
  */
 function caretPressed(cursor)
 {
@@ -449,7 +510,7 @@ function caretPressed(cursor)
       , tryBeforeDanglingDelimiter_ch
       , tryAfterEqualChar_ch
       , tryPreprocessor_ch
-      , tryToKeepInlineComment_ch
+      , tryToKeepInlineComment_ch                           // NOTE This must be a last checker!
     ];
 
     // Apply all all functions until result gets changed
@@ -652,17 +713,7 @@ function tryPreprocessor(cursor)
     if (document.firstChar(line) == '#' && document.firstColumn(line) == (column - 1))
     {
         // Get current indentation level
-        var currentLine = line;
-        var currentLevel = 0;
-        while (currentLine >= 0)
-        {
-            currentLine--;
-            var currentLineText = document.line(currentLine);
-            if (currentLineText.search(/^\s*#\s*(if|ifdef|ifndef)\s+.*$/) != -1)
-                currentLevel++;
-            else if (currentLineText.search(/^\s*#\s*endif.*$/) != -1)
-                currentLevel--;
-        }
+        var currentLevel = getPreprocessorLevelAt(line);
         if (currentLevel > 0)
         {
             var padding = String().fill(' ', (currentLevel - 1) * 2 + 1);
