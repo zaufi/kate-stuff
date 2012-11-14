@@ -2,11 +2,12 @@
  * name: C++/boost Style
  * license: LGPL
  * author: Alex Turbov <i.zaufi@gmail.com>
- * revision: 1.0
+ * revision: 1.2
  * kate-version: 3.4
  * type: indentation
  * priority: 10
- * indent-languages: c++, java, javascript, php
+ * indent-languages: c++
+ * z-required-syntax-style: C++11, C++11/Qt4
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -21,6 +22,26 @@
  * along with this library; see the file COPYING.LIB.  If not, write to
  * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301, USA.
+ */
+
+/**
+ * \warning This indenter designed to be used with my C++ style! It consists
+ * of mix of boost and STL styles + some my, unfortunately (still)
+ * undocumented additions I've found useful after ~15 years of C++ coding.
+ * So \b LOT of things here are \b HARDCODED and I \b DON'T care about other
+ * styles!!!
+ *
+ * Ok, you've been warned :-)
+ *
+ * Some settings it assumes being in effect:
+ * indent-width 4;
+ * space-indent true;
+ * auto-brackets true;
+ * replace-tabs true;
+ * replace-tabs true;
+ * replace-tabs-save true;
+ *
+ * \todo Better to check (assert) some of that modelines...
  */
 
 // specifies the characters which should trigger indent, beside the default '\n'
@@ -45,8 +66,8 @@ function dbg()
 
 //BEGIN global variables and functions
 var gIndentWidth = 4;
-var gSameLineCommentStartAt = 60;
-var gMode = "C";
+var gSameLineCommentStartAt = 60;                           ///< Position for same-line-comments (inline comments)
+var gMode = "C++11";
 var gAttr = "Normal Text";
 var gBraceMap = {
     '(': ')', ')': '('
@@ -83,13 +104,24 @@ function splitByComment(text)
     return {hasComment: found, before: before, after: after};
 }
 
+/// Return \c true if attribute at given position is not a \e String or \e Comment
+function isNotStringOrComment(line, column)
+{
+    // Check if we are not withning a string or a comment
+    var c = new Cursor(line, column);
+    var mode = document.attributeName(c);
+    dbg("isNotStringOrComment: Check mode @ " + c + ": " + mode);
+    return !(document.isString(c) || document.isComment(c));
+}
+
 /// Try to (re)align (to 60th position) inline comment if present
 function alignInlineComment(line)
 {
     // Check is there any comment on the current line
     var currentLineText = document.line(line);
     var sc = splitByComment(currentLineText);
-    if (sc.hasComment)                                      // Did we found smth?
+    // Did we found smth and if so, make sure it is not a string or comment...
+    if (sc.hasComment && isNotStringOrComment(line, sc.before.length + 2))
     {
         var rbefore = sc.before.rtrim();
         if (rbefore.length < gSameLineCommentStartAt && sc.before.length != gSameLineCommentStartAt)
@@ -125,7 +157,7 @@ function tryToKeepInlineComment(line)
     // Check is there any comment on the current line
     var currentLineText = document.line(line);
     var sc = splitByComment(currentLineText);
-    if (sc.hasComment)
+    if (sc.hasComment && isNotStringOrComment(line, sc.before.length + 2))
     {
         // Yep, try to move it on a previous line.
         // NOTE The latter can't have a comment!
@@ -587,12 +619,33 @@ function caretPressed(cursor)
  *     position.
  * \li just entered \c '/' is a 3rd in a sequence. If there is some text before and no after,
  *     it looks like inlined doxygen comment, so append \c '<' char after. Do nothing otherwise.
+ *
+ * \todo Due a BUG in a current version of Kate, this code doesn't work as expected!
+ * It always returns a <em>"NormalText"</em>!
+ * \code
+ * var cm = document.attributeName(cursor);
+ * if (cm.indexOf("String") != -1)
+ *    return;
+ * \endcode
+ *
+ * \bug This code doesn't work properly in the following case:
+ * \code
+ *  std::string bug = "some text//
+ * \endcode
+ *
+ * \todo Refactoring required to avoid regex here... better to use \c splitByComment()
  */
 function trySameLineComment(cursor)
 {
     var line = cursor.line;
     var column = cursor.column;
-    // Try to split line by comment
+
+    // Fisrt of all check that we r not withing a string
+    // BUG See note in a function's documentation
+    var cm = document.attributeName(cursor);
+    if (cm.indexOf("String") != -1)
+       return;
+
     var match = /^([^\/]*)(\/\/+)(.*)$/.exec(document.line(line));
 
     if (match != null)                                      // Is matched?
@@ -1009,17 +1062,112 @@ function processChar(line, ch)
 
 function alignPreprocessor(line)
 {
-    return tryPreprocessor_ch(line);
+    if (tryPreprocessor_ch(line) == -1)                     // Is smth happened?
+        return -2;                                          // No! Signal to upper level to try next aligner...
+    return 0;                                               // NOTE preprocessor directives always aligned to 0!
+}
+
+/**
+ * Almost anything in a code is places whithin a some brackets.
+ * So the ideas is simple:
+ * \li find nearest open bracket of any kind
+ * \li depending on its type and presence of leading delimiters (non identifier charscters)
+ *     add one or half TAB relative a first non-space char of a line w/ found bracket.
+ *
+ * But here is some details:
+ * \li do nothing on empty lines
+ * \li do nothing if first position is a \e string
+ * \li align comments according next non-comment and non-preprocessor line
+ *     (i.e. it's desired indent cuz it maybe still unaligned)
+ */
+function alignInsideBraces(line)
+{
+    // Make sure there is a text on a line, otherwise nothing to align here...
+    var thisLineIndent = document.firstColumn(line);
+    if (thisLineIndent == -1 || document.isString(line, 0))
+        return 0;
+
+    // Check for comment
+    /// \todo Need to align comments properly!
+
+    var brackets = [
+        document.anchor(line, document.firstColumn(line), '(')
+      , document.anchor(line, document.firstColumn(line), '{')
+      , document.anchor(line, document.firstColumn(line), '[')
+      ].sort();
+    dbg("Found open brackets @ "+brackets);
+
+    // Check if we are at some brackets, otherwise do nothing
+    var nearestBracket = brackets[brackets.length - 1];
+    if (!nearestBracket.isValid())
+        return 0;
+
+    // Make sure it is not a `namespace' level
+    // NOTE '{' brace should be at the same line w/ a 'namespace' keyword
+    // (yep, according my style... :-)
+    var bracketChar = document.charAt(nearestBracket);
+    var parentLineText = document.line(nearestBracket.line).ltrim();
+    if (bracketChar == '{' && parentLineText.startsWith("namespace"))
+        return 0;
+
+    // Ok, (re)align it!
+    var result = -2;
+    switch (bracketChar)
+    {
+        case '{':
+        case '(':
+        case '[':
+            // If current line has some leading delimiter, i.e. non alphanumeric character
+            // add a half-TAB, otherwise add a one TAB... if needed!
+            var parentIndent = document.firstColumn(nearestBracket.line);
+            var openBraceIsFirst = parentIndent == nearestBracket.column;
+            var firstChar = document.charAt(line, thisLineIndent);
+            var isCloseBraceFirst = firstChar == ')' || firstChar == ']' || firstChar == '}';
+            var doNotAddAnything = openBraceIsFirst && isCloseBraceFirst;
+            var mustAddHalfTab = (!openBraceIsFirst && isCloseBraceFirst)
+              || firstChar == ','
+              || firstChar == '?'
+              || firstChar == ':'
+              || firstChar == ';'
+              ;
+            var desiredIndent = parentIndent + (
+                mustAddHalfTab
+              ? 2
+              : (doNotAddAnything ? 0 : gIndentWidth)
+              );
+            result = desiredIndent;                         // Reassign a result w/ desired value!
+            //BEGIN SPAM
+            dbg("parentIndent="+parentIndent);
+            dbg("openBraceIsFirst="+openBraceIsFirst);
+            dbg("firstChar="+firstChar);
+            dbg("isCloseBraceFirst="+isCloseBraceFirst);
+            dbg("doNotAddAnything="+doNotAddAnything);
+            dbg("mustAddHalfTab="+mustAddHalfTab);
+            dbg("desiredIndent="+desiredIndent);
+            //END SPAM
+            break;
+        default:
+            dbg("Dunno how to align this line...");
+            break;
+    }
+    return result;
 }
 
 /// Try to align a given line
 /// \todo More actions
 function indentLine(line)
 {
-    var result = alignPreprocessor(line);
+    var result = alignPreprocessor(line);                   // Try to align a preprocessor directive
+    if (result == -2)                                       // Nothing has changed?
+        result = alignInsideBraces(line);                   // Try to align a generic line
+
     alignInlineComment(line);                               // Always try to align inline comments
 
-    return -2;
+    dbg("indentLine result="+result);
+
+    if (result == -2)                                       // Still dunno what to do?
+        result = -1;                                        // ... just align according a previous non empty line
+    return result;
 }
 
 /**
