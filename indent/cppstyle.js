@@ -6,8 +6,7 @@
  * kate-version: 3.4
  * type: indentation
  * priority: 10
- * indent-languages: c++
- * z-required-syntax-style: C++11, C++11/Qt4
+ * indent-languages: C++11, C++11/Qt4
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -45,13 +44,14 @@
  */
 
 // specifies the characters which should trigger indent, beside the default '\n'
-// ':' is for `case' and public/protected/private
-// '/' is for same-line-comments
+// ':' is for `case'/`default' and class access specifiers: public, protected, private
+// '/' is for single line comments
 // ',' for parameter list
 // '<' and '>' is for templates
 // '#' is for preprocessor directives
 // ')' is for align dangling close bracket
 // ';' is for align `for' parts
+// TBD <others>
 triggerCharacters = "{}()<>/:;,#\\?|/%.";
 
 var debugMode = true;
@@ -84,11 +84,13 @@ function isInsideBraces(line, column, ch)
     return cursor.isValid();
 }
 
-/// Split a given text line by comment into parts \e before and \e after the comment
-/// \return an object w/ the following fields:
-///   \li \c hasComment -- boolean: \c true if comment present on the line, \c false otherwise
-///   \li \c before -- text before the comment
-///   \li \c after -- text of the comment
+/**
+ * Split a given text line by comment into parts \e before and \e after the comment
+ * \return an object w/ the following fields:
+ *   \li \c hasComment -- boolean: \c true if comment present on the line, \c false otherwise
+ *   \li \c before -- text before the comment
+ *   \li \c after -- text of the comment
+ */
 function splitByComment(text)
 {
     var commentStartPos = text.indexOf("//");
@@ -102,6 +104,11 @@ function splitByComment(text)
     }
     else before = text;
     return {hasComment: found, before: before, after: after};
+}
+
+function stripComment(text)
+{
+    return splitByComment(text).before.rstrip();
 }
 
 /// Return \c true if attribute at given position is not a \e String or \e Comment
@@ -158,9 +165,11 @@ function alignInlineComment(line)
     }
 }
 
-/// Try to keep same-line comment.
-/// I.e. if \c ENTER was hit on a line w/ inline comment and before it,
-/// try to keep it on a previous line...
+/**
+ * Try to keep same-line comment.
+ * I.e. if \c ENTER was hit on a line w/ inline comment and before it,
+ * try to keep it on a previous line...
+ */
 function tryToKeepInlineComment(line)
 {
     // Check is there any comment on the current line
@@ -182,10 +191,12 @@ function tryToKeepInlineComment(line)
     }
 }
 
-/// Return a current preprocessor indentation level
-/// \note <em>preprocessor indentation</em> means how deep the current line
-/// inside of \c #if directives.
-/// \warning Negative result means that smth wrong w/ a source code
+/**
+ * Return a current preprocessor indentation level
+ * \note <em>preprocessor indentation</em> means how deep the current line
+ * inside of \c #if directives.
+ * \warning Negative result means that smth wrong w/ a source code
+ */
 function getPreprocessorLevelAt(line)
 {
     // Just follow towards start and count #if/#endif directives
@@ -203,10 +214,11 @@ function getPreprocessorLevelAt(line)
     return result;
 }
 
-
-/// Check if \c ENTER was hit between ()/{}/[]/<>
-/// \todo Match closing brace forward, put content between
-/// braces on a separate line and align a closing brace.
+/**
+ * Check if \c ENTER was hit between ()/{}/[]/<>
+ * \todo Match closing brace forward, put content between
+ * braces on a separate line and align a closing brace.
+ */
 function tryBraceSplit_ch(line)
 {
     var result = -1;
@@ -245,17 +257,19 @@ function tryBraceSplit_ch(line)
     return result;
 }
 
-/// Even if counterpart brace not found (\sa \c tryBraceSplit_ch), align the current line
-/// to one level deeper if last char on a previous line is one of open braces.
-/// \code
-///     foo(|blah);
-///     // or
-///     {|
-///     // or
-///     smth<|blah, blah>
-///     // or
-///     array[|idx] = blah;
-/// \endcode
+/**
+ * Even if counterpart brace not found (\sa \c tryBraceSplit_ch), align the current line
+ * to one level deeper if last char on a previous line is one of open braces.
+ * \code
+ *     foo(|blah);
+ *     // or
+ *     {|
+ *     // or
+ *     smth<|blah, blah>
+ *     // or
+ *     array[|idx] = blah;
+ * \endcode
+ */
 function tryToAlignAfterOpenBrace_ch(line)
 {
     var result = -1;
@@ -388,9 +402,11 @@ function tryMultilineCommentCont_ch(line)
     return result;
 }
 
-/// Check if a current line has a text after cursor position
-/// and a previous one has a comment, then append a <em>"// "</em>
-/// before cursor and realign if latter was inline comment...
+/**
+ * Check if a current line has a text after cursor position
+ * and a previous one has a comment, then append a <em>"// "</em>
+ * before cursor and realign if latter was inline comment...
+ */
 function trySplitComment_ch(line)
 {
     var result = -1;
@@ -446,13 +462,15 @@ function tryIndentAfterSomeKeywords_ch(line)
     return result;
 }
 
-/// Try to indent a line right after a dangling semicolon
-/// (possible w/ leading close braces and comment after)
-/// \code
-///     foo(
-///         blah
-///     );|
-/// \endcode
+/**
+ * Try to indent a line right after a dangling semicolon
+ * (possible w/ leading close braces and comment after)
+ * \code
+ *     foo(
+ *         blah
+ *     );|
+ * \endcode
+ */
 function tryAfterDanglingSemicolon_ch(line)
 {
     var result = -1;
@@ -468,11 +486,13 @@ function tryAfterDanglingSemicolon_ch(line)
     return result;
 }
 
-/// Check if \c ENTER pressed after equal sign
-/// \code
-///     blah =
-///         |blah
-/// \endcode
+/**
+ * Check if \c ENTER pressed after equal sign
+ * \code
+ *     blah =
+ *         |blah
+ * \endcode
+ */
 function tryAfterEqualChar_ch(line)
 {
     var result = -1;
@@ -499,8 +519,10 @@ function tryMacroDefinition_ch(line)
     return result;
 }
 
-/// Try to align a line w/ a leading (word) delimiter symbol
-/// (i.e. not an identifier and a brace)
+/**
+ * Try to align a line w/ a leading (word) delimiter symbol
+ * (i.e. not an identifier and a brace)
+ */
 function tryBeforeDanglingDelimiter_ch(line)
 {
     var result = -1;
@@ -1151,6 +1173,9 @@ function findSingleLineCommentBlockEnd(line)
  * \li do nothing if first position is a \e string
  * \li align comments according next non-comment and non-preprocessor line
  *     (i.e. it's desired indent cuz it maybe still unaligned)
+ *
+ * \attention Current Kate version has a BUG: \c anchor() unable to find smth
+ * in a multiline macro definition (i.e. where every line ends w/ a backslash)!
  */
 function alignInsideBraces(line)
 {
@@ -1272,8 +1297,30 @@ function alignInsideBraces(line)
     return result;
 }
 
+function alignAccessSpecifier(line)
+{
+    var result = -2;
+    var currentLineText = document.line(line).ltrim();
+    var match = currentLineText.search(
+        /^\s*((public|protected|private)\s*(slots|Q_SLOTS)?|(signals|Q_SIGNALS)\s*):\s*$/
+      );
+    if (match != -1)
+    {
+        // Ok, lets find an open brace of the `class'/`struct'
+        var openBracePos = document.anchor(line, document.firstColumn(line), '{');
+        if (openBracePos.isValid())
+            result = document.firstColumn(openBracePos.line);
+    }
+    return result;
+}
+
 /**
  * Try to align \c case statements in a \c switch
+ *
+ * \todo Nowadays it is badly required a function, similar to \c anchor(),
+ * to get a \c Range starting from open brace 'till corresponding close brace.
+ * Without such a fucntion if would be kinda hard to implement what I want
+ * to do w/ case indenter... so let it be damn simple/stupid for awhile...
  */
 function alignCase(line)
 {
@@ -1289,12 +1336,16 @@ function alignCase(line)
     return result;
 }
 
-/// Try to align a given line
-/// \todo More actions
+/**
+ * Try to align a given line
+ * \todo More actions
+ */
 function indentLine(line)
 {
     dbg(">> Going to indent line "+line);
     var result = alignPreprocessor(line);                   // Try to align a preprocessor directive
+    if (result == -2)                                       // Nothing has changed?
+        result = alignAccessSpecifier(line);                // Try to align access specifiers in a class
     if (result == -2)                                       // Nothing has changed?
         result = alignCase(line);                           // Try to align `case' statements in a `switch'
     if (result == -2)                                       // Nothing has changed?
