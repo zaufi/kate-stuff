@@ -121,19 +121,28 @@ function alignInlineComment(line)
     var currentLineText = document.line(line);
     var sc = splitByComment(currentLineText);
     // Did we found smth and if so, make sure it is not a string or comment...
-    if (sc.hasComment && isNotStringOrComment(line, sc.before.length + 2))
+    if (sc.hasComment && isNotStringOrComment(line, sc.before.length - 1))
     {
         var rbefore = sc.before.rtrim();
+        /// \attention Kate has a BUG: even if everything is Ok and no realign
+        /// required, document gets modified anyway! So condition below
+        /// designed to prevent document modification w/o real actions won't
+        /// help anyway :-( Need to fix Kate before!
         if (rbefore.length < gSameLineCommentStartAt && sc.before.length != gSameLineCommentStartAt)
         {
-            // Add padding to align
-            currentLineText = rbefore
-              + String().fill(' ', gSameLineCommentStartAt - rbefore.length)
-              + "//" + sc.after.rtrim()
-              ;
+            // Ok, test on the line is shorter than needed.
+            // But what about current padding?
             document.editBegin();
-            document.removeLine(line);
-            document.insertLine(line, currentLineText);
+            if (sc.before.length < gSameLineCommentStartAt)
+                // Need to add some padding
+                document.insertText(
+                    line
+                  , sc.before.length
+                  , String().fill(' ', gSameLineCommentStartAt - sc.before.length)
+                  );
+            else
+                // Need to remove a redundant padding
+                document.removeText(line, gSameLineCommentStartAt, line, sc.before.length);
             document.editEnd();
         }
         else if (gSameLineCommentStartAt < rbefore.length)
@@ -157,7 +166,7 @@ function tryToKeepInlineComment(line)
     // Check is there any comment on the current line
     var currentLineText = document.line(line);
     var sc = splitByComment(currentLineText);
-    if (sc.hasComment && isNotStringOrComment(line, sc.before.length + 2))
+    if (sc.hasComment && isNotStringOrComment(line, sc.before.length - 1))
     {
         // Yep, try to move it on a previous line.
         // NOTE The latter can't have a comment!
@@ -1263,6 +1272,23 @@ function alignInsideBraces(line)
     return result;
 }
 
+/**
+ * Try to align \c case statements in a \c switch
+ */
+function alignCase(line)
+{
+    var result = -2;
+    var currentLineText = document.line(line).ltrim();
+    if (currentLineText.startsWith("case ") || currentLineText.startsWith("default:"))
+    {
+        // Ok, lets find an open brace of the `switch'
+        var openBracePos = document.anchor(line, document.firstColumn(line), '{');
+        if (openBracePos.isValid())
+            result = document.firstColumn(openBracePos.line);
+    }
+    return result;
+}
+
 /// Try to align a given line
 /// \todo More actions
 function indentLine(line)
@@ -1270,8 +1296,9 @@ function indentLine(line)
     dbg(">> Going to indent line "+line);
     var result = alignPreprocessor(line);                   // Try to align a preprocessor directive
     if (result == -2)                                       // Nothing has changed?
+        result = alignCase(line);                           // Try to align `case' statements in a `switch'
+    if (result == -2)                                       // Nothing has changed?
         result = alignInsideBraces(line);                   // Try to align a generic line
-
     alignInlineComment(line);                               // Always try to align inline comments
 
     dbg("indentLine result="+result);
