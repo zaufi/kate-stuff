@@ -1,3 +1,10 @@
+---
+title: "C++/boost Style Indenter"
+description: "Indenter developed to help typing when you code in C++/boost (like) style"
+author: Alex Turbov <i.zaufi@gmail.com>
+version: 1.2
+---
+
 C++/boost Style Indenter
 ========================
 
@@ -76,5 +83,5 @@ TODO
 ----
 
 Initially it was designed as typing helper and nowadays it lacks of align functionality (it's capable to
-align only inline comments). But I have plans to add some logic here to better align source code keeping
+align only few basic constructs). But I have plans to add some logic here to better align source code keeping
 C++/boost style in mind.
