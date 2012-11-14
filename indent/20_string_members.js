@@ -64,4 +64,12 @@ String.prototype.startsWith = function(str)
 {
     return this.slice(0, str.length) == str;
 }
+
+/**
+ * \brief Check if \c this string ends with a given.
+ */
+String.prototype.endsWith = function(str)
+{
+    return this.slice(this.length - str.length, this.length) == str;
+}
 //END String functions

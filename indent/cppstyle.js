@@ -1068,6 +1068,69 @@ function alignPreprocessor(line)
 }
 
 /**
+ * Try to find a next non comment line assuming that a given
+ * one is a start or middle of a multiline comment.
+ *
+ * \attention This function would ignore anything else than
+ * a simple comments like this one... I.e. if \b right after
+ * star+slash starts anything (non comment, or even maybe after
+ * that another one comment begins), it will be \b IGNORED.
+ * (Just because this is a damn ugly style!)
+ *
+ * \return line number or \c 0 if not found
+ * \note \c 0 is impossible value, so suitable to indicate an error!
+ *
+ * \sa \c alignInsideBraces()
+ */
+function findMultiLineCommentBlockEnd(line)
+{
+    for (; line < document.lines(); line++)
+    {
+        var text = document.line(line).rtrim();
+        if (text.endsWith("*/"))
+            break;
+    }
+    line++;                                                 // Move to *next* line
+    // Make sure it is not another one comment, and if so,
+    // going to find it's end as well...
+    var currentLineText = document.line(line).ltrim();
+    if (currentLineText.startsWith("//"))
+        line = findSingleLineCommentBlockEnd(line);
+    else if (currentLineText.startsWith("/*"))
+        line = findMultiLineCommentBlockEnd(line);
+    else if (document.lines() <= line)
+        line = 0;
+    return line;
+}
+
+/**
+ * Try to find a next non comment line assuming that a given
+ * one is a single-line one
+ *
+ * \return line number or \c 0 if not found
+ * \note \c 0 is impossible value, so suitable to indicate an error!
+ *
+ * \sa \c alignInsideBraces()
+ */
+function findSingleLineCommentBlockEnd(line)
+{
+    while (++line < document.lines())
+    {
+        var text = document.line(line).ltrim();
+        if (text.length == 0) continue;                     // Skip empty lines...
+        if (!text.startsWith("//")) break;                  // Yeah! Smth was found finally.
+    }
+    // Make sure it is not another one multiline comment, and if so,
+    // going to find it's end as well...
+    var currentLineText = document.line(line).ltrim();
+    if (currentLineText.startsWith("/*"))
+        line = findMultiLineCommentBlockEnd(line);
+    else if (document.lines() <= line)
+        line = 0;
+    return line;
+}
+
+/**
  * Almost anything in a code is places whithin a some brackets.
  * So the ideas is simple:
  * \li find nearest open bracket of any kind
@@ -1087,8 +1150,55 @@ function alignInsideBraces(line)
     if (thisLineIndent == -1 || document.isString(line, 0))
         return 0;
 
-    // Check for comment
-    /// \todo Need to align comments properly!
+    // Check for comment on the current line
+    var currentLineText = document.line(line).ltrim();
+    var nextNonCommentLine = -1;
+    var middleOfMultilineBlock = false;
+    var isSingleLineComment = false;
+    if (currentLineText.startsWith('//'))                   // Is single line comment on this line?
+    {
+        dbg("found a single-line comment");
+        // Yep, go to find a next non-comment line...
+        nextNonCommentLine = findSingleLineCommentBlockEnd(line);
+        isSingleLineComment = true;
+    }
+    else if (currentLineText.startsWith('/*'))              // Is multiline comment starts on this line?
+    {
+        // Yep, go to find a next non-comment line...
+        dbg("found start of a multiline comment");
+        nextNonCommentLine = findMultiLineCommentBlockEnd(line);
+    }
+    // Are we already inside of a multiline comment?
+    // NOTE To be sure that we are not inside of #if0/#endif block,
+    // lets check that current line starts w/ '*' also!
+    // NOTE Yep, it is expected (hardcoeded) that multiline comment has
+    // all lines strarted w/ a star symbol!
+    else if (document.isComment(line, 0) && currentLineText.startsWith("*"))
+    {
+        dbg("found middle of a multiline comment");
+        // Yep, go to find a next non-comment line...
+        nextNonCommentLine = findMultiLineCommentBlockEnd(line);
+        middleOfMultilineBlock = true;
+    }
+
+    if (nextNonCommentLine == 0)                            // End of comment not found?
+        // ... possible due temporary invalid code...
+        // anyway, dunno how to align it!
+        return -2;
+    // So, are we inside a comment? (and we know where it ends)
+    if (nextNonCommentLine != -1)
+    {
+        // Yep, lets try to get desired indent for next non-comment line
+        dbg("** next non comment line is "+nextNonCommentLine);
+        dbg("** going to get its' indentation...");
+        var desiredIndent = indentLine(nextNonCommentLine);
+        dbg("** got desired indentation for next non comment line: "+desiredIndent);
+        if (desiredIndent < 0)
+            return desiredIndent;                           // Have no idea how to indent this comment!
+        // TODO Make sure that next non-comment line do not starts
+        // w/ 'special' chars...
+        return desiredIndent + middleOfMultilineBlock;
+    }
 
     var brackets = [
         document.anchor(line, document.firstColumn(line), '(')
@@ -1157,6 +1267,7 @@ function alignInsideBraces(line)
 /// \todo More actions
 function indentLine(line)
 {
+    dbg(">> Going to indent line "+line);
     var result = alignPreprocessor(line);                   // Try to align a preprocessor directive
     if (result == -2)                                       // Nothing has changed?
         result = alignInsideBraces(line);                   // Try to align a generic line
