@@ -30,6 +30,7 @@ String.prototype.ltrim = function()
     }
     return this.substr(i);
 }
+
 /**
  * \brief Returns \c string without trailing spaces.
  */
@@ -44,6 +45,15 @@ String.prototype.rtrim = function()
     }
     return this.substr(0, i + 1);
 }
+
+/**
+ * \brief Returns \c string without leading and trailing spaces.
+ */
+String.prototype.trim = function()
+{
+    return this.rtrim().ltrim();
+}
+
 /**
  * \brief Fills with \c size \c char's.
  * \return the string itself (for chain calls)
@@ -58,18 +68,28 @@ String.prototype.fill = function(char, size)
 }
 
 /**
- * \brief Check if \c this string starts with a given.
+ * \brief Check if \c this string ends with a given.
+ * \returns \c true when string ends with \c needle, \c false otherwise.
  */
-String.prototype.startsWith = function(str)
+String.prototype.endsWith = function(needle)
 {
-    return this.slice(0, str.length) == str;
+    return this.substr(- needle.length) == needle;
 }
 
 /**
- * \brief Check if \c this string ends with a given.
+ * \brief Check if \c this string starts with a given.
+ * \return \c true when string starts with \c needle, \c false otherwise.
  */
-String.prototype.endsWith = function(str)
+String.prototype.startsWith = function(needle)
 {
-    return this.slice(this.length - str.length, this.length) == str;
+    return this.substr(0, needle.length) == needle;
+}
+
+/**
+ * \return \c true when \c needle is contained in \c this string, \c false otherwise.
+ */
+String.prototype.contains = function(needle)
+{
+    return this.indexOf(needle) !== -1;
 }
 //END String functions
