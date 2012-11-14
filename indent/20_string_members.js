@@ -20,7 +20,7 @@
 
 //BEGIN String functions
 /**
- * Returns \c string without leading spaces.
+ * \brief Returns \c string without leading spaces.
  */
 String.prototype.ltrim = function()
 {
@@ -31,7 +31,7 @@ String.prototype.ltrim = function()
     return this.substr(i);
 }
 /**
- * Returns \c string without trailing spaces.
+ * \brief Returns \c string without trailing spaces.
  */
 String.prototype.rtrim = function()
 {
@@ -45,7 +45,7 @@ String.prototype.rtrim = function()
     return this.substr(0, i + 1);
 }
 /**
- * Fills with \c size \c char's.
+ * \brief Fills with \c size \c char's.
  * \return the string itself (for chain calls)
  */
 String.prototype.fill = function(char, size)
@@ -55,5 +55,13 @@ String.prototype.fill = function(char, size)
         string += char;
     }
     return string;
+}
+
+/**
+ * \brief Check if \c this string starts with a given.
+ */
+String.prototype.startsWith = function(str)
+{
+    return this.slice(0, str.length) == str;
 }
 //END String functions

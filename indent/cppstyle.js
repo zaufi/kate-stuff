@@ -63,6 +63,60 @@ function isInsideBraces(line, column, ch)
     return cursor.isValid();
 }
 
+/// Split a given text line by comment into parts \e before and \e after the comment
+/// \return an object w/ the following fields:
+///   \li \c hasComment -- boolean: \c true if comment present on the line, \c false otherwise
+///   \li \c before -- text before the comment
+///   \li \c after -- text of the comment
+function splitByComment(text)
+{
+    var commentStartPos = text.indexOf("//");
+    var before = "";
+    var after = "";
+    var found = commentStartPos != -1;
+    if (found)
+    {
+        before = text.substring(0, commentStartPos);
+        after = text.substring(commentStartPos + 2, text.length);
+    }
+    else before = text;
+    return {hasComment: found, before: before, after: after};
+}
+
+/// Try to (re)align (to 60th position) inline comment if present
+function alignInlineComment(line)
+{
+    // Check is there any comment on the current line
+    var currentLineText = document.line(line);
+    var sc = splitByComment(currentLineText);
+    if (sc.hasComment)                                      // Did we found smth?
+    {
+        var rbefore = sc.before.rtrim();
+        if (rbefore.length < gSameLineCommentStartAt && sc.before.length != gSameLineCommentStartAt)
+        {
+            // Add padding to align
+            currentLineText = rbefore
+              + String().fill(' ', gSameLineCommentStartAt - rbefore.length)
+              + "//" + sc.after.rtrim()
+              ;
+            document.editBegin();
+            document.removeLine(line);
+            document.insertLine(line, currentLineText);
+            document.editEnd();
+        }
+        else if (gSameLineCommentStartAt < rbefore.length)
+        {
+            // Move inline comment before the current line
+            var startPos = document.firstColumn(line);
+            currentLineText = String().fill(' ', startPos) + "//" + sc.after.rtrim() + "\n";
+            document.editBegin();
+            document.removeText(line, rbefore.length, line, document.lineLength(line));
+            document.insertText(line, 0, currentLineText);
+            document.editEnd();
+        }
+    }
+}
+
 /// Try to keep same-line comment.
 /// I.e. if \c ENTER was hit on a line w/ inline comment and before it,
 /// try to keep it on a previous line...
@@ -70,8 +124,8 @@ function tryToKeepInlineComment(line)
 {
     // Check is there any comment on the current line
     var currentLineText = document.line(line);
-    var match = /^(.*\s)(\/\/)(.*)$/.exec(currentLineText);
-    if (match != null)
+    var sc = splitByComment(currentLineText);
+    if (sc.hasComment)
     {
         // Yep, try to move it on a previous line.
         // NOTE The latter can't have a comment!
@@ -81,9 +135,9 @@ function tryToKeepInlineComment(line)
           , lastPos + 1
           , String().fill(' ', gSameLineCommentStartAt - lastPos - 1)
               + "//"
-              + match[3]
+              + sc.after.rtrim()
           );
-        document.removeText(line, match[1].rtrim().length, line, currentLineText.length);
+        document.removeText(line, sc.before.rtrim().length, line, currentLineText.length);
     }
 }
 
@@ -409,9 +463,12 @@ function tryMacroDefinition_ch(line)
 function tryBeforeDanglingDelimiter_ch(line)
 {
     var result = -1;
+    dbg("text='"+document.line(line)+"'");
     var halfTabNeeded =
+        // current line do not starts w/ a comment
+        !document.line(line).ltrim().startsWith("//")
         // if a previous line starts w/ an identifier
-        (document.line(line - 1).search(/^\s*[A-Za-z_][A-Za-z0-9_]*/) != -1)
+      && (document.line(line - 1).search(/^\s*[A-Za-z_][A-Za-z0-9_]*/) != -1)
         // but the current one starts w/ a delimiter (which is looks like operator)
       && (document.line(line).search(/^\s*[,%&<=:\|\-\?\/\+\*\.]/) != -1)
       ;
@@ -469,10 +526,7 @@ function tryPreprocessor_ch(line)
         }
     }
     if (result != -1)
-    {
-        tryToKeepInlineComment(line);
         dbg("tryPreprocessor_ch result="+result);
-    }
     return result;
 }
 
@@ -951,27 +1005,6 @@ function processChar(line, ch)
     }
 
     return result;
-}
-
-/// Try to align inline comment if present
-function alignInlineComment(line)
-{
-    // Check is there any comment on the current line
-    var currentLineText = document.line(line);
-    var match = /^(.*\s)(\/\/)(.*)$/.exec(currentLineText);
-    // If matched and there is some (non spaces) text before the comment,
-    // and comment isn't aligned yet
-    if (match != null && match[1].trim().length > 0 && match[1].length < gSameLineCommentStartAt)
-    {
-        document.removeText(line, match[1].length, line, document.line(line).length);
-        document.insertText(
-            line
-          , match[1].length
-          , String().fill(' ', gSameLineCommentStartAt - match[1].length)
-              + "//"
-              + match[3]
-          );
-    }
 }
 
 function alignPreprocessor(line)
