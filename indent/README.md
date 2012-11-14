@@ -63,7 +63,7 @@ Features
 * support for boost-like formatting style everywhere is possible
 * align inline comments to 60th position after typing `'//'`
 * turn `'///'` into `'/// '` or `'///< '` depending on comment placement
-* take care of inline comments when `ENTER` pressed on a commented line (before and/or after comment start)
+* take care of inline comments when `ENTER` pressed on a commented line (before, middle or after comment start)
 * turn `'/*'` or `'/**'` into multiline (doxygen style) comment
 * auto continue multiline comment on `ENTER`
 * indent preprocessor directives according nesting level of `#if`/`#endif`

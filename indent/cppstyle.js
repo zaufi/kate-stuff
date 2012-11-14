@@ -1319,8 +1319,12 @@ function alignAccessSpecifier(line)
  *
  * \todo Nowadays it is badly required a function, similar to \c anchor(),
  * to get a \c Range starting from open brace 'till corresponding close brace.
- * Without such a fucntion if would be kinda hard to implement what I want
- * to do w/ case indenter... so let it be damn simple/stupid for awhile...
+ * Without such fucntion if would be kinda hard to implement what I want
+ * to do w/ \c case indenter... so let it be damn simple/stupid for awhile...
+ *
+ * \bug Due a lack of required functions in Kate (and yes, I'm lazy to write it
+ * using pure JS), it's incorrectly indent \c break statement (actually it doesn't
+ * care about \c break at all nowadays).
  */
 function alignCase(line)
 {
@@ -1331,7 +1335,7 @@ function alignCase(line)
         // Ok, lets find an open brace of the `switch'
         var openBracePos = document.anchor(line, document.firstColumn(line), '{');
         if (openBracePos.isValid())
-            result = document.firstColumn(openBracePos.line);
+            result = document.firstColumn(openBracePos.line) + gIndentWidth;
     }
     return result;
 }
