@@ -1,10 +1,3 @@
----
-title: "C++/boost Style Indenter"
-description: "Indenter developed to help typing when you code in C++/boost (like) style"
-author: Alex Turbov <i.zaufi@gmail.com>
-version: 1.2
----
-
 C++/boost Style Indenter
 ========================
 
