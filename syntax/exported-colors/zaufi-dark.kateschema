@@ -1,0 +1,49 @@
+[Default Item Styles - Schema Zaufi::dark]
+Alert=ffe85848,ffe85848,1,,,,ff451e1a,-,,---
+Base-N Integer=ff00c0c0,ff00c0c0,,,,,-,-,,---
+Character=fff157e7,fff157e7,,,,,-,-,,---
+Comment=ff787775,ff787775,,1,,,-,-,,---
+Data Type=ffa32c2c,ffa32c2c,,,,,-,-,,---
+Decimal/Value=ff4086c0,ff4086c0,,,,,-,-,,---
+Error=ffe85848,ffe85848,,,,,-,-,,---
+Floating Point=ff696df3,ff696df3,,,,,-,-,,---
+Function=ff5a63a5,ff5a63a5,,,,,-,-,,---
+Keyword=ffc8c500,ffc8c500,1,,,,-,-,,---
+Normal=ffcacaca,ffcacaca,,,,,-,-,,---
+Others=ff78b753,ff78b753,,,,,-,-,,---
+Region Marker=ff826c4a,ff826c4a,,,,,ff201f1f,-,,---
+String=fff157ea,fff157ea,,,,,-,-,,---
+
+[Editor Colors]
+Color Background=32,31,31
+Color Code Folding=10,73,10
+Color Highlighted Bracket=26,39,24
+Color Highlighted Line=36,35,35
+Color Icon Bar=48,47,47
+Color Indentation Line=82,80,80
+Color Line Number=224,222,219
+Color MarkType 1=0,0,255
+Color MarkType 2=255,0,0
+Color MarkType 3=255,255,0
+Color MarkType 4=255,0,255
+Color MarkType 5=160,160,164
+Color MarkType 6=0,255,0
+Color MarkType 7=255,0,0
+Color Modified Lines=69,30,26
+Color Replace Highlight=0,255,0
+Color Saved Lines=35,50,26
+Color Search Highlight=255,255,0
+Color Selection=37,61,40
+Color Spelling Mistake Line=255,0,0
+Color Tab Marker=76,74,74
+Color Template Background=47,46,46
+Color Template Editable Placeholder=32,31,31
+Color Template Focused Editable Placeholder=32,34,31
+Color Template Not Editable Placeholder=32,31,31
+Color Word Wrap Marker=60,58,58
+
+[KateSchema]
+Font=Consolas,12,-1,5,50,0,0,0,0,0
+full schema=false
+highlightings=None
+schema=Zaufi::dark

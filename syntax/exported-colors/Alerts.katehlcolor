@@ -1,0 +1,10 @@
+[Highlighting Alerts - Schema Zaufi::dark]
+Alerts:Alert Level 1=10,ffe85848,ffe85848,1,0,0,0,ff451e1a,,,---
+Alerts:Alert Level 2=10,ffca9219,ffca9219,1,0,0,0,ff451e1a,,,---
+Alerts:Alert Level 3=10,ff81ca2d,ff81ca2d,1,0,0,0,ff201f1f,,,---
+Alerts:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+
+[KateHLColors]
+full schema=false
+highlight=Alerts
+schema=Zaufi::dark

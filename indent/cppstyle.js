@@ -2,7 +2,7 @@
  * name: C++/boost Style
  * license: LGPL
  * author: Alex Turbov <i.zaufi@gmail.com>
- * revision: 1.2
+ * revision: 2
  * kate-version: 3.4
  * type: indentation
  * priority: 10
@@ -711,9 +711,9 @@ function trySameLineComment(cursor)
  * \brief Maybe '>' needs to be added?
  *
  * Here is a few cases possible:
- * \li user entered <em>"template &gt;</em>
+ * \li user entered <em>"emplate &gt;</em>
  * \li user entered smth like <em>std::map&gt;</em>
- * \li user wants to output smth to C++ I/O stream by typing <em>&gt;&gt;</em>
+ * \li user wants to intput smth from C++ I/O stream by typing <em>&gt;&gt;</em>
  */
 function tryTemplate(cursor)
 {
@@ -920,6 +920,7 @@ function tryColon(cursor)
                 result = document.firstVirtualColumn(definitionCursor.line);
             }
         }
+        /// \todo Check for \c case and \c default
     }
     return result;
 }
@@ -1319,7 +1320,7 @@ function alignAccessSpecifier(line)
  *
  * \todo Nowadays it is badly required a function, similar to \c anchor(),
  * to get a \c Range starting from open brace 'till corresponding close brace.
- * Without such fucntion if would be kinda hard to implement what I want
+ * Without such function if would be kinda hard to implement what I want
  * to do w/ \c case indenter... so let it be damn simple/stupid for awhile...
  *
  * \bug Due a lack of required functions in Kate (and yes, I'm lazy to write it
