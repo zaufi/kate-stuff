@@ -1,12 +1,12 @@
 <snippets
     namespace="pp:"
     license="GPL"
-    filetypes="C++"
+    filetypes="C++;C++11;C++11/Qt4"
     snippetlicense="public domain"
     authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;"
     name="BOOST_PREPROCESSOR by zaufi"
   >
- <!-- Version 1.0 -->
+ <!-- Version 1.1 -->
  <script>function ppGuard() {
   var filename = document.fileName().toUpperCase();
   filename = filename.replace(/[\.\-]/, '_');

@@ -1,4 +1,11 @@
-<snippets namespace="z:" license="BSD" filetypes="C++" snippetlicense="public domain" authors="Alex Turbov &lt;i.zaufi@gmail.com>" name="zaufi C++ snippets">
+<snippets 
+    namespace="z:" 
+    license="BSD" 
+    filetypes="C++;C++11;C++11/Qt4" 
+    snippetlicense="public domain" 
+    authors="Alex Turbov &lt;i.zaufi@gmail.com>" 
+    name="zaufi C++ snippets"
+  >
  <script>function headerGuard() {
   var filename = document.fileName().toUpperCase();
   filename = filename.replace(/[\.\-]/, '_');

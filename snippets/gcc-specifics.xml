@@ -1,12 +1,12 @@
 <snippets
     namespace="gcc:"
     license="GPL"
-    filetypes="C++"
+    filetypes="C++;C++11;C++11/Qt4"
     snippetlicense="public domain"
     authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;"
     name="gcc predefined macros, builtins, attributes and pragmas"
   >
-  <!-- Predefined GCC stuff version 1.0.2 -->
+  <!-- Predefined GCC stuff version 1.1 -->
   <item><match>_FORTIFY_SOURCE</match><fillin>_FORTIFY_SOURCE</fillin></item>
   <item><match>_GNU_SOURCE</match><fillin>_GNU_SOURCE</fillin></item>
   <item><match>_LP64</match><fillin>_LP64</fillin></item>
