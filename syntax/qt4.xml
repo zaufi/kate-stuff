@@ -12,9 +12,10 @@
   -->
 <language
     name="C++11/Qt4"
+    section="Sources"
     version="0.5"
     kateversion="2.4"
-    section="Sources"
+    indenter="cstyle"
     extensions="*.moc"
     mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
     author="Alex Turbov (i.zaufi@gmail.com)"
@@ -178,6 +179,7 @@
     <item> QT_TR_NOOP </item>
     <item> QT_TR_NOOP_UTF8 </item>
     <item> QT_USE_NAMESPACE </item>
+    <item> QT_USE_QSTRINGBUILDER </item>
     <item> QT_VERSION </item>
     <item> QT_VERSION_CHECK </item>
     <item> QT_VERSION_STR </item>
