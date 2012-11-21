@@ -12,7 +12,7 @@
   -->
 <language
     name="C++11/Qt4"
-    version="0.3"
+    version="0.5"
     kateversion="2.4"
     section="Sources"
     extensions="*.moc"
@@ -126,6 +126,8 @@
     <item> QT_MODULE_XML </item>
     <item> QT_MODULE_XMLPATTERNS </item>
     <item> QT_NO_ARM_EABI </item>
+    <item> QT_NO_CAST_FROM_ASCII </item>
+    <item> QT_NO_CAST_TO_ASCII </item>
     <item> QT_NO_CONCURRENT </item>
     <item> QT_NO_CONCURRENT_FILTER </item>
     <item> QT_NO_CONCURRENT_MAP </item>
@@ -1194,6 +1196,7 @@
     <item> qFuzzyCompare </item>
     <item> qInstallMsgHandler </item>
     <item> qMacVersion </item>
+    <item> qMakePair </item>
     <item> qMax </item>
     <item> qMin </item>
     <item> qRound64 </item>
@@ -1289,6 +1292,14 @@
     <itemData name="Qt4 Macros"     defStyleNum="dsNormal" spellChecking="false" />
   </itemDatas>
 </highlighting>
+
+<general>
+  <comments>
+    <comment name="singleLine" start="//" />
+    <comment name="multiLine" start="/*" end="*/" />
+  </comments>
+  <keywords casesensitive="1" />
+</general>
 
 </language>
 <!-- kate: indent-width 2; tab-width 2; -->
