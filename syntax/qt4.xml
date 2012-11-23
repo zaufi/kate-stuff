@@ -129,6 +129,7 @@
     <item> QT_NO_ARM_EABI </item>
     <item> QT_NO_CAST_FROM_ASCII </item>
     <item> QT_NO_CAST_TO_ASCII </item>
+    <item> QT_NO_CAST_FROM_BYTEARRAY </item>
     <item> QT_NO_CONCURRENT </item>
     <item> QT_NO_CONCURRENT_FILTER </item>
     <item> QT_NO_CONCURRENT_MAP </item>
@@ -151,6 +152,7 @@
     <item> QT_NO_STL_WCHAR </item>
     <item> QT_NO_SYSTEMSEMAPHORE </item>
     <item> QT_NO_TEMPLATE_TEMPLATE_PARAMETERS </item>
+    <item> QT_NO_URL_CAST_FROM_STRING </item>
     <item> QT_NO_WARNINGS </item>
     <item> QT_PACKAGEDATE_STR </item>
     <item> QT_PACKAGE_TAG </item>
@@ -766,6 +768,7 @@
     <item> QMutableListIterator </item>
     <item> QMutableMapIterator </item>
     <item> QMutableSetIterator </item>
+    <item> QMutableStringListIterator </item>
     <item> QMutableVectorIterator </item>
     <item> QMutex </item>
     <item> QMutexLocker </item>
@@ -944,6 +947,7 @@
     <item> QStatusTipEvent </item>
     <item> QString </item>
     <item> QStringList </item>
+    <item> QStringListIterator </item>
     <item> QStringListModel </item>
     <item> QStringMatcher </item>
     <item> QStringRef </item>
@@ -1201,6 +1205,7 @@
     <item> qMakePair </item>
     <item> qMax </item>
     <item> qMin </item>
+    <item> qPrintable </item>
     <item> qRound64 </item>
     <item> qRound </item>
     <item> qVersion </item>
@@ -1230,6 +1235,23 @@
     <item> qStableSort </item>
     <item> qSwap </item>
     <item> qUpperBound </item>
+    <!-- Related non-members from http://qt-project.org/doc/qt-4.8/qbytearray.html -->
+    <item> qChecksum </item>
+    <item> qCompress </item>
+    <item> qUncompress </item>
+    <item> qsnprintf </item>
+    <item> qstrcmp </item>
+    <item> qstrcpy </item>
+    <item> qstrdup </item>
+    <item> qstricmp </item>
+    <item> qstrlen </item>
+    <item> qstrncmp </item>
+    <item> qstrncpy </item>
+    <item> qstrnicmp </item>
+    <item> qstrnlen </item>
+    <item> qvsnprintf </item>
+    <!-- http://qt-project.org/doc/qt-4.8/qhash.html#related-non-members -->
+    <item> qHash </item>
   </list>
 
   <!-- Types list from http://qt-project.org/doc/qt-4.8/qtglobal.html -->
