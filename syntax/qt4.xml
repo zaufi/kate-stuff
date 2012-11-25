@@ -564,6 +564,7 @@
     <item> QFileDialog </item>
     <item> QFileIconProvider </item>
     <item> QFileInfo </item>
+    <item> QFileInfoList </item>                            <!-- typedef -->
     <item> QFileOpenEvent </item>
     <item> QFileSystemModel </item>
     <item> QFileSystemWatcher </item>
