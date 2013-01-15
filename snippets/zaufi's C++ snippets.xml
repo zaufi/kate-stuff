@@ -1,11 +1,4 @@
-<snippets 
-    namespace="z:" 
-    license="BSD" 
-    filetypes="C++;C++11;C++11/Qt4" 
-    snippetlicense="public domain" 
-    authors="Alex Turbov &lt;i.zaufi@gmail.com>" 
-    name="zaufi C++ snippets"
-  >
+<snippets namespace="z:" license="BSD" filetypes="C++;C++11;C++11/Qt4" snippetlicense="public domain" authors="Alex Turbov &lt;i.zaufi@gmail.com>" name="zaufi C++ snippets">
  <script>function headerGuard() {
   var filename = document.fileName().toUpperCase();
   filename = filename.replace(/[\.\-]/, '_');
@@ -216,5 +209,12 @@ ${type}&amp; operator=(${type}&amp;&amp;) = ${op};%{cursor}</fillin>
   <displaypostfix>output typeid to std::cout (C++11 version)</displaypostfix>
   <displayarguments></displayarguments>
   <fillin>std::cout &lt;&lt; dbg::type_name(std::declval&lt;${var}>()) &lt;&lt; std::endl;${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>print</displayprefix>
+  <match>kDebug</match>
+  <displaypostfix>debug print for KDE</displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>kDebug() &lt;&lt; "${expr}=" &lt;&lt; ${expr};</fillin>
  </item>
 </snippets>
