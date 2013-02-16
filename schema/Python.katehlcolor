@@ -1,0 +1,30 @@
+[Highlighting Python - Schema Zaufi::dark]
+Alerts_indent:Alert=10,ffe85848,ffe85848,1,0,0,0,ff451e1a,,,---
+Alerts_indent:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+Python:Builtin Function=2,ff30a355,ff30a355,0,0,0,0,,,,---
+Python:Command Keyword=1,ffc8c500,ffc8c500,1,0,0,0,,,,---
+Python:Comment=8,ff787775,ff787775,0,1,0,0,,,,---
+Python:Complex=9,ff78b753,ff78b753,0,0,0,0,,,,---
+Python:Decorator=9,ff8f6b32,ff8f6b32,0,0,0,0,,,,---
+Python:Definition Keyword=1,ffc8c500,ffc8c500,1,0,0,0,,,,---
+Python:Exceptions=9,ffaf4940,ffaf4940,1,0,0,0,,,,---
+Python:Extensions=9,ff80caca,ff80caca,1,0,0,0,,,,---
+Python:Float=5,ff696df3,ff696df3,0,0,0,0,,,,---
+Python:Flow Control Keyword=1,ffc8c500,ffc8c500,1,0,0,0,,,,---
+Python:Hex=4,ff00c0c0,ff00c0c0,0,0,0,0,,,,---
+Python:Int=3,ff4086c0,ff4086c0,0,0,0,0,,,,---
+Python:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+Python:Octal=4,ff00c0c0,ff00c0c0,0,0,0,0,,,,---
+Python:Operator=0,ffcacafa,ffcacafa,0,0,0,0,,,,---
+Python:Overloaders=9,ff30a355,ff30a355,0,0,0,0,,,,---
+Python:Preprocessor=6,ff239423,ff239423,0,0,0,0,,,,---
+Python:Raw String=7,fff157ea,fff157ea,0,1,0,0,,,,---
+Python:Special Variable=9,ff78b753,ff78b753,0,0,0,0,,,,---
+Python:String=7,fff157ea,fff157ea,0,1,0,0,,,,---
+Python:String Char=6,fff157e7,fff157e7,0,1,0,0,,,,---
+Python:String Substitution=9,ff5478ae,ff5478ae,0,0,0,0,,,,---
+
+[KateHLColors]
+full schema=false
+highlight=Python
+schema=Zaufi::dark
