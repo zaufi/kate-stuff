@@ -94,11 +94,20 @@
     <displaypostfix>Enable persistent text selection</displaypostfix>
     <fillin>persistent-selection ${type:true};${cursor}</fillin>
   </item>
+<!--
+  NOTE Deprecated since KDE 4.10
   <item>
     <match>remove-trailing-space</match>
     <displayarguments> true|false</displayarguments>
     <displaypostfix>Remove trailing spaces when editing a line</displaypostfix>
     <fillin>remove-trailing-space ${type:true};${cursor}</fillin>
+  </item>
+-->
+  <item>
+    <match>remove-trailing-spaces</match>
+    <displayarguments>none|modified|all</displayarguments>
+    <displaypostfix>Remove trailing spaces when saving the document</displaypostfix>
+    <fillin>remove-trailing-spaces ${type:modified};${cursor}</fillin>
   </item>
   <item>
     <match>replace-tabs-save</match>
