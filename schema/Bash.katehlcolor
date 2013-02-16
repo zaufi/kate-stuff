@@ -1,0 +1,30 @@
+[Highlighting Bash - Schema Zaufi::dark]
+Alerts:Alert Level 1=10,ffe85848,ffe85848,1,0,0,0,ff451e1a,,,---
+Alerts:Alert Level 2=10,ffca9219,ffca9219,1,0,0,0,ff451e1a,,,---
+Alerts:Alert Level 3=10,ff81ca2d,ff81ca2d,1,0,0,0,ff451e1a,,,---
+Alerts:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+Bash:Backquote=1,ff51a6c8,ff51a6c8,1,0,0,0,,,,---
+Bash:Builtin=1,ff78b753,ff78b753,1,0,0,0,,,,---
+Bash:Command=1,ffcc975a,ffcc975a,0,0,0,0,,,,---
+Bash:Comment=8,ff787775,ff787775,0,1,0,0,,,,---
+Bash:Control=1,ffc8c500,ffc8c500,0,0,0,0,,,,---
+Bash:Error=13,ffe85848,ffe85848,0,0,0,1,,,,---
+Bash:Escape=2,ff924ee0,ff924ee0,0,0,0,0,,,,---
+Bash:Expression=9,ff78b753,ff78b753,0,0,0,0,,,,---
+Bash:Function=11,ff5a63a5,ff5a63a5,0,0,0,0,,,,---
+Bash:Keyword=1,ffc8c500,ffc8c500,1,0,0,0,,,,---
+Bash:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+Bash:Option=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+Bash:OtherCommand=1,ff53cc6b,ff53cc6b,0,0,0,0,,,,---
+Bash:Path=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+Bash:Redirection=1,ff1d7688,ff1d7688,0,0,0,0,,,,---
+Bash:String DoubleQ=7,fff157ea,fff157ea,0,1,0,0,,,,---
+Bash:String Escape=2,ff924ee0,ff924ee0,0,1,0,0,,,,---
+Bash:String SingleQ=7,fff157ea,fff157ea,0,1,0,0,,,,---
+Bash:String Transl.=7,fff157ea,fff157ea,0,1,0,0,,,,---
+Bash:Variable=9,ff78b753,ff78b753,0,0,0,0,,,,---
+
+[KateHLColors]
+full schema=false
+highlight=Bash
+schema=Zaufi::dark
