@@ -1,0 +1,14 @@
+[Highlighting Modelines - Schema Zaufi::dark]
+Modelines:Comment=8,ff777777,ff777777,0,1,0,0,,,,---
+Modelines:Keyword=1,ff777755,ff777755,1,1,0,0,,,,---
+Modelines:Number=3,ff555560,ff555560,0,1,0,0,,,,---
+Modelines:Option OFF=9,ffb78058,ffb78058,0,0,0,0,,,,---
+Modelines:Option ON=9,ff78b753,ff78b753,0,0,0,0,,,,---
+Modelines:String=7,ff604460,ff604460,0,1,0,0,,,,---
+Modelines:Value=9,ff385a4c,ff385a4c,0,0,0,0,,,,---
+Modelines:Variable=11,ff676757,ff676757,0,1,0,0,,,,---
+
+[KateHLColors]
+full schema=false
+highlight=Modelines
+schema=Zaufi::dark

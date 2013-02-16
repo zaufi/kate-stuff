@@ -9,12 +9,15 @@
   <!-- I don't want to remember all that names ... so let kate to help me :-) -->
 
   <!-- Boolean items -->
+  <!-- NOTE Deprecated since KDE 4.10 -->
+  <!--
   <item>
     <match>auto-brackets</match>
     <displayarguments> true|false</displayarguments>
     <displaypostfix>Set autoinsertion of bracket on or off</displaypostfix>
     <fillin>auto-brackets ${type:true};${cursor}</fillin>
   </item>
+  -->
   <item>
     <match>auto-insert-doxygen</match>
     <displayarguments> true|false</displayarguments>
@@ -94,15 +97,15 @@
     <displaypostfix>Enable persistent text selection</displaypostfix>
     <fillin>persistent-selection ${type:true};${cursor}</fillin>
   </item>
-<!--
-  NOTE Deprecated since KDE 4.10
+  <!-- NOTE Deprecated since KDE 4.10 -->
+  <!--
   <item>
     <match>remove-trailing-space</match>
     <displayarguments> true|false</displayarguments>
     <displaypostfix>Remove trailing spaces when editing a line</displaypostfix>
     <fillin>remove-trailing-space ${type:true};${cursor}</fillin>
   </item>
--->
+  -->
   <item>
     <match>remove-trailing-spaces</match>
     <displayarguments>none|modified|all</displayarguments>

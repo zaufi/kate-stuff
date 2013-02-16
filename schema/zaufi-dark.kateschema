@@ -784,10 +784,10 @@ GCCExtensions:Normal Text=0,ffcacaca,ffcacaca,0,0,0,,,,,---
 Modelines:Comment=8,ff777777,ff777777,0,1,0,,,,,---
 Modelines:Keyword=1,ff777755,ff777755,1,1,0,,,,,---
 Modelines:Number=3,ff555560,ff555560,0,1,0,,,,,---
-Modelines:Option OFF=9,ffb78058,ffb78058,,,,,,,,---
-Modelines:Option ON=9,,,,,,,,,,---
+Modelines:Option OFF=9,ffb78058,ffb78058,,1,,,,,,---
+Modelines:Option ON=9,ff78b753,ff78b753,,1,,,,,,---
 Modelines:String=7,ff604460,ff604460,0,1,0,,,,,---
-Modelines:Value=9,ff385a4c,ff385a4c,,,,,,,,---
+Modelines:Value=9,ff385a4c,ff385a4c,,1,,,,,,---
 Modelines:Variable=11,ff676757,ff676757,0,1,0,,,,,---
 
 [Highlighting C++11/Qt4 - Schema Zaufi::dark]
@@ -858,10 +858,10 @@ GCCExtensions:Normal Text=0,ffcacaca,ffcacaca,0,0,0,,,,,---
 Modelines:Comment=8,ff777777,ff777777,0,1,0,,,,,---
 Modelines:Keyword=1,ff777755,ff777755,1,1,0,,,,,---
 Modelines:Number=3,ff555560,ff555560,0,1,0,,,,,---
-Modelines:Option OFF=9,,,,,,,,,,---
-Modelines:Option ON=9,,,,,,,,,,---
+Modelines:Option OFF=9,ffb78058,ffb78058,0,0,0,,,,,---
+Modelines:Option ON=9,ff78b753,ff78b753,0,0,0,,,,,---
 Modelines:String=7,ff604460,ff604460,0,1,0,,,,,---
-Modelines:Value=9,,,,,,,,,,---
+Modelines:Value=9,ff385a4c,ff385a4c,0,0,0,,,,,---
 Modelines:Variable=11,ff676757,ff676757,0,1,0,,,,,---
 
 [Highlighting CGiS - Schema Zaufi::dark]
@@ -3525,14 +3525,14 @@ Modelica:String Char=6,,,,,,,,,,---
 Modelica:Variable=0,,,,,,,,,,---
 
 [Highlighting Modelines - Schema Zaufi::dark]
-Modelines:Comment=8,,,,,,,,,,---
-Modelines:Keyword=1,,,,,,,,,,---
-Modelines:Number=3,,,,,,,,,,---
-Modelines:Option OFF=9,,,,,,,,,,---
-Modelines:Option ON=9,,,,,,,,,,---
-Modelines:String=7,,,,,,,,,,---
-Modelines:Value=9,,,,,,,,,,---
-Modelines:Variable=11,,,,,,,,,,---
+Modelines:Comment=8,ff777777,ff777777,0,1,0,,,,,---
+Modelines:Keyword=1,ff777755,ff777755,1,1,0,,,,,---
+Modelines:Number=3,ff555560,ff555560,0,1,0,,,,,---
+Modelines:Option OFF=9,ffb78058,ffb78058,0,0,0,,,,,---
+Modelines:Option ON=9,ff78b753,ff78b753,0,0,0,,,,,---
+Modelines:String=7,ff604460,ff604460,0,1,0,,,,,---
+Modelines:Value=9,ff385a4c,ff385a4c,0,0,0,,,,,---
+Modelines:Variable=11,ff676757,ff676757,0,1,0,,,,,---
 
 [Highlighting Modula-2 - Schema Zaufi::dark]
 Modula-2:Comment=8,,,,,,,,,,---

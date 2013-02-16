@@ -66,12 +66,13 @@ GCCExtensions:GNU Functions=9,ff78b753,ff78b753,0,1,0,0,,,,---
 GCCExtensions:GNU Macros=9,ff42b779,ff42b779,0,1,0,0,,,,---
 GCCExtensions:GNU Types=9,ffbd3355,ffbd3355,0,1,0,0,,,,---
 GCCExtensions:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
-Modelines:Boolean False=9,ff845757,ff845757,0,1,0,0,,,,---
-Modelines:Boolean True=9,ff446544,ff446544,0,1,0,0,,,,---
 Modelines:Comment=8,ff777777,ff777777,0,1,0,0,,,,---
 Modelines:Keyword=1,ff777755,ff777755,1,1,0,0,,,,---
 Modelines:Number=3,ff555560,ff555560,0,1,0,0,,,,---
+Modelines:Option OFF=9,ffb78058,ffb78058,0,0,0,0,,,,---
+Modelines:Option ON=9,ff78b753,ff78b753,0,0,0,0,,,,---
 Modelines:String=7,ff604460,ff604460,0,1,0,0,,,,---
+Modelines:Value=9,ff385a4c,ff385a4c,0,0,0,0,,,,---
 Modelines:Variable=11,ff676757,ff676757,0,1,0,0,,,,---
 
 [KateHLColors]
