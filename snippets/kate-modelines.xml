@@ -109,7 +109,7 @@
   -->
   <item>
     <match>remove-trailing-spaces</match>
-    <displayarguments>none|modified|all</displayarguments>
+    <displayarguments> none|modified|all</displayarguments>
     <displaypostfix>Remove trailing spaces when saving the document</displaypostfix>
     <fillin>remove-trailing-spaces ${type:modified};${cursor}</fillin>
   </item>
