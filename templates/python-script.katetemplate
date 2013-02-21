@@ -1,0 +1,6 @@
+katetemplate: Template=Python Script Group=Source Code Highlight=Python
+katetemplate: Author=Alex Turbov <i.zaufi@gmail.com>
+katetemplate: Description=Python Application
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
