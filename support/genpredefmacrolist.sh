@@ -76,7 +76,6 @@ else
     gcc_bin=${CC:-gcc}
 fi
 gcc_bin=`which "$gcc_bin" 2>/dev/null`
-echo $gcc_bin
 if [ -x "$gcc_bin" ]; then
     einfo "Using gcc: $gcc_bin" >&2
 else
