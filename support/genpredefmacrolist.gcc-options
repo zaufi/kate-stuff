@@ -65,6 +65,23 @@
 -mx32
 -fgnu-tm
 
+# introduced by gcc 4.8.0
+-march=bdver3
+-mtune=bdver3
+-march=btver2
+-mtune=btver2
+-mpreferred-stack-boundary=3
+-maddress-mode=short
+-maddress-mode=long
+-madx
+-mprfchw
+-mrdseed
+-mrtm
+-mhle
+-mfxsr
+-mxsave
+-mxsaveopt
+
 # C++ specific options
 -std=c++0x
 -std=gnu++0x
@@ -72,6 +89,8 @@
 -std=gnu++11
 -std=c11
 -std=gnu11
+-std=c++1y
+-std=gnu++1y
 -pthread
 -fPIC
 -fno-exceptions
@@ -90,3 +109,5 @@
 -fsel-sched-pipelining
 -fshort-wchar
 -fstrict-enums
+-fsanitize=address
+-fsanitize=thread
