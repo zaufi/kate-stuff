@@ -1,0 +1,11 @@
+[Highlighting .desktop - Schema Zaufi::dark]
+.desktop:Comment=8,ff787775,ff787775,0,1,0,0,,,,---
+.desktop:Key=2,ff77aa77,ff77aa77,0,0,0,0,,,,---
+.desktop:Language=3,ff4086c0,ff4086c0,1,0,0,0,,,,---
+.desktop:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+.desktop:Section=1,ffdaaa66,ffdaaa66,1,0,0,0,,,,---
+
+[KateHLColors]
+full schema=false
+highlight=.desktop
+schema=Zaufi::dark
