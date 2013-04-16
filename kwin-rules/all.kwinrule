@@ -1,0 +1,51 @@
+[Kate: Configure]
+Description=Kate: Configure
+clientmachine=gentop
+clientmachinematch=0
+minsize=930,580
+minsizerule=2
+title=Configure
+titlematch=2
+types=32
+wmclass=kate
+wmclasscomplete=false
+wmclassmatch=1
+
+[Kate: Configure Shortcuts]
+Description=Kate: Configure Shortcuts
+clientmachine=gentop
+clientmachinematch=0
+size=715,505
+sizerule=3
+title=Configure Shortcuts
+titlematch=2
+types=32
+wmclass=kate
+wmclasscomplete=false
+wmclassmatch=1
+
+[Kate: Insert Icon Dialog]
+Description=Kate: Insert Icon Dialog
+clientmachine=gentop
+clientmachinematch=0
+size=770,600
+sizerule=3
+title=Select the Icon you want to use in your code as KIcon
+titlematch=2
+types=32
+wmclass=kate
+wmclasscomplete=false
+wmclassmatch=1
+
+[Kate: Manage Sessions]
+Description=Kate: Manage Sessions
+clientmachine=gentop
+clientmachinematch=0
+size=500,540
+sizerule=3
+title=Manage Sessions
+titlematch=2
+types=32
+wmclass=kate
+wmclasscomplete=false
+wmclassmatch=1
