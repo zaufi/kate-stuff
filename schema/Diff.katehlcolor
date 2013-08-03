@@ -1,0 +1,13 @@
+[Highlighting Diff - Schema Zaufi::dark]
+Diff:Added line=9,ff008000,ff008000,0,0,0,0,,,,---
+Diff:Changed line (new)=9,ff47ff8b,ff47ff8b,0,0,0,0,,,,---
+Diff:Changed line (old)=7,ff2c9e56,ff2c9e56,0,0,0,0,,,,---
+Diff:File=1,ffc8c500,ffc8c500,1,0,0,0,,,,---
+Diff:Header=2,ffa32c2c,ffa32c2c,0,0,0,0,,,,---
+Diff:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+Diff:Removed line=7,ffff0000,ffff0000,0,0,0,0,,,,---
+
+[KateHLColors]
+full schema=false
+highlight=Diff
+schema=Zaufi::dark

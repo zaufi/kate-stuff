@@ -11,3 +11,5 @@ Changelog for C++ syntax is here: http://kde-files.org/content/show.php?content=
 Changelog for GNU GCC specific snippets is here: http://kde-files.org/content/show.php?content=144138
 
 Changelog for boost::test snippets is here: http://kde-files.org/content/show.php?content=144143
+
+Changelog for BOOST PREPROCESSOR snippets is here: http://kde-files.org/content/show.php?content=144601
