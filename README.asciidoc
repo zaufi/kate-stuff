@@ -13,3 +13,5 @@ Changelog for GNU GCC specific snippets is here: http://kde-files.org/content/sh
 Changelog for boost::test snippets is here: http://kde-files.org/content/show.php?content=144143
 
 Changelog for BOOST PREPROCESSOR snippets is here: http://kde-files.org/content/show.php?content=144601
+
+Changelog for Kate modeline snippets is here: http://kde-files.org/content/show.php?content=151535
