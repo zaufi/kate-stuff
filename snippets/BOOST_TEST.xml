@@ -6,7 +6,7 @@
     authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;"
     name="boost::test by zaufi"
   >
-  <!-- Version 1.3 -->
+  <!-- Version 1.4 -->
  <item>
   <displayprefix></displayprefix>
   <match>BOOST_TEST_MESSAGE</match>
@@ -408,14 +408,14 @@
  </item>
 
  <item>
-  <displayprefix>boost &gt; 1.47.0</displayprefix>
+  <displayprefix>boost &gt; 1.54.0</displayprefix>
   <match>BOOST_TEST_INFO</match>
   <displaypostfix></displaypostfix>
   <displayarguments>(context_descr)</displayarguments>
   <fillin>BOOST_TEST_INFO(${context_descr});${cursor}</fillin>
  </item>
  <item>
-  <displayprefix>boost &gt; 1.47.0</displayprefix>
+  <displayprefix>boost &gt; 1.54.0</displayprefix>
   <match>BOOST_TEST_CONTEXT</match>
   <displaypostfix></displaypostfix>
   <displayarguments>(context_descr)</displayarguments>
