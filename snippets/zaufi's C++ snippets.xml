@@ -10,7 +10,7 @@
   <displaypostfix></displaypostfix>
   <displayarguments></displayarguments>
   <fillin>namespace ${name} {
-	${cursor}
+    ${cursor}
 }                                                           // namespace  ${name/^/ /}
 </fillin>
  </item>
