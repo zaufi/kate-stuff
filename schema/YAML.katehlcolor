@@ -1,0 +1,32 @@
+[Highlighting YAML - Schema Zaufi::dark]
+Alerts:Alert Level 1=10,ffe85848,ffe85848,1,0,0,0,ff451e1a,,,---
+Alerts:Alert Level 2=10,ffca9219,ffca9219,1,0,0,0,ff451e1a,,,---
+Alerts:Alert Level 3=10,ff81ca2d,ff81ca2d,1,0,0,0,ff201f1f,,,---
+Alerts:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+Modelines:Comment=8,ff777777,ff777777,0,1,0,0,,,,---
+Modelines:Keyword=1,ff777755,ff777755,1,1,0,0,,,,---
+Modelines:Number=3,ff555560,ff555560,0,1,0,0,,,,---
+Modelines:Option OFF=9,ffb78058,ffb78058,0,0,0,0,,,,---
+Modelines:Option ON=9,ff78b753,ff78b753,0,0,0,0,,,,---
+Modelines:String=7,ff604460,ff604460,0,1,0,0,,,,---
+Modelines:Value=9,ff385a4c,ff385a4c,0,0,0,0,,,,---
+Modelines:Variable=11,ff676757,ff676757,0,1,0,0,,,,---
+YAML:Alias=2,ffa32c2c,ffa32c2c,0,0,0,0,,,,---
+YAML:Comment=8,ff787775,ff787775,0,1,0,0,,,,---
+YAML:Data Types=2,ffa32c2c,ffa32c2c,0,0,0,0,,,,---
+YAML:Directive=9,ff78b753,ff78b753,0,0,0,0,,,,---
+YAML:Document Header=9,ff78b753,ff78b753,0,0,0,0,,,,---
+YAML:End of Document=8,ff787775,ff787775,0,1,0,0,,,,---
+YAML:Error=13,ffe85848,ffe85848,0,0,0,1,,,,---
+YAML:Hash=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+YAML:Key=11,ff5a63a5,ff5a63a5,0,0,0,0,,,,---
+YAML:List=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+YAML:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+YAML:Operator=1,ffc8c500,ffc8c500,1,0,0,0,,,,---
+YAML:Reference=2,ffa32c2c,ffa32c2c,0,0,0,0,,,,---
+YAML:String=7,fff157ea,ffbf45b5,0,1,0,0,,,,---
+
+[KateHLColors]
+full schema=false
+highlight=YAML
+schema=Zaufi::dark
