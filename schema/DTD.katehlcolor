@@ -1,0 +1,22 @@
+[Highlighting DTD - Schema Zaufi::dark]
+Alerts:Alert Level 1=10,ffe85848,ffe85848,1,0,0,0,ff451e1a,,,---
+Alerts:Alert Level 2=10,ffca9219,ffca9219,1,0,0,0,ff451e1a,,,---
+Alerts:Alert Level 3=10,ff81ca2d,ff81ca2d,1,0,0,0,ff451e1a,,,---
+Alerts:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+DTD:Comment=8,ff787775,ff787775,0,1,0,0,,,,---
+DTD:Declaration=2,ffc7d42f,ffc7d42f,1,0,0,0,,,,---
+DTD:Delimiter=3,ff4086c0,ff4086c0,0,0,0,0,,,,---
+DTD:Entity=3,ff4086c0,ff4086c0,0,0,0,0,,,,---
+DTD:Keyword=1,ffbbc864,ffbbc864,1,0,0,0,,,,---
+DTD:Local=3,ff4086c0,ff4086c0,1,0,0,0,,,,---
+DTD:Name=9,ff78b753,ff78b753,0,0,0,0,,,,---
+DTD:Normal=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+DTD:Other=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+DTD:Processing Instruction=1,ff5fd478,ffffffff,1,0,0,0,,,,---
+DTD:String=7,fff157ea,fff157ea,0,0,0,0,,,,---
+DTD:Symbol=5,ff696df3,ff696df3,1,0,0,0,,,,---
+
+[KateHLColors]
+full schema=false
+highlight=DTD
+schema=Zaufi::dark
