@@ -1,0 +1,27 @@
+[Highlighting xslt - Schema Zaufi::dark]
+xslt:Alert=10,ffe85848,ffe85848,1,0,0,0,ff451e1a,,,---
+xslt:Attribute=9,ff78b753,ff78b753,0,0,0,0,,,,---
+xslt:Attribute Value=7,ff438e44,ff438e44,0,0,0,0,,,,---
+xslt:CDATA=4,ff00c0c0,ff00c0c0,1,0,0,0,,,,---
+xslt:Comment=8,ff787775,ff787775,0,1,0,0,,,,---
+xslt:Doctype=2,ffa32c2c,ffa32c2c,1,0,0,0,,,,---
+xslt:Entity Reference=3,ff4086c0,ff4086c0,0,0,0,0,,,,---
+xslt:Invalid=13,ffe85848,ffe85848,0,0,0,1,,,,---
+xslt:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+xslt:PEntity Reference=3,ff4086c0,ff4086c0,0,0,0,0,,,,---
+xslt:Processing Instruction=1,ffc8c500,ffc8c500,1,0,0,0,,,,---
+xslt:Tag=1,ffc8c500,ffc8c500,1,0,0,0,,,,---
+xslt:Variable=0,ff879d44,ff879d44,0,1,0,0,,,,---
+xslt:XPath=9,ff008080,ffffffff,0,0,0,0,,,,---
+xslt:XPath 2.0/ XSLT 2.0 Function=1,ff018062,ff018062,1,0,0,0,,,,---
+xslt:XPath Attribute=0,ff008f5f,ff008f5f,0,1,0,0,,,,---
+xslt:XPath Axis=1,ff007789,ff007789,0,1,0,0,,,,---
+xslt:XPath String=7,fff157e7,fff157e7,0,0,0,0,,,,---
+xslt:XPath/ XSLT Function=1,ff018062,ff018062,1,0,0,0,,,,---
+xslt:XSLT 2.0 Tag=1,ffb37937,ffb37937,1,0,0,0,,,,---
+xslt:XSLT Tag=1,ffb37937,ffb37937,1,0,0,0,,,,---
+
+[KateHLColors]
+full schema=false
+highlight=xslt
+schema=Zaufi::dark
