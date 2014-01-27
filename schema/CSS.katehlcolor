@@ -1,0 +1,25 @@
+[Highlighting CSS - Schema Zaufi::dark]
+Alerts:Alert Level 1=10,ffe85848,ffe85848,1,0,0,0,ff451e1a,,,---
+Alerts:Alert Level 2=10,ffca9219,ffca9219,1,0,0,0,ff451e1a,,,---
+Alerts:Alert Level 3=10,ff81ca2d,ff81ca2d,1,0,0,0,ff451e1a,,,---
+Alerts:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+CSS:At Rule=3,ff4086c0,ff4086c0,0,0,0,0,,,,---
+CSS:Comment=8,ff787775,ff787775,0,1,0,0,,,,---
+CSS:Error=13,ffe85848,ffe85848,0,0,0,1,,,,---
+CSS:Important=1,ffc8c500,ffc8c500,1,0,0,0,,,,---
+CSS:Media=3,ff4086c0,ff4086c0,1,0,0,0,,,,---
+CSS:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+CSS:Property=1,ffc2802a,ffc2802a,1,0,0,0,,,,---
+CSS:Region Marker=12,ff826c4a,ff826c4a,0,0,0,0,ff201f1f,,,---
+CSS:Selector Attr=6,fff157e7,fff157e7,0,0,0,0,,,,---
+CSS:Selector Class=5,ff58f358,ff58f358,0,0,0,0,,,,---
+CSS:Selector Id=5,ff60ccf0,ff60ccf0,1,0,0,0,,,,---
+CSS:Selector Pseudo=3,ff4086c0,ff4086c0,0,0,0,0,,,,---
+CSS:String=7,fff157ea,fff157ea,0,0,0,0,,,,---
+CSS:Unknown Property=1,ffc24f29,ffc24f29,1,1,0,0,,,,---
+CSS:Value=2,ff3ea37b,ff3ea37b,0,0,0,0,,,,---
+
+[KateHLColors]
+full schema=false
+highlight=CSS
+schema=Zaufi::dark
