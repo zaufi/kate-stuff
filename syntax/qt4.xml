@@ -9,12 +9,12 @@
   Copyright (c) 2012 by Alex Turbov (i.zaufi@gmail.com)
   -->
 <language
-    name="C++11/Qt4"
+    name="C++/Qt4"
     section="Sources"
-    version="1.0"
+    version="1.3"
     kateversion="2.4"
     indenter="cstyle"
-    extensions="*.moc"
+    extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc;*.moc"
     mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
     author="Alex Turbov (i.zaufi@gmail.com)"
     license="LGPL"
@@ -24,19 +24,13 @@
   The main purpose of this file is to hold Qt extensions syntax in a single place,
   so later it can be included (using IncludeRules) to other (C++ based) syntaxes.
 
-  NOTE Default colors are set to 'Normal Text', so if u don't want to highlight Qt stuff,
-  just leave colors as is...
-
   Based on Qt 4.8 documentation (http://qt-project.org/doc/qt-4.8/)
 -->
 <highlighting>
-  <list name="Qt4Extensions">
+  <list name="Qt4Macros">
     <item> emit </item>
     <item> signals </item>
     <item> slots </item>
-  </list>
-
-  <list name="Qt4Macros">
     <item> foreach </item>
     <item> forever </item>
     <item> SIGNAL </item>
@@ -1551,17 +1545,16 @@
   </list>
 
   <contexts>
-    <!-- Base context for C++11 and Qt highlighting to be used as standalone syntax -->
+    <!-- Base context for C++ and Qt highlighting to be used as standalone syntax -->
     <context attribute="Normal Text" lineEndContext="#stay" name="Normal">
       <IncludeRules context="DetectQt4Extensions" />
-      <IncludeRules context="##C++11" />
+      <IncludeRules context="##C++" />
     </context>
 
     <!-- This context can be used from other (alternative) C++ syntax files
          To use it just <IncludeRules context="DetectQt4Extensions##Qt4/C++" />
       -->
     <context attribute="Normal Text" lineEndContext="#stay" name="DetectQt4Extensions">
-      <keyword attribute="Qt4 Extensions" context="#stay" String="Qt4Extensions" />
       <keyword attribute="Qt4 Types" context="#stay" String="Qt4Types" />
       <keyword attribute="Qt4 Classes" context="QtClassMember" String="Qt4Classes" />
       <keyword attribute="Qt4 Functions" context="#stay" String="Qt4Func" />
@@ -1582,11 +1575,10 @@
 
   <itemDatas>
     <itemData name="Normal Text"    defStyleNum="dsNormal" spellChecking="false" />
-    <itemData name="Qt4 Extensions" defStyleNum="dsNormal" spellChecking="false" />
-    <itemData name="Qt4 Types"      defStyleNum="dsNormal" spellChecking="false" />
-    <itemData name="Qt4 Classes"    defStyleNum="dsNormal" spellChecking="false" />
-    <itemData name="Qt4 Functions"  defStyleNum="dsNormal" spellChecking="false" />
-    <itemData name="Qt4 Macros"     defStyleNum="dsNormal" spellChecking="false" />
+    <itemData name="Qt4 Macros" defStyleNum="dsKeyword" color="#0095ff" selColor="#ffffff" bold="1" italic="0" spellChecking="false" />
+    <itemData name="Qt4 Types" defStyleNum="dsDataType" spellChecking="false" />
+    <itemData name="Qt4 Classes" defStyleNum="dsOthers" spellChecking="false" />
+    <itemData name="Qt4 Functions" defStyleNum="dsFunction" spellChecking="false" />
   </itemDatas>
 </highlighting>
 

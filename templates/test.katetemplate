@@ -1,7 +1,7 @@
-katetemplate: Template=Simple C++ test skeleton Group=Source Code Documentname=/work/tests/test_%N.cc Highlight=C++11
+katetemplate: Template=Simple C++ test skeleton Group=Source Code Documentname=/work/tests/test_%N.cc Highlight=C++
 katetemplate: Author=Alex Turbov <i.zaufi@gmail.com>
 katetemplate: Description=Sample C++ test program to play w/ magic :)
-// kate: hl C++11;
+// kate: hl C++;
 #include <iostream>
 
 int main()
