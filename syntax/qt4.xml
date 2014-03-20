@@ -6,7 +6,7 @@
     <!ENTITY ns_punctuators "!&#37;&space;&amp;()+-/.*&lt;=&gt;?[]{|}~^&separators;">
 ]>
 <!--
-  Copyright (c) 2012 by Alex Turbov (i.zaufi@gmail.com)
+  Copyright (c) 2012-2014 by Alex Turbov (i.zaufi@gmail.com)
   -->
 <language
     name="C++/Qt4"
