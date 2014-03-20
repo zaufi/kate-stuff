@@ -159,6 +159,7 @@
       <item> __func__ </item>
     </list>
     <list name="StdHeaders">
+      <item> algorithm </item>
       <item> array </item>
       <item> atomic </item>
       <item> bitset </item>
@@ -548,8 +549,20 @@
       </context>
 
       <context name="Include" attribute="Include Header" lineEndContext="#pop">
-        <DetectChar attribute="Include Header" context="#pop" char="&gt;" />
+        <RegExpr
+            attribute="Include Header"
+            context="StdInclude"
+            String="&lt;([a-z_]+)&gt;"
+            insensitive="false"
+            lookAhead="true"
+          />
+      </context>
+
+      <context name="StdInclude" attribute="Include Header" lineEndContext="#pop#pop">
+        <DetectChar attribute="Include Header" context="#stay" char="&lt;" />
+        <DetectChar attribute="Include Header" context="#pop#pop" char="&gt;" />
         <keyword attribute="Standard Headers" context="#stay" String="StdHeaders" />
+        <DetectIdentifier context="#stay" />
       </context>
 
       <context name="LocalInclude" attribute="Include Header" lineEndContext="#pop">
