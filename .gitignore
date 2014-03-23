@@ -1,3 +1,4 @@
 *.py[co]
 *.kate-swp
 __pycache__
+tmp
