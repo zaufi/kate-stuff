@@ -1,7 +1,7 @@
 What is this
 ============
 
-Since the upstream wants to have a _"full featured C++ highlighting"_ as default (i.e. w/ Qt classes and extensions),
+Since the upstream wants to have a _"full featured C++ highlighting"_ as a default (i.e. w/ Qt classes and extensions),
 I've decided to continue to maintain my _pure_ C++ highliter (i.e. w/o Qt) and _C++/Qt4_ as a separate syntax.
 Because (I think) most of <del>my</del> C++ projects are _pure_ C++ and not a Qt based one, which is just a subset
 of all C++ projects. And I do not need annoying highlighting of some "common" words, like `connect`, which is
