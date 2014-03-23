@@ -20,6 +20,12 @@ or to the system:
     $ ./install.sh -s
 
 
+TODO
+====
+
+* Qt5 syntax w/ depreated (since Qt4) classes as a separate file
+
+
 Changes
 =======
 
