@@ -1,0 +1,7 @@
+How to install
+==============
+
+
+Remove (or replace) corresponding files from /usr/share/apps/katepart/syntax.
+Also remove isocpp.xml.
+
