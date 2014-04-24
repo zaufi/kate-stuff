@@ -34,14 +34,14 @@ Version 2.3
 
 * Support for quote digits separator and user defined literals for floating point literals
 * Regular expressions to detect various numeric literals has reviewed and refactored according upcoming C++14 stardard
-* Highlight standard user defined literals for std::chrono, std::complex and std::string as defined by C++14
+* Highlight standard user defined literals for `std::chrono`, `std::complex` and `std::string` as defined by C++14
 
 
 Version 2.2
 -----------
 
-* A bug with incorrect comment highlighting after #include has been fixed
-* Introduce a separate attribute for Aligned Comments -- i.e. comments aligned to most used in C++ world TAB size 4
+* A bug with incorrect comment highlighting after `#include` has been fixed
+* Introduce a separate attribute for _Aligned Comments_ -- i.e. comments aligned to most used in C++ world TAB size 4
   (it was a RegionMarker before), so now it is possible to assign the same color as for Comment if you don't want this feature
 
 
