@@ -5,17 +5,23 @@
     <!ENTITY separators ",&#59;">
     <!ENTITY ns_punctuators "!&#37;&space;&amp;()+-/.*&lt;=&gt;?[]{|}~^&separators;">
     <!ENTITY punctuators ":&ns_punctuators;">
+    <!ENTITY digit_seq "[0-9]('?[0-9]+)*">
+    <!ENTITY udl_suffix "_[_0-9A-Za-z]*">
+    <!ENTITY ul_suffix "[Uu][Ll]{0,2}|[Ll]{0,2}[Uu]?">
+    <!ENTITY sign_opt "[\+\-]?">
+    <!ENTITY exp "[Ee]&sign_opt;">
     <!-- printf-like format strings conversion specifiers -->
     <!ENTITY convspec "diouxXeEfFgGaAcsP&#37;">
 ]>
 <language
     name="C++"
     section="Sources"
-    version="2.2"
+    version="2.3"
     kateversion="2.4"
-    indenter="cstyle"
+    indenter="cppstyle"
     mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
     extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc"
+    style="C++"
     author="Alex Turbov (i.zaufi@gmail.com)"
     license="LGPL"
     priority="9"
@@ -287,9 +293,10 @@
         <RegExpr
             attribute="Normal Text"
             context="UDLOperator"
-            String="operator\s*&quot;&quot; _[_0-9A-Za-z]*\b"
+            String="operator\s*&quot;&quot; &udl_suffix;\b"
             lookAhead="true"
           />
+        <!-- Threat UDL suffixes w/o leading underscore as errors! -->
         <RegExpr attribute="Error" context="#stay" String="operator\s*&quot;&quot; [_0-9A-Za-z]*\b" />
         <!-- Match keywords -->
         <keyword attribute="Keyword" context="#stay" String="keywords" />
@@ -301,29 +308,30 @@
         <RegExpr
             attribute="Hex"
             context="#stay"
-            String="[\+\-]?0x[0-9A-Fa-f]('?[0-9A-Fa-f]+)*([Uu][Ll]{0,2}|[Ll]{0,2}[Uu]?|_[_0-9A-Za-z]*)?\b"
+            String="&sign_opt;0x[0-9A-Fa-f]('?[0-9A-Fa-f]+)*(&ul_suffix;|&udl_suffix;)?\b"
           />
         <RegExpr
             attribute="Binary"
             context="#stay"
-            String="0[Bb][01]('?[01]+)*([Uu][Ll]{0,2}|[Ll]{0,2}[Uu]?|_[_0-9A-Za-z]*)?\b"
+            String="&sign_opt;0[Bb][01]('?[01]+)*(&ul_suffix;|&udl_suffix;)?\b"
           />
         <RegExpr
             attribute="Float"
             context="#stay"
-            String="[\+\-]?([0-9]+[Ee][\+\-]?[0-9]+|([0-9]+\.|\.[0-9]+|[0-9]+\.[0-9]+)([Ee][\+\-]?[0-9]+)?)[FfLl]?"
+            String="&sign_opt;(&digit_seq;&exp;&digit_seq;|(&digit_seq;\.|\.&digit_seq;|&digit_seq;\.&digit_seq;)(&exp;&digit_seq;)?)([FfLl]|&udl_suffix;)?\b"
           />
         <RegExpr
             attribute="Octal"
             context="#stay"
-            String="[\+\-]?0'?[0-7]('?[0-7]+)*([Uu][Ll]{0,2}|[Ll]{0,2}[Uu]?|_[_0-9A-Za-z]*)?\b"
+            String="&sign_opt;0'?[0-7]('?[0-7]+)*(&ul_suffix;|&udl_suffix;)?\b"
           />
+        <!-- NOTE literal '0' is an integer constant! Octal constants are handled above! It is why rules order is important. -->
         <RegExpr
             attribute="Decimal"
             context="#stay"
-            String="[\+\-]?(0|[1-9]('?[0-9]+)*)([Uu][Ll]{0,2}|[Ll]{0,2}[Uu]?|_[_0-9A-Za-z]*)?\b"
+            String="&sign_opt;(0|[1-9]('?[0-9]+)*)(&ul_suffix;|&udl_suffix;)?\b"
           />
-        <RegExpr attribute="Error" context="#stay" String="[\+\-]?(0x?|[1-9][0-9]*)[0-9A-Za-z][_0-9A-Za-z]*\b" />
+        <RegExpr attribute="Error" context="#stay" String="&sign_opt;(0x?|[1-9][0-9]*)[0-9A-Za-z][_0-9A-Za-z]*\b" />
         <!-- Match string literals -->
         <DetectChar attribute="String" context="String" char="&quot;" />
         <Detect2Chars attribute="String" context="String" char="U" char1="&quot;" />
