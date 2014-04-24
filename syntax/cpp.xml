@@ -7,6 +7,9 @@
     <!ENTITY punctuators ":&ns_punctuators;">
     <!ENTITY digit_seq "[0-9]('?[0-9]+)*">
     <!ENTITY udl_suffix "_[_0-9A-Za-z]*">
+    <!ENTITY std_fnum_udl "i[fl]?">
+    <!ENTITY std_num_udl "[num]?s|h|min|&std_fnum_udl;">
+    <!ENTITY std_str_udl "s">
     <!ENTITY ul_suffix "[Uu][Ll]{0,2}|[Ll]{0,2}[Uu]?">
     <!ENTITY sign_opt "[\+\-]?">
     <!ENTITY exp "[Ee]&sign_opt;">
@@ -308,28 +311,28 @@
         <RegExpr
             attribute="Hex"
             context="#stay"
-            String="&sign_opt;0x[0-9A-Fa-f]('?[0-9A-Fa-f]+)*(&ul_suffix;|&udl_suffix;)?\b"
+            String="&sign_opt;0x[0-9A-Fa-f]('?[0-9A-Fa-f]+)*(&ul_suffix;|&std_num_udl;|&udl_suffix;)?\b"
           />
         <RegExpr
             attribute="Binary"
             context="#stay"
-            String="&sign_opt;0[Bb][01]('?[01]+)*(&ul_suffix;|&udl_suffix;)?\b"
+            String="&sign_opt;0[Bb][01]('?[01]+)*(&ul_suffix;|&std_num_udl;|&udl_suffix;)?\b"
           />
         <RegExpr
             attribute="Float"
             context="#stay"
-            String="&sign_opt;(&digit_seq;&exp;&digit_seq;|(&digit_seq;\.|\.&digit_seq;|&digit_seq;\.&digit_seq;)(&exp;&digit_seq;)?)([FfLl]|&udl_suffix;)?\b"
+            String="&sign_opt;(&digit_seq;&exp;&digit_seq;|(&digit_seq;\.|\.&digit_seq;|&digit_seq;\.&digit_seq;)(&exp;&digit_seq;)?([FfLl]|&std_fnum_udl;|&udl_suffix;)?|&digit_seq;[Ff])"
           />
         <RegExpr
             attribute="Octal"
             context="#stay"
-            String="&sign_opt;0'?[0-7]('?[0-7]+)*(&ul_suffix;|&udl_suffix;)?\b"
+            String="&sign_opt;0'?[0-7]('?[0-7]+)*(&ul_suffix;|&std_num_udl;|&udl_suffix;)?\b"
           />
         <!-- NOTE literal '0' is an integer constant! Octal constants are handled above! It is why rules order is important. -->
         <RegExpr
             attribute="Decimal"
             context="#stay"
-            String="&sign_opt;(0|[1-9]('?[0-9]+)*)(&ul_suffix;|&udl_suffix;)?\b"
+            String="&sign_opt;(0|[1-9]('?[0-9]+)*)(&ul_suffix;|&std_num_udl;|&udl_suffix;)?\b"
           />
         <RegExpr attribute="Error" context="#stay" String="&sign_opt;(0x?|[1-9][0-9]*)[0-9A-Za-z][_0-9A-Za-z]*\b" />
         <!-- Match string literals -->
@@ -392,13 +395,13 @@
       <context name="Char Literal" attribute="String" lineEndContext="#pop">
         <IncludeRules context="Universal Char" />
         <DetectChar attribute="String Char" context="Simple Esc" char="\" />
-        <DetectChar attribute="String" context="#pop" char="'" />
+        <RegExpr attribute="String" context="#pop" String="'(&udl_suffix;)?" />
       </context>
 
       <context name="U-Char Literal" attribute="String" lineEndContext="#pop">
         <IncludeRules context="Universal Char" />
         <DetectChar attribute="String Char" context="Simple Esc" char="\" />
-        <DetectChar attribute="String" context="#pop" char="'" />
+        <RegExpr attribute="String" context="#pop" String="'(&udl_suffix;)?" />
         <RegExpr attribute="Error" context="#stay" String="[^']{2,}" />
         <RegExpr attribute="String" context="#stay" String=".{1}" />
       </context>
@@ -422,19 +425,13 @@
         <HlCStringChar attribute="String Char" context="#stay" />
         <IncludeRules context="Universal Char" />
         <RegExpr attribute="String Char" context="#stay" String="%[^&quot;&convspec;\s]*[&convspec;]" />
-        <DetectChar attribute="String" context="UDLStringSuffix" char="&quot;" />
-      </context>
-
-      <context name="UDLStringSuffix" attribute="String" lineEndContext="#pop#pop">
-        <RegExpr attribute="String" context="#pop#pop" String="_[_0-9A-Z-a-z]*\b" />
-        <!-- TODO Is there any better way to quit the current context ?? -->
-        <RegExpr context="#pop#pop" String=".*" lookAhead="true" />
+        <RegExpr attribute="String" context="#pop" String="&quot;(&std_str_udl;|&udl_suffix;)?" />
       </context>
 
       <context name="RawString" attribute="String" lineEndContext="#stay" dynamic="true">
         <LineContinue attribute="String" context="#stay" />
         <RegExpr attribute="String Char" context="#stay" String="%[^&quot;&convspec;\s]*[&convspec;]" />
-        <RegExpr attribute="String" context="#pop" String="\)%2&quot;" dynamic="true"/>
+        <RegExpr attribute="String" context="#pop" String="\)%2&quot;(&std_str_udl;|&udl_suffix;)?" dynamic="true" />
       </context>
 
       <context name="Attribute" attribute="Attribute" lineEndContext="#stay">
