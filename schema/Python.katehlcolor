@@ -30,10 +30,10 @@ Python:Octal=4,ff00c0c0,ff00c0c0,0,0,0,0,,,,---
 Python:Operator=0,ffc8c500,ffc8c500,1,0,0,0,,,,---
 Python:Overloaders=9,ff30a355,ff30a355,0,0,0,0,,,,---
 Python:Preprocessor=6,ff239423,ff239423,0,0,0,0,,,,---
-Python:Raw String=7,fff157ea,fff157ea,0,1,0,0,,,,---
+Python:Raw String=7,ffcc6699,ffcc6699,0,1,0,0,,,,---
 Python:Special Variable=9,ff78b753,ff78b753,0,0,0,0,,,,---
-Python:String=7,fff157ea,fff157ea,0,1,0,0,,,,---
-Python:String Char=6,fff157e7,fff157e7,0,1,0,0,,,,---
+Python:String=7,ffcc6699,ffcc6699,0,1,0,0,,,,---
+Python:String Char=6,ffcc6699,ffcc6699,0,1,0,0,,,,---
 Python:String Substitution=9,ff5478ae,ff5478ae,0,1,0,0,,,,---
 
 [KateHLColors]
