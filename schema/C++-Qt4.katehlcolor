@@ -9,6 +9,7 @@ C++/Qt4:Qt4 Extensions=0,ff4875b7,ff4875b7,0,1,0,0,,,,---
 C++/Qt4:Qt4 Functions=0,ff4875b7,ff4875b7,0,0,0,0,,,,---
 C++/Qt4:Qt4 Macros=0,ff0e8884,ff0e8884,0,0,0,0,,,,---
 C++/Qt4:Qt4 Types=0,ff7558ea,ff7558ea,0,0,0,0,,,,---
+C++:Aligned Comment=8,ff826c4a,ff826c4a,0,1,0,0,,,,---
 C++:Attribute=1,ffd4a23e,ffd4a23e,0,1,0,0,,,,---
 C++:Binary=4,ff00c0c0,ff00c0c0,0,0,0,0,,,,---
 C++:Boost Stuff=0,ff23a45b,ff23a45b,0,0,0,0,,,,---

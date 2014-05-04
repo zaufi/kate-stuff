@@ -19,7 +19,7 @@
 <language
     name="C++"
     section="Sources"
-    version="2.3"
+    version="2.4"
     kateversion="2.4"
     indenter="cppstyle"
     mimetype="text/x-c++src;text/x-c++hdr;text/x-chdr"
@@ -729,7 +729,7 @@
       <itemData name="String"             defStyleNum="dsString"   spellChecking="true"  />
       <itemData name="String Char"        defStyleNum="dsChar"     spellChecking="false" />
       <itemData name="Comment"            defStyleNum="dsComment"  spellChecking="true"  />
-      <itemData name="Aligned Comment"    defStyleNum="dsRegionMarker" spellChecking="true"  />
+      <itemData name="Aligned Comment"    defStyleNum="dsComment"  spellChecking="true"  />
       <itemData name="Symbol"             defStyleNum="dsNormal"   spellChecking="false" />
       <itemData name="Separator Symbol"   defStyleNum="dsNormal"   spellChecking="false" />
       <itemData name="Data Members (m_*)" defStyleNum="dsNormal"   spellChecking="false" />
