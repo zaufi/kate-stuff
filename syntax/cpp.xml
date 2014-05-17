@@ -19,7 +19,7 @@
 <language
     name="C++"
     section="Sources"
-    version="2.5"
+    version="2.6"
     kateversion="2.4"
     indenter="cppstyle"
     style="C++"
@@ -580,7 +580,6 @@
 
       <context name="Define" attribute="Preprocessor" lineEndContext="#pop">
         <LineContinue attribute="Separator Symbol" context="#stay" />
-        <DetectChar attribute="Error" context="#stay" char="\\" />
         <keyword attribute="Standard Macros" context="#stay" String="StdMacros" />
         <IncludeRules context="GNUMacros##GCCExtensions" />
       </context>
@@ -593,6 +592,7 @@
 
       <context name="Outscoped Common" attribute="Comment" lineEndContext="#stay">
         <DetectSpaces />
+        <LineContinue />
         <IncludeRules context="##Alerts" />
         <IncludeRules context="##Modelines" />
         <DetectIdentifier />
