@@ -180,6 +180,14 @@ const auto s = 10.01E+10;
 const auto t = 10.01E-10l;
 
 const auto u = 10f;                                         // user defined literals must have a leading underscore
+
+const auto t = 10h;                                         // type std::chrono::duration -- 10 hours
+const auto t = 10min;                                       //                            -- 10 minutes
+const auto t = 10s;                                         //                            -- 10 seconds
+const auto t = 10ms;                                        //                            -- 10 milliseconds
+const auto t = 10us;                                        //                            -- 10 microseconds
+const auto t = 10ns;                                        //                            -- 10 nanoseconds
+
 }                                                           // namespace numbers
 
 extern void foo() __attribute__((weak));                    // GCC specific attributes
@@ -228,6 +236,14 @@ std::string comment = "comment";
 # endif
 #else
 char other_commented;
+#endif
+
+#if 0
+# define some_multiline_macro() \
+    typedef int some;
+#else
+# define some_multiline_macro() \
+    typedef char some;
 #endif
 
 // Modelines: switch to C++ mode

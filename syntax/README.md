@@ -29,6 +29,13 @@ TODO
 Changes
 =======
 
+Version 2.6
+-----------
+
+* fix for Kate bug #332426
+* fix for #if0 commented multiline #define
+* do not highlight '\' as error in multiline #define
+
 Version 2.3
 -----------
 
