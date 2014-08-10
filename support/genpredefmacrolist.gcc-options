@@ -70,8 +70,8 @@
 -mtune=bdver3
 -march=btver2
 -mtune=btver2
--mpreferred-stack-boundary=3
--maddress-mode=short
+-mpreferred-stack-boundary=8
+-m32 -maddress-mode=short
 -maddress-mode=long
 -madx
 -mprfchw
@@ -82,19 +82,38 @@
 -mxsave
 -mxsaveopt
 
+# introduced by gcc 4.9.x
+-fcilkplus
+-mavx512f
+-mavx512pf
+-mavx512er
+-mavx512cd
+-march=silvermont
+-march=broadwell
+-march=nehalem
+-march=westmere
+-march=sandybridge
+-march=ivybridge
+-march=haswell
+-march=bonnell
+-mtune=generic
+-mtune=intel
+-march=bdver4
+-mtune=bdver4
+
 # C++ specific options
--std=c++0x
--std=gnu++0x
--std=c++11
--std=gnu++11
+-xc++ -std=c++0x
+-xc++ -std=gnu++0x
+-xc++ -std=c++11
+-xc++ -std=gnu++11
 -std=c11
 -std=gnu11
--std=c++1y
--std=gnu++1y
+-xc++ -std=c++1y
+-xc++ -std=gnu++1y
 -pthread
 -fPIC
--fno-exceptions
--fno-rtti
+-xc++ -fno-exceptions
+-xc++ -fno-rtti
 -fpie
 
 # Optimization options
@@ -108,6 +127,6 @@
 
 -fsel-sched-pipelining
 -fshort-wchar
--fstrict-enums
+-xc++ -fstrict-enums
 -fsanitize=address
 -fsanitize=thread

@@ -6,33 +6,71 @@
     authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;"
     name="gcc predefined macros, builtins, attributes and pragmas"
   >
-  <!-- Predefined GCC stuff version 1.1 -->
-  <item><match>_FORTIFY_SOURCE</match><fillin>_FORTIFY_SOURCE</fillin></item>
-  <item><match>_GNU_SOURCE</match><fillin>_GNU_SOURCE</fillin></item>
-  <item><match>_LP64</match><fillin>_LP64</fillin></item>
-  <item><match>_REENTRANT</match><fillin>_REENTRANT</fillin></item>
+  <!-- Predefined GCC stuff version 1.2 -->
   <item><match>__3dNOW_A__</match><fillin>__3dNOW_A__</fillin></item>
   <item><match>__3dNOW__</match><fillin>__3dNOW__</fillin></item>
   <item><match>__ABM__</match><fillin>__ABM__</fillin></item>
+  <item><match>__ADX__</match><fillin>__ADX__</fillin></item>
   <item><match>__AES__</match><fillin>__AES__</fillin></item>
-  <item><match>__ATOMIC_ACQUIRE</match><fillin>__ATOMIC_ACQUIRE</fillin></item>
+  <item><match>__amd64</match><fillin>__amd64</fillin></item>
+  <item><match>__amd64__</match><fillin>__amd64__</fillin></item>
+  <item><match>__amdfam10</match><fillin>__amdfam10</fillin></item>
+  <item><match>__amdfam10__</match><fillin>__amdfam10__</fillin></item>
+  <item><match>__athlon</match><fillin>__athlon</fillin></item>
+  <item><match>__athlon__</match><fillin>__athlon__</fillin></item>
+  <item><match>__athlon_sse__</match><fillin>__athlon_sse__</fillin></item>
   <item><match>__ATOMIC_ACQ_REL</match><fillin>__ATOMIC_ACQ_REL</fillin></item>
+  <item><match>__ATOMIC_ACQUIRE</match><fillin>__ATOMIC_ACQUIRE</fillin></item>
   <item><match>__ATOMIC_CONSUME</match><fillin>__ATOMIC_CONSUME</fillin></item>
+  <item><match>__ATOMIC_HLE_ACQUIRE</match><fillin>__ATOMIC_HLE_ACQUIRE</fillin></item>
+  <item><match>__ATOMIC_HLE_RELEASE</match><fillin>__ATOMIC_HLE_RELEASE</fillin></item>
   <item><match>__ATOMIC_RELAXED</match><fillin>__ATOMIC_RELAXED</fillin></item>
   <item><match>__ATOMIC_RELEASE</match><fillin>__ATOMIC_RELEASE</fillin></item>
   <item><match>__ATOMIC_SEQ_CST</match><fillin>__ATOMIC_SEQ_CST</fillin></item>
+  <item><match>__atom</match><fillin>__atom</fillin></item>
+  <item><match>__atom__</match><fillin>__atom__</fillin></item>
   <item><match>__AVX2__</match><fillin>__AVX2__</fillin></item>
+  <item><match>__AVX512CD__</match><fillin>__AVX512CD__</fillin></item>
+  <item><match>__AVX512ER__</match><fillin>__AVX512ER__</fillin></item>
+  <item><match>__AVX512F__</match><fillin>__AVX512F__</fillin></item>
+  <item><match>__AVX512PF__</match><fillin>__AVX512PF__</fillin></item>
   <item><match>__AVX__</match><fillin>__AVX__</fillin></item>
   <item><match>__BASE_FILE__</match><fillin>__BASE_FILE__</fillin></item>
+  <item><match>__bdver1</match><fillin>__bdver1</fillin></item>
+  <item><match>__bdver1__</match><fillin>__bdver1__</fillin></item>
+  <item><match>__bdver2</match><fillin>__bdver2</fillin></item>
+  <item><match>__bdver2__</match><fillin>__bdver2__</fillin></item>
+  <item><match>__bdver3</match><fillin>__bdver3</fillin></item>
+  <item><match>__bdver3__</match><fillin>__bdver3__</fillin></item>
+  <item><match>__bdver4</match><fillin>__bdver4</fillin></item>
+  <item><match>__bdver4__</match><fillin>__bdver4__</fillin></item>
   <item><match>__BIGGEST_ALIGNMENT__</match><fillin>__BIGGEST_ALIGNMENT__</fillin></item>
   <item><match>__BMI2__</match><fillin>__BMI2__</fillin></item>
   <item><match>__BMI__</match><fillin>__BMI__</fillin></item>
+  <item><match>__bonnell</match><fillin>__bonnell</fillin></item>
+  <item><match>__bonnell__</match><fillin>__bonnell__</fillin></item>
+  <item><match>__btver1</match><fillin>__btver1</fillin></item>
+  <item><match>__btver1__</match><fillin>__btver1__</fillin></item>
+  <item><match>__btver2</match><fillin>__btver2</fillin></item>
+  <item><match>__btver2__</match><fillin>__btver2__</fillin></item>
   <item><match>__BYTE_ORDER__</match><fillin>__BYTE_ORDER__</fillin></item>
   <item><match>__CHAR16_TYPE__</match><fillin>__CHAR16_TYPE__</fillin></item>
   <item><match>__CHAR32_TYPE__</match><fillin>__CHAR32_TYPE__</fillin></item>
   <item><match>__CHAR_BIT__</match><fillin>__CHAR_BIT__</fillin></item>
   <item><match>__CHAR_UNSIGNED__</match><fillin>__CHAR_UNSIGNED__</fillin></item>
+  <item><match>__cilk</match><fillin>__cilk</fillin></item>
+  <item><match>__code_model_32__</match><fillin>__code_model_32__</fillin></item>
+  <item><match>__code_model_small__</match><fillin>__code_model_small__</fillin></item>
+  <item><match>__core2</match><fillin>__core2</fillin></item>
+  <item><match>__core2__</match><fillin>__core2__</fillin></item>
+  <item><match>__core_avx2</match><fillin>__core_avx2</fillin></item>
+  <item><match>__core_avx2__</match><fillin>__core_avx2__</fillin></item>
+  <item><match>__corei7_avx</match><fillin>__corei7_avx</fillin></item>
+  <item><match>__corei7_avx__</match><fillin>__corei7_avx__</fillin></item>
+  <item><match>__corei7</match><fillin>__corei7</fillin></item>
+  <item><match>__corei7__</match><fillin>__corei7__</fillin></item>
   <item><match>__COUNTER__</match><fillin>__COUNTER__</fillin></item>
+  <item><match>__cplusplus</match><fillin>__cplusplus</fillin></item>
   <item><match>__DBL_DECIMAL_DIG__</match><fillin>__DBL_DECIMAL_DIG__</fillin></item>
   <item><match>__DBL_DENORM_MIN__</match><fillin>__DBL_DENORM_MIN__</fillin></item>
   <item><match>__DBL_DIG__</match><fillin>__DBL_DIG__</fillin></item>
@@ -68,13 +106,14 @@
   <item><match>__DEC64_MIN_EXP__</match><fillin>__DEC64_MIN_EXP__</fillin></item>
   <item><match>__DEC64_MIN__</match><fillin>__DEC64_MIN__</fillin></item>
   <item><match>__DEC64_SUBNORMAL_MIN__</match><fillin>__DEC64_SUBNORMAL_MIN__</fillin></item>
+  <item><match>__DEC_EVAL_METHOD__</match><fillin>__DEC_EVAL_METHOD__</fillin></item>
   <item><match>__DECIMAL_BID_FORMAT__</match><fillin>__DECIMAL_BID_FORMAT__</fillin></item>
   <item><match>__DECIMAL_DIG__</match><fillin>__DECIMAL_DIG__</fillin></item>
-  <item><match>__DEC_EVAL_METHOD__</match><fillin>__DEC_EVAL_METHOD__</fillin></item>
   <item><match>__DEPRECATED</match><fillin>__DEPRECATED</fillin></item>
   <item><match>__ELF__</match><fillin>__ELF__</fillin></item>
   <item><match>__EXCEPTIONS</match><fillin>__EXCEPTIONS</fillin></item>
   <item><match>__F16C__</match><fillin>__F16C__</fillin></item>
+  <item><match>__FAST_MATH__</match><fillin>__FAST_MATH__</fillin></item>
   <item><match>__FINITE_MATH_ONLY__</match><fillin>__FINITE_MATH_ONLY__</fillin></item>
   <item><match>__FLOAT_WORD_ORDER__</match><fillin>__FLOAT_WORD_ORDER__</fillin></item>
   <item><match>__FLT_DECIMAL_DIG__</match><fillin>__FLT_DECIMAL_DIG__</fillin></item>
@@ -95,9 +134,12 @@
   <item><match>__FLT_RADIX__</match><fillin>__FLT_RADIX__</fillin></item>
   <item><match>__FMA4__</match><fillin>__FMA4__</fillin></item>
   <item><match>__FMA__</match><fillin>__FMA__</fillin></item>
-  <item><match>__FP_FAST_FMA</match><fillin>__FP_FAST_FMA</fillin></item>
+  <item><match>_FORTIFY_SOURCE</match><fillin>_FORTIFY_SOURCE</fillin></item>
   <item><match>__FP_FAST_FMAF</match><fillin>__FP_FAST_FMAF</fillin></item>
+  <item><match>__FP_FAST_FMA</match><fillin>__FP_FAST_FMA</fillin></item>
   <item><match>__FSGSBASE__</match><fillin>__FSGSBASE__</fillin></item>
+  <item><match>__FUNCTION__</match><fillin>__FUNCTION__</fillin></item>
+  <item><match>__FXSR__</match><fillin>__FXSR__</fillin></item>
   <item><match>__GCC_ATOMIC_BOOL_LOCK_FREE</match><fillin>__GCC_ATOMIC_BOOL_LOCK_FREE</fillin></item>
   <item><match>__GCC_ATOMIC_CHAR16_T_LOCK_FREE</match><fillin>__GCC_ATOMIC_CHAR16_T_LOCK_FREE</fillin></item>
   <item><match>__GCC_ATOMIC_CHAR32_T_LOCK_FREE</match><fillin>__GCC_ATOMIC_CHAR32_T_LOCK_FREE</fillin></item>
@@ -110,22 +152,41 @@
   <item><match>__GCC_ATOMIC_TEST_AND_SET_TRUEVAL</match><fillin>__GCC_ATOMIC_TEST_AND_SET_TRUEVAL</fillin></item>
   <item><match>__GCC_ATOMIC_WCHAR_T_LOCK_FREE</match><fillin>__GCC_ATOMIC_WCHAR_T_LOCK_FREE</fillin></item>
   <item><match>__GCC_HAVE_DWARF2_CFI_ASM</match><fillin>__GCC_HAVE_DWARF2_CFI_ASM</fillin></item>
-  <item><match>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1</match><fillin>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1</fillin></item>
   <item><match>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_16</match><fillin>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_16</fillin></item>
+  <item><match>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1</match><fillin>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1</fillin></item>
   <item><match>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_2</match><fillin>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_2</fillin></item>
   <item><match>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_4</match><fillin>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_4</fillin></item>
   <item><match>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8</match><fillin>__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8</fillin></item>
+  <item><match>__GCC_IEC_559_COMPLEX</match><fillin>__GCC_IEC_559_COMPLEX</fillin></item>
+  <item><match>__GCC_IEC_559</match><fillin>__GCC_IEC_559</fillin></item>
+  <item><match>__geode</match><fillin>__geode</fillin></item>
+  <item><match>__geode__</match><fillin>__geode__</fillin></item>
   <item><match>__GFORTRAN__</match><fillin>__GFORTRAN__</fillin></item>
   <item><match>__GNUC_GNU_INLINE__</match><fillin>__GNUC_GNU_INLINE__</fillin></item>
+  <item><match>__GNUC__</match><fillin>__GNUC__</fillin></item>
   <item><match>__GNUC_MINOR__</match><fillin>__GNUC_MINOR__</fillin></item>
   <item><match>__GNUC_PATCHLEVEL__</match><fillin>__GNUC_PATCHLEVEL__</fillin></item>
   <item><match>__GNUC_STDC_INLINE__</match><fillin>__GNUC_STDC_INLINE__</fillin></item>
-  <item><match>__GNUC__</match><fillin>__GNUC__</fillin></item>
   <item><match>__GNUG__</match><fillin>__GNUG__</fillin></item>
+  <item><match>__gnu_linux__</match><fillin>__gnu_linux__</fillin></item>
+  <item><match>_GNU_SOURCE</match><fillin>_GNU_SOURCE</fillin></item>
   <item><match>__GXX_ABI_VERSION</match><fillin>__GXX_ABI_VERSION</fillin></item>
   <item><match>__GXX_EXPERIMENTAL_CXX0X__</match><fillin>__GXX_EXPERIMENTAL_CXX0X__</fillin></item>
   <item><match>__GXX_RTTI</match><fillin>__GXX_RTTI</fillin></item>
   <item><match>__GXX_WEAK__</match><fillin>__GXX_WEAK__</fillin></item>
+  <item><match>__haswell</match><fillin>__haswell</fillin></item>
+  <item><match>__haswell__</match><fillin>__haswell__</fillin></item>
+  <item><match>__i386</match><fillin>__i386</fillin></item>
+  <item><match>__i386__</match><fillin>__i386__</fillin></item>
+  <item><match>i386</match><fillin>i386</fillin></item>
+  <item><match>__i486</match><fillin>__i486</fillin></item>
+  <item><match>__i486__</match><fillin>__i486__</fillin></item>
+  <item><match>__i586</match><fillin>__i586</fillin></item>
+  <item><match>__i586__</match><fillin>__i586__</fillin></item>
+  <item><match>__i686</match><fillin>__i686</fillin></item>
+  <item><match>__i686__</match><fillin>__i686__</fillin></item>
+  <item><match>__ILP32__</match><fillin>__ILP32__</fillin></item>
+  <item><match>_ILP32</match><fillin>_ILP32</fillin></item>
   <item><match>__INCLUDE_LEVEL__</match><fillin>__INCLUDE_LEVEL__</fillin></item>
   <item><match>__INT16_C</match><fillin>__INT16_C</fillin></item>
   <item><match>__INT16_MAX__</match><fillin>__INT16_MAX__</fillin></item>
@@ -139,11 +200,6 @@
   <item><match>__INT8_C</match><fillin>__INT8_C</fillin></item>
   <item><match>__INT8_MAX__</match><fillin>__INT8_MAX__</fillin></item>
   <item><match>__INT8_TYPE__</match><fillin>__INT8_TYPE__</fillin></item>
-  <item><match>__INTMAX_C</match><fillin>__INTMAX_C</fillin></item>
-  <item><match>__INTMAX_MAX__</match><fillin>__INTMAX_MAX__</fillin></item>
-  <item><match>__INTMAX_TYPE__</match><fillin>__INTMAX_TYPE__</fillin></item>
-  <item><match>__INTPTR_MAX__</match><fillin>__INTPTR_MAX__</fillin></item>
-  <item><match>__INTPTR_TYPE__</match><fillin>__INTPTR_TYPE__</fillin></item>
   <item><match>__INT_FAST16_MAX__</match><fillin>__INT_FAST16_MAX__</fillin></item>
   <item><match>__INT_FAST16_TYPE__</match><fillin>__INT_FAST16_TYPE__</fillin></item>
   <item><match>__INT_FAST32_MAX__</match><fillin>__INT_FAST32_MAX__</fillin></item>
@@ -160,7 +216,18 @@
   <item><match>__INT_LEAST64_TYPE__</match><fillin>__INT_LEAST64_TYPE__</fillin></item>
   <item><match>__INT_LEAST8_MAX__</match><fillin>__INT_LEAST8_MAX__</fillin></item>
   <item><match>__INT_LEAST8_TYPE__</match><fillin>__INT_LEAST8_TYPE__</fillin></item>
+  <item><match>__INTMAX_C</match><fillin>__INTMAX_C</fillin></item>
   <item><match>__INT_MAX__</match><fillin>__INT_MAX__</fillin></item>
+  <item><match>__INTMAX_MAX__</match><fillin>__INTMAX_MAX__</fillin></item>
+  <item><match>__INTMAX_TYPE__</match><fillin>__INTMAX_TYPE__</fillin></item>
+  <item><match>__INTPTR_MAX__</match><fillin>__INTPTR_MAX__</fillin></item>
+  <item><match>__INTPTR_TYPE__</match><fillin>__INTPTR_TYPE__</fillin></item>
+  <item><match>__k6_2__</match><fillin>__k6_2__</fillin></item>
+  <item><match>__k6_3__</match><fillin>__k6_3__</fillin></item>
+  <item><match>__k6</match><fillin>__k6</fillin></item>
+  <item><match>__k6__</match><fillin>__k6__</fillin></item>
+  <item><match>__k8</match><fillin>__k8</fillin></item>
+  <item><match>__k8__</match><fillin>__k8__</fillin></item>
   <item><match>__LDBL_DENORM_MIN__</match><fillin>__LDBL_DENORM_MIN__</fillin></item>
   <item><match>__LDBL_DIG__</match><fillin>__LDBL_DIG__</fillin></item>
   <item><match>__LDBL_EPSILON__</match><fillin>__LDBL_EPSILON__</fillin></item>
@@ -174,66 +241,138 @@
   <item><match>__LDBL_MIN_10_EXP__</match><fillin>__LDBL_MIN_10_EXP__</fillin></item>
   <item><match>__LDBL_MIN_EXP__</match><fillin>__LDBL_MIN_EXP__</fillin></item>
   <item><match>__LDBL_MIN__</match><fillin>__LDBL_MIN__</fillin></item>
+  <item><match>__linux</match><fillin>__linux</fillin></item>
+  <item><match>__linux__</match><fillin>__linux__</fillin></item>
+  <item><match>linux</match><fillin>linux</fillin></item>
   <item><match>__LONG_LONG_MAX__</match><fillin>__LONG_LONG_MAX__</fillin></item>
   <item><match>__LONG_MAX__</match><fillin>__LONG_MAX__</fillin></item>
   <item><match>__LP64__</match><fillin>__LP64__</fillin></item>
+  <item><match>_LP64</match><fillin>_LP64</fillin></item>
   <item><match>__LWP__</match><fillin>__LWP__</fillin></item>
   <item><match>__LZCNT__</match><fillin>__LZCNT__</fillin></item>
   <item><match>__MMX__</match><fillin>__MMX__</fillin></item>
+  <item><match>__nehalem</match><fillin>__nehalem</fillin></item>
+  <item><match>__nehalem__</match><fillin>__nehalem__</fillin></item>
   <item><match>__NEXT_RUNTIME__</match><fillin>__NEXT_RUNTIME__</fillin></item>
+  <item><match>__nocona</match><fillin>__nocona</fillin></item>
+  <item><match>__nocona__</match><fillin>__nocona__</fillin></item>
   <item><match>__NO_INLINE__</match><fillin>__NO_INLINE__</fillin></item>
-  <item><match>__OPTIMIZE_SIZE__</match><fillin>__OPTIMIZE_SIZE__</fillin></item>
   <item><match>__OPTIMIZE__</match><fillin>__OPTIMIZE__</fillin></item>
+  <item><match>__OPTIMIZE_SIZE__</match><fillin>__OPTIMIZE_SIZE__</fillin></item>
   <item><match>__ORDER_BIG_ENDIAN__</match><fillin>__ORDER_BIG_ENDIAN__</fillin></item>
   <item><match>__ORDER_LITTLE_ENDIAN__</match><fillin>__ORDER_LITTLE_ENDIAN__</fillin></item>
   <item><match>__ORDER_PDP_ENDIAN__</match><fillin>__ORDER_PDP_ENDIAN__</fillin></item>
   <item><match>__PCLMUL__</match><fillin>__PCLMUL__</fillin></item>
+  <item><match>__pentium4</match><fillin>__pentium4</fillin></item>
+  <item><match>__pentium4__</match><fillin>__pentium4__</fillin></item>
+  <item><match>__pentium</match><fillin>__pentium</fillin></item>
+  <item><match>__pentium__</match><fillin>__pentium__</fillin></item>
+  <item><match>__pentium_mmx__</match><fillin>__pentium_mmx__</fillin></item>
+  <item><match>__pentiumpro</match><fillin>__pentiumpro</fillin></item>
+  <item><match>__pentiumpro__</match><fillin>__pentiumpro__</fillin></item>
+  <item><match>__pic__</match><fillin>__pic__</fillin></item>
   <item><match>__PIC__</match><fillin>__PIC__</fillin></item>
+  <item><match>__pie__</match><fillin>__pie__</fillin></item>
+  <item><match>__PIE__</match><fillin>__PIE__</fillin></item>
   <item><match>__POPCNT__</match><fillin>__POPCNT__</fillin></item>
   <item><match>__PRAGMA_REDEFINE_EXTNAME</match><fillin>__PRAGMA_REDEFINE_EXTNAME</fillin></item>
+  <item><match>__PRETTY_FUNCTION__</match><fillin>__PRETTY_FUNCTION__</fillin></item>
+  <item><match>__PRFCHW__</match><fillin>__PRFCHW__</fillin></item>
   <item><match>__PTRDIFF_MAX__</match><fillin>__PTRDIFF_MAX__</fillin></item>
   <item><match>__PTRDIFF_TYPE__</match><fillin>__PTRDIFF_TYPE__</fillin></item>
   <item><match>__RDRND__</match><fillin>__RDRND__</fillin></item>
+  <item><match>__RDSEED__</match><fillin>__RDSEED__</fillin></item>
+  <item><match>_REENTRANT</match><fillin>_REENTRANT</fillin></item>
   <item><match>__REGISTER_PREFIX__</match><fillin>__REGISTER_PREFIX__</fillin></item>
+  <item><match>__RTM__</match><fillin>__RTM__</fillin></item>
+  <item><match>__sandybridge</match><fillin>__sandybridge</fillin></item>
+  <item><match>__sandybridge__</match><fillin>__sandybridge__</fillin></item>
+  <item><match>__SANITIZE_ADDRESS__</match><fillin>__SANITIZE_ADDRESS__</fillin></item>
   <item><match>__SCHAR_MAX__</match><fillin>__SCHAR_MAX__</fillin></item>
   <item><match>__SHRT_MAX__</match><fillin>__SHRT_MAX__</fillin></item>
   <item><match>__SIG_ATOMIC_MAX__</match><fillin>__SIG_ATOMIC_MAX__</fillin></item>
   <item><match>__SIG_ATOMIC_MIN__</match><fillin>__SIG_ATOMIC_MIN__</fillin></item>
   <item><match>__SIG_ATOMIC_TYPE__</match><fillin>__SIG_ATOMIC_TYPE__</fillin></item>
+  <item><match>__silvermont</match><fillin>__silvermont</fillin></item>
+  <item><match>__silvermont__</match><fillin>__silvermont__</fillin></item>
+  <item><match>__SIZE_MAX__</match><fillin>__SIZE_MAX__</fillin></item>
   <item><match>__SIZEOF_DOUBLE__</match><fillin>__SIZEOF_DOUBLE__</fillin></item>
   <item><match>__SIZEOF_FLOAT__</match><fillin>__SIZEOF_FLOAT__</fillin></item>
   <item><match>__SIZEOF_INT128__</match><fillin>__SIZEOF_INT128__</fillin></item>
   <item><match>__SIZEOF_INT__</match><fillin>__SIZEOF_INT__</fillin></item>
   <item><match>__SIZEOF_LONG_DOUBLE__</match><fillin>__SIZEOF_LONG_DOUBLE__</fillin></item>
-  <item><match>__SIZEOF_LONG_LONG__</match><fillin>__SIZEOF_LONG_LONG__</fillin></item>
   <item><match>__SIZEOF_LONG__</match><fillin>__SIZEOF_LONG__</fillin></item>
+  <item><match>__SIZEOF_LONG_LONG__</match><fillin>__SIZEOF_LONG_LONG__</fillin></item>
   <item><match>__SIZEOF_POINTER__</match><fillin>__SIZEOF_POINTER__</fillin></item>
   <item><match>__SIZEOF_PTRDIFF_T__</match><fillin>__SIZEOF_PTRDIFF_T__</fillin></item>
   <item><match>__SIZEOF_SHORT__</match><fillin>__SIZEOF_SHORT__</fillin></item>
   <item><match>__SIZEOF_SIZE_T__</match><fillin>__SIZEOF_SIZE_T__</fillin></item>
   <item><match>__SIZEOF_WCHAR_T__</match><fillin>__SIZEOF_WCHAR_T__</fillin></item>
   <item><match>__SIZEOF_WINT_T__</match><fillin>__SIZEOF_WINT_T__</fillin></item>
-  <item><match>__SIZE_MAX__</match><fillin>__SIZE_MAX__</fillin></item>
   <item><match>__SIZE_TYPE__</match><fillin>__SIZE_TYPE__</fillin></item>
-  <item><match>__SSE2_MATH__</match><fillin>__SSE2_MATH__</fillin></item>
+  <item><match>__slm</match><fillin>__slm</fillin></item>
+  <item><match>__slm__</match><fillin>__slm__</fillin></item>
   <item><match>__SSE2__</match><fillin>__SSE2__</fillin></item>
+  <item><match>__SSE2_MATH__</match><fillin>__SSE2_MATH__</fillin></item>
   <item><match>__SSE3__</match><fillin>__SSE3__</fillin></item>
-  <item><match>__SSE4A__</match><fillin>__SSE4A__</fillin></item>
   <item><match>__SSE4_1__</match><fillin>__SSE4_1__</fillin></item>
   <item><match>__SSE4_2__</match><fillin>__SSE4_2__</fillin></item>
-  <item><match>__SSE_MATH__</match><fillin>__SSE_MATH__</fillin></item>
+  <item><match>__SSE4A__</match><fillin>__SSE4A__</fillin></item>
   <item><match>__SSE__</match><fillin>__SSE__</fillin></item>
+  <item><match>__SSE_MATH__</match><fillin>__SSE_MATH__</fillin></item>
   <item><match>__SSP_ALL__</match><fillin>__SSP_ALL__</fillin></item>
   <item><match>__SSP__</match><fillin>__SSP__</fillin></item>
+  <item><match>__SSP_STRONG__</match><fillin>__SSP_STRONG__</fillin></item>
   <item><match>__SSSE3__</match><fillin>__SSSE3__</fillin></item>
   <item><match>__STDC_HOSTED__</match><fillin>__STDC_HOSTED__</fillin></item>
+  <item><match>__STDC_IEC_559_COMPLEX__</match><fillin>__STDC_IEC_559_COMPLEX__</fillin></item>
+  <item><match>__STDC_IEC_559__</match><fillin>__STDC_IEC_559__</fillin></item>
+  <item><match>__STDC_ISO_10646__</match><fillin>__STDC_ISO_10646__</fillin></item>
+  <item><match>__STDC__</match><fillin>__STDC__</fillin></item>
+  <item><match>__STDC_NO_THREADS__</match><fillin>__STDC_NO_THREADS__</fillin></item>
+  <item><match>_STDC_PREDEF_H</match><fillin>_STDC_PREDEF_H</fillin></item>
   <item><match>__STDC_UTF_16__</match><fillin>__STDC_UTF_16__</fillin></item>
   <item><match>__STDC_UTF_32__</match><fillin>__STDC_UTF_32__</fillin></item>
   <item><match>__STDC_VERSION__</match><fillin>__STDC_VERSION__</fillin></item>
-  <item><match>__STDC__</match><fillin>__STDC__</fillin></item>
   <item><match>__STRICT_ANSI__</match><fillin>__STRICT_ANSI__</fillin></item>
   <item><match>__TBM__</match><fillin>__TBM__</fillin></item>
   <item><match>__TIMESTAMP__</match><fillin>__TIMESTAMP__</fillin></item>
+  <item><match>__tune_amdfam10__</match><fillin>__tune_amdfam10__</fillin></item>
+  <item><match>__tune_athlon__</match><fillin>__tune_athlon__</fillin></item>
+  <item><match>__tune_athlon_sse__</match><fillin>__tune_athlon_sse__</fillin></item>
+  <item><match>__tune_atom__</match><fillin>__tune_atom__</fillin></item>
+  <item><match>__tune_bdver1__</match><fillin>__tune_bdver1__</fillin></item>
+  <item><match>__tune_bdver2__</match><fillin>__tune_bdver2__</fillin></item>
+  <item><match>__tune_bdver3__</match><fillin>__tune_bdver3__</fillin></item>
+  <item><match>__tune_bdver4__</match><fillin>__tune_bdver4__</fillin></item>
+  <item><match>__tune_bonnell__</match><fillin>__tune_bonnell__</fillin></item>
+  <item><match>__tune_btver1__</match><fillin>__tune_btver1__</fillin></item>
+  <item><match>__tune_btver2__</match><fillin>__tune_btver2__</fillin></item>
+  <item><match>__tune_core2__</match><fillin>__tune_core2__</fillin></item>
+  <item><match>__tune_core_avx2__</match><fillin>__tune_core_avx2__</fillin></item>
+  <item><match>__tune_corei7_avx__</match><fillin>__tune_corei7_avx__</fillin></item>
+  <item><match>__tune_corei7__</match><fillin>__tune_corei7__</fillin></item>
+  <item><match>__tune_geode__</match><fillin>__tune_geode__</fillin></item>
+  <item><match>__tune_haswell__</match><fillin>__tune_haswell__</fillin></item>
+  <item><match>__tune_i386__</match><fillin>__tune_i386__</fillin></item>
+  <item><match>__tune_i486__</match><fillin>__tune_i486__</fillin></item>
+  <item><match>__tune_i586__</match><fillin>__tune_i586__</fillin></item>
+  <item><match>__tune_i686__</match><fillin>__tune_i686__</fillin></item>
+  <item><match>__tune_k6_2__</match><fillin>__tune_k6_2__</fillin></item>
+  <item><match>__tune_k6_3__</match><fillin>__tune_k6_3__</fillin></item>
+  <item><match>__tune_k6__</match><fillin>__tune_k6__</fillin></item>
+  <item><match>__tune_k8__</match><fillin>__tune_k8__</fillin></item>
+  <item><match>__tune_nehalem__</match><fillin>__tune_nehalem__</fillin></item>
+  <item><match>__tune_nocona__</match><fillin>__tune_nocona__</fillin></item>
+  <item><match>__tune_pentium2__</match><fillin>__tune_pentium2__</fillin></item>
+  <item><match>__tune_pentium3__</match><fillin>__tune_pentium3__</fillin></item>
+  <item><match>__tune_pentium4__</match><fillin>__tune_pentium4__</fillin></item>
+  <item><match>__tune_pentium__</match><fillin>__tune_pentium__</fillin></item>
+  <item><match>__tune_pentium_mmx__</match><fillin>__tune_pentium_mmx__</fillin></item>
+  <item><match>__tune_pentiumpro__</match><fillin>__tune_pentiumpro__</fillin></item>
+  <item><match>__tune_sandybridge__</match><fillin>__tune_sandybridge__</fillin></item>
+  <item><match>__tune_silvermont__</match><fillin>__tune_silvermont__</fillin></item>
+  <item><match>__tune_slm__</match><fillin>__tune_slm__</fillin></item>
   <item><match>__UINT16_C</match><fillin>__UINT16_C</fillin></item>
   <item><match>__UINT16_MAX__</match><fillin>__UINT16_MAX__</fillin></item>
   <item><match>__UINT16_TYPE__</match><fillin>__UINT16_TYPE__</fillin></item>
@@ -246,11 +385,6 @@
   <item><match>__UINT8_C</match><fillin>__UINT8_C</fillin></item>
   <item><match>__UINT8_MAX__</match><fillin>__UINT8_MAX__</fillin></item>
   <item><match>__UINT8_TYPE__</match><fillin>__UINT8_TYPE__</fillin></item>
-  <item><match>__UINTMAX_C</match><fillin>__UINTMAX_C</fillin></item>
-  <item><match>__UINTMAX_MAX__</match><fillin>__UINTMAX_MAX__</fillin></item>
-  <item><match>__UINTMAX_TYPE__</match><fillin>__UINTMAX_TYPE__</fillin></item>
-  <item><match>__UINTPTR_MAX__</match><fillin>__UINTPTR_MAX__</fillin></item>
-  <item><match>__UINTPTR_TYPE__</match><fillin>__UINTPTR_TYPE__</fillin></item>
   <item><match>__UINT_FAST16_MAX__</match><fillin>__UINT_FAST16_MAX__</fillin></item>
   <item><match>__UINT_FAST16_TYPE__</match><fillin>__UINT_FAST16_TYPE__</fillin></item>
   <item><match>__UINT_FAST32_MAX__</match><fillin>__UINT_FAST32_MAX__</fillin></item>
@@ -267,6 +401,14 @@
   <item><match>__UINT_LEAST64_TYPE__</match><fillin>__UINT_LEAST64_TYPE__</fillin></item>
   <item><match>__UINT_LEAST8_MAX__</match><fillin>__UINT_LEAST8_MAX__</fillin></item>
   <item><match>__UINT_LEAST8_TYPE__</match><fillin>__UINT_LEAST8_TYPE__</fillin></item>
+  <item><match>__UINTMAX_C</match><fillin>__UINTMAX_C</fillin></item>
+  <item><match>__UINTMAX_MAX__</match><fillin>__UINTMAX_MAX__</fillin></item>
+  <item><match>__UINTMAX_TYPE__</match><fillin>__UINTMAX_TYPE__</fillin></item>
+  <item><match>__UINTPTR_MAX__</match><fillin>__UINTPTR_MAX__</fillin></item>
+  <item><match>__UINTPTR_TYPE__</match><fillin>__UINTPTR_TYPE__</fillin></item>
+  <item><match>__unix</match><fillin>__unix</fillin></item>
+  <item><match>__unix__</match><fillin>__unix__</fillin></item>
+  <item><match>unix</match><fillin>unix</fillin></item>
   <item><match>__USER_LABEL_PREFIX__</match><fillin>__USER_LABEL_PREFIX__</fillin></item>
   <item><match>__USING_SJLJ_EXCEPTIONS__</match><fillin>__USING_SJLJ_EXCEPTIONS__</fillin></item>
   <item><match>__VA_ARGS__</match><fillin>__VA_ARGS__</fillin></item>
@@ -278,88 +420,11 @@
   <item><match>__WINT_MAX__</match><fillin>__WINT_MAX__</fillin></item>
   <item><match>__WINT_MIN__</match><fillin>__WINT_MIN__</fillin></item>
   <item><match>__WINT_TYPE__</match><fillin>__WINT_TYPE__</fillin></item>
-  <item><match>__XOP__</match><fillin>__XOP__</fillin></item>
-  <item><match>__amd64</match><fillin>__amd64</fillin></item>
-  <item><match>__amd64__</match><fillin>__amd64__</fillin></item>
-  <item><match>__amdfam10</match><fillin>__amdfam10</fillin></item>
-  <item><match>__amdfam10__</match><fillin>__amdfam10__</fillin></item>
-  <item><match>__athlon</match><fillin>__athlon</fillin></item>
-  <item><match>__athlon__</match><fillin>__athlon__</fillin></item>
-  <item><match>__athlon_sse__</match><fillin>__athlon_sse__</fillin></item>
-  <item><match>__atom</match><fillin>__atom</fillin></item>
-  <item><match>__atom__</match><fillin>__atom__</fillin></item>
-  <item><match>__bdver1</match><fillin>__bdver1</fillin></item>
-  <item><match>__bdver1__</match><fillin>__bdver1__</fillin></item>
-  <item><match>__bdver2</match><fillin>__bdver2</fillin></item>
-  <item><match>__bdver2__</match><fillin>__bdver2__</fillin></item>
-  <item><match>__btver1</match><fillin>__btver1</fillin></item>
-  <item><match>__btver1__</match><fillin>__btver1__</fillin></item>
-  <item><match>__core2</match><fillin>__core2</fillin></item>
-  <item><match>__core2__</match><fillin>__core2__</fillin></item>
-  <item><match>__corei7</match><fillin>__corei7</fillin></item>
-  <item><match>__corei7__</match><fillin>__corei7__</fillin></item>
-  <item><match>__cplusplus</match><fillin>__cplusplus</fillin></item>
-  <item><match>__geode</match><fillin>__geode</fillin></item>
-  <item><match>__geode__</match><fillin>__geode__</fillin></item>
-  <item><match>__gnu_linux__</match><fillin>__gnu_linux__</fillin></item>
-  <item><match>__i386</match><fillin>__i386</fillin></item>
-  <item><match>__i386__</match><fillin>__i386__</fillin></item>
-  <item><match>__i486</match><fillin>__i486</fillin></item>
-  <item><match>__i486__</match><fillin>__i486__</fillin></item>
-  <item><match>__i586</match><fillin>__i586</fillin></item>
-  <item><match>__i586__</match><fillin>__i586__</fillin></item>
-  <item><match>__i686</match><fillin>__i686</fillin></item>
-  <item><match>__i686__</match><fillin>__i686__</fillin></item>
-  <item><match>__k6</match><fillin>__k6</fillin></item>
-  <item><match>__k6_2__</match><fillin>__k6_2__</fillin></item>
-  <item><match>__k6_3__</match><fillin>__k6_3__</fillin></item>
-  <item><match>__k6__</match><fillin>__k6__</fillin></item>
-  <item><match>__k8</match><fillin>__k8</fillin></item>
-  <item><match>__k8__</match><fillin>__k8__</fillin></item>
-  <item><match>__linux</match><fillin>__linux</fillin></item>
-  <item><match>__linux__</match><fillin>__linux__</fillin></item>
-  <item><match>__nocona</match><fillin>__nocona</fillin></item>
-  <item><match>__nocona__</match><fillin>__nocona__</fillin></item>
-  <item><match>__pentium</match><fillin>__pentium</fillin></item>
-  <item><match>__pentium4</match><fillin>__pentium4</fillin></item>
-  <item><match>__pentium4__</match><fillin>__pentium4__</fillin></item>
-  <item><match>__pentium__</match><fillin>__pentium__</fillin></item>
-  <item><match>__pentium_mmx__</match><fillin>__pentium_mmx__</fillin></item>
-  <item><match>__pentiumpro</match><fillin>__pentiumpro</fillin></item>
-  <item><match>__pentiumpro__</match><fillin>__pentiumpro__</fillin></item>
-  <item><match>__pic__</match><fillin>__pic__</fillin></item>
-  <item><match>__tune_amdfam10__</match><fillin>__tune_amdfam10__</fillin></item>
-  <item><match>__tune_athlon__</match><fillin>__tune_athlon__</fillin></item>
-  <item><match>__tune_athlon_sse__</match><fillin>__tune_athlon_sse__</fillin></item>
-  <item><match>__tune_atom__</match><fillin>__tune_atom__</fillin></item>
-  <item><match>__tune_bdver1__</match><fillin>__tune_bdver1__</fillin></item>
-  <item><match>__tune_bdver2__</match><fillin>__tune_bdver2__</fillin></item>
-  <item><match>__tune_btver1__</match><fillin>__tune_btver1__</fillin></item>
-  <item><match>__tune_core2__</match><fillin>__tune_core2__</fillin></item>
-  <item><match>__tune_corei7__</match><fillin>__tune_corei7__</fillin></item>
-  <item><match>__tune_geode__</match><fillin>__tune_geode__</fillin></item>
-  <item><match>__tune_i386__</match><fillin>__tune_i386__</fillin></item>
-  <item><match>__tune_i486__</match><fillin>__tune_i486__</fillin></item>
-  <item><match>__tune_i586__</match><fillin>__tune_i586__</fillin></item>
-  <item><match>__tune_i686__</match><fillin>__tune_i686__</fillin></item>
-  <item><match>__tune_k6_2__</match><fillin>__tune_k6_2__</fillin></item>
-  <item><match>__tune_k6_3__</match><fillin>__tune_k6_3__</fillin></item>
-  <item><match>__tune_k6__</match><fillin>__tune_k6__</fillin></item>
-  <item><match>__tune_k8__</match><fillin>__tune_k8__</fillin></item>
-  <item><match>__tune_nocona__</match><fillin>__tune_nocona__</fillin></item>
-  <item><match>__tune_pentium2__</match><fillin>__tune_pentium2__</fillin></item>
-  <item><match>__tune_pentium3__</match><fillin>__tune_pentium3__</fillin></item>
-  <item><match>__tune_pentium4__</match><fillin>__tune_pentium4__</fillin></item>
-  <item><match>__tune_pentium__</match><fillin>__tune_pentium__</fillin></item>
-  <item><match>__tune_pentium_mmx__</match><fillin>__tune_pentium_mmx__</fillin></item>
-  <item><match>__tune_pentiumpro__</match><fillin>__tune_pentiumpro__</fillin></item>
-  <item><match>__unix</match><fillin>__unix</fillin></item>
-  <item><match>__unix__</match><fillin>__unix__</fillin></item>
   <item><match>__x86_64</match><fillin>__x86_64</fillin></item>
   <item><match>__x86_64__</match><fillin>__x86_64__</fillin></item>
-  <item><match>i386</match><fillin>i386</fillin></item>
-  <item><match>linux</match><fillin>linux</fillin></item>
-  <item><match>unix</match><fillin>unix</fillin></item>
+  <item><match>__XOP__</match><fillin>__XOP__</fillin></item>
+  <item><match>__XSAVE__</match><fillin>__XSAVE__</fillin></item>
+  <item><match>__XSAVEOPT__</match><fillin>__XSAVEOPT__</fillin></item>
 
   <item><match>__PRETTY_FUNCTION__</match><fillin>__PRETTY_FUNCTION__</fillin></item>
   <item><match>__func__</match><fillin>__func__</fillin></item>
