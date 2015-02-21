@@ -19,7 +19,7 @@
 <language
     name="C++"
     section="Sources"
-    version="2.6"
+    version="3.0"
     kateversion="2.4"
     indenter="cppstyle"
     style="C++"
@@ -154,18 +154,82 @@
       <item> thread_local </item>
       <item> volatile </item>
     </list>
+    <!-- 16.8 Predefined macros -->
     <list name="StdMacros">
+      <item> __cplusplus </item>
+      <item> __DATE__ </item>
       <item> __FILE__ </item>
       <item> __LINE__ </item>
-      <item> __DATE__ </item>
+      <item> __STDC_HOSTED__ </item>
       <item> __TIME__ </item>
       <item> __STDC__ </item>
-      <item> __STDC_VERSION__ </item>
-      <item> __STDC_HOSTED__ </item>
-      <item> __STDC_ISO_10646__ </item>
       <item> __STDC_MB_MIGHT_NEQ_WC__ </item>
-      <item> __cplusplus </item>
+      <item> __STDC_VERSION__ </item>
+      <item> __STDC_ISO_10646__ </item>
+      <item> __STDCPP_STRICT_POINTER_SAFETY__ </item>
+      <item> __STDCPP_THREADS__ </item>
+      <!-- 8.4.1/8 Not actually a macro -->
       <item> __func__ </item>
+      <!-- SD-6: SG10 Feature Test Recommendations
+          https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations
+      -->
+      <!-- C++14 features -->
+      <item> __cpp_binary_literals </item>
+      <item> __cpp_digit_separators </item>
+      <item> __cpp_init_captures </item>
+      <item> __cpp_generic_lambdas </item>
+      <item> __cpp_sized_deallocation </item>
+      <item> __cpp_constexpr </item>
+      <item> __cpp_decltype_auto </item>
+      <item> __cpp_return_type_deduction </item>
+      <item> __cpp_aggregate_nsdmi </item>
+      <item> __cpp_variable_templates </item>
+      <item> __cpp_lib_integer_sequence </item>
+      <item> __cpp_lib_exchange_function </item>
+      <item> __cpp_lib_tuples_by_type </item>
+      <item> __cpp_lib_tuple_element_t </item>
+      <item> __cpp_lib_make_unique </item>
+      <item> __cpp_lib_transparent_operators </item>
+      <item> __cpp_lib_result_of_sfinae </item>
+      <item> __cpp_lib_integral_constant_callable </item>
+      <item> __cpp_lib_transformation_trait_aliases </item>
+      <item> __cpp_lib_is_final </item>
+      <item> __cpp_lib_is_null_pointer </item>
+      <item> __cpp_lib_chrono_udls </item>
+      <item> __cpp_lib_string_udls </item>
+      <item> __cpp_lib_generic_associative_lookup </item>
+      <item> __cpp_lib_null_iterators </item>
+      <item> __cpp_lib_make_reverse_iterator </item>
+      <item> __cpp_lib_robust_nonmodifying_seq_ops </item>
+      <item> __cpp_lib_complex_udls </item>
+      <item> __cpp_lib_quoted_string_io </item>
+      <item> __cpp_lib_shared_timed_mutex </item>
+      <!-- C++11 features -->
+      <item> __cpp_unicode_characters </item>
+      <item> __cpp_raw_strings </item>
+      <item> __cpp_unicode_literals </item>
+      <item> __cpp_user_defined_literals </item>
+      <item> __cpp_lambdas </item>
+      <item> __cpp_constexpr </item>
+      <item> __cpp_range_based_for </item>
+      <item> __cpp_static_assert </item>
+      <item> __cpp_decltype </item>
+      <item> __cpp_attributes </item>
+      <item> __cpp_rvalue_references </item>
+      <item> __cpp_variadic_templates </item>
+      <item> __cpp_initializer_lists </item>
+      <item> __cpp_delegating_constructors </item>
+      <item> __cpp_nsdmi </item>
+      <item> __cpp_inheriting_constructors </item>
+      <item> __cpp_ref_qualifiers </item>
+      <item> __cpp_alias_templates </item>
+      <!-- C++98 features -->
+      <item> __cpp_rtti </item>
+      <item> __cpp_exceptions </item>
+      <!-- Macros to test presense of #include/attribute -->
+      <item> __has_cpp_attribute </item>
+      <item> __has_include </item>
+      <item> __has_include_next </item>
     </list>
     <list name="StdHeaders">
       <item> algorithm </item>
@@ -537,7 +601,7 @@
       </context>
 
       <context name="Preprocessor" attribute="Preprocessor" lineEndContext="#pop">
-        <LineContinue attribute="Preprocessor" context="#stay" />
+        <LineContinue attribute="Separator Symbol" context="#stay" />
         <keyword attribute="Standard Macros" context="#stay" String="StdMacros" />
         <IncludeRules context="GNUMacros##GCCExtensions" />
         <DetectChar attribute="Include Header" context="LocalInclude" char="&quot;" />
