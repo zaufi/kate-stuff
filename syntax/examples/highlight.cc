@@ -10,7 +10,9 @@
 
 #include <boost/mpl/eval_if.hpp>                            // comment
 #include <boost/mpl/bool.hpp>                               /// \custom-tag comment
-
+#if __has_include(<optional>)
+# include <optional>
+#endif
 // Use predefined standard macros
 #define MY_THROW(Ex) throw Ex << exception::location_info(__FILE__, __LINE__)
 // GCC specific predefined macros
@@ -221,6 +223,15 @@ class derived : public base
     alignas(long) int other_;                               // google code style compatible member name
     int m_member;                                           // prefixed data member
 };
+
+template <typename T>
+auto abs(T x)
+#ifndef __cpp_return_type_deduction
+    -> decltype(x < 0 ? -x : x)
+#endif
+{
+    return x < 0 ? -x : x;
+}
 
 // Commented by preprocessor
 #if 0

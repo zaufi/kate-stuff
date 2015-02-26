@@ -118,7 +118,7 @@
       <!-- C++11 -->
       <item> noreturn </item>
       <item> carries_dependency </item>
-      <!-- C++1y -->
+      <!-- C++14 -->
       <item> deprecated </item>
     </list>
 
@@ -172,6 +172,7 @@
       <item> __func__ </item>
       <!-- SD-6: SG10 Feature Test Recommendations
           https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations
+          GCC since 4.9 supports some of them.
       -->
       <!-- C++14 features -->
       <item> __cpp_binary_literals </item>
