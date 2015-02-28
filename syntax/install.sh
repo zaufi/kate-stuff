@@ -65,4 +65,4 @@ install -m 0644 -D qt4.xml ${DESTDIR}/${_dst_dir}/qt4.xml
 #   && { echo rm "${DESTDIR}${_dst_dir}/isocpp.xml" && rm "${DESTDIR}${_dst_dir}/isocpp.xml"; }
 
 echo "WARNING: Consider to remove isocpp.xml, which is a precursor of just installed cpp.xml"
-echo "to avoid (almost) duplicate highlighter..."
+echo "to avoid another one C++ highlighter..."
