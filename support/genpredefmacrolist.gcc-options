@@ -100,6 +100,18 @@
 -mtune=intel
 -march=bdver4
 -mtune=bdver4
+-fabi-version=2 -fabi-compat-version=2
+
+# introduced by gcc 5.1.x
+-mavx512vl
+-mavx512bw
+-mavx512dq
+-mavx512ifma
+-mavx512vbmi
+-mmpx
+-malign-data=abi
+-malign-data=cacheline
+-mskip-rax-setup
 
 # C++ specific options
 -xc++ -std=c++0x
