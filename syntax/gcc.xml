@@ -644,6 +644,7 @@
     <itemData name="GNU Types"      defStyleNum="dsOthers" spellChecking="false" />
     <itemData name="String"         defStyleNum="dsString" spellChecking="false" />
   </itemDatas>
+
 </highlighting>
 
 <general>

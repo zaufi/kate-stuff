@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<!--
+  Copyright (c) 2015 by Alex Turbov (i.zaufi@gmail.com)
+  -->
+<language
+    version="1.00"
+    kateversion="2.4"
+    name="Rainbow CSV"
+    section="Other"
+    extensions="*.csv"
+    mimetype="text/csv"
+    author="Alex Turbov (i.zaufi@gmail.com)"
+    licence="LGPL"
+  >
+
+<highlighting>
+  <contexts>
+    <context name="Column 1" attribute="Column 1" lineEndContext="#stay">
+      <DetectChar attribute="Normal Text" context="Column 2" char="," />
+    </context>
+    <context name="Column 2" attribute="Column 2" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 3" char="," />
+    </context>
+    <context name="Column 3" attribute="Column 3" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 4" char="," />
+    </context>
+    <context name="Column 4" attribute="Column 4" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 5" char="," />
+    </context>
+    <context name="Column 5" attribute="Column 5" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 6" char="," />
+    </context>
+    <context name="Column 6" attribute="Column 6" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 7" char="," />
+    </context>
+    <context name="Column 7" attribute="Column 7" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 8" char="," />
+    </context>
+    <context name="Column 8" attribute="Column 8" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 9" char="," />
+    </context>
+    <context name="Column 9" attribute="Column 9" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 10" char="," />
+    </context>
+    <context name="Column 10" attribute="Column 10" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 11" char="," />
+    </context>
+    <context name="Column 11" attribute="Column 11" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 12" char="," />
+    </context>
+    <context name="Column 12" attribute="Column 12" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 13" char="," />
+    </context>
+    <context name="Column 13" attribute="Column 13" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 14" char="," />
+    </context>
+    <context name="Column 14" attribute="Column 14" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 15" char="," />
+    </context>
+    <context name="Column 15" attribute="Column 15" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="Column 16" char="," />
+    </context>
+    <context name="Column 16" attribute="Column 16" lineEndContext="Column 1">
+      <DetectChar attribute="Normal Text" context="NonColored" char="," />
+    </context>
+    <context name="NonColored" attribute="Normal Text" lineEndContext="Column 1">
+      <RegExpr String=".*" />
+    </context>
+  </contexts>
+
+  <itemDatas>
+    <itemData name="Normal Text" defStyleNum="dsNormal" spellChecking="false" />
+    <itemData name="Column 1"    defStyleNum="dsOther" color="#C00000" spellChecking="false" />
+    <itemData name="Column 2"    defStyleNum="dsOther" color="#C05000" spellChecking="false" />
+    <itemData name="Column 3"    defStyleNum="dsOther" color="#C0C000" spellChecking="false" />
+    <itemData name="Column 4"    defStyleNum="dsOther" color="#00C000" spellChecking="false" />
+    <itemData name="Column 5"    defStyleNum="dsOther" color="#00C0A0" spellChecking="false" />
+    <itemData name="Column 6"    defStyleNum="dsOther" color="#00A0C0" spellChecking="false" />
+    <itemData name="Column 7"    defStyleNum="dsOther" color="#0040C0" spellChecking="false" />
+    <itemData name="Column 8"    defStyleNum="dsOther" color="#4040C0" spellChecking="false" />
+    <itemData name="Column 9"    defStyleNum="dsOther" color="#A000C0" spellChecking="false" />
+    <itemData name="Column 10"   defStyleNum="dsOther" color="#C06000" spellChecking="false" />
+    <itemData name="Column 11"   defStyleNum="dsOther" color="#A0A000" spellChecking="false" />
+    <itemData name="Column 12"   defStyleNum="dsOther" color="#10A010" spellChecking="false" />
+    <itemData name="Column 13"   defStyleNum="dsOther" color="#0060C0" spellChecking="false" />
+    <itemData name="Column 14"   defStyleNum="dsOther" color="#1030A0" spellChecking="false" />
+    <itemData name="Column 15"   defStyleNum="dsOther" color="#403070" spellChecking="false" />
+    <itemData name="Column 16"   defStyleNum="dsOther" color="#A00000" spellChecking="false" />
+  </itemDatas>
+
+</highlighting>
+
+<general>
+  <keywords casesensitive="1"/>
+</general>
+</language>
+<!-- kate: indent-width 2; tab-width 2; -->
