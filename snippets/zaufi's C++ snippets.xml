@@ -218,4 +218,14 @@ ${type}&amp; operator=(${type}&amp;&amp;) = ${op};%{cursor}</fillin>
   <displayarguments></displayarguments>
   <fillin>kDebug() &lt;&lt; "${expr}=" &lt;&lt; ${expr};</fillin>
  </item>
+ <item>
+  <displayprefix>snippet</displayprefix>
+  <match>begin-end-region</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments> text</displayarguments>
+  <fillin>//BEGIN %{text}
+ %{cursor}
+//END %{text}
+</fillin>
+ </item>
 </snippets>
