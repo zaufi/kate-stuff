@@ -4,7 +4,7 @@
   Copyright (c) 2015 by Alex Turbov (i.zaufi@gmail.com)
   -->
 <language
-    version="1.1"
+    version="1.2"
     kateversion="2.4"
     name="Rainbow CSV"
     section="Other"
@@ -17,52 +17,52 @@
 <highlighting>
   <contexts>
     <context name="Column 1" attribute="Column 1" lineEndContext="#stay">
-      <DetectChar attribute="Column 1" context="Column 2" char="," />
+      <DetectChar attribute="Column 1" context="#pop!Column 2" char="," />
     </context>
     <context name="Column 2" attribute="Column 2" lineEndContext="#pop">
-      <DetectChar attribute="Column 2" context="Column 3" char="," />
+      <DetectChar attribute="Column 2" context="#pop!Column 3" char="," />
     </context>
     <context name="Column 3" attribute="Column 3" lineEndContext="#pop">
-      <DetectChar attribute="Column 3" context="Column 4" char="," />
+      <DetectChar attribute="Column 3" context="#pop!Column 4" char="," />
     </context>
     <context name="Column 4" attribute="Column 4" lineEndContext="#pop">
-      <DetectChar attribute="Column 4" context="Column 5" char="," />
+      <DetectChar attribute="Column 4" context="#pop!Column 5" char="," />
     </context>
     <context name="Column 5" attribute="Column 5" lineEndContext="#pop">
-      <DetectChar attribute="Column 5" context="Column 6" char="," />
+      <DetectChar attribute="Column 5" context="#pop!Column 6" char="," />
     </context>
     <context name="Column 6" attribute="Column 6" lineEndContext="#pop">
-      <DetectChar attribute="Column 6" context="Column 7" char="," />
+      <DetectChar attribute="Column 6" context="#pop!Column 7" char="," />
     </context>
     <context name="Column 7" attribute="Column 7" lineEndContext="#pop">
-      <DetectChar attribute="Column 7" context="Column 8" char="," />
+      <DetectChar attribute="Column 7" context="#pop!Column 8" char="," />
     </context>
     <context name="Column 8" attribute="Column 8" lineEndContext="#pop">
-      <DetectChar attribute="Column 8" context="Column 9" char="," />
+      <DetectChar attribute="Column 8" context="#pop!Column 9" char="," />
     </context>
     <context name="Column 9" attribute="Column 9" lineEndContext="#pop">
-      <DetectChar attribute="Column 9" context="Column 10" char="," />
+      <DetectChar attribute="Column 9" context="#pop!Column 10" char="," />
     </context>
     <context name="Column 10" attribute="Column 10" lineEndContext="#pop">
-      <DetectChar attribute="Column 10" context="Column 11" char="," />
+      <DetectChar attribute="Column 10" context="#pop!Column 11" char="," />
     </context>
     <context name="Column 11" attribute="Column 11" lineEndContext="#pop">
-      <DetectChar attribute="Column 11" context="Column 12" char="," />
+      <DetectChar attribute="Column 11" context="#pop!Column 12" char="," />
     </context>
     <context name="Column 12" attribute="Column 12" lineEndContext="#pop">
-      <DetectChar attribute="Column 12" context="Column 13" char="," />
+      <DetectChar attribute="Column 12" context="#pop!Column 13" char="," />
     </context>
     <context name="Column 13" attribute="Column 13" lineEndContext="#pop">
-      <DetectChar attribute="Column 13" context="Column 14" char="," />
+      <DetectChar attribute="Column 13" context="#pop!Column 14" char="," />
     </context>
     <context name="Column 14" attribute="Column 14" lineEndContext="#pop">
-      <DetectChar attribute="Column 14" context="Column 15" char="," />
+      <DetectChar attribute="Column 14" context="#pop!Column 15" char="," />
     </context>
     <context name="Column 15" attribute="Column 15" lineEndContext="#pop">
-      <DetectChar attribute="Column 15" context="Column 16" char="," />
+      <DetectChar attribute="Column 15" context="#pop!Column 16" char="," />
     </context>
     <context name="Column 16" attribute="Column 16" lineEndContext="#pop">
-      <DetectChar attribute="Column 16" context="NonColored" char="," />
+      <DetectChar attribute="Column 16" context="#pop!NonColored" char="," />
     </context>
     <context name="NonColored" attribute="Normal Text" lineEndContext="#pop" />
   </contexts>
