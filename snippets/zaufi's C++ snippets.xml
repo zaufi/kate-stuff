@@ -169,9 +169,9 @@ void ${member}(${type} value)
   <displaypostfix></displaypostfix>
   <displayarguments></displayarguments>
   <fillin>/// ${op/./\u\0/} copy ctor
-${type@:type}(const ${type}&amp;) = ${op@:default};
+${type@:type}(const %{type}&amp;) = ${op@:default};
 /// ${op/./\u\0/} copy-assign operator
-${type}&amp; operator=(const ${type}&amp;) = ${op};%{cursor}</fillin>
+%{type}&amp; operator=(const %{type}&amp;) = %{op};</fillin>
  </item>
  <item>
   <displayprefix>snippet</displayprefix>
@@ -226,6 +226,38 @@ ${type}&amp; operator=(${type}&amp;&amp;) = ${op};%{cursor}</fillin>
   <fillin>//BEGIN %{text}
  %{cursor}
 //END %{text}
+</fillin>
+ </item>
+ <item>
+  <displayprefix>snippet</displayprefix>
+  <match>copy-ctor+assign</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>/// Copy ctor
+${type}(const %{type}&amp; other)${cursor}
+{
+}
+/// Copy-assign operator
+%{type}&amp; operator=(const %{type}&amp; other)
+{
+    return *this;
+}
+</fillin>
+ </item>
+ <item>
+  <displayprefix>snippet</displayprefix>
+  <match>move-ctor+assign</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>/// Move ctor
+${type}(%{type}&amp;&amp; other)${cursor}
+{
+}
+/// Copy-assign operator
+%{type}&amp; operator=(%{type}&amp;&amp; other)
+{
+    return *this;
+}
 </fillin>
  </item>
 </snippets>
