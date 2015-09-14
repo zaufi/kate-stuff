@@ -19,7 +19,7 @@
 <language
     name="C++"
     section="Sources"
-    version="3.0"
+    version="3.1"
     kateversion="2.4"
     indenter="cppstyle"
     style="C++"
@@ -563,7 +563,7 @@
         <RegExpr
             attribute="Preprocessor"
             context="Preprocessor"
-            String="(#|%\:|\?\?=)\s*endif"
+            String="(#|%\:|\?\?=)\s*endif\b"
             endRegion="PP"
             firstNonSpace="true"
             insensitive="false"
@@ -580,7 +580,7 @@
         <RegExpr
             attribute="Preprocessor"
             context="Preprocessor"
-            String="(#|%\:|\?\?=)\s*(?:el(?:se|if)|include_next|(cmake)?define|undef|line|error|warning|pragma)"
+            String="(#|%\:|\?\?=)\s*(?:el(?:se|if)|include_next|(cmake)?define|undef|line|error|warning|pragma)\b"
             insensitive="false"
             firstNonSpace="true"
           />
@@ -685,14 +685,14 @@
         <RegExpr
             attribute="Preprocessor"
             context="#pop"
-            String="(#|%\:|\?\?=)\s*el(?:se|if)"
+            String="(#|%\:|\?\?=)\s*el(?:se|if)\b"
             firstNonSpace="true"
             insensitive="false"
           />
         <RegExpr
             attribute="Preprocessor"
             context="#pop"
-            String="(#|%\:|\?\?=)\s*endif"
+            String="(#|%\:|\?\?=)\s*endif\b"
             endRegion="PP"
             firstNonSpace="true"
             insensitive="false"
@@ -704,7 +704,7 @@
         <RegExpr
             attribute="Preprocessor"
             context="#pop#pop"
-            String="(#|%\:|\?\?=)\s*endif"
+            String="(#|%\:|\?\?=)\s*endif\b"
             endRegion="PP"
             firstNonSpace="true"
             insensitive="false"
@@ -724,7 +724,7 @@
         <RegExpr
             attribute="Preprocessor"
             context="Outscoped 2"
-            String="(#|%\:|\?\?=)\s*el(?:se|if)"
+            String="(#|%\:|\?\?=)\s*el(?:se|if)\b"
             firstNonSpace="true"
             insensitive="false"
           />
@@ -750,7 +750,7 @@
         <RegExpr
             attribute="Comment"
             context="#pop"
-            String="(#|%\:|\?\?=)\s*endif"
+            String="(#|%\:|\?\?=)\s*endif\b"
             endRegion="PP"
             firstNonSpace="true"
             insensitive="false"
