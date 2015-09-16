@@ -3,6 +3,7 @@ Alerts:Alert Level 1=10,ffe85848,ffe85848,1,0,0,0,ff451e1a,,,---
 Alerts:Alert Level 2=10,ffca9219,ffca9219,1,0,0,0,ff451e1a,,,---
 Alerts:Alert Level 3=10,ff81ca2d,ff81ca2d,1,0,0,0,ff201f1f,,,---
 Alerts:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+Alerts:Region Marker=12,ff826c4a,ff826c4a,0,1,0,0,ff201f1f,,,---
 XML:Attribute=9,ff78b753,ff78b753,0,0,0,0,,,,---
 XML:CDATA=4,ff00c0c0,ff00c0c0,1,0,0,0,,,,---
 XML:Comment=8,ff787775,ff787775,0,1,0,0,,,,---
@@ -11,10 +12,10 @@ XML:Element=1,ffc7d42f,ffc7d42f,1,0,0,0,,,,---
 XML:EntityRef=3,ff4086c0,ff4086c0,0,0,0,0,,,,---
 XML:Error=13,ffe85848,ffe85848,0,0,0,1,,,,---
 XML:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
-XML:Other Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+XML:Other Text=0,ff558484,ff558484,0,0,0,0,,,,---
 XML:PEntityRef=3,ff4086c0,ff4086c0,0,0,0,0,,,,---
-XML:Processing Instruction=1,ff5fd478,ffffffff,1,0,0,0,,,,---
-XML:Value=7,ffe85290,ffbf45b5,0,0,0,0,,,,---
+XML:Processing Instruction=1,ff5fd478,ff5fd478,1,0,0,0,,,,---
+XML:Value=7,ffe85290,ffe85290,0,0,0,0,,,,---
 
 [KateHLColors]
 full schema=false
