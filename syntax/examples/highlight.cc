@@ -7,7 +7,10 @@
  * TBD to be defined
  * FIXME to be fixed later
  */
+_Pragma("visibility push")
+_Pragma("listing on \"../other.dir\"")
 
+#include "some-local.h"
 #include <boost/mpl/eval_if.hpp>                            // comment
 #include <boost/mpl/bool.hpp>                               /// \custom-tag comment
 #if __has_include(<optional>)
@@ -256,6 +259,8 @@ char other_commented;
 # define some_multiline_macro() \
     typedef char some;
 #endif
+
+_Pragma("visibility pop")
 
 // Modelines: switch to C++ mode
 // kate: hl C++;
