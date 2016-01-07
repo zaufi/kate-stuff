@@ -1,12 +1,19 @@
 <snippets
     namespace=""
     license="GPL"
-    filetypes="C++;C++11;C++11/Qt4"
+    filetypes="C++;C++/Qt4"
     snippetlicense="public domain"
     authors="Alex Turbov &lt;I.zaufi@gmail.com&gt;"
     name="boost::test by zaufi"
   >
-  <!-- Version 1.4 -->
+  <!-- Version 1.5 -->
+ <item>
+  <displayprefix></displayprefix>
+  <match>BOOST_TEST_MODULE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments></displayarguments>
+  <fillin>#define BOOST_TEST_MODULE ${name}</fillin>
+ </item>
  <item>
   <displayprefix></displayprefix>
   <match>BOOST_TEST_MESSAGE</match>
@@ -424,6 +431,14 @@
 
  <item>
   <displayprefix></displayprefix>
+  <match>BOOST_TEST_CASE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(function)</displayarguments>
+  <fillin>BOOST_TEST_CASE(${function});${cursor}</fillin>
+ </item>
+
+ <item>
+  <displayprefix></displayprefix>
   <match>BOOST_AUTO_TEST_CASE</match>
   <displaypostfix></displaypostfix>
   <displayarguments>(name)</displayarguments>
@@ -437,8 +452,31 @@
   <displaypostfix></displaypostfix>
   <displayarguments>(test_case_name, formal_type_param_name, collection_of_types)</displayarguments>
   <fillin>BOOST_AUTO_TEST_CASE_TEMPLATE(${test_case_name:Test}, ${formal_type_param_name:T}, ${collection_of_types}) {
+  ${cursor}
+}</fillin>
+ </item>
+ <item>
+  <displayprefix>manual reg.</displayprefix>
+  <match>BOOST_TEST_CASE_TEMPLATE_FUNCTION</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(test_case_name, type_name)</displayarguments>
+  <fillin>BOOST_TEST_CASE_TEMPLATE_FUNCTION(${test_case_name:Test}, ${type_name:T}) {
 	${cursor}
 }</fillin>
+ </item>
+ <item>
+  <displayprefix>manual reg.</displayprefix>
+  <match>BOOST_TEST_CASE_TEMPLATE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(test_case_name, collection_of_types)</displayarguments>
+  <fillin>BOOST_TEST_CASE_TEMPLATE(${test_case_name:Test}, ${collection_of_types});${cursor}</fillin>
+ </item>
+ <item>
+  <displayprefix>manual reg.</displayprefix>
+  <match>BOOST_PARAM_TEST_CASE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(test_function, params_begin, params_end)</displayarguments>
+  <fillin>BOOST_PARAM_TEST_CASE(${test_function:Test}, ${params_begin}, ${params_end});${cursor}</fillin>
  </item>
  <item>
   <displayprefix></displayprefix>
@@ -448,6 +486,13 @@
   <fillin>BOOST_FIXTURE_TEST_CASE(${test_case_name:Test}, ${fixture_name})
 {${cursor}
 }</fillin>
+ </item>
+ <item>
+  <displayprefix>manual reg.</displayprefix>
+  <match>BOOST_TEST_SUITE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(suite_name)</displayarguments>
+  <fillin>boost::unit_test::test_suite* ${suite_name} = BOOST_TEST_SUITE(${suite_name});${cursor}</fillin>
  </item>
  <item>
   <displayprefix></displayprefix>
@@ -497,6 +542,30 @@ BOOST_AUTO_TEST_SUITE_END()                                 // End of${test_suit
   <displaypostfix></displaypostfix>
   <displayarguments>(boost::unit_test::output_format fmt), CLF|XML</displayarguments>
   <fillin>boost::unit_test::unit_test_log.set_format(boost::unit_test::${fmt:XML});${cursor}</fillin>
+ </item>
+
+ <item>
+  <displayprefix>boost &gt;= 1.59.0</displayprefix>
+  <match>BOOST_TEST</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(expr)</displayarguments>
+  <fillin>BOOST_TEST(${expr});${cursor}</fillin>
+ </item>
+
+ <item>
+  <displayprefix>boost &gt;= 1.59.0</displayprefix>
+  <match>BOOST_DATA_TEST_CASE</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(name, samples, var1, ..., varN)</displayarguments>
+  <fillin>BOOST_DATA_TEST_CASE(${name}, ${samples}, ${var});${cursor}</fillin>
+ </item>
+
+ <item>
+  <displayprefix>boost &gt;= 1.59.0</displayprefix>
+  <match>BOOST_TEST_DECORATOR(*decorator)</match>
+  <displaypostfix></displaypostfix>
+  <displayarguments>(decorator)</displayarguments>
+  <fillin>BOOST_TEST_DECORATOR(*${decorator})${cursor}</fillin>
  </item>
 
 </snippets>
