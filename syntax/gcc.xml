@@ -13,7 +13,7 @@
   -->
 <language
     name="GCCExtensions"
-    version="0.6"
+    version="0.7"
     kateversion="2.4"
     section="Sources"
     extensions="*.c++;*.cxx;*.cpp;*.cc;*.C;*.h;*.hh;*.H;*.h++;*.hxx;*.hpp;*.hcc;"
@@ -196,6 +196,7 @@
     <item> __CHAR32_TYPE__ </item>
     <item> __CHAR_BIT__ </item>
     <item> __CHAR_UNSIGNED__ </item>
+    <item> __CHKP__ </item>
     <item> __cilk </item>
     <item> __code_model_32__ </item>
     <item> __code_model_small__ </item>
@@ -344,6 +345,7 @@
     <item> __GXX_EXPERIMENTAL_CXX0X__ </item>
     <item> __GXX_RTTI </item>
     <item> __GXX_WEAK__ </item>
+    <item> __has_attribute </item>
     <item> __has_include </item>
     <item> __has_include_next </item>
     <item> __haswell </item>
@@ -424,6 +426,7 @@
     <item> __LZCNT__ </item>
     <item> __MMX__ </item>
     <item> __MPX__ </item>
+    <item> __MWAITX__ </item>
     <item> __nehalem </item>
     <item> __nehalem__ </item>
     <item> __NEXT_RUNTIME__ </item>

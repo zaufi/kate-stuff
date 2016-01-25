@@ -38,6 +38,8 @@
 -march=c3 -m32
 -march=c3-2 -m32
 -march=geode -m32
+-ffast-math
+-mavx
 
 # introduced by gcc 4.6.x
 -march=btver1
@@ -102,22 +104,31 @@
 -mtune=bdver4
 -fabi-version=2 -fabi-compat-version=2
 
-# introduced by gcc 5.1.x
+# introduced by gcc 5.x
 -mavx512vl
 -mavx512bw
 -mavx512dq
 -mavx512ifma
 -mavx512vbmi
--mmpx
+-mmpx -fcheck-pointer-bounds
 -malign-data=abi
 -malign-data=cacheline
 -mskip-rax-setup
+-malign-data=cacheline
+-mrecord-mcount -pg
+-march=skylake-avx512
 
 # C++ specific options
 -xc++ -std=c++0x
 -xc++ -std=gnu++0x
 -xc++ -std=c++11
 -xc++ -std=gnu++11
+-xc++ -std=c++1y
+-xc++ -std=gnu++1y
+-xc++ -std=c++14
+-xc++ -std=gnu++14
+-xc++ -std=c++1z
+-xc++ -std=gnu++1z
 -std=c11
 -std=gnu11
 -xc++ -std=c++1y
@@ -142,3 +153,7 @@
 -xc++ -fstrict-enums
 -fsanitize=address
 -fsanitize=thread
+-fsanitize=vptr
+-fsanitize=bounds
+-fsanitize=object-size
+-fsanitize=alignment
