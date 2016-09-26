@@ -102,7 +102,7 @@
 -mtune=intel
 -march=bdver4
 -mtune=bdver4
--fabi-version=2 -fabi-compat-version=2
+-xc++ -fabi-version=2 -fabi-compat-version=2
 
 # introduced by gcc 5.x
 -mavx512vl
@@ -117,6 +117,13 @@
 -malign-data=cacheline
 -mrecord-mcount -pg
 -march=skylake-avx512
+
+# introduced by gcc 6.2
+-mmwaitx
+-mstackrealign
+-march=znver1
+-mtune=znver1
+-mmusl
 
 # C++ specific options
 -xc++ -std=c++0x
@@ -138,6 +145,7 @@
 -xc++ -fno-exceptions
 -xc++ -fno-rtti
 -fpie
+-xc++ -fconcepts
 
 # Optimization options
 -O
@@ -157,3 +165,5 @@
 -fsanitize=bounds
 -fsanitize=object-size
 -fsanitize=alignment
+-fsanitize=undefined
+-fgnu-tm
