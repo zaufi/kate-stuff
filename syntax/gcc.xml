@@ -198,6 +198,8 @@
     <item> __CHAR_UNSIGNED__ </item>
     <item> __CHKP__ </item>
     <item> __cilk </item>
+    <item> __CLFLUSHOPT__ </item>
+    <item> __CLZERO__ </item>
     <item> __code_model_32__ </item>
     <item> __code_model_small__ </item>
     <item> __core2 </item>
@@ -214,17 +216,24 @@
     <item> __cpp_alias_templates </item>
     <item> __cpp_attributes </item>
     <item> __cpp_binary_literals </item>
+    <item> __cpp_concepts </item>
     <item> __cpp_constexpr </item>
     <item> __cpp_decltype_auto </item>
     <item> __cpp_decltype </item>
     <item> __cpp_delegating_constructors </item>
     <item> __cpp_digit_separators </item>
+    <item> __cpp_enumerator_attributes </item>
     <item> __cpp_exceptions </item>
+    <item> __cpp_fold_expressions </item>
     <item> __cpp_generic_lambdas </item>
+    <item> __cpp_hex_float </item>
     <item> __cpp_inheriting_constructors </item>
     <item> __cpp_init_captures </item>
     <item> __cpp_initializer_lists </item>
     <item> __cpp_lambdas </item>
+    <item> __cpp_namespace_attributes </item>
+    <item> __cpp_nested_namespace_definitions </item>
+    <item> __cpp_nontype_template_args </item>
     <item> __cpp_nsdmi </item>
     <item> __cpp_range_based_for </item>
     <item> __cpp_raw_strings </item>
@@ -233,6 +242,7 @@
     <item> __cpp_rtti </item>
     <item> __cpp_runtime_arrays </item>
     <item> __cpp_rvalue_reference </item>
+    <item> __cpp_rvalue_references </item>
     <item> __cpp_sized_deallocation </item>
     <item> __cpp_static_assert </item>
     <item> __cpp_unicode_characters </item>
@@ -309,6 +319,7 @@
     <item> __FSGSBASE__ </item>
     <item> __FUNCTION__ </item>
     <item> __FXSR__ </item>
+    <item> __GCC_ASM_FLAG_OUTPUTS__ </item>
     <item> __GCC_ATOMIC_BOOL_LOCK_FREE </item>
     <item> __GCC_ATOMIC_CHAR16_T_LOCK_FREE </item>
     <item> __GCC_ATOMIC_CHAR32_T_LOCK_FREE </item>
@@ -451,6 +462,7 @@
     <item> __PIC__ </item>
     <item> __pie__ </item>
     <item> __PIE__ </item>
+    <item> __PKU__ </item>
     <item> __POPCNT__ </item>
     <item> __PRAGMA_REDEFINE_EXTNAME </item>
     <item> __PRETTY_FUNCTION__ </item>
@@ -466,6 +478,9 @@
     <item> __sandybridge__ </item>
     <item> __SANITIZE_ADDRESS__ </item>
     <item> __SCHAR_MAX__ </item>
+    <item> __SEG_FS </item>
+    <item> __SEG_GS </item>
+    <item> __SHA__ </item>
     <item> __SHRT_MAX__ </item>
     <item> __SIG_ATOMIC_MAX__ </item>
     <item> __SIG_ATOMIC_MIN__ </item>
@@ -552,6 +567,7 @@
     <item> __tune_sandybridge__ </item>
     <item> __tune_silvermont__ </item>
     <item> __tune_slm__ </item>
+    <item> __tune_znver1__ </item>
     <item> __UINT16_C </item>
     <item> __UINT16_MAX__ </item>
     <item> __UINT16_TYPE__ </item>
@@ -602,8 +618,12 @@
     <item> __x86_64 </item>
     <item> __x86_64__ </item>
     <item> __XOP__ </item>
+    <item> __XSAVEC__ </item>
     <item> __XSAVE__ </item>
     <item> __XSAVEOPT__ </item>
+    <item> __XSAVES__ </item>
+    <item> __znver1 </item>
+    <item> __znver1__ </item>
   </list>
   <contexts>
     <context name="DetectGccExtensions" attribute="Normal Text" lineEndContext="#stay">
