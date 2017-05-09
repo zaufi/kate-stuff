@@ -22,6 +22,8 @@
 <item> __atom </item>
 <item> __atom__ </item>
 <item> __AVX2__ </item>
+<item> __AVX5124FMAPS__ </item>
+<item> __AVX5124VNNIW__ </item>
 <item> __AVX512BW__ </item>
 <item> __AVX512CD__ </item>
 <item> __AVX512DQ__ </item>
@@ -31,6 +33,7 @@
 <item> __AVX512PF__ </item>
 <item> __AVX512VBMI__ </item>
 <item> __AVX512VL__ </item>
+<item> __AVX512VPOPCNTDQ__ </item>
 <item> __AVX__ </item>
 <item> __BASE_FILE__ </item>
 <item> __bdver1 </item>
@@ -429,6 +432,7 @@
 <item> __PTRDIFF_MAX__ </item>
 <item> __PTRDIFF_TYPE__ </item>
 <item> __PTRDIFF_WIDTH__ </item>
+<item> __RDPID__ </item>
 <item> __RDRND__ </item>
 <item> __RDSEED__ </item>
 <item> _REENTRANT </item>
@@ -442,6 +446,7 @@
 <item> __SCHAR_WIDTH__ </item>
 <item> __SEG_FS </item>
 <item> __SEG_GS </item>
+<item> __SGX__ </item>
 <item> __SHA__ </item>
 <item> __SHRT_MAX__ </item>
 <item> __SHRT_WIDTH__ </item>
