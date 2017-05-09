@@ -134,6 +134,8 @@
 -xc++ -std=gnu++1y
 -xc++ -std=c++14
 -xc++ -std=gnu++14
+-xc++ -std=c++17
+-xc++ -std=gnu++17
 -xc++ -std=c++1z
 -xc++ -std=gnu++1z
 -std=c11

@@ -9,7 +9,7 @@
     <!ENTITY udl_suffix "_[_0-9A-Za-z]*">
     <!ENTITY std_fnum_udl "i[fl]?">
     <!ENTITY std_num_udl "[num]?s|h|min|&std_fnum_udl;">
-    <!ENTITY std_str_udl "s">
+    <!ENTITY std_str_udl "s|sv">
     <!ENTITY ul_suffix "[Uu][Ll]{0,2}|[Ll]{0,2}[Uu]?">
     <!ENTITY sign_opt "[\+\-]?">
     <!ENTITY exp "[Ee]&sign_opt;">
@@ -19,7 +19,7 @@
 <language
     name="C++"
     section="Sources"
-    version="3.2"
+    version="4"
     kateversion="2.4"
     indenter="cppstyle"
     style="C++"
