@@ -38,16 +38,14 @@
 -march=c3 -m32
 -march=c3-2 -m32
 -march=geode -m32
+-mrtd -m32
 -ffast-math
--mavx
 
 # introduced by gcc 4.6.x
 -march=btver1
 -march=btver1 -m32
 -march=bdver1
 -march=bdver1 -m32
--mtbm
--mbmi
 
 # introduced by gcc 4.7.0
 -march=core-avx-i
@@ -57,14 +55,6 @@
 -march=core-avx2 -mx32
 -march=bdver2
 -march=bdver2 -m32
--mbmi2
--mavx2
--mfma
--mrdrnd
--mf16c
--mlzcnt
--mfsgsbase
--mx32
 -fgnu-tm
 
 # introduced by gcc 4.8.0
@@ -75,21 +65,9 @@
 -mpreferred-stack-boundary=8
 -m32 -maddress-mode=short
 -maddress-mode=long
--madx
--mprfchw
--mrdseed
--mrtm
--mhle
--mfxsr
--mxsave
--mxsaveopt
 
 # introduced by gcc 4.9.x
 -fcilkplus
--mavx512f
--mavx512pf
--mavx512er
--mavx512cd
 -march=silvermont
 -march=broadwell
 -march=nehalem
@@ -105,25 +83,15 @@
 -xc++ -fabi-version=2 -fabi-compat-version=2
 
 # introduced by gcc 5.x
--mavx512vl
--mavx512bw
--mavx512dq
--mavx512ifma
--mavx512vbmi
--mmpx -fcheck-pointer-bounds
+-fcheck-pointer-bounds
 -malign-data=abi
--malign-data=cacheline
--mskip-rax-setup
 -malign-data=cacheline
 -mrecord-mcount -pg
 -march=skylake-avx512
 
 # introduced by gcc 6.2
--mmwaitx
--mstackrealign
 -march=znver1
 -mtune=znver1
--mmusl
 
 # C++ specific options
 -xc++ -std=c++0x

@@ -2,6 +2,8 @@
 #
 # Script to generate <items> list w/ all possible predefined gcc/g++ macros
 #
+# TODO Clean the code
+#
 
 default_options_file=`dirname $0`/`basename $0 .sh`.gcc-options
 
@@ -53,10 +55,12 @@ fi
 ebegin "Makeing temp files" >&2
     tmp=`mktemp --tmpdir \`basename $0 .sh\`.XXXXXXXXXXX`
     tmptmp=`mktemp --tmpdir \`basename $0 .sh\`.XXXXXXXXXXX`
+    tgttmp=`mktemp --tmpdir \`basename $0 .sh\`.XXXXXXXXXXX`
+    opttmp=`mktemp --tmpdir \`basename $0 .sh\`.XXXXXXXXXXX`
     tmp_src=`mktemp --tmpdir \`basename $0 .sh\`.XXXXXXXXXXX$ext`
 eend $? >&2
 
-# Verify options file
+# Verify options file(s)
 test -z "$option_files" && option_files="$default_options_file"
 ebegin "Using options file(s): $option_files" >&2
 for cf in $option_files; do
@@ -83,6 +87,14 @@ else
     exit 1
 fi
 
+# Produce aux options file w/ `-m...` options gathered from gcc `--help=targets`
+$gcc_bin --help=target | grep '^\s\+\-m[^=]\+\s\+' | cut -d ' ' -f3 > $tgttmp
+option_files="$option_files $tgttmp"
+
+# Produce aux options file w/ `-m...` options gathered from gcc `--help=optimizers`
+$gcc_bin --help=optimizers | grep '^\s\+\-f[^=]\+\s\+' | cut -d ' ' -f3 > $opttmp
+option_files="$option_files $opttmp"
+
 # Do the job!
 einfo "Starting..." >&2
 eindent
@@ -104,5 +116,7 @@ einfo "Remove temporary files" >&2
 rm "$tmptmp" "$tmp_src" 2>/dev/null
 
 # Show result. U may use >1 redirect to catch it into some file...
-sort "$tmp" | uniq
+sort -u "$tmp"
 rm $tmp
+rm $tgttmp
+rm $opttmp
