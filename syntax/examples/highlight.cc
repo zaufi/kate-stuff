@@ -236,6 +236,35 @@ auto abs(T x)
     return x < 0 ? -x : x;
 }
 
+//  BUG #363227
+inline auto test_363227()
+{
+    1f; -1F;                                                // integer w/ floating suffix
+    0.1; -0.1;                                              // fractional constant
+    .1; -.1;                                                // fractional constant w/o leading digit seq
+    1.; -1.;                                                // ... same, but omit trailing digit seq
+    1.f; -1.F;                                              // ... same w/ floating suffix
+    1.l; -1.L;                                              // ... same w/ long double suffix
+    1e1; -1e1; 1e-1; -1e-1;                                 // digit w/ exponent part
+    1e1f; -1e1F; 1e-1F; -1e-1f;                             // ... same w/ floating suffix
+    1e1l; -1e1L; 1e-1L; -1e-1l;
+    1.0e1; -1.0e1;                                          // fractional constant w/ exponent
+    1.0e1f; -1.0e1F; 1.0e-1l; -1.0e-1L;                     // ... same w/ floating suffix
+    1.0e1f; -1.0e1F; 1.0e-1l; -1.0e-1L;
+
+    1e1_udl; 1e-1_udl; 1.0e1_udl; 1.0e-1_udl;               // w/ user defined literal suffix
+    1._udl; .1_udl; 1.1_udl;
+
+    // std::complex suffixes
+    1i; 1if; 1il;
+    1.i; 1.if; 1.il;
+    1e1i; 1e-1i; 1.0e1i; 1.0e-1i;
+    1e1if; 1e-1if; 1.0e1if; 1.0e-1if;
+    1e1il; 1e-1il; 1.0e1il; 1.0e-1il;
+
+    return 1.0;
+}
+
 // Commented by preprocessor
 #if 0
 boost::optional<std::string> m_commented;

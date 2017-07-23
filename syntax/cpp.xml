@@ -6,7 +6,7 @@
     <!ENTITY ns_punctuators "!&#37;&space;&amp;()+-/.*&lt;=&gt;?[]{|}~^&separators;">
     <!ENTITY punctuators ":&ns_punctuators;">
     <!ENTITY digit_seq "[0-9]('?[0-9]+)*">
-    <!ENTITY udl_suffix "_[_0-9A-Za-z]*">
+    <!ENTITY udl_suffix "_[A-Za-z][_0-9A-Za-z]*">
     <!ENTITY std_fnum_udl "i[fl]?">
     <!ENTITY std_num_udl "[num]?s|h|min|&std_fnum_udl;">
     <!ENTITY std_str_udl "s|sv">
@@ -388,7 +388,7 @@
         <RegExpr
             attribute="Float"
             context="#stay"
-            String="&sign_opt;(&digit_seq;&exp;&digit_seq;|(&digit_seq;\.|\.&digit_seq;|&digit_seq;\.&digit_seq;)(&exp;&digit_seq;)?([FfLl]|&std_fnum_udl;|&udl_suffix;)?|&digit_seq;[Ff])"
+            String="&sign_opt;(&digit_seq;&exp;&digit_seq;([FfLl]|&std_fnum_udl;|&udl_suffix;)?|(&digit_seq;\.|\.&digit_seq;|&digit_seq;\.&digit_seq;)(&exp;&digit_seq;)?([FfLl]|&std_fnum_udl;|&udl_suffix;)?|&digit_seq;(&std_fnum_udl;|[Ff]))"
           />
         <RegExpr
             attribute="Octal"
