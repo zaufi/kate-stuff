@@ -19,7 +19,7 @@
 <language
     name="C++"
     section="Sources"
-    version="4"
+    version="5"
     kateversion="2.4"
     indenter="cppstyle"
     style="C++"

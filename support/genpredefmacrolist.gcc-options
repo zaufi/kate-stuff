@@ -1,43 +1,175 @@
 # x86/x86-64 CPUs
+# generic32 generic64 i386 i486 i586 i686 pentium pentiumpro pentiumii pentiumiii pentium4 prescott nocona core core2 corei7 l1om k1om iamcu k6 k6_2 athlon opteron k8 amdfam10 bdver1 bdver2 bdver3 bdver4 znver1 btver1 btver2
 -mtune=generic
+-mtune=generic -m32
 -march=native
+-march=native -m32
+
 -march=i386 -m32
 -march=i486 -m32
--march=i586 -m32        # pentium
+-march=i586 -m32
+-march=i686 -m32
+-march=pentium -m32
+-march=pentium-m -m32
 -march=pentium-mmx -m32
 -march=pentiumpro -m32
--march=i686 -m32
 -march=pentium2 -m32
--march=pentium3 -m32    # pentium3m
--march=pentium-m -m32
--march=pentium4 -m32    # pentium4m
--march=prescott -m32
--march=nocona
--march=nocona -m32
+-march=pentium3 -m32
+-march=pentium3m -m32
+-march=pentium4 -m32
+
+-march=amdfam10         # barcelona
+-march=amdfam10 -m32
+-march=athlon -m32
+-march=athlon-mp -m32
+-march=athlon-tbird  -m32
+-march=athlon-xp -m32
+-march=athlon64
+-march=atom
+-march=atom -m32
+-march=bdver1
+-march=bdver2
+-march=bdver3
+-march=bdver4
+-march=bonnell
+-march=broadwell
+-march=btver1
+-march=btver2
+-march=c3 -m32
+-march=c3-2 -m32
+-march=c7 -m32
+-march=core2
 -march=core2
 -march=core2 -m32
+-march=corei7
 -march=corei7
 -march=corei7 -m32
 -march=corei7-avx
 -march=corei7-avx -m32
--march=atom
--march=atom -m32
+-march=eden-x2
+-march=eden-x4
+-march=geode -m32
+-march=haswell
+-march=ivybridge
+-march=k6 -m32
 -march=k6 -m32
 -march=k6-2 -m32
+-march=k6-2 -m32
 -march=k6-3 -m32
--march=athlon -m32      # athlon-tbird
--march=athlon-xp -m32
+-march=k6-3 -m32
+-march=k8
 -march=k8               # opteron, athlon64, athlon-fx
 -march=k8 -m32
 -march=k8-sse3          # opteron-sse3, athlon64-sse3
 -march=k8-sse3 -m32
--march=amdfam10         # barcelona
--march=amdfam10 -m32
+-march=knl
+-march=nano
+-march=nano-1000
+-march=nano-2000
+-march=nano-3000
+-march=nano-x2
+-march=nano-x4
+-march=nehalem
+-march=nocona
+-march=nocona -m32
+-march=opteron
+-march=pentium-m -m32
+-march=pentium-mmx -m32
+-march=pentium2 -m32
+-march=pentium3 -m32    # pentium3m
+-march=pentium4 -m32    # pentium4m
+-march=pentiumpro -m32
+-march=prescott -m32
+-march=prescott -m32
+-march=sandybridge
+-march=silvermont
+-march=skylake
+-march=skylake-avx512
+-march=westmere
 -march=winchip-c6 -m32
 -march=winchip2 -m32
--march=c3 -m32
--march=c3-2 -m32
--march=geode -m32
+-march=znver1
+
+--machine-mmx
+--machine-sse
+--machine-sse2
+--machine-sse3
+--machine-ssse3
+--machine-sse4.1
+--machine-sse4.2
+--machine-sse4
+--machine-avx
+--machine-avx2
+--machine-avx512f
+--machine-avx512cd
+--machine-avx512er
+--machine-avx512pf
+--machine-avx512dq
+--machine-avx512bw
+--machine-avx512vl
+
+--machine-xsave
+--machine-xsaveopt
+--machine-xsavec
+--machine-xsaves
+--machine-aes
+--machine-pclmul
+--machine-fsgsbase
+--machine-rdrnd
+--machine-f16c
+--machine-bmi2
+--machine-fma
+--machine-fma4
+--machine-xop
+--machine-lwp
+--machine-movbe
+--machine-cx16
+--machine-mpx
+--machine-lzcnt
+--machine-hle
+--machine-rtm
+--machine-3dnow
+--machine-3dnowa
+--machine-sse4a
+--machine-abm
+--machine-bmi
+--machine-tbm
+--machine-adx
+--machine-rdseed
+--machine-prfchw
+--machine-mpx
+--machine-sha
+--machine-clflushopt
+--machine-prefetchwt1
+--machine-clwb
+--machine-pcommit
+--machine-avx512ifma
+--machine-avx512vbmi
+--machine-clzero
+--machine-mwaitx
+--machine-rdpid
+--machine-80387
+--machine-no-mmx
+--machine-no-sse
+--machine-no-sse2
+--machine-no-sse3
+--machine-no-ssse3
+--machine-no-sse4.1
+--machine-no-sse4.2
+--machine-no-sse4
+--machine-no-avx
+--machine-no-avx2
+--machine-no-avx512f
+--machine-no-avx512cd
+--machine-no-avx512er
+--machine-no-avx512pf
+--machine-no-avx512dq
+--machine-no-avx512bw
+--machine-no-avx512vl
+--machine-no-avx512ifma
+--machine-no-avx512vbmi
+
+# OLD
 -mrtd -m32
 -ffast-math
 
@@ -63,8 +195,6 @@
 -march=btver2
 -mtune=btver2
 -mpreferred-stack-boundary=8
--m32 -maddress-mode=short
--maddress-mode=long
 
 # introduced by gcc 4.9.x
 -fcilkplus
@@ -83,9 +213,7 @@
 -xc++ -fabi-version=2 -fabi-compat-version=2
 
 # introduced by gcc 5.x
--fcheck-pointer-bounds
--malign-data=abi
--malign-data=cacheline
+-fcheck-pointer-bounds -mmpx
 -mrecord-mcount -pg
 -march=skylake-avx512
 
@@ -108,8 +236,6 @@
 -xc++ -std=gnu++1z
 -std=c11
 -std=gnu11
--xc++ -std=c++1y
--xc++ -std=gnu++1y
 -pthread
 -fPIC
 -xc++ -fno-exceptions
@@ -137,3 +263,189 @@
 -fsanitize=alignment
 -fsanitize=undefined
 -fgnu-tm
+-fopenmp
+
+# GCC 7.1
+-faligned-new
+-fstrong-eval-order
+-fno-strong-eval-order
+-fno-new-inheriting-ctors
+-fabi-version=3
+-fabi-version=11
+-fabi-version=14
+-fabi-version=17
+-fnew-ttp-matching
+-fno-new-ttp-matching
+
+
+-m128bit-long-double
+-m16
+-m32
+-m3dnow
+-m3dnowa
+-m64
+-m80387
+-m8bit-idiv
+-m96bit-long-double
+-mabi=ms
+-mabi=sysv
+-mabm
+-maccumulate-outgoing-args
+-m32 -maddress-mode=short
+-maddress-mode=long
+-madx
+-maes
+-malign-data=abi
+-malign-data=cacheline
+-malign-data=compat
+-malign-double
+-falign-functions=16
+-falign-jumps=16
+-falign-loops=16
+-malign-stringops
+-mandroid
+-masm=att
+-masm=intel
+-mavx
+-mavx2
+-mavx256-split-unaligned-load
+-mavx256-split-unaligned-store
+-mavx5124fmaps
+-mavx5124vnniw
+-mavx512bw
+-mavx512cd
+-mavx512dq
+-mavx512er
+-mavx512f
+-mavx512ifma
+-mavx512pf
+-mavx512vbmi
+-mavx512vl
+-mavx512vpopcntdq
+-mbionic
+-mbmi
+-mbmi2
+-mbranch-cost=4
+-mcld
+-mclflushopt
+-mclwb
+-mclzero
+-mcmodel=32 -m32
+-mcmodel=kernel
+-mcmodel=large
+-mcmodel=medium
+-mcmodel=small
+-mcrc32
+-mcx16
+-mdispatch-scheduler
+-mf16c
+-mfancy-math-387
+-mfentry
+-mfma
+-mfma4
+-mforce-drap
+-mfp-ret-in-387
+-mfpmath=387
+-mfpmath=387+sse
+-mfpmath=387,sse
+-mfpmath=both
+-mfpmath=sse
+-mfpmath=sse+387
+-mfpmath=sse,387
+-mfsgsbase
+-mfxsr
+-mgeneral-regs-only
+-mglibc
+-mhard-float
+-mhle
+-miamcu -m32
+-mieee-fp
+-mincoming-stack-boundary=4
+-minline-all-stringops
+-minline-stringops-dynamically
+-mlarge-data-threshold=64
+-mlong-double-128
+-mlong-double-64
+-mlong-double-80
+-mlwp
+-mlzcnt
+#-mmemcpy-strategy=
+#-mmemset-strategy=
+-mmitigate-rop
+-mmmx
+-mmovbe
+-mmpx
+-mms-bitfields
+-mmusl
+-mmwaitx
+-mno-default
+-mno-sse4
+-mnop-mcount
+-momit-leaf-frame-pointer
+-mpc32
+-mpc64
+-mpc80
+-mpclmul
+-mpku
+-mpopcnt
+-mprefer-avx128
+-mpreferred-stack-boundary=8
+-mprefetchwt1
+-mprfchw
+-mpush-args
+-mrdpid
+-mrdrnd
+-mrdseed
+-mrecip
+#-mrecip=
+-mrecord-mcount
+-mred-zone
+#-mregparm=
+-mrtd -m32
+-mrtm
+-msahf
+-msgx
+-msha
+-mskip-rax-setup
+-msoft-float
+-msse
+-msse2
+-msse2avx
+-msse3
+-msse4
+-msse4.1
+-msse4.2
+-msse4a
+-msseregparm
+-mssse3
+-mstack-arg-probe
+-mstack-protector-guard=global
+-mstack-protector-guard=tls
+-mstackrealign
+-mstringop-strategy=byte_loop
+-mstringop-strategy=libcall
+-mstringop-strategy=loop
+-mstringop-strategy=rep_4byte
+-mstringop-strategy=rep_8byte
+-mstringop-strategy=rep_byte
+-mstringop-strategy=unrolled_loop
+-mstringop-strategy=vector_loop
+-mstv
+-mtbm
+-mtls-dialect=gnu
+-mtls-dialect=gnu2
+-mtls-direct-seg-refs
+#-mtune-ctrl=
+#-mtune=
+-muclibc
+-mveclibabi=acml
+-mveclibabi=svml
+-mvect8-ret-in-mem
+-mvzeroupper
+-mx32
+-mxop
+-mxsave
+-mxsavec
+-mxsaveopt
+-mxsaves
+-msse2avx
