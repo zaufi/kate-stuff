@@ -1,35 +1,9 @@
-[Highlighting CMake - Schema Zaufi::dark]
+[Highlighting reStructuredText - Schema Zaufi::dark]
 Alerts:Alert Level 1=10,ffe85848,ffe85848,1,0,0,0,ff451e1a,,,---
 Alerts:Alert Level 2=10,ffca9219,ffca9219,1,0,0,0,ff451e1a,,,---
 Alerts:Alert Level 3=10,ff81ca2d,ff81ca2d,1,0,0,0,ff451e1a,,,---
 Alerts:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
-CMake:Aliased Targets=4,ff00c0c0,ff00c0c0,0,0,0,0,,,,---
-CMake:Builtin Variable=3,ffc09050,ffc09050,0,0,0,0,,,,---
-CMake:Command=1,ffc8c500,ffc8c500,1,0,0,0,,,,---
-CMake:Comment=8,ff787878,ff787878,0,1,0,0,,,,---
-CMake:Environment Variable Substitution=5,ff696df3,ff696df3,0,0,0,0,,,,---
-CMake:Escapes=6,ff825df1,ff825df1,0,0,0,0,,,,---
-CMake:False Special Arg=9,ffe05050,ffe05050,0,0,0,0,,,,---
-CMake:Generator Expression=9,ffb86050,ffb86050,0,0,0,0,,,,---
-CMake:Generator Expression Keyword=1,ffb84040,ffb84040,1,0,0,0,,,,---
-CMake:Internal Name=3,ff828282,ff828282,0,0,0,0,,,,---
-CMake:Named Args=9,ff78b753,ff78b753,0,0,0,0,,,,---
-CMake:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
-CMake:Property=9,ff147878,ff147878,0,0,0,0,,,,---
-CMake:Region Marker=12,ff826c4a,ff826c4a,0,0,0,0,ff201f1f,,,---
-CMake:Special Args=9,ff14b4b4,ff14b4b4,0,0,0,0,,,,---
-CMake:Strings=7,ffcc6699,ffcc6699,0,1,0,0,,,,---
-CMake:True Special Arg=9,ff14b450,ff14b450,0,0,0,0,,,,---
-CMake:User Function/Macro=11,ffa0c800,ffa0c800,0,0,0,0,,,,---
-CMake:Variable Substitution=3,ff4086c0,ff4086c0,0,0,0,0,,,,---
-Modelines:Comment=8,ff777777,ff777777,0,1,0,0,,,,---
-Modelines:Keyword=1,ff777755,ff777755,1,1,0,0,,,,---
-Modelines:Number=3,ff555560,ff555560,0,1,0,0,,,,---
-Modelines:Option OFF=9,ffb78058,ffb78058,0,0,0,0,,,,---
-Modelines:Option ON=9,ff78b753,ff78b753,0,0,0,0,,,,---
-Modelines:String=7,ff604460,ff604460,0,1,0,0,,,,---
-Modelines:Value=9,ff385a4c,ff385a4c,0,0,0,0,,,,---
-Modelines:Variable=11,ff676757,ff676757,0,1,0,0,,,,---
+Alerts:Region Marker=12,ff826c4a,ff826c4a,0,1,0,0,ff201f1f,,,---
 reStructuredText:Bold=0,ffcacaca,ffcacaca,1,0,0,0,,,,---
 reStructuredText:Citation=2,ffa0a0a0,ffa0a0a0,0,0,0,0,,,,---
 reStructuredText:Code=2,ffa08c64,ffa08c64,0,0,0,0,,,,---
@@ -53,5 +27,5 @@ reStructuredText:SubstitutionReference=11,ff5a63a5,ff5a63a5,0,0,0,0,,,,---
 
 [KateHLColors]
 full schema=false
-highlight=CMake
+highlight=reStructuredText
 schema=Zaufi::dark
