@@ -38,7 +38,7 @@
     style="CMake"
     mimetype="text/x-cmake"
     author="Alexander Neundorf (neundorf@kde.org)"
-    license="LGPL"
+    license="LGPLv2+"
   >
   <highlighting>
 

@@ -9,6 +9,10 @@
 #
 #   $ pip install --user click jinja2 yaml
 #
+# To use:
+#
+#   $ ./generate-cmake-syntax.py cmake.yaml > ../syntax/cmake.xml
+#
 import click
 import jinja2
 import pathlib
