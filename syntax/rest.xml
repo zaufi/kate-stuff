@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd"
+[
+        <!ENTITY inlinestart "(^|[-\s&apos;&quot;\(\[{&lt;/:‘“’«¡¿‐‑‒–— ])">
+        <!ENTITY inlineend "(?=[-\s’”»‐‑‒–— &apos;&quot;\)\]}&gt;/:\.,;!\?\\]|$)">
+        <!ENTITY SimpleReferenceNameChars "\w_\.:\+\-">
+]>
+<!--
+  This file is part of KDE's kate project.
+
+  Copyright 2010 Matt Williams (matt@milliams.com)
+  Copyright 2014 Matthew Woehlke (mw_triad@users.sourceforge.net)
+  Copyright 2017 Alex Turbov (i.zaufi@gmail.com)
+  -->
+<language name="reStructuredText" extensions="*.rst" section="Markup" mimetype="text/x-rst" version="3" kateversion="2.4" casesensitive="1">
+
+  <highlighting>
+
+    <list name="directives">
+      <!-- http://docutils.sourceforge.net/docs/ref/rst/directives.html -->
+      <item> attention </item>
+      <item> caution </item>
+      <item> danger </item>
+      <item> error </item>
+      <item> hint </item>
+      <item> important </item>
+      <item> note </item>
+      <item> tip </item>
+      <item> warning </item>
+      <item> admonition </item>
+      <item> image </item>
+      <item> figure </item>
+      <item> topic </item>
+      <item> sidebar </item>
+      <item> line-block </item>
+      <item> parsed-literal </item>
+      <item> code </item>
+      <item> math </item>
+      <item> rubric </item>
+      <item> epigraph </item>
+      <item> highlights </item>
+      <item> pull-quote </item>
+      <item> compound </item>
+      <item> container </item>
+      <item> table </item>
+      <item> csv-table </item>
+      <item> list-table </item>
+      <item> contents </item>
+      <item> sectnum </item>
+      <item> section-numbering </item>
+      <item> header </item>
+      <item> footer </item>
+      <item> target-notes </item>
+      <item> footnotes </item>
+      <item> citations </item>
+      <item> meta </item>
+      <item> replace </item>
+      <item> date </item>
+      <item> include </item>
+      <item> raw </item>
+      <item> class </item>
+      <item> role </item>
+      <item> default-role </item>
+      <item> title </item>
+    </list>
+    <list name="options">
+      <!-- http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#bibliographic-fields -->
+      <item> Author </item>
+      <item> Authors </item>
+      <item> Organization </item>
+      <item> Contact </item>
+      <item> Address </item>
+      <item> Version </item>
+      <item> Status </item>
+      <item> Date </item>
+      <item> Copyright </item>
+      <item> Dedication </item>
+      <item> Abstract </item>
+      <!--
+        Options for various directives: http://docutils.sourceforge.net/docs/ref/rst/directives.html
+      -->
+      <item> align </item>
+      <item> alt </item>
+      <item> backlinks </item>
+      <item> class </item>
+      <item> code </item>
+      <item> delim </item>
+      <item> depth </item>
+      <item> encoding </item>
+      <item> end-before </item>
+      <item> end-line </item>
+      <item> escape </item>
+      <item> figclass </item>
+      <item> figwidth </item>
+      <item> file </item>
+      <item> header </item>
+      <item> header-rows </item>
+      <item> height </item>
+      <item> keepspace </item>
+      <item> literal </item>
+      <item> local </item>
+      <item> ltrim </item>
+      <item> name </item>
+      <item> number-lines </item>
+      <item> number-lines </item>
+      <item> prefix </item>
+      <item> quote </item>
+      <item> rtrim </item>
+      <item> scale </item>
+      <item> start </item>
+      <item> start-after </item>
+      <item> start-line </item>
+      <item> stub-columns </item>
+      <item> subtitle </item>
+      <item> suffix </item>
+      <item> tab-width </item>
+      <item> target </item>
+      <item> trim </item>
+      <item> url </item>
+      <item> width </item>
+      <item> widths </item>
+    </list>
+
+    <list name="sphinx-directives">
+      <!--http://www.sphinx-doc.org/en/stable/markup/toctree.html-->
+      <item> toctree </item>
+      <!--http://www.sphinx-doc.org/en/stable/markup/code.html-->
+      <item> code-block </item>
+      <item> literalinclude </item>
+      <!--http://www.sphinx-doc.org/en/stable/markup/para.html-->
+      <item> versionadded </item>
+      <item> versionchanged </item>
+      <item> deprecated </item>
+      <item> seealso </item>
+      <item> rubric </item>
+      <item> centered </item>
+      <item> hlist </item>
+      <item> glossary </item>
+      <item> productionlist </item>
+      <!--http://www.sphinx-doc.org/en/stable/markup/misc.html-->
+      <item> sectionauthor </item>
+      <item> codeauthor </item>
+      <item> index </item>
+      <item> only </item>
+      <item> tabularcolumns </item>
+      <!--http://www.sphinx-doc.org/en/stable/domains.html-->
+      <item> default-domain </item>
+      <item> option </item>
+      <item> envvar </item>
+      <item> program </item>
+      <item> describe </item>
+      <item> object </item>
+    </list>
+    <list name="sphinx-options">
+      <!--http://www.sphinx-doc.org/en/stable/markup/toctree.html-->
+      <item> maxdepth </item>
+      <item> numbered </item>
+      <item> caption </item>
+      <item> name </item>
+      <item> titlesonly </item>
+      <item> glob </item>
+      <item> reversed </item>
+      <item> hidden </item>
+      <item> includehidden </item>
+      <!--http://www.sphinx-doc.org/en/stable/markup/code.html-->
+      <item> linenothreshold </item>
+      <item> linenos </item>
+      <item> emphasize-lines </item>
+      <item> language </item>
+      <item> encoding </item>
+      <item> pyobject </item>
+      <item> lines </item>
+      <item> diff </item>
+      <item> dedent </item>
+    </list>
+
+    <contexts>
+      <context name="Normal" attribute="Normal" lineEndContext="#stay">
+        <RegExpr attribute="Bold" context="#stay" String="&inlinestart;\*\*[^\s].*\*\*&inlineend;" minimal="true"/>
+        <RegExpr attribute="Italic" context="#stay" String="&inlinestart;\*[^\s].*\*&inlineend;" minimal="true"/>
+        <IncludeRules context="InlineMarkup"/>
+        <RegExpr attribute="Footnote" context="#stay" String="^\s*\.\. \[(\d+|#|\*|#[&SimpleReferenceNameChars;]+)\]\s" minimal="true" column="0"/>
+        <RegExpr attribute="Citation" context="#stay" String="^\s*\.\. \[[&SimpleReferenceNameChars;]+\]\s" minimal="true" column="0"/>
+        <RegExpr attribute="HyperlinkTarget" context="#stay" String="^\s*(\.\. (__:|_[&SimpleReferenceNameChars; ]+:(\s|$))|__ )" minimal="true" column="0"/>
+        <RegExpr attribute="SubstitutionDefinition" context="#stay" String="^\s*\.\. \|[&SimpleReferenceNameChars; ]+\|\s+[&SimpleReferenceNameChars;]+::\s" minimal="true" column="0"/>
+        <RegExpr attribute="Field" String=":(?=([^:]*\\:)*[^:]*:(\s|$))" context="Field" firstNonSpace="true"/>
+        <RegExpr attribute="Comment" context="Comment" String="^(\s*)\.\.\s(?![\w-_\.]+::(\s|$))" column="0"/>
+        <RegExpr attribute="Directive" context="Directive" String="^\s*\.\. (?=[\w-_\.]+(:[\w-_\.]+)*::(\s|$))" minimal="true" column="0"/>
+        <RegExpr attribute="Code" String="::$" context="CodeBlockRaw" />
+      </context>
+
+      <context name="InlineMarkup" attribute="Normal" lineEndContext="#stay">
+        <RegExpr attribute="InlineLiteral" context="#stay" String="&inlinestart;``[^\s].*``&inlineend;" minimal="true"/>
+        <RegExpr attribute="SubstitutionReference" context="#stay" String="&inlinestart;\|[^\s].*\|&inlineend;" minimal="true"/>
+        <RegExpr attribute="InlineInternalTarget" context="#stay" String="&inlinestart;_`[^\s].*`&inlineend;" minimal="true"/>
+        <RegExpr attribute="FootnoteReference" context="#stay" String="&inlinestart;\[[&SimpleReferenceNameChars;]+\]_&inlineend;" minimal="true"/>
+        <RegExpr attribute="HyperlinkReference" context="#stay" String="&inlinestart;`[^\s].*`_&inlineend;" minimal="true"/>
+        <RegExpr attribute="HyperlinkReference" context="#stay" String="&inlinestart;\w+_&inlineend;" minimal="true"/>
+        <RegExpr attribute="InterpretedText" context="TrailingRole" String="&inlinestart;`[^\s].*`(?=:[\w-_\.\+]+:)" minimal="true"/>
+        <RegExpr attribute="Role" String=":([\w-_\.\+]+)(:[\w-_\.\+]+)*:(?=`)" context="Role"/>
+      </context>
+
+      <context name="Field" attribute="Field" lineEndContext="#stay">
+        <keyword attribute="Standard Option" context="#stay" String="options" />
+        <keyword attribute="Sphinx Directive Option" context="#stay" String="sphinx-options" />
+        <DetectChar attribute="Field" context="#pop" char=":"/>
+        <Detect2Chars attribute="Field" context="#stay" char="\" char1=":"/>
+        <RegExpr attribute="FieldBold" context="#stay" String="&inlinestart;\*\*[^\s].*\*\*&inlineend;" minimal="true"/>
+        <RegExpr attribute="FieldItalic" context="#stay" String="&inlinestart;\*[^\s].*\*&inlineend;" minimal="true"/>
+        <IncludeRules context="InlineMarkup"/>
+      </context>
+
+      <context name="InterpretedText" attribute="InterpretedText" lineEndContext="#pop">
+        <DetectChar attribute="InterpretedText" char="`" context="#pop" />
+      </context>
+
+      <context name="Directive" attribute="Directive" lineEndContext="#pop">
+        <RegExpr attribute="Sphinx Directive" String="code-block" context="CodeBlock"/>
+        <RegExpr attribute="Standard Directive" String="code" context="CodeBlock"/>
+        <keyword attribute="Standard Directive" context="#stay" String="directives" />
+        <keyword attribute="Sphinx Directive" context="#stay" String="sphinx-directives" />
+        <RegExpr attribute="Directive" String="[\w-_\.\+]+(:[\w-_\.\+]+)" context="#stay"/>
+        <Detect2Chars context="#pop" char=":" char1=":" attribute="Directive" />
+      </context>
+
+      <context name="Role" attribute="Role" lineEndContext="#pop">
+        <DetectChar attribute="InterpretedText" char="`" context="#pop!InterpretedText" />
+      </context>
+
+      <context name="TrailingRole" attribute="Role" lineEndContext="#pop">
+        <RegExpr attribute="Role" String=":[\w-_\.\+]+:" context="#pop"/>
+      </context>
+
+      <context name="Comment" attribute="Comment" lineEndContext="#stay" dynamic="true">
+        <RegExpr attribute="Code" String="^%1   " context="#stay" column="0" dynamic="true"/>
+        <RegExpr attribute="Normal" String="^(.|$)" lookAhead="true" column="0" context="#pop"/>
+        <IncludeRules context="##Alerts"/>
+      </context>
+
+      <context name="CodeBlock" attribute="Normal" lineEndContext="#stay">
+        <Detect2Chars context="#stay" char=":" char1=":" attribute="Directive" />
+        <RegExpr attribute="Field" String="\s+:(?=([^:]*\\:)*[^:]*:(\s|$))" context="Field" firstNonSpace="true" />
+        <RegExpr attribute="Bold" context="#stay" String="&inlinestart;\*\*[^\s].*\*\*&inlineend;" minimal="true"/>
+        <RegExpr attribute="Italic" context="#stay" String="&inlinestart;\*[^\s].*\*&inlineend;" minimal="true"/>
+        <RegExpr attribute="Code" String="^(\s+)(?=\S)" context="Code" column="0"/>
+      </context>
+
+      <context name="CodeBlockRaw" attribute="Code" lineEndContext="#stay">
+        <RegExpr attribute="Code" String="^(\s+)(?=\S)" context="Code" column="0"/>
+      </context>
+
+      <context name="Code" attribute="Code" lineEndContext="#stay" dynamic="true">
+        <RegExpr attribute="Code" String="^%1" context="#stay" column="0" dynamic="true"/>
+        <RegExpr attribute="Normal" String="^(.|$)" lookAhead="true" context="#pop#pop" column="0"/>
+      </context>
+    </contexts>
+
+    <itemDatas>
+      <itemData name="Normal" defStyleNum="dsNormal" />
+      <itemData name="Bold" defStyleNum="dsNormal" bold="1" />
+      <itemData name="Italic" defStyleNum="dsNormal" italic="1" />
+      <itemData name="InlineLiteral" defStyleNum="dsDataType" />
+      <itemData name="SubstitutionReference" defStyleNum="dsFunction" />
+      <itemData name="InlineInternalTarget" defStyleNum="dsFunction" />
+      <itemData name="FootnoteReference" defStyleNum="dsOthers" />
+      <itemData name="InterpretedText" defStyleNum="dsDecVal" />
+      <itemData name="HyperlinkReference" defStyleNum="dsOthers" />
+      <itemData name="Footnote" defStyleNum="dsDataType" />
+      <itemData name="Citation" defStyleNum="dsDataType" />
+      <itemData name="HyperlinkTarget" defStyleNum="dsDataType" />
+      <itemData name="SubstitutionDefinition" defStyleNum="dsDataType" />
+      <itemData name="Role" defStyleNum="dsKeyword" />
+      <itemData name="Directive" defStyleNum="dsDataType" />
+      <itemData name="Standard Directive" defStyleNum="dsBaseN" />
+      <itemData name="Sphinx Directive" defStyleNum="dsOthers" />
+      <itemData name="Field" defStyleNum="dsFunction" />
+      <itemData name="FieldBold" defStyleNum="dsFunction" bold="1" />
+      <itemData name="FieldItalic" defStyleNum="dsFunction" italic="1" />
+      <itemData name="Standard Directive Option" defStyleNum="dsBaseN" />
+      <itemData name="Sphinx Directive Option" defStyleNum="dsOthers" />
+      <itemData name="Code" defStyleNum="dsDataType" />
+      <itemData name="Comment" defStyleNum="dsComment" />
+    </itemDatas>
+
+  </highlighting>
+
+  <general>
+    <folding indentationsensitive="true" />
+    <comments>
+      <comment name="singleLine" start=".."/>
+    </comments>
+  </general>
+
+</language>
+<!-- kate: indent-width 2; tab-width 2; -->
