@@ -17,11 +17,15 @@ reStructuredText:FootnoteReference=9,ff78b753,ff78b753,0,0,0,0,,,,---
 reStructuredText:HyperlinkReference=9,ff78b753,ff78b753,0,0,0,0,,,,---
 reStructuredText:HyperlinkTarget=2,ffa32c2c,ffa32c2c,0,0,0,0,,,,---
 reStructuredText:InlineInternalTarget=11,ff5a63a5,ff5a63a5,0,0,0,0,,,,---
-reStructuredText:InlineLiteral=7,ffcc6699,ffcc6699,0,0,0,0,,,,---
+reStructuredText:InlineLiteral=7,ffc85064,ffc85064,0,0,0,0,,,,---
 reStructuredText:InterpretedText=3,ff4086c0,ff4086c0,0,0,0,0,,,,---
 reStructuredText:Italic=0,ffcacaca,ffcacaca,0,1,0,0,,,,---
 reStructuredText:Normal=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
 reStructuredText:Role=0,ffc8b40a,ffc8b40a,1,0,0,0,,,,---
+reStructuredText:Sphinx Directive=9,ff82b400,ff82b400,0,0,0,0,,,,---
+reStructuredText:Sphinx Directive Option=9,ff587800,ff587800,0,0,0,0,,,,---
+reStructuredText:Standard Directive=4,ffc8b40a,ffc8b40a,0,0,0,0,,,,---
+reStructuredText:Standard Directive Option=4,ff966432,ff966432,0,0,0,0,,,,---
 reStructuredText:SubstitutionDefinition=2,ffa32c2c,ffa32c2c,0,0,0,0,,,,---
 reStructuredText:SubstitutionReference=11,ff5a63a5,ff5a63a5,0,0,0,0,,,,---
 
