@@ -1835,6 +1835,7 @@ project-commands:
     -
         name:  enable_language
         named-args: [OPTIONAL]
+        special-args: [C, CXX, RC, Fortran]
     -
         name:  enable_testing
     -

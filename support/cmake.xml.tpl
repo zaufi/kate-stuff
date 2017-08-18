@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language SYSTEM "language.dtd"
 [
-  <!ENTITY id_re "[_A-Za-z][_0-9A-Za-z]*">
+  <!ENTITY id_re "[_A-Za-z][\-_0-9A-Za-z]*">
 ]>
 <!--
   This file is part of KDE's kate project.
@@ -44,21 +44,21 @@
 
     <list name="commands">
     {%- for command in commands %}
-        <item> {{command.name}} </item>
+        <item>{{command.name}}</item>
     {%- endfor %}
     </list>
     {% for command in commands -%}
       {%- if command.named_args and command.named_args.kw %}
     <list name="{{command.name}}_nargs">
         {%- for arg in command.named_args.kw %}
-      <item> {{arg}} </item>
+      <item>{{arg}}</item>
         {%- endfor %}
     </list>
       {%- endif %}
       {%- if command.special_args and command.special_args.kw %}
     <list name="{{command.name}}_sargs">
         {%- for arg in command.special_args.kw %}
-      <item> {{arg}} </item>
+      <item>{{arg}}</item>
         {%- endfor %}
     </list>
       {%- endif %}
@@ -66,21 +66,21 @@
 
     <list name="variables">
     {%- for var in variables.kw %}
-      <item> {{var}} </item>
+      <item>{{var}}</item>
     {%- endfor %}
     </list>
 
     {%- for kind in properties.kinds %}
     <list name="{{ kind|replace('_', '-') }}">
       {%- for prop in properties[kind].kw %}
-      <item> {{prop}} </item>
+      <item>{{prop}}</item>
       {%- endfor %}
     </list>
     {%- endfor %}
 
     <list name="generator-expressions">
       {%- for expr in generator_expressions %}
-      <item> {{ expr }} </item>
+      <item>{{ expr }}</item>
       {%- endfor %}
     </list>
 

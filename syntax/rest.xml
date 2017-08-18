@@ -18,160 +18,160 @@
 
     <list name="directives">
       <!-- http://docutils.sourceforge.net/docs/ref/rst/directives.html -->
-      <item> attention </item>
-      <item> caution </item>
-      <item> danger </item>
-      <item> error </item>
-      <item> hint </item>
-      <item> important </item>
-      <item> note </item>
-      <item> tip </item>
-      <item> warning </item>
-      <item> admonition </item>
-      <item> image </item>
-      <item> figure </item>
-      <item> topic </item>
-      <item> sidebar </item>
-      <item> line-block </item>
-      <item> parsed-literal </item>
-      <item> code </item>
-      <item> math </item>
-      <item> rubric </item>
-      <item> epigraph </item>
-      <item> highlights </item>
-      <item> pull-quote </item>
-      <item> compound </item>
-      <item> container </item>
-      <item> table </item>
-      <item> csv-table </item>
-      <item> list-table </item>
-      <item> contents </item>
-      <item> sectnum </item>
-      <item> section-numbering </item>
-      <item> header </item>
-      <item> footer </item>
-      <item> target-notes </item>
-      <item> footnotes </item>
-      <item> citations </item>
-      <item> meta </item>
-      <item> replace </item>
-      <item> date </item>
-      <item> include </item>
-      <item> raw </item>
-      <item> class </item>
-      <item> role </item>
-      <item> default-role </item>
-      <item> title </item>
+      <item>attention</item>
+      <item>caution</item>
+      <item>danger</item>
+      <item>error</item>
+      <item>hint</item>
+      <item>important</item>
+      <item>note</item>
+      <item>tip</item>
+      <item>warning</item>
+      <item>admonition</item>
+      <item>image</item>
+      <item>figure</item>
+      <item>topic</item>
+      <item>sidebar</item>
+      <item>line-block</item>
+      <item>parsed-literal</item>
+      <item>code</item>
+      <item>math</item>
+      <item>rubric</item>
+      <item>epigraph</item>
+      <item>highlights</item>
+      <item>pull-quote</item>
+      <item>compound</item>
+      <item>container</item>
+      <item>table</item>
+      <item>csv-table</item>
+      <item>list-table</item>
+      <item>contents</item>
+      <item>sectnum</item>
+      <item>section-numbering</item>
+      <item>header</item>
+      <item>footer</item>
+      <item>target-notes</item>
+      <item>footnotes</item>
+      <item>citations</item>
+      <item>meta</item>
+      <item>replace</item>
+      <item>date</item>
+      <item>include</item>
+      <item>raw</item>
+      <item>class</item>
+      <item>role</item>
+      <item>default-role</item>
+      <item>title</item>
     </list>
     <list name="options">
       <!-- http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#bibliographic-fields -->
-      <item> Author </item>
-      <item> Authors </item>
-      <item> Organization </item>
-      <item> Contact </item>
-      <item> Address </item>
-      <item> Version </item>
-      <item> Status </item>
-      <item> Date </item>
-      <item> Copyright </item>
-      <item> Dedication </item>
-      <item> Abstract </item>
+      <item>Author</item>
+      <item>Authors</item>
+      <item>Organization</item>
+      <item>Contact</item>
+      <item>Address</item>
+      <item>Version</item>
+      <item>Status</item>
+      <item>Date</item>
+      <item>Copyright</item>
+      <item>Dedication</item>
+      <item>Abstract</item>
       <!--
         Options for various directives: http://docutils.sourceforge.net/docs/ref/rst/directives.html
       -->
-      <item> align </item>
-      <item> alt </item>
-      <item> backlinks </item>
-      <item> class </item>
-      <item> code </item>
-      <item> delim </item>
-      <item> depth </item>
-      <item> encoding </item>
-      <item> end-before </item>
-      <item> end-line </item>
-      <item> escape </item>
-      <item> figclass </item>
-      <item> figwidth </item>
-      <item> file </item>
-      <item> header </item>
-      <item> header-rows </item>
-      <item> height </item>
-      <item> keepspace </item>
-      <item> literal </item>
-      <item> local </item>
-      <item> ltrim </item>
-      <item> name </item>
-      <item> number-lines </item>
-      <item> number-lines </item>
-      <item> prefix </item>
-      <item> quote </item>
-      <item> rtrim </item>
-      <item> scale </item>
-      <item> start </item>
-      <item> start-after </item>
-      <item> start-line </item>
-      <item> stub-columns </item>
-      <item> subtitle </item>
-      <item> suffix </item>
-      <item> tab-width </item>
-      <item> target </item>
-      <item> trim </item>
-      <item> url </item>
-      <item> width </item>
-      <item> widths </item>
+      <item>align</item>
+      <item>alt</item>
+      <item>backlinks</item>
+      <item>class</item>
+      <item>code</item>
+      <item>delim</item>
+      <item>depth</item>
+      <item>encoding</item>
+      <item>end-before</item>
+      <item>end-line</item>
+      <item>escape</item>
+      <item>figclass</item>
+      <item>figwidth</item>
+      <item>file</item>
+      <item>header</item>
+      <item>header-rows</item>
+      <item>height</item>
+      <item>keepspace</item>
+      <item>literal</item>
+      <item>local</item>
+      <item>ltrim</item>
+      <item>name</item>
+      <item>number-lines</item>
+      <item>number-lines</item>
+      <item>prefix</item>
+      <item>quote</item>
+      <item>rtrim</item>
+      <item>scale</item>
+      <item>start</item>
+      <item>start-after</item>
+      <item>start-line</item>
+      <item>stub-columns</item>
+      <item>subtitle</item>
+      <item>suffix</item>
+      <item>tab-width</item>
+      <item>target</item>
+      <item>trim</item>
+      <item>url</item>
+      <item>width</item>
+      <item>widths</item>
     </list>
 
     <list name="sphinx-directives">
       <!--http://www.sphinx-doc.org/en/stable/markup/toctree.html-->
-      <item> toctree </item>
+      <item>toctree</item>
       <!--http://www.sphinx-doc.org/en/stable/markup/code.html-->
-      <item> code-block </item>
-      <item> literalinclude </item>
+      <item>code-block</item>
+      <item>literalinclude</item>
       <!--http://www.sphinx-doc.org/en/stable/markup/para.html-->
-      <item> versionadded </item>
-      <item> versionchanged </item>
-      <item> deprecated </item>
-      <item> seealso </item>
-      <item> rubric </item>
-      <item> centered </item>
-      <item> hlist </item>
-      <item> glossary </item>
-      <item> productionlist </item>
+      <item>versionadded</item>
+      <item>versionchanged</item>
+      <item>deprecated</item>
+      <item>seealso</item>
+      <item>rubric</item>
+      <item>centered</item>
+      <item>hlist</item>
+      <item>glossary</item>
+      <item>productionlist</item>
       <!--http://www.sphinx-doc.org/en/stable/markup/misc.html-->
-      <item> sectionauthor </item>
-      <item> codeauthor </item>
-      <item> index </item>
-      <item> only </item>
-      <item> tabularcolumns </item>
+      <item>sectionauthor</item>
+      <item>codeauthor</item>
+      <item>index</item>
+      <item>only</item>
+      <item>tabularcolumns</item>
       <!--http://www.sphinx-doc.org/en/stable/domains.html-->
-      <item> default-domain </item>
-      <item> option </item>
-      <item> envvar </item>
-      <item> program </item>
-      <item> describe </item>
-      <item> object </item>
+      <item>default-domain</item>
+      <item>option</item>
+      <item>envvar</item>
+      <item>program</item>
+      <item>describe</item>
+      <item>object</item>
     </list>
     <list name="sphinx-options">
       <!--http://www.sphinx-doc.org/en/stable/markup/toctree.html-->
-      <item> maxdepth </item>
-      <item> numbered </item>
-      <item> caption </item>
-      <item> name </item>
-      <item> titlesonly </item>
-      <item> glob </item>
-      <item> reversed </item>
-      <item> hidden </item>
-      <item> includehidden </item>
+      <item>maxdepth</item>
+      <item>numbered</item>
+      <item>caption</item>
+      <item>name</item>
+      <item>titlesonly</item>
+      <item>glob</item>
+      <item>reversed</item>
+      <item>hidden</item>
+      <item>includehidden</item>
       <!--http://www.sphinx-doc.org/en/stable/markup/code.html-->
-      <item> linenothreshold </item>
-      <item> linenos </item>
-      <item> emphasize-lines </item>
-      <item> language </item>
-      <item> encoding </item>
-      <item> pyobject </item>
-      <item> lines </item>
-      <item> diff </item>
-      <item> dedent </item>
+      <item>linenothreshold</item>
+      <item>linenos</item>
+      <item>emphasize-lines</item>
+      <item>language</item>
+      <item>encoding</item>
+      <item>pyobject</item>
+      <item>lines</item>
+      <item>diff</item>
+      <item>dedent</item>
     </list>
 
     <contexts>
@@ -183,10 +183,10 @@
         <RegExpr attribute="Citation" context="#stay" String="^\s*\.\. \[[&SimpleReferenceNameChars;]+\]\s" minimal="true" column="0"/>
         <RegExpr attribute="HyperlinkTarget" context="#stay" String="^\s*(\.\. (__:|_[&SimpleReferenceNameChars; ]+:(\s|$))|__ )" minimal="true" column="0"/>
         <RegExpr attribute="SubstitutionDefinition" context="#stay" String="^\s*\.\. \|[&SimpleReferenceNameChars; ]+\|\s+[&SimpleReferenceNameChars;]+::\s" minimal="true" column="0"/>
-        <RegExpr attribute="Field" String=":(?=([^:]*\\:)*[^:]*:(\s|$))" context="Field" firstNonSpace="true"/>
+        <RegExpr attribute="Directive" context="Directive" String="^\s*\.\.\s+(?=[\w-_\.]+(:[\w-_\.]+)*::(\s|$))" minimal="true" column="0"/>
         <RegExpr attribute="Comment" context="Comment" String="^(\s*)\.\.\s(?![\w-_\.]+::(\s|$))" column="0"/>
-        <RegExpr attribute="Directive" context="Directive" String="^\s*\.\. (?=[\w-_\.]+(:[\w-_\.]+)*::(\s|$))" minimal="true" column="0"/>
         <RegExpr attribute="Code" String="::$" context="CodeBlockRaw" />
+        <RegExpr attribute="Field" String=":(?=([^:]*\\:)*[^:]*:(\s|$))" context="Field" firstNonSpace="true"/>
       </context>
 
       <context name="InlineMarkup" attribute="Normal" lineEndContext="#stay">
@@ -201,7 +201,7 @@
       </context>
 
       <context name="Field" attribute="Field" lineEndContext="#stay">
-        <keyword attribute="Standard Option" context="#stay" String="options" />
+        <keyword attribute="Standard Directive Option" context="#stay" String="options" />
         <keyword attribute="Sphinx Directive Option" context="#stay" String="sphinx-options" />
         <DetectChar attribute="Field" context="#pop" char=":"/>
         <Detect2Chars attribute="Field" context="#stay" char="\" char1=":"/>
