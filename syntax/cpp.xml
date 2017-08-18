@@ -14,7 +14,7 @@
     <!ENTITY sign_opt "[\+\-]?">
     <!ENTITY exp "[Ee]&sign_opt;">
     <!-- printf-like format strings conversion specifiers -->
-    <!ENTITY convspec "diouxXeEfFgGaAcsP&#37;">
+    <!ENTITY convspec "diouxXeEfFgGaAcspnm&#37;">
 ]>
 <language
     name="C++"
