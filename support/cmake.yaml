@@ -1751,6 +1751,20 @@ scripting-commands:
           , SHA3_512
           , ASCII
           , CONFIGURE
+          , "@ONLY"
+          , ESCAPE_QUOTES
+          , RANDOM
+          , LENGTH
+          , ALPHABET
+          , RANDOM_SEED
+          , TIMESTAMP
+          , UTC
+          , MAKE_C_IDENTIFIER
+          , UUID
+          , NAMESPACE
+          , NAME
+          , TYPE
+          , UPPER
           ]
     -
         name: unset

@@ -36,6 +36,10 @@ _KW_RE_LIST = ['kw', 're']
 
 
 def try_transform_placeholder_string_to_regex(name):
+    '''
+        TODO Some placeholders are not IDs, but numbers...
+            `CMAKE_MATCH_<N>` 4 example
+    '''
     m = _TEMPLATED_NAME.split(name)
     return '\\b{}\\b'.format('&id_re;'.join(list(m))) if 1 < len(m) else name
 

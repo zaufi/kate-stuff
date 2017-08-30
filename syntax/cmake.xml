@@ -558,12 +558,15 @@
       <item>STRING</item>
     </list>
     <list name="string_nargs">
+      <item>@ONLY</item>
+      <item>ALPHABET</item>
       <item>APPEND</item>
       <item>ASCII</item>
       <item>COMPARE</item>
       <item>CONCAT</item>
       <item>CONFIGURE</item>
       <item>EQUAL</item>
+      <item>ESCAPE_QUOTES</item>
       <item>FIND</item>
       <item>GENEX_STRIP</item>
       <item>GREATER</item>
@@ -571,10 +574,15 @@
       <item>LENGTH</item>
       <item>LESS</item>
       <item>LESS_EQUAL</item>
+      <item>MAKE_C_IDENTIFIER</item>
       <item>MATCH</item>
       <item>MATCHALL</item>
       <item>MD5</item>
+      <item>NAME</item>
+      <item>NAMESPACE</item>
       <item>NOTEQUAL</item>
+      <item>RANDOM</item>
+      <item>RANDOM_SEED</item>
       <item>REGEX</item>
       <item>REPLACE</item>
       <item>REVERSE</item>
@@ -589,8 +597,13 @@
       <item>SHA512</item>
       <item>STRIP</item>
       <item>SUBSTRING</item>
+      <item>TIMESTAMP</item>
       <item>TOLOWER</item>
       <item>TOUPPER</item>
+      <item>TYPE</item>
+      <item>UPPER</item>
+      <item>UTC</item>
+      <item>UUID</item>
     </list>
     <list name="unset_nargs">
       <item>CACHE</item>
