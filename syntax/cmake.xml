@@ -457,6 +457,7 @@
       <item>INSTALL</item>
       <item>PROPERTY</item>
       <item>SET</item>
+      <item>SOURCE</item>
       <item>TARGET</item>
       <item>TEST</item>
       <item>VARIABLE</item>
@@ -541,6 +542,7 @@
       <item>GLOBAL</item>
       <item>INSTALL</item>
       <item>PROPERTY</item>
+      <item>SOURCE</item>
       <item>TARGET</item>
       <item>TEST</item>
       <item>VARIABLE</item>

@@ -1663,7 +1663,7 @@ scripting-commands:
         named-args: [DIRECTORY, NAME, EXT, NAME_WE, PATH, CACHE, BASE_DIR, ABSOLUTE, REALPATH, PROGRAM, PROGRAM_ARGS]
     -
         name: get_property
-        named-args: [GLOBAL, DIRECTORY, TARGET, DIRECTORY, INSTALL, TEST, CACHE, VARIABLE, PROPERTY, SET, DEFINED, BRIEF_DOCS, FULL_DOCS]
+        named-args: [GLOBAL, DIRECTORY, TARGET, SOURCE, INSTALL, TEST, CACHE, VARIABLE, PROPERTY, SET, DEFINED, BRIEF_DOCS, FULL_DOCS]
         property-args: &get-property [
             global-properties
           , directory-properties
@@ -1707,7 +1707,7 @@ scripting-commands:
         property-args: *get-property
     -
         name: set_property
-        named-args: [GLOBAL, DIRECTORY, TARGET, DIRECTORY, INSTALL, TEST, CACHE, VARIABLE, APPEND, APPEND_STRING, PROPERTY]
+        named-args: [GLOBAL, DIRECTORY, TARGET, DIRECTORY, SOURCE, INSTALL, TEST, CACHE, VARIABLE, APPEND, APPEND_STRING, PROPERTY]
         property-args: *get-property
     -
         name: set
