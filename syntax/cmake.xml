@@ -72,6 +72,7 @@
         <item>get_property</item>
         <item>if</item>
         <item>include</item>
+        <item>include_guard</item>
         <item>list</item>
         <item>macro</item>
         <item>mark_as_advanced</item>
@@ -154,9 +155,28 @@
       <item>AVAILABLE_PHYSICAL_MEMORY</item>
       <item>AVAILABLE_VIRTUAL_MEMORY</item>
       <item>FQDN</item>
+      <item>HAS_AMD_3DNOW</item>
+      <item>HAS_AMD_3DNOW_PLUS</item>
+      <item>HAS_FPU</item>
+      <item>HAS_IA64</item>
+      <item>HAS_MMX</item>
+      <item>HAS_MMX_PLUS</item>
+      <item>HAS_SERIAL_NUMBER</item>
+      <item>HAS_SSE</item>
+      <item>HAS_SSE2</item>
+      <item>HAS_SSE_FP</item>
+      <item>HAS_SSE_MMX</item>
       <item>HOSTNAME</item>
+      <item>IS_64BIT</item>
       <item>NUMBER_OF_LOGICAL_CORES</item>
       <item>NUMBER_OF_PHYSICAL_CORES</item>
+      <item>OS_NAME</item>
+      <item>OS_PLATFORM</item>
+      <item>OS_RELEASE</item>
+      <item>OS_VERSION</item>
+      <item>PROCESSOR_DESCRIPTION</item>
+      <item>PROCESSOR_NAME</item>
+      <item>PROCESSOR_SERIAL_NUMBER</item>
       <item>TOTAL_PHYSICAL_MEMORY</item>
       <item>TOTAL_VIRTUAL_MEMORY</item>
     </list>
@@ -234,6 +254,7 @@
       <item>OUTPUT_QUIET</item>
       <item>OUTPUT_STRIP_TRAILING_WHITESPACE</item>
       <item>OUTPUT_VARIABLE</item>
+      <item>RESULTS_VARIABLE</item>
       <item>RESULT_VARIABLE</item>
       <item>TIMEOUT</item>
       <item>WORKING_DIRECTORY</item>
@@ -498,6 +519,10 @@
       <item>OPTIONAL</item>
       <item>RESULT_VARIABLE</item>
     </list>
+    <list name="include_guard_nargs">
+      <item>DIRECTORY</item>
+      <item>GLOBAL</item>
+    </list>
     <list name="list_nargs">
       <item>APPEND</item>
       <item>EXCLUDE</item>
@@ -583,6 +608,7 @@
       <item>NAME</item>
       <item>NAMESPACE</item>
       <item>NOTEQUAL</item>
+      <item>PREPEND</item>
       <item>RANDOM</item>
       <item>RANDOM_SEED</item>
       <item>REGEX</item>
@@ -841,6 +867,76 @@
       <item>PRIVATE</item>
       <item>PUBLIC</item>
     </list>
+    <list name="target_compile_features_sargs">
+      <item>c_function_prototypes</item>
+      <item>c_restrict</item>
+      <item>c_static_assert</item>
+      <item>c_std_11</item>
+      <item>c_std_90</item>
+      <item>c_std_99</item>
+      <item>c_variadic_macros</item>
+      <item>cxx_aggregate_default_initializers</item>
+      <item>cxx_alias_templates</item>
+      <item>cxx_alignas</item>
+      <item>cxx_alignof</item>
+      <item>cxx_attribute_deprecated</item>
+      <item>cxx_attributes</item>
+      <item>cxx_auto_type</item>
+      <item>cxx_binary_literals</item>
+      <item>cxx_constexpr</item>
+      <item>cxx_contextual_conversions</item>
+      <item>cxx_decltype</item>
+      <item>cxx_decltype_auto</item>
+      <item>cxx_decltype_incomplete_return_types</item>
+      <item>cxx_default_function_template_args</item>
+      <item>cxx_defaulted_functions</item>
+      <item>cxx_defaulted_move_initializers</item>
+      <item>cxx_delegating_constructors</item>
+      <item>cxx_deleted_functions</item>
+      <item>cxx_digit_separators</item>
+      <item>cxx_enum_forward_declarations</item>
+      <item>cxx_explicit_conversions</item>
+      <item>cxx_extended_friend_declarations</item>
+      <item>cxx_extern_templates</item>
+      <item>cxx_final</item>
+      <item>cxx_func_identifier</item>
+      <item>cxx_generalized_initializers</item>
+      <item>cxx_generic_lambdas</item>
+      <item>cxx_inheriting_constructors</item>
+      <item>cxx_inline_namespaces</item>
+      <item>cxx_lambda_init_captures</item>
+      <item>cxx_lambdas</item>
+      <item>cxx_local_type_template_args</item>
+      <item>cxx_long_long_type</item>
+      <item>cxx_noexcept</item>
+      <item>cxx_nonstatic_member_init</item>
+      <item>cxx_nullptr</item>
+      <item>cxx_override</item>
+      <item>cxx_range_for</item>
+      <item>cxx_raw_string_literals</item>
+      <item>cxx_reference_qualified_functions</item>
+      <item>cxx_relaxed_constexpr</item>
+      <item>cxx_return_type_deduction</item>
+      <item>cxx_right_angle_brackets</item>
+      <item>cxx_rvalue_references</item>
+      <item>cxx_sizeof_member</item>
+      <item>cxx_static_assert</item>
+      <item>cxx_std_11</item>
+      <item>cxx_std_14</item>
+      <item>cxx_std_17</item>
+      <item>cxx_std_98</item>
+      <item>cxx_strong_enums</item>
+      <item>cxx_template_template_parameters</item>
+      <item>cxx_thread_local</item>
+      <item>cxx_trailing_return_types</item>
+      <item>cxx_unicode_literals</item>
+      <item>cxx_uniform_initialization</item>
+      <item>cxx_unrestricted_unions</item>
+      <item>cxx_user_literals</item>
+      <item>cxx_variable_templates</item>
+      <item>cxx_variadic_macros</item>
+      <item>cxx_variadic_templates</item>
+    </list>
     <list name="target_compile_options_nargs">
       <item>BEFORE</item>
       <item>INTERFACE</item>
@@ -1047,6 +1143,7 @@
       <item>CMAKE_CACHE_PATCH_VERSION</item>
       <item>CMAKE_CFG_INTDIR</item>
       <item>CMAKE_CL_64</item>
+      <item>CMAKE_CODEBLOCKS_EXCLUDE_EXTERNAL_FILES</item>
       <item>CMAKE_CODELITE_USE_TARGETS</item>
       <item>CMAKE_COLOR_MAKEFILE</item>
       <item>CMAKE_COMMAND</item>
@@ -1079,6 +1176,7 @@
       <item>CMAKE_DEBUG_POSTFIX</item>
       <item>CMAKE_DEBUG_TARGET_PROPERTIES</item>
       <item>CMAKE_DEPENDS_IN_PROJECT_ONLY</item>
+      <item>CMAKE_DIRECTORY_LABELS</item>
       <item>CMAKE_DL_LIBS</item>
       <item>CMAKE_ECLIPSE_GENERATE_LINKED_RESOURCES</item>
       <item>CMAKE_ECLIPSE_GENERATE_SOURCE_PROJECT</item>
@@ -1359,6 +1457,7 @@
       <item>CPACK_DEBIAN_PACKAGE_DEPENDS</item>
       <item>CPACK_DEBIAN_PACKAGE_DESCRIPTION</item>
       <item>CPACK_DEBIAN_PACKAGE_ENHANCES</item>
+      <item>CPACK_DEBIAN_PACKAGE_EPOCH</item>
       <item>CPACK_DEBIAN_PACKAGE_GENERATE_SHLIBS</item>
       <item>CPACK_DEBIAN_PACKAGE_GENERATE_SHLIBS_POLICY</item>
       <item>CPACK_DEBIAN_PACKAGE_HOMEPAGE</item>
@@ -1505,6 +1604,7 @@
       <item>CPACK_RPM_PACKAGE_CONFLICTS</item>
       <item>CPACK_RPM_PACKAGE_DEBUG</item>
       <item>CPACK_RPM_PACKAGE_DESCRIPTION</item>
+      <item>CPACK_RPM_PACKAGE_EPOCH</item>
       <item>CPACK_RPM_PACKAGE_GROUP</item>
       <item>CPACK_RPM_PACKAGE_LICENSE</item>
       <item>CPACK_RPM_PACKAGE_NAME</item>
@@ -1611,6 +1711,7 @@
       <item>CTEST_GIT_UPDATE_OPTIONS</item>
       <item>CTEST_HG_COMMAND</item>
       <item>CTEST_HG_UPDATE_OPTIONS</item>
+      <item>CTEST_LABELS_FOR_SUBPROJECTS</item>
       <item>CTEST_MEMORYCHECK_COMMAND</item>
       <item>CTEST_MEMORYCHECK_COMMAND_OPTIONS</item>
       <item>CTEST_MEMORYCHECK_SANITIZER_OPTIONS</item>
@@ -1763,6 +1864,7 @@
       <item>INCLUDE_DIRECTORIES</item>
       <item>INCLUDE_REGULAR_EXPRESSION</item>
       <item>INTERPROCEDURAL_OPTIMIZATION</item>
+      <item>LABELS</item>
       <item>LINK_DIRECTORIES</item>
       <item>LISTFILE_STACK</item>
       <item>MACROS</item>
@@ -1773,6 +1875,7 @@
       <item>SOURCE_DIR</item>
       <item>SUBDIRECTORIES</item>
       <item>TEST_INCLUDE_FILE</item>
+      <item>TEST_INCLUDE_FILES</item>
       <item>VARIABLES</item>
       <item>VS_STARTUP_PROJECT</item>
     </list>
@@ -1988,7 +2091,9 @@
       <item>VS_SHADER_ENTRYPOINT</item>
       <item>VS_SHADER_FLAGS</item>
       <item>VS_SHADER_MODEL</item>
+      <item>VS_SHADER_OUTPUT_HEADER_FILE</item>
       <item>VS_SHADER_TYPE</item>
+      <item>VS_SHADER_VARIABLE_NAME</item>
       <item>VS_TOOL_OVERRIDE</item>
       <item>VS_XAML_TYPE</item>
       <item>WRAP_EXCLUDE</item>
@@ -2125,6 +2230,7 @@
         <WordDetect String="get_property" insensitive="true" attribute="Command" context="get_property_ctx" />
         <WordDetect String="if" insensitive="true" attribute="Command" context="if_ctx" />
         <WordDetect String="include" insensitive="true" attribute="Command" context="include_ctx" />
+        <WordDetect String="include_guard" insensitive="true" attribute="Command" context="include_guard_ctx" />
         <WordDetect String="list" insensitive="true" attribute="Command" context="list_ctx" />
         <WordDetect String="macro" insensitive="true" attribute="Command" context="macro_ctx" />
         <WordDetect String="mark_as_advanced" insensitive="true" attribute="Command" context="mark_as_advanced_ctx" />
@@ -2451,6 +2557,14 @@
       <context attribute="Normal Text" lineEndContext="#stay" name="include_ctx_op">
         <IncludeRules context="EndCmdPop2" />
         <keyword attribute="Named Args" context="#stay" String="include_nargs" />
+        <IncludeRules context="User Function Args" />
+      </context>
+      <context attribute="Normal Text" lineEndContext="#stay" name="include_guard_ctx">
+        <DetectChar attribute="Normal Text" context="include_guard_ctx_op" char="(" />
+      </context>
+      <context attribute="Normal Text" lineEndContext="#stay" name="include_guard_ctx_op">
+        <IncludeRules context="EndCmdPop2" />
+        <keyword attribute="Named Args" context="#stay" String="include_guard_nargs" />
         <IncludeRules context="User Function Args" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="list_ctx">
@@ -2906,6 +3020,7 @@
       <context attribute="Normal Text" lineEndContext="#stay" name="target_compile_features_ctx_op">
         <IncludeRules context="EndCmdPop2" />
         <keyword attribute="Named Args" context="#stay" String="target_compile_features_nargs" />
+        <keyword attribute="Special Args" context="#stay" String="target_compile_features_sargs" />
         <IncludeRules context="User Function Args" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="target_compile_options_ctx">
@@ -3088,6 +3203,7 @@
         <RegExpr attribute="Property" context="#stay" String="\bINTERPROCEDURAL_OPTIMIZATION_&id_re;\b" />
         <RegExpr attribute="Property" context="#stay" String="\b&id_re;_CLANG_TIDY\b" />
         <RegExpr attribute="Property" context="#stay" String="\b&id_re;_COMPILER_LAUNCHER\b" />
+        <RegExpr attribute="Property" context="#stay" String="\b&id_re;_CPPCHECK\b" />
         <RegExpr attribute="Property" context="#stay" String="\b&id_re;_CPPLINT\b" />
         <RegExpr attribute="Property" context="#stay" String="\b&id_re;_INCLUDE_WHAT_YOU_USE\b" />
         <RegExpr attribute="Property" context="#stay" String="\b&id_re;_VISIBILITY_PRESET\b" />
@@ -3106,6 +3222,7 @@
         <RegExpr attribute="Property" context="#stay" String="\bRUNTIME_OUTPUT_NAME_&id_re;\b" />
         <RegExpr attribute="Property" context="#stay" String="\bSTATIC_LIBRARY_FLAGS_&id_re;\b" />
         <RegExpr attribute="Property" context="#stay" String="\bVS_DOTNET_REFERENCE_&id_re;\b" />
+        <RegExpr attribute="Property" context="#stay" String="\bVS_DOTNET_REFERENCEPROP_&id_re;_TAG_&id_re;\b" />
         <RegExpr attribute="Property" context="#stay" String="\bVS_GLOBAL_&id_re;\b" />
         <RegExpr attribute="Property" context="#stay" String="\bXCODE_ATTRIBUTE_&id_re;\b" />
       </context>
@@ -3183,6 +3300,7 @@
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_&id_re;_COMPILER_TARGET\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_&id_re;_COMPILER_VERSION\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_&id_re;_COMPILE_OBJECT\b" />
+        <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_&id_re;_CPPCHECK\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_&id_re;_CPPLINT\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_&id_re;_CREATE_SHARED_LIBRARY\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_&id_re;_CREATE_SHARED_MODULE\b" />

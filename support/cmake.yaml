@@ -57,6 +57,7 @@ directory-properties:
     - INCLUDE_REGULAR_EXPRESSION
     - INTERPROCEDURAL_OPTIMIZATION_<CONFIG>
     - INTERPROCEDURAL_OPTIMIZATION
+    - LABELS                                                # Since 3.10
     - LINK_DIRECTORIES
     - LISTFILE_STACK
     - MACROS
@@ -67,6 +68,7 @@ directory-properties:
     - SOURCE_DIR
     - SUBDIRECTORIES
     - TEST_INCLUDE_FILE
+    - TEST_INCLUDE_FILES                                    # Since 3.10
     - VARIABLES
     - VS_GLOBAL_SECTION_POST_<section>
     - VS_GLOBAL_SECTION_PRE_<section>
@@ -202,6 +204,7 @@ target-properties:
     - LABELS
     - <LANG>_CLANG_TIDY
     - <LANG>_COMPILER_LAUNCHER
+    - <LANG>_CPPCHECK                                       # Since 3.10
     - <LANG>_CPPLINT
     - <LANG>_INCLUDE_WHAT_YOU_USE
     - <LANG>_VISIBILITY_PRESET
@@ -268,6 +271,7 @@ target-properties:
     - VS_DEBUGGER_WORKING_DIRECTORY
     - VS_DESKTOP_EXTENSIONS_VERSION
     - VS_DOTNET_REFERENCE_<refname>
+    - VS_DOTNET_REFERENCEPROP_<refname>_TAG_<tagname>       # Since 3.10
     - VS_DOTNET_REFERENCES
     - VS_DOTNET_REFERENCES_COPY_LOCAL
     - VS_DOTNET_TARGET_FRAMEWORK_VERSION
@@ -351,7 +355,9 @@ source-properties:
     - VS_SHADER_ENTRYPOINT
     - VS_SHADER_FLAGS
     - VS_SHADER_MODEL
+    - VS_SHADER_OUTPUT_HEADER_FILE                          # Since 3.10
     - VS_SHADER_TYPE
+    - VS_SHADER_VARIABLE_NAME                               # Since 3.10
     - VS_TOOL_OVERRIDE
     - VS_XAML_TYPE
     - WRAP_EXCLUDE
@@ -450,6 +456,7 @@ variables:
     - CMAKE_CURRENT_LIST_FILE
     - CMAKE_CURRENT_LIST_LINE
     - CMAKE_CURRENT_SOURCE_DIR
+    - CMAKE_DIRECTORY_LABELS                                # Since 3.10
     - CMAKE_DL_LIBS
     - CMAKE_EDIT_COMMAND
     - CMAKE_EXECUTABLE_SUFFIX
@@ -532,6 +539,7 @@ variables:
     - CMAKE_AUTOMOC_RELAXED_MODE
     - CMAKE_BACKWARDS_COMPATIBILITY
     - CMAKE_BUILD_TYPE
+    - CMAKE_CODEBLOCKS_EXCLUDE_EXTERNAL_FILES               # Since 3.10
     - CMAKE_CODELITE_USE_TARGETS
     - CMAKE_COLOR_MAKEFILE
     - CMAKE_CONFIGURATION_TYPES
@@ -701,6 +709,7 @@ variables:
     - CMAKE_IOS_INSTALL_COMBINED
     - CMAKE_<LANG>_CLANG_TIDY
     - CMAKE_<LANG>_COMPILER_LAUNCHER
+    - CMAKE_<LANG>_CPPCHECK                                 # Since 3.10
     - CMAKE_<LANG>_CPPLINT
     - CMAKE_<LANG>_INCLUDE_WHAT_YOU_USE
     - CMAKE_<LANG>_VISIBILITY_PRESET
@@ -869,6 +878,7 @@ variables:
     - CTEST_GIT_UPDATE_OPTIONS
     - CTEST_HG_COMMAND
     - CTEST_HG_UPDATE_OPTIONS
+    - CTEST_LABELS_FOR_SUBPROJECTS                          # Since 3.10
     - CTEST_MEMORYCHECK_COMMAND
     - CTEST_MEMORYCHECK_COMMAND_OPTIONS
     - CTEST_MEMORYCHECK_SANITIZER_OPTIONS
@@ -1012,6 +1022,7 @@ variables:
     - CPACK_DEBIAN_<COMPONENT>_PACKAGE_NAME
     - CPACK_DEBIAN_FILE_NAME
     - CPACK_DEBIAN_<COMPONENT>_FILE_NAME
+    - CPACK_DEBIAN_PACKAGE_EPOCH                            # Since 3.10
     - CPACK_DEBIAN_PACKAGE_VERSION
     - CPACK_DEBIAN_PACKAGE_RELEASE
     - CPACK_DEBIAN_PACKAGE_ARCHITECTURE
@@ -1149,6 +1160,7 @@ variables:
     - CPACK_RPM_FILE_NAME
     - CPACK_RPM_<COMPONENT>_FILE_NAME
     - CPACK_RPM_MAIN_COMPONENT
+    - CPACK_RPM_PACKAGE_EPOCH                               # Since 3.10
     - CPACK_RPM_PACKAGE_VERSION
     - CPACK_RPM_PACKAGE_ARCHITECTURE
     - CPACK_RPM_<COMPONENT>_PACKAGE_ARCHITECTURE
@@ -1403,6 +1415,26 @@ scripting-commands:
           , AVAILABLE_VIRTUAL_MEMORY
           , TOTAL_PHYSICAL_MEMORY
           , AVAILABLE_PHYSICAL_MEMORY
+            # Since 3.10
+          , IS_64BIT
+          , HAS_FPU
+          , HAS_MMX
+          , HAS_MMX_PLUS
+          , HAS_SSE
+          , HAS_SSE2
+          , HAS_SSE_FP
+          , HAS_SSE_MMX
+          , HAS_AMD_3DNOW
+          , HAS_AMD_3DNOW_PLUS
+          , HAS_IA64
+          , HAS_SERIAL_NUMBER
+          , PROCESSOR_SERIAL_NUMBER
+          , PROCESSOR_NAME
+          , PROCESSOR_DESCRIPTION
+          , OS_NAME
+          , OS_RELEASE
+          , OS_VERSION
+          , OS_PLATFORM
           ]
     -
         name: cmake_minimum_required
@@ -1481,6 +1513,7 @@ scripting-commands:
           , WORKING_DIRECTORY
           , TIMEOUT
           , RESULT_VARIABLE
+          , RESULTS_VARIABLE                                # Since 3.10
           , OUTPUT_VARIABLE
           , ERROR_VARIABLE
           , INPUT_FILE
@@ -1681,6 +1714,10 @@ scripting-commands:
         name: include
         named-args: [OPTIONAL, RESULT_VARIABLE, NO_POLICY_SCOPE]
     -
+        # Since 3.10
+        name: include_guard
+        named-args: [DIRECTORY, GLOBAL]
+    -
         name: list
         named-args: [LENGTH, GET, APPEND, FILTER, INCLUDE, EXCLUDE, REGEX, FIND, INSERT, REMOVE_ITEM, REMOVE_AT, REMOVE_DUPLICATES, REVERSE, SORT]
     -
@@ -1725,6 +1762,7 @@ scripting-commands:
           , MATCH
           , MATCHALL
           , APPEND
+          , PREPEND                                         # Since 3.10
           , CONCAT
           , TOLOWER
           , TOUPPER
@@ -1961,6 +1999,78 @@ project-commands:
     -
         name:  target_compile_features
         named-args: *target_compile_definitions
+        special-args: [
+            # CMAKE_CXX_KNOWN_FEATURES
+            cxx_std_98
+          , cxx_std_11
+          , cxx_std_14
+          , cxx_std_17
+          , cxx_aggregate_default_initializers
+          , cxx_alias_templates
+          , cxx_alignas
+          , cxx_alignof
+          , cxx_attributes
+          , cxx_attribute_deprecated
+          , cxx_auto_type
+          , cxx_binary_literals
+          , cxx_constexpr
+          , cxx_contextual_conversions
+          , cxx_decltype_incomplete_return_types
+          , cxx_decltype
+          , cxx_decltype_auto
+          , cxx_default_function_template_args
+          , cxx_defaulted_functions
+          , cxx_defaulted_move_initializers
+          , cxx_delegating_constructors
+          , cxx_deleted_functions
+          , cxx_digit_separators
+          , cxx_enum_forward_declarations
+          , cxx_explicit_conversions
+          , cxx_extended_friend_declarations
+          , cxx_extern_templates
+          , cxx_final
+          , cxx_func_identifier
+          , cxx_generalized_initializers
+          , cxx_generic_lambdas
+          , cxx_inheriting_constructors
+          , cxx_inline_namespaces
+          , cxx_lambdas
+          , cxx_lambda_init_captures
+          , cxx_local_type_template_args
+          , cxx_long_long_type
+          , cxx_noexcept
+          , cxx_nonstatic_member_init
+          , cxx_nullptr
+          , cxx_override
+          , cxx_range_for
+          , cxx_raw_string_literals
+          , cxx_reference_qualified_functions
+          , cxx_relaxed_constexpr
+          , cxx_return_type_deduction
+          , cxx_right_angle_brackets
+          , cxx_rvalue_references
+          , cxx_sizeof_member
+          , cxx_static_assert
+          , cxx_strong_enums
+          , cxx_thread_local
+          , cxx_trailing_return_types
+          , cxx_unicode_literals
+          , cxx_uniform_initialization
+          , cxx_unrestricted_unions
+          , cxx_user_literals
+          , cxx_variable_templates
+          , cxx_variadic_macros
+          , cxx_variadic_templates
+          , cxx_template_template_parameters
+            # CMAKE_C_KNOWN_FEATURES¶
+          , c_std_90
+          , c_std_99
+          , c_std_11
+          , c_function_prototypes
+          , c_restrict
+          , c_static_assert
+          , c_variadic_macros
+          ]
     -
         name:  target_compile_options
         named-args: [BEFORE, INTERFACE, PUBLIC, PRIVATE]
