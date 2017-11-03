@@ -1749,7 +1749,7 @@ scripting-commands:
     -
         name: set
         named-args: [PARENT_SCOPE, CACHE, FORCE]
-        special-args: [BOOL, FILEPATH, PATH, STRING, INTERNAL]
+        special-args: [BOOL, FILEPATH, PATH, STRING, INTERNAL, STATIC]
     -
         name: site_name
     -

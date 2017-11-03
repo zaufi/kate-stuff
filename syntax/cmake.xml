@@ -582,6 +582,7 @@
       <item>FILEPATH</item>
       <item>INTERNAL</item>
       <item>PATH</item>
+      <item>STATIC</item>
       <item>STRING</item>
     </list>
     <list name="string_nargs">
