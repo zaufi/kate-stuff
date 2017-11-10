@@ -543,6 +543,9 @@
       <item>CLEAR</item>
       <item>FORCE</item>
     </list>
+    <list name="math_nargs">
+      <item>EXPR</item>
+    </list>
     <list name="message_nargs">
       <item>AUTHOR_WARNING</item>
       <item>DEPRECATION</item>
@@ -2596,6 +2599,7 @@
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="math_ctx_op">
         <IncludeRules context="EndCmdPop2" />
+        <keyword attribute="Named Args" context="#stay" String="math_nargs" />
         <IncludeRules context="User Function Args" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="message_ctx">

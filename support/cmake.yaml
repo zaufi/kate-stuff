@@ -1727,6 +1727,7 @@ scripting-commands:
         named-args: [CLEAR, FORCE]
     -
         name: math
+        named-args: [EXPR]
     -
         name: message
         named-args: [STATUS, WARNING, AUTHOR_WARNING, SEND_ERROR, FATAL_ERROR, DEPRECATION]
