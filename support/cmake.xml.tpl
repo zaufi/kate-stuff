@@ -264,6 +264,7 @@
 
       <context attribute="Generator Expression" lineEndContext="#stay" name="Generator Expression">
         <IncludeRules context="Detect Generator Expressions" />
+        <DetectChar attribute="Comment" context="Comment" char="#" />
         <DetectChar attribute="Generator Expression" context="#pop" char="&gt;" />
         <keyword attribute="Generator Expression Keyword" context="#stay" String="generator-expressions" insensitive="false" />
         <IncludeRules context="Detect Aliased Targets" />
