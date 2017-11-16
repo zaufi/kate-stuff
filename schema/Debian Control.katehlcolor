@@ -1,0 +1,12 @@
+[Highlighting Debian Control - Schema Zaufi::dark]
+Debian Control:Email=9,ff78b753,ff78b753,0,0,0,0,,,,---
+Debian Control:Keyword=1,ff7db8c8,ff7db8c8,1,0,0,0,,,,---
+Debian Control:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
+Debian Control:Value=2,ffcc6699,ffcc6699,0,0,0,0,,,,---
+Debian Control:Variable=9,ffc09050,ffc09050,0,0,0,0,,,,---
+Debian Control:Version=3,ffbebe00,ffbebe00,0,0,0,0,,,,---
+
+[KateHLColors]
+full schema=false
+highlight=Debian Control
+schema=Zaufi::dark
