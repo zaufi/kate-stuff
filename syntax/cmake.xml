@@ -3351,7 +3351,7 @@
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_INTERPROCEDURAL_OPTIMIZATION_&id_re;\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_LIBRARY_OUTPUT_DIRECTORY_&id_re;\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_MAP_IMPORTED_CONFIG_&id_re;\b" />
-        <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_MATCH_&id_re;\b" />
+        <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_MATCH_[0-9]+\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_MODULE_LINKER_FLAGS_&id_re;\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_MODULE_LINKER_FLAGS_&id_re;_INIT\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_PDB_OUTPUT_DIRECTORY_&id_re;\b" />
