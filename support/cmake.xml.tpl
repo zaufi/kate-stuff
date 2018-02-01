@@ -9,7 +9,7 @@
   Copyright 2004 Alexander Neundorf (neundorf@kde.org)
   Copyright 2005 Dominik Haumann (dhdev@gmx.de)
   Copyright 2007,2008,2013,2014 Matthew Woehlke (mw_triad@users.sourceforge.net)
-  Copyright 2013,2014,2015,2017 Alex Turbov (i.zaufi@gmail.com)
+  Copyright 2013-2015,2017-2018 Alex Turbov (i.zaufi@gmail.com)
 
  **********************************************************************
  * This library is free software; you can redistribute it and/or      *
@@ -37,7 +37,7 @@
     extensions="CMakeLists.txt;*.cmake;*.cmake.in"
     style="CMake"
     mimetype="text/x-cmake"
-    author="Alexander Neundorf (neundorf@kde.org)"
+    author="Alex Turbov (i.zaufi@gmail.com)"
     license="LGPLv2+"
   >
   <highlighting>
@@ -173,7 +173,7 @@
         <DetectChar attribute="Normal Text" context="#pop#pop" char=")" />
       </context>
 
-      <context attribute="Normal Text" lineEndContext="#stay" name="User Function">
+      <context attribute="User Function/Macro" lineEndContext="#stay" name="User Function">
         <DetectChar attribute="Normal Text" context="User Function Opened" char="(" />
         <IncludeRules context="EndCmdPop2" />
       </context>
