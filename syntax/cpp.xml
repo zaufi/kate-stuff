@@ -120,6 +120,10 @@
       <item>carries_dependency</item>
       <!-- C++14 -->
       <item>deprecated</item>
+      <!-- C++17 -->
+      <item>fallthrough</item>
+      <item>nodiscard</item>
+      <item>maybe_unused</item>
     </list>
 
     <list name="types">
@@ -408,12 +412,13 @@
         <Detect2Chars attribute="String" context="String" char="u" char1="&quot;" />
         <Detect2Chars attribute="String" context="String" char="L" char1="&quot;" />
         <StringDetect attribute="String" context="String" String="u8&quot;" />
-        <RegExpr attribute="String" context="RawString" String="(u|u8|U|L)?R&quot;([^\(]{0,16})\(" lookAhead="true" />
-        <RegExpr attribute="Error" context="#stay" String="(u|u8|U|L)?R&quot;([^\(]{16,})\(" />
+        <RegExpr attribute="String" context="RawString" String="(u8?|U|L)?R&quot;([^\(]{0,16})\(" lookAhead="true" />
+        <RegExpr attribute="Error" context="#stay" String="(u8?|U|L)?R&quot;([^\(]{16,})\(" />
         <DetectChar attribute="String" context="Char Literal" char="'" />
         <Detect2Chars attribute="String" context="Char Literal" char="L" char1="'" />
         <Detect2Chars attribute="String" context="U-Char Literal" char="u" char1="'" />
         <Detect2Chars attribute="String" context="U-Char Literal" char="U" char1="'" />
+        <StringDetect attribute="String" context="U-Char Literal" String="u8'" />
         <!-- Match GCC extensions -->
         <IncludeRules context="DetectGccExtensions##GCCExtensions" />
         <!-- Match most used namespaces and styles -->
