@@ -160,6 +160,7 @@ target-properties:
     - HAS_CXX
     - IMPLICIT_DEPENDS_INCLUDE_TRANSFORM
     - IMPORTED_CONFIGURATIONS
+    - IMPORTED_GLOBAL                                       # Since 3.11
     - IMPORTED_IMPLIB_<CONFIG>
     - IMPORTED_IMPLIB
     - IMPORTED_LIBNAME_<CONFIG>
@@ -330,10 +331,12 @@ source-properties:
     - AUTORCC_OPTIONS
     - COMPILE_DEFINITIONS
     - COMPILE_FLAGS
+    - COMPILE_OPTIONS                                       # Since 3.11
     - EXTERNAL_OBJECT
     - Fortran_FORMAT
     - GENERATED
     - HEADER_FILE_ONLY
+    - INCLUDE_DIRECTORIES                                   # Since 3.11
     - KEEP_EXTENSION
     - LABELS
     - LANGUAGE
@@ -352,6 +355,8 @@ source-properties:
     - VS_DEPLOYMENT_LOCATION
     - VS_INCLUDE_IN_VSIX
     - VS_RESOURCE_GENERATOR
+    - VS_SHADER_DISABLE_OPTIMIZATIONS                       # Since 3.11
+    - VS_SHADER_ENABLE_DEBUG                                # Since 3.11
     - VS_SHADER_ENTRYPOINT
     - VS_SHADER_FLAGS
     - VS_SHADER_MODEL
@@ -466,6 +471,7 @@ variables:
     - CMAKE_FIND_PACKAGE_SORT_DIRECTION
     - CMAKE_FIND_PACKAGE_SORT_ORDER
     - CMAKE_GENERATOR
+    - CMAKE_GENERATOR_INSTANCE                              # Since 3.11
     - CMAKE_GENERATOR_PLATFORM
     - CMAKE_GENERATOR_TOOLSET
     - CMAKE_HOME_DIRECTORY
@@ -473,6 +479,7 @@ variables:
     - CMAKE_IMPORT_LIBRARY_SUFFIX
     - CMAKE_JOB_POOL_COMPILE
     - CMAKE_JOB_POOL_LINK
+    - CMAKE_JOB_POOLS                                       # Since 3.11
     - CMAKE_<LANG>_COMPILER_AR
     - CMAKE_<LANG>_COMPILER_RANLIB
     - CMAKE_LINK_LIBRARY_SUFFIX
@@ -484,6 +491,8 @@ variables:
     - CMAKE_MATCH_<n>
     - CMAKE_MINIMUM_REQUIRED_VERSION
     - CMAKE_MINOR_VERSION
+    - CMAKE_NETRC                                           # Since 3.11
+    - CMAKE_NETRC_FILE                                      # Since 3.11
     - CMAKE_PARENT_LIST_FILE
     - CMAKE_PATCH_VERSION
     - CMAKE_PROJECT_DESCRIPTION
@@ -539,6 +548,7 @@ variables:
     - CMAKE_AUTOMOC_RELAXED_MODE
     - CMAKE_BACKWARDS_COMPATIBILITY
     - CMAKE_BUILD_TYPE
+    - CMAKE_CODEBLOCKS_COMPILER_ID                          # Since 3.11
     - CMAKE_CODEBLOCKS_EXCLUDE_EXTERNAL_FILES               # Since 3.10
     - CMAKE_CODELITE_USE_TARGETS
     - CMAKE_COLOR_MAKEFILE
@@ -574,6 +584,7 @@ variables:
     - CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE
     - CMAKE_INCLUDE_PATH
     - CMAKE_INSTALL_DEFAULT_COMPONENT_NAME
+    - CMAKE_INSTALL_DEFAULT_DIRECTORY_PERMISSIONS           # Since 3.11
     - CMAKE_INSTALL_MESSAGE
     - CMAKE_INSTALL_PREFIX
     - CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT
@@ -603,6 +614,8 @@ variables:
     - CMAKE_USER_MAKE_RULES_OVERRIDE
     - CMAKE_WARN_DEPRECATED
     - CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION
+    - CMAKE_SUPPRESS_DEVELOPER_WARNINGS                     # Undocumented yet (CMake <= 3.10)
+    - CMAKE_SUPPRESS_DEVELOPER_ERRORS                       # Undocumented yet (CMake <= 3.10)
     # Variables that Describe the System
     - ANDROID
     - APPLE
@@ -648,7 +661,7 @@ variables:
     - WINDOWS_STORE
     - XCODE
     - XCODE_VERSION
-    # Variables that Control the Build¶
+    # Variables that Control the Build
     - CMAKE_ANDROID_ANT_ADDITIONAL_OPTIONS
     - CMAKE_ANDROID_API
     - CMAKE_ANDROID_API_MIN
@@ -690,6 +703,7 @@ variables:
     - CMAKE_COMPILE_PDB_OUTPUT_DIRECTORY
     - CMAKE_COMPILE_PDB_OUTPUT_DIRECTORY_<CONFIG>
     - CMAKE_<CONFIG>_POSTFIX
+    - CMAKE_CUDA_SEPARABLE_COMPILATION                      # Since 3.11
     - CMAKE_DEBUG_POSTFIX
     - CMAKE_ENABLE_EXPORTS
     - CMAKE_EXE_LINKER_FLAGS
@@ -907,6 +921,7 @@ variables:
     - CPACK_COMPONENT_INCLUDE_TOPLEVEL_DIRECTORY
     - CPACK_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION
     - CPACK_INCLUDE_TOPLEVEL_DIRECTORY
+    - CPACK_INSTALL_DEFAULT_DIRECTORY_PERMISSIONS           # Since 3.11
     - CPACK_INSTALL_SCRIPT
     - CPACK_PACKAGING_INSTALL_PREFIX
     - CPACK_SET_DESTDIR
@@ -1106,6 +1121,7 @@ variables:
     - CPACK_IFW_PACKAGE_ALLOW_NON_ASCII_CHARACTERS
     - CPACK_IFW_PACKAGE_ALLOW_SPACE_IN_PATH
     - CPACK_IFW_PACKAGE_CONTROL_SCRIPT
+    - CPACK_IFW_PACKAGE_REMOVE_TARGET_DIR                   # Since 3.11
     - CPACK_IFW_PACKAGE_RESOURCES
     - CPACK_IFW_REPOSITORIES_ALL
     - CPACK_IFW_DOWNLOAD_ALL
@@ -1228,6 +1244,7 @@ variables:
     - CPACK_RPM_<COMPNAME>_DEFAULT_FILE_PERMISSIONS
     - CPACK_RPM_DEFAULT_DIR_PERMISSIONS
     - CPACK_RPM_<COMPNAME>_DEFAULT_DIR_PERMISSIONS
+    - CPACK_RPM_INSTALL_WITH_EXEC                           # Since 3.11
     - CPACK_RPM_DEBUGINFO_PACKAGE
     - CPACK_RPM_<COMPONENT>_DEBUGINFO_PACKAGE
     - CPACK_BUILD_SOURCE_DIRS
@@ -1605,8 +1622,34 @@ scripting-commands:
           , GUARD
           , RESULT_VARIABLE
           , TIMEOUT
+            # Sub-options of UPLOAD/DOWNLOAD since 3.11
+          , NETRC
+          , NETRC_FILE
           ]
-        special-args: [UTF-8, UTF-16LE, UTF-16BE, UTF-32LE, UTF-32B, FUNCTION, FILE, PROCESS]
+        special-args: [
+            UTF-8
+          , UTF-16LE
+          , UTF-16BE
+          , UTF-32LE
+          , UTF-32B
+          , FUNCTION
+          , FILE
+          , PROCESS
+          , OWNER_READ
+          , OWNER_WRITE
+          , OWNER_EXECUTE
+          , GROUP_READ
+          , GROUP_WRITE
+          , GROUP_EXECUTE
+          , WORLD_READ
+          , WORLD_WRITE
+          , WORLD_EXECUTE
+          , SETUID
+          , SETGID
+          , IGNORED                                         # NETRC options since 3.11
+          , OPTIONAL
+          , REQUIRED
+          ]
     -
         name: find_file
         named-args: &find_file [
@@ -1817,9 +1860,9 @@ scripting-commands:
 
 project-commands:
     -
-        name:  add_compile_options
+        name: add_compile_options
     -
-        name:  add_custom_command
+        name: add_custom_command
         named-args: [
             OUTPUT
           , COMMAND
@@ -1841,7 +1884,7 @@ project-commands:
           , POST_BUILD
           ]
     -
-        name:  add_custom_target
+        name: add_custom_target
         named-args: [
             ALL
           , COMMAND
@@ -1858,63 +1901,63 @@ project-commands:
           , SOURCES
           ]
     -
-        name:  add_definitions
+        name: add_definitions
     -
-        name:  add_dependencies
+        name: add_dependencies
     -
-        name:  add_executable
+        name: add_executable
         named-args: [WIN32, MACOSX_BUNDLE, EXCLUDE_FROM_ALL, IMPORTED, GLOBAL, ALIAS]
     -
-        name:  add_library
+        name: add_library
         named-args: [STATIC, SHARED, MODULE, OBJECT, EXCLUDE_FROM_ALL, IMPORTED, UNKNOWN, GLOBAL, ALIAS, INTERFACE]
     -
-        name:  add_subdirectory
+        name: add_subdirectory
         named-args: [EXCLUDE_FROM_ALL]
     -
-        name:  add_test
+        name: add_test
         named-args: [NAME, COMMAND, CONFIGURATIONS, WORKING_DIRECTORY]
     -
-        name:  aux_source_directory
+        name: aux_source_directory
     -
-        name:  build_command
+        name: build_command
         named-args: [CONFIGURATION, TARGET]
     -
-        name:  create_test_sourcelist
+        name: create_test_sourcelist
         named-args: [EXTRA_INCLUDE, FUNCTION]
     -
-        name:  define_property
+        name: define_property
         named-args: [GLOBAL, DIRECTORY, DIRECTORY, SOURCE, TEST, VARIABLE, CACHED_VARIABLE, PROPERTY, INHERITED, BRIEF_DOCS, FULL_DOCS]
         property-args: *get-property
     -
-        name:  enable_language
+        name: enable_language
         named-args: [OPTIONAL]
         special-args: [C, CXX, RC, Fortran]
     -
-        name:  enable_testing
+        name: enable_testing
     -
-        name:  export
+        name: export
         named-args: [EXPORT, NAMESPACE, FILE, TARGETS, APPEND, EXPORT_LINK_INTERFACE_LIBRARIES, ANDROID_MK]
     -
-        name:  fltk_wrap_ui
+        name: fltk_wrap_ui
     -
-        name:  get_source_file_property
+        name: get_source_file_property
         property-args: &get_source_file_property [source-properties]
     -
-        name:  get_target_property
+        name: get_target_property
         property-args: &get_target_property [target-properties]
     -
-        name:  get_test_property
+        name: get_test_property
         property-args: &get_test_property [test-properties]
     -
-        name:  include_directories
+        name: include_directories
         named-args: [AFTER, BEFORE, SYSTEM]
     -
-        name:  include_external_msproject
+        name: include_external_msproject
         named-args: [TYPE, GUID, PLATFORM]
     -
-        name:  include_regular_expression
+        name: include_regular_expression
     -
-        name:  install
+        name: install
         named-args: [
             # Common
             DESTINATION
@@ -1942,7 +1985,7 @@ project-commands:
             # Installing Files
           , FILES
           , PROGRAMS
-            # Installing Directories¶
+            # Installing Directories
           , DIRECTORY
           , FILE_PERMISSIONS
           , DIRECTORY_PERMISSIONS
@@ -1961,44 +2004,57 @@ project-commands:
           , EXPORT_ANDROID_MK
           , EXPORT_LINK_INTERFACE_LIBRARIES
           ]
+        special-args: &valid_permissions [
+            OWNER_READ
+          , OWNER_WRITE
+          , OWNER_EXECUTE
+          , GROUP_READ
+          , GROUP_WRITE
+          , GROUP_EXECUTE
+          , WORLD_READ
+          , WORLD_WRITE
+          , WORLD_EXECUTE
+          , SETUID
+          , SETGID
+          ]
     -
-        name:  link_directories
+        name: link_directories
     -
-        name:  link_libraries
+        name: link_libraries
         named-args: [debug, optimized, general]
     -
-        name:  load_cache
+        name: load_cache
         named-args: [READ_WITH_PREFIX, EXCLUDE, INCLUDE_INTERNALS]
     -
-        name:  project
+        name: project
         named-args: [VERSION, DESCRIPTION, LANGUAGES]
         special-args: [NONE, C, CXX, RC, Fortran]
     -
-        name:  qt_wrap_cpp
+        name: qt_wrap_cpp
     -
-        name:  qt_wrap_ui
+        name: qt_wrap_ui
     -
-        name:  remove_definitions
+        name: remove_definitions
     -
-        name:  set_source_files_properties
+        name: set_source_files_properties
         named-args: [PROPERTIES]
         property-args: *get_source_file_property
     -
-        name:  set_target_properties
+        name: set_target_properties
         named-args: [PROPERTIES]
         property-args: *get_target_property
     -
-        name:  set_tests_properties
+        name: set_tests_properties
         named-args: [PROPERTIES]
         property-args: *get_test_property
     -
-        name:  source_group
+        name: source_group
         named-args: [FILES, REGULAR_EXPRESSION, TREE, PREFIX]
     -
-        name:  target_compile_definitions
+        name: target_compile_definitions
         named-args: &target_compile_definitions [INTERFACE, PUBLIC, PRIVATE]
     -
-        name:  target_compile_features
+        name: target_compile_features
         named-args: *target_compile_definitions
         special-args: [
             # CMAKE_CXX_KNOWN_FEATURES
@@ -2063,7 +2119,7 @@ project-commands:
           , cxx_variadic_macros
           , cxx_variadic_templates
           , cxx_template_template_parameters
-            # CMAKE_C_KNOWN_FEATURES¶
+            # CMAKE_C_KNOWN_FEATURES
           , c_std_90
           , c_std_99
           , c_std_11
@@ -2073,19 +2129,19 @@ project-commands:
           , c_variadic_macros
           ]
     -
-        name:  target_compile_options
+        name: target_compile_options
         named-args: [BEFORE, INTERFACE, PUBLIC, PRIVATE]
     -
-        name:  target_include_directories
+        name: target_include_directories
         named-args: [BEFORE, SYSTEM, INTERFACE, PUBLIC, PRIVATE]
     -
-        name:  target_link_libraries
+        name: target_link_libraries
         named-args: *target_compile_definitions
     -
-        name:  target_sources
+        name: target_sources
         named-args: *target_compile_definitions
     -
-        name:  try_compile
+        name: try_compile
         named-args: [
             RESULT_VAR
           , CMAKE_FLAGS
@@ -2100,7 +2156,7 @@ project-commands:
           , <LANG>_EXTENSIONS
           ]
     -
-        name:  try_run
+        name: try_run
         named-args: [
             RUN_RESULT_VAR
           , COMPILE_RESULT_VAR
@@ -2115,18 +2171,18 @@ project-commands:
 
 ctest-commands:
     -
-        name:  ctest_build
+        name: ctest_build
         named-args: [BUILD, APPEND, CONFIGURATION, FLAGS, PROJECT_NAME, TARGET, NUMBER_ERRORS, NUMBER_WARNINGS, RETURN_VALUE, CAPTURE_CMAKE_ERROR]
     -
-        name:  ctest_configure
+        name: ctest_configure
         named-args: [BUILD, SOURCE, APPEND, OPTIONS, RETURN_VALUE, QUIET, CAPTURE_CMAKE_ERROR]
     -
-        name:  ctest_coverage
+        name: ctest_coverage
         named-args: [BUILD, LABELS, APPEND, RETURN_VALUE, CAPTURE_CMAKE_ERROR, QUIET]
     -
-        name:  ctest_empty_binary_directory
+        name: ctest_empty_binary_directory
     -
-        name:  ctest_memcheck
+        name: ctest_memcheck
         named-args: [
             BUILD
           , APPEND
@@ -2149,20 +2205,20 @@ ctest-commands:
           , QUIET
           ]
     -
-        name:  ctest_read_custom_files
+        name: ctest_read_custom_files
     -
-        name:  ctest_run_script
+        name: ctest_run_script
         named-args: [NEW_PROCESS, RETURN_VALUE]
     -
-        name:  ctest_sleep
+        name: ctest_sleep
     -
-        name:  ctest_start
+        name: ctest_start
         named-args: [TRACK, APPEND, QUIET]
     -
-        name:  ctest_submit
+        name: ctest_submit
         named-args: [PARTS, FILES, HTTPHEADER, RETRY_COUNT, RETRY_DELAY, RETURN_VALUE, QUIET, CDASH_UPLOAD, CDASH_UPLOAD_TYPE]
     -
-        name:  ctest_test
+        name: ctest_test
         named-args: [
             BUILD
           , APPEND
@@ -2185,8 +2241,8 @@ ctest-commands:
           , QUIET
           ]
     -
-        name:  ctest_update
+        name: ctest_update
         named-args: [SOURCE, RETURN_VALUE, QUIET]
     -
-        name:  ctest_upload
+        name: ctest_upload
         named-args: [FILES, CAPTURE_CMAKE_ERROR, QUIET]

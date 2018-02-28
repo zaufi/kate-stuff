@@ -37,7 +37,7 @@
     extensions="CMakeLists.txt;*.cmake;*.cmake.in"
     style="CMake"
     mimetype="text/x-cmake"
-    author="Alexander Neundorf (neundorf@kde.org)"
+    author="Alex Turbov (i.zaufi@gmail.com)"
     license="LGPLv2+"
   >
   <highlighting>
@@ -302,6 +302,8 @@
       <item>LOG</item>
       <item>MAKE_DIRECTORY</item>
       <item>MD5</item>
+      <item>NETRC</item>
+      <item>NETRC_FILE</item>
       <item>NEWLINE_CONSUME</item>
       <item>NO_HEX_CONVERSION</item>
       <item>NO_SOURCE_PERMISSIONS</item>
@@ -345,12 +347,26 @@
     <list name="file_sargs">
       <item>FILE</item>
       <item>FUNCTION</item>
+      <item>GROUP_EXECUTE</item>
+      <item>GROUP_READ</item>
+      <item>GROUP_WRITE</item>
+      <item>IGNORED</item>
+      <item>OPTIONAL</item>
+      <item>OWNER_EXECUTE</item>
+      <item>OWNER_READ</item>
+      <item>OWNER_WRITE</item>
       <item>PROCESS</item>
+      <item>REQUIRED</item>
+      <item>SETGID</item>
+      <item>SETUID</item>
       <item>UTF-16BE</item>
       <item>UTF-16LE</item>
       <item>UTF-32B</item>
       <item>UTF-32LE</item>
       <item>UTF-8</item>
+      <item>WORLD_EXECUTE</item>
+      <item>WORLD_READ</item>
+      <item>WORLD_WRITE</item>
     </list>
     <list name="find_file_nargs">
       <item>CMAKE_FIND_ROOT_PATH_BOTH</item>
@@ -824,6 +840,19 @@
       <item>TARGETS</item>
       <item>USE_SOURCE_PERMISSIONS</item>
     </list>
+    <list name="install_sargs">
+      <item>GROUP_EXECUTE</item>
+      <item>GROUP_READ</item>
+      <item>GROUP_WRITE</item>
+      <item>OWNER_EXECUTE</item>
+      <item>OWNER_READ</item>
+      <item>OWNER_WRITE</item>
+      <item>SETGID</item>
+      <item>SETUID</item>
+      <item>WORLD_EXECUTE</item>
+      <item>WORLD_READ</item>
+      <item>WORLD_WRITE</item>
+    </list>
     <list name="link_libraries_nargs">
       <item>debug</item>
       <item>general</item>
@@ -1147,6 +1176,7 @@
       <item>CMAKE_CACHE_PATCH_VERSION</item>
       <item>CMAKE_CFG_INTDIR</item>
       <item>CMAKE_CL_64</item>
+      <item>CMAKE_CODEBLOCKS_COMPILER_ID</item>
       <item>CMAKE_CODEBLOCKS_EXCLUDE_EXTERNAL_FILES</item>
       <item>CMAKE_CODELITE_USE_TARGETS</item>
       <item>CMAKE_COLOR_MAKEFILE</item>
@@ -1161,6 +1191,7 @@
       <item>CMAKE_CROSSCOMPILING_EMULATOR</item>
       <item>CMAKE_CTEST_COMMAND</item>
       <item>CMAKE_CUDA_EXTENSIONS</item>
+      <item>CMAKE_CUDA_SEPARABLE_COMPILATION</item>
       <item>CMAKE_CUDA_STANDARD</item>
       <item>CMAKE_CUDA_STANDARD_REQUIRED</item>
       <item>CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES</item>
@@ -1223,6 +1254,7 @@
       <item>CMAKE_Fortran_MODOUT_FLAG</item>
       <item>CMAKE_Fortran_MODULE_DIRECTORY</item>
       <item>CMAKE_GENERATOR</item>
+      <item>CMAKE_GENERATOR_INSTANCE</item>
       <item>CMAKE_GENERATOR_PLATFORM</item>
       <item>CMAKE_GENERATOR_TOOLSET</item>
       <item>CMAKE_GNUtoMS</item>
@@ -1251,6 +1283,7 @@
       <item>CMAKE_INSTALL_DEBUG_LIBRARIES</item>
       <item>CMAKE_INSTALL_DEBUG_LIBRARIES_ONLY</item>
       <item>CMAKE_INSTALL_DEFAULT_COMPONENT_NAME</item>
+      <item>CMAKE_INSTALL_DEFAULT_DIRECTORY_PERMISSIONS</item>
       <item>CMAKE_INSTALL_DOCDIR</item>
       <item>CMAKE_INSTALL_FULL_BINDIR</item>
       <item>CMAKE_INSTALL_FULL_DATADIR</item>
@@ -1297,6 +1330,7 @@
       <item>CMAKE_INTERNAL_PLATFORM_ABI</item>
       <item>CMAKE_INTERPROCEDURAL_OPTIMIZATION</item>
       <item>CMAKE_IOS_INSTALL_COMBINED</item>
+      <item>CMAKE_JOB_POOLS</item>
       <item>CMAKE_JOB_POOL_COMPILE</item>
       <item>CMAKE_JOB_POOL_LINK</item>
       <item>CMAKE_LIBRARY_ARCHITECTURE</item>
@@ -1324,6 +1358,8 @@
       <item>CMAKE_MODULE_LINKER_FLAGS</item>
       <item>CMAKE_MODULE_LINKER_FLAGS_INIT</item>
       <item>CMAKE_MODULE_PATH</item>
+      <item>CMAKE_NETRC</item>
+      <item>CMAKE_NETRC_FILE</item>
       <item>CMAKE_NINJA_OUTPUT_PATH_PREFIX</item>
       <item>CMAKE_NOT_USING_CONFIG_FLAGS</item>
       <item>CMAKE_NO_ANSI_FOR_SCOPE</item>
@@ -1508,6 +1544,7 @@
       <item>CPACK_IFW_PACKAGE_MAINTENANCE_TOOL_NAME</item>
       <item>CPACK_IFW_PACKAGE_NAME</item>
       <item>CPACK_IFW_PACKAGE_PUBLISHER</item>
+      <item>CPACK_IFW_PACKAGE_REMOVE_TARGET_DIR</item>
       <item>CPACK_IFW_PACKAGE_RESOURCES</item>
       <item>CPACK_IFW_PACKAGE_START_MENU_DIRECTORY</item>
       <item>CPACK_IFW_PACKAGE_TITLE</item>
@@ -1528,6 +1565,7 @@
       <item>CPACK_INSTALLED_DIRECTORIES</item>
       <item>CPACK_INSTALL_CMAKE_PROJECTS</item>
       <item>CPACK_INSTALL_COMMANDS</item>
+      <item>CPACK_INSTALL_DEFAULT_DIRECTORY_PERMISSIONS</item>
       <item>CPACK_INSTALL_SCRIPT</item>
       <item>CPACK_MONOLITHIC_INSTALL</item>
       <item>CPACK_NSIS_COMPRESSOR</item>
@@ -1599,6 +1637,7 @@
       <item>CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION</item>
       <item>CPACK_RPM_FILE_NAME</item>
       <item>CPACK_RPM_GENERATE_USER_BINARY_SPECFILE_TEMPLATE</item>
+      <item>CPACK_RPM_INSTALL_WITH_EXEC</item>
       <item>CPACK_RPM_MAIN_COMPONENT</item>
       <item>CPACK_RPM_NO_INSTALL_PREFIX_RELOCATION</item>
       <item>CPACK_RPM_PACKAGE_ARCHITECTURE</item>
@@ -1961,6 +2000,7 @@
       <item>IMPLICIT_DEPENDS_INCLUDE_TRANSFORM</item>
       <item>IMPORTED</item>
       <item>IMPORTED_CONFIGURATIONS</item>
+      <item>IMPORTED_GLOBAL</item>
       <item>IMPORTED_IMPLIB</item>
       <item>IMPORTED_LIBNAME</item>
       <item>IMPORTED_LINK_DEPENDENT_LIBRARIES</item>
@@ -2071,10 +2111,12 @@
       <item>AUTOUIC_OPTIONS</item>
       <item>COMPILE_DEFINITIONS</item>
       <item>COMPILE_FLAGS</item>
+      <item>COMPILE_OPTIONS</item>
       <item>EXTERNAL_OBJECT</item>
       <item>Fortran_FORMAT</item>
       <item>GENERATED</item>
       <item>HEADER_FILE_ONLY</item>
+      <item>INCLUDE_DIRECTORIES</item>
       <item>KEEP_EXTENSION</item>
       <item>LABELS</item>
       <item>LANGUAGE</item>
@@ -2092,6 +2134,8 @@
       <item>VS_DEPLOYMENT_LOCATION</item>
       <item>VS_INCLUDE_IN_VSIX</item>
       <item>VS_RESOURCE_GENERATOR</item>
+      <item>VS_SHADER_DISABLE_OPTIMIZATIONS</item>
+      <item>VS_SHADER_ENABLE_DEBUG</item>
       <item>VS_SHADER_ENTRYPOINT</item>
       <item>VS_SHADER_FLAGS</item>
       <item>VS_SHADER_MODEL</item>
@@ -2919,6 +2963,7 @@
       <context attribute="Normal Text" lineEndContext="#stay" name="install_ctx_op">
         <IncludeRules context="EndCmdPop2" />
         <keyword attribute="Named Args" context="#stay" String="install_nargs" />
+        <keyword attribute="Special Args" context="#stay" String="install_sargs" />
         <IncludeRules context="User Function Args" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="link_directories_ctx">

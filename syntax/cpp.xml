@@ -178,13 +178,82 @@
           https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations
           GCC since 4.9 supports some of them.
       -->
+      <!-- C++17 features -->
+      <item>__cpp_hex_float</item>
+      <item>__cpp_inline_variables</item>
+      <item>__cpp_aligned_new</item>
+      <item>__cpp_guaranteed_copy_elision</item>
+      <item>__cpp_noexcept_function_type</item>
+      <item>__cpp_fold_expressions</item>
+      <item>__cpp_capture_star_this</item>
+      <item>__cpp_if_constexpr</item>
+      <item>__cpp_deduction_guides</item>
+      <item>__cpp_nontype_template_parameter_auto</item>
+      <item>__cpp_namespace_attributes</item>
+      <item>__cpp_enumerator_attributes</item>
+      <item>__cpp_variadic_using</item>
+      <item>__cpp_structured_bindings</item>
+      <item>__cpp_aggregate_bases</item>
+      <item>__cpp_nontype_template_args</item>
+      <item>__cpp_template_template_args</item>
+      <item>__cpp_lib_byte</item>
+      <item>__cpp_lib_hardware_interference_size</item>
+      <item>__cpp_lib_launder</item>
+      <item>__cpp_lib_uncaught_exceptions</item>
+      <item>__cpp_lib_as_const</item>
+      <item>__cpp_lib_make_from_tuple</item>
+      <item>__cpp_lib_apply</item>
+      <item>__cpp_lib_optional</item>
+      <item>__cpp_lib_any</item>
+      <item>__cpp_lib_memory_resource</item>
+      <item>__cpp_lib_boyer_moore_searcher</item>
+      <item>__cpp_lib_string_view</item>
+      <item>__cpp_lib_sample</item>
+      <item>__lib_cpp_any</item>
+      <item>__lib_cpp_optional</item>
+      <item>__cpp_lib_variant</item>
+      <item>__cpp_lib_addressof_constexpr</item>
+      <item>__cpp_lib_raw_memory_algorithms</item>
+      <item>__cpp_lib_transparent_operators</item>
+      <item>__cpp_lib_enable_shared_from_this</item>
+      <item>__cpp_lib_shared_ptr_weak_type</item>
+      <item>__cpp_lib_shared_ptr_arrays</item>
+      <item>__cpp_lib_invoke</item>
+      <item>__cpp_lib_not_fn</item>
+      <item>__cpp_lib_void_t</item>
+      <item>__cpp_lib_bool_constant</item>
+      <item>__cpp_lib_type_trait_variable_templates</item>
+      <item>__cpp_lib_logical_traits</item>
+      <item>__cpp_lib_is_swappable</item>
+      <item>__cpp_lib_is_invocable</item>
+      <item>__cpp_lib_has_unique_object_representations</item>
+      <item>__cpp_lib_is_aggregate</item>
+      <item>__cpp_lib_chrono</item>
+      <item>__lib_cpp_execution</item>
+      <item>__cpp_lib_parallel_algorithm</item>
+      <item>__cpp_lib_to_chars</item>
+      <item>__cpp_lib_string_view</item>
+      <item>__cpp_lib_allocator_traits_is_always_equal</item>
+      <item>__cpp_lib_incomplete_container_elements</item>
+      <item>__cpp_lib_map_try_emplace</item>
+      <item>__cpp_lib_unordered_map_try_emplace</item>
+      <item>__cpp_lib_node_extract</item>
+      <item>__cpp_lib_array_constexpr</item>
+      <item>__cpp_lib_nonmember_container_access</item>
+      <item>__cpp_lib_clamp</item>
+      <item>__cpp_lib_gcd_lcm</item>
+      <item>__cpp_lib_hypot</item>
+      <item>__cpp_lib_math_special_functions</item>
+      <item>__cpp_lib_filesystem</item>
+      <item>__cpp_lib_atomic_is_always_lock_free</item>
+      <item>__cpp_lib_shared_mutex</item>
+      <item>__cpp_lib_scoped_lock</item>
       <!-- C++14 features -->
       <item>__cpp_binary_literals</item>
       <item>__cpp_digit_separators</item>
       <item>__cpp_init_captures</item>
       <item>__cpp_generic_lambdas</item>
       <item>__cpp_sized_deallocation</item>
-      <item>__cpp_constexpr</item>
       <item>__cpp_decltype_auto</item>
       <item>__cpp_return_type_deduction</item>
       <item>__cpp_aggregate_nsdmi</item>
@@ -237,82 +306,106 @@
       <item>__has_include_next</item>
     </list>
     <list name="StdHeaders">
-      <item>algorithm</item>
-      <item>array</item>
-      <item>atomic</item>
+      <!-- http://en.cppreference.com/w/cpp/header -->
+      <!-- Utilities library -->
+      <item>cstdlib</item>
+      <item>csignal</item>
+      <item>csetjmp</item>
+      <item>cstdarg</item>
+      <item>typeinfo</item>
+      <item>typeindex</item>
+      <item>type_traits</item>
       <item>bitset</item>
-      <item>cassert</item>
-      <item>ccomplex</item>
-      <item>cctype</item>
-      <item>cerrno</item>
-      <item>cfenv</item>
-      <item>cfloat</item>
+      <item>functional</item>
+      <item>utility</item>
+      <item>ctime</item>
       <item>chrono</item>
-      <item>cinttypes</item>
-      <item>ciso646</item>
+      <item>cstddef</item>
+      <item>initializer_list</item>
+      <item>tuple</item>
+      <item>any</item>
+      <item>optional</item>
+      <item>variant</item>
+      <item>compare</item>
+      <!-- Dynamic memory management -->
+      <item>new</item>
+      <item>memory</item>
+      <item>scoped_allocator</item>
+      <item>memory_resource</item>
+      <!-- Numeric limits -->
       <item>climits</item>
-      <item>clocale</item>
+      <item>cfloat</item>
+      <item>cstdint</item>
+      <item>cinttypes</item>
+      <item>limits</item>
+      <!-- Error handling -->
+      <item>exception</item>
+      <item>stdexcept</item>
+      <item>cassert</item>
+      <item>system_error</item>
+      <item>cerrno</item>
+      <!-- Strings library -->
+      <item>cctype</item>
+      <item>cwctype</item>
+      <item>cstring</item>
+      <item>cwchar</item>
+      <item>cuchar</item>
+      <item>string</item>
+      <item>string_view</item>
+      <item>charconv</item>
+      <!-- Containers library -->
+      <item>array</item>
+      <item>vector</item>
+      <item>deque</item>
+      <item>list</item>
+      <item>forward_list</item>
+      <item>set</item>
+      <item>map</item>
+      <item>unordered_set</item>
+      <item>unordered_map</item>
+      <item>stack</item>
+      <item>queue</item>
+      <!-- Algorithms library -->
+      <item>algorithm</item>
+      <item>execution</item>
+      <!-- Iterators library -->
+      <item>iterator</item>
+      <!-- Numerics library -->
       <item>cmath</item>
       <item>complex</item>
-      <item>condition_variable</item>
-      <item>csetjmp</item>
-      <item>csignal</item>
-      <item>cstdalign</item>
-      <item>cstdarg</item>
-      <item>cstdbool</item>
-      <item>cstddef</item>
-      <item>cstdint</item>
-      <item>cstdio</item>
-      <item>cstdlib</item>
-      <item>cstring</item>
-      <item>ctgmath</item>
-      <item>ctime</item>
-      <item>cwchar</item>
-      <item>cwctype</item>
-      <item>deque</item>
-      <item>exception</item>
-      <item>forward_list</item>
-      <item>fstream</item>
-      <item>functional</item>
-      <item>future</item>
-      <item>initializer_list</item>
-      <item>iomanip</item>
-      <item>ios</item>
-      <item>iosfwd</item>
-      <item>iostream</item>
-      <item>istream</item>
-      <item>iterator</item>
-      <item>limits</item>
-      <item>list</item>
-      <item>locale</item>
-      <item>map</item>
-      <item>memory</item>
-      <item>mutex</item>
-      <item>new</item>
-      <item>numeric</item>
-      <item>ostream</item>
-      <item>queue</item>
-      <item>random</item>
-      <item>ratio</item>
-      <item>regex</item>
-      <item>scoped_allocator</item>
-      <item>set</item>
-      <item>sstream</item>
-      <item>stack</item>
-      <item>stdexcept</item>
-      <item>streambuf</item>
-      <item>string</item>
-      <item>system_error</item>
-      <item>thread</item>
-      <item>tuple</item>
-      <item>typeindex</item>
-      <item>typeinfo</item>
-      <item>type_traits</item>
-      <item>unordered_map</item>
-      <item>unordered_set</item>
-      <item>utility</item>
       <item>valarray</item>
-      <item>vector</item>
+      <item>random</item>
+      <item>numeric</item>
+      <item>ratio</item>
+      <item>cfenv</item>
+      <!-- Input/output library -->
+      <item>iosfwd</item>
+      <item>ios</item>
+      <item>istream</item>
+      <item>ostream</item>
+      <item>iostream</item>
+      <item>fstream</item>
+      <item>sstream</item>
+      <item>syncstream</item>
+      <item>iomanip</item>
+      <item>streambuf</item>
+      <item>cstdio</item>
+      <!-- Localization library -->
+      <item>locale</item>
+      <item>clocale</item>
+      <item>codecvt</item>
+      <!-- Regular Expressions library -->
+      <item>regex<item>
+      <!-- Atomic Operations library -->
+      <item>atomic</item>
+      <!-- Thread support library -->
+      <item>thread</item>
+      <item>mutex</item>
+      <item>shared_mutex</item>
+      <item>future</item>
+      <item>condition_variable</item>
+      <!-- Filesystem library -->
+      <item>filesystem</item>
     </list>
 
     <contexts>
