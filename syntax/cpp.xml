@@ -395,7 +395,7 @@
       <item>clocale</item>
       <item>codecvt</item>
       <!-- Regular Expressions library -->
-      <item>regex<item>
+      <item>regex</item>
       <!-- Atomic Operations library -->
       <item>atomic</item>
       <!-- Thread support library -->
