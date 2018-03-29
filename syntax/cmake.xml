@@ -1409,6 +1409,8 @@
       <item>CMAKE_STATIC_LINKER_FLAGS_INIT</item>
       <item>CMAKE_SUBLIME_TEXT_2_ENV_SETTINGS</item>
       <item>CMAKE_SUBLIME_TEXT_2_EXCLUDE_BUILD_TREE</item>
+      <item>CMAKE_SUPPRESS_DEVELOPER_ERRORS</item>
+      <item>CMAKE_SUPPRESS_DEVELOPER_WARNINGS</item>
       <item>CMAKE_SWIG_FLAGS</item>
       <item>CMAKE_SWIG_OUTDIR</item>
       <item>CMAKE_SYSROOT</item>
