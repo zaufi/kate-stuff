@@ -618,7 +618,7 @@
         <DetectIdentifier context="#stay" />
         <AnyChar context="#pop" String="&separators;" attribute="Separator Symbol" />
         <AnyChar context="#pop" String="&ns_punctuators;" attribute="Symbol" />
-        <AnyChar context="#stay" String="&space;" attribute="Normal Text" />
+        <DetectChar context="#stay" char="&space;" attribute="Normal Text" />
       </context>
 
       <context name="Standard Classes" attribute="Standard Classes" lineEndContext="#pop">
