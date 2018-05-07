@@ -27,10 +27,12 @@ __EOF
 ext=".c"
 
 # Parse command line options
-while getopts "hc:x" option; do
+while getopts "hc:sx" option; do
     case $option in
     h)  usage
         exit 0
+        ;;
+    s)  skip_defaults=1
         ;;
     x)  ext=".cc"
         ;;
@@ -74,26 +76,28 @@ for cf in $option_files; do
 done
 
 # Find desired gcc binary (w/ default to `gcc`)
-if [ ext = ".cc" ]; then
+if [[ ext = ".cc" ]]; then
     gcc_bin=${CC:-g++}
 else
     gcc_bin=${CC:-gcc}
 fi
 gcc_bin=`which "$gcc_bin" 2>/dev/null`
-if [ -x "$gcc_bin" ]; then
+if [[ -x "$gcc_bin" ]]; then
     einfo "Using gcc: $gcc_bin" >&2
 else
     eerror "Unable to find executable gcc binary" >&2
     exit 1
 fi
 
-# Produce aux options file w/ `-m...` options gathered from gcc `--help=targets`
-$gcc_bin --help=target | grep '^\s\+\-m[^=]\+\s\+' | cut -d ' ' -f3 > $tgttmp
-option_files="$option_files $tgttmp"
+if [[ ${skip_defaults} != 1 ]]; then
+    # Produce aux options file w/ `-m...` options gathered from gcc `--help=targets`
+    $gcc_bin --help=target | grep '^\s\+\-m[^=]\+\s\+' | cut -d ' ' -f3 > $tgttmp
+    option_files="$option_files $tgttmp"
 
-# Produce aux options file w/ `-m...` options gathered from gcc `--help=optimizers`
-$gcc_bin --help=optimizers | grep '^\s\+\-f[^=]\+\s\+' | cut -d ' ' -f3 > $opttmp
-option_files="$option_files $opttmp"
+    # Produce aux options file w/ `-m...` options gathered from gcc `--help=optimizers`
+    $gcc_bin --help=optimizers | grep '^\s\+\-f[^=]\+\s\+' | cut -d ' ' -f3 > $opttmp
+    option_files="$option_files $opttmp"
+fi
 
 # Do the job!
 einfo "Starting..." >&2
@@ -105,7 +109,7 @@ eindent
             test -s "$tmptmp"
         eend $? >&2
         if [ -s "$tmptmp" ]; then
-            sed 's,#define \([^ (]*\).*,<item> \1 </item>,' "$tmptmp" >> "$tmp"
+            sed 's,#define \([^ (]*\).*,<item>\1</item>,' "$tmptmp" >> "$tmp"
         else
             ewarn "Empty result"
         fi

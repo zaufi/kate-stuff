@@ -171,6 +171,7 @@
     <item>__AVX2__</item>
     <item>__AVX5124FMAPS__</item>
     <item>__AVX5124VNNIW__</item>
+    <item>__AVX512BITALG__</item>
     <item>__AVX512BW__</item>
     <item>__AVX512CD__</item>
     <item>__AVX512DQ__</item>
@@ -178,8 +179,10 @@
     <item>__AVX512F__</item>
     <item>__AVX512IFMA__</item>
     <item>__AVX512PF__</item>
+    <item>__AVX512VBMI2__</item>
     <item>__AVX512VBMI__</item>
     <item>__AVX512VL__</item>
+    <item>__AVX512VNNI__</item>
     <item>__AVX512VPOPCNTDQ__</item>
     <item>__AVX__</item>
     <item>__BASE_FILE__</item>
@@ -201,6 +204,9 @@
     <item>__btver2</item>
     <item>__btver2__</item>
     <item>__BYTE_ORDER__</item>
+    <item>__cannonlake</item>
+    <item>__cannonlake__</item>
+    <item>__CET__</item>
     <item>__CHAR16_TYPE__</item>
     <item>__CHAR32_TYPE__</item>
     <item>__CHAR_BIT__</item>
@@ -411,6 +417,9 @@
     <item>__FMA4__</item>
     <item>__FMA__</item>
     <item>_FORTIFY_SOURCE</item>
+    <item>__FP_FAST_FMAF32</item>
+    <item>__FP_FAST_FMAF32x</item>
+    <item>__FP_FAST_FMAF64</item>
     <item>__FP_FAST_FMAF</item>
     <item>__FP_FAST_FMA</item>
     <item>__FSGSBASE__</item>
@@ -438,6 +447,7 @@
     <item>__GCC_IEC_559</item>
     <item>__geode</item>
     <item>__geode__</item>
+    <item>__GFNI__</item>
     <item>__GFORTRAN__</item>
     <item>__GLIBCXX_BITSIZE_INT_N_0</item>
     <item>__GLIBCXX_TYPE_INT_N_0</item>
@@ -525,6 +535,8 @@
     <item>__k8__</item>
     <item>__knl</item>
     <item>__knl__</item>
+    <item>__knm</item>
+    <item>__knm__</item>
     <item>__LDBL_DECIMAL_DIG__</item>
     <item>__LDBL_DENORM_MIN__</item>
     <item>__LDBL_DIG__</item>
@@ -553,6 +565,8 @@
     <item>__LWP__</item>
     <item>__LZCNT__</item>
     <item>__MMX__</item>
+    <item>__MOVDIR64B__</item>
+    <item>__MOVDIRI__</item>
     <item>__MPX__</item>
     <item>__MWAITX__</item>
     <item>__nehalem</item>
@@ -570,6 +584,7 @@
     <item>__ORDER_PDP_ENDIAN__</item>
     <item>__PCLMUL__</item>
     <item>__PCOMMIT__</item>
+    <item>__PCONFIG__</item>
     <item>__pentium4</item>
     <item>__pentium4__</item>
     <item>__pentium</item>
@@ -608,6 +623,7 @@
     <item>__SHA__</item>
     <item>__SHRT_MAX__</item>
     <item>__SHRT_WIDTH__</item>
+    <item>__SHSTK__</item>
     <item>__SIG_ATOMIC_MAX__</item>
     <item>__SIG_ATOMIC_MIN__</item>
     <item>__SIG_ATOMIC_TYPE__</item>
@@ -632,6 +648,10 @@
     <item>__SIZEOF_WINT_T__</item>
     <item>__SIZE_TYPE__</item>
     <item>__SIZE_WIDTH__</item>
+    <item>__skylake_avx512</item>
+    <item>__skylake_avx512__</item>
+    <item>__skylake</item>
+    <item>__skylake__</item>
     <item>__slm</item>
     <item>__slm__</item>
     <item>_SOFT_FLOAT</item>
@@ -674,6 +694,7 @@
     <item>__tune_bonnell__</item>
     <item>__tune_btver1__</item>
     <item>__tune_btver2__</item>
+    <item>__tune_cannonlake__</item>
     <item>__tune_core2__</item>
     <item>__tune_core_avx2__</item>
     <item>__tune_corei7_avx__</item>
@@ -689,6 +710,7 @@
     <item>__tune_k6__</item>
     <item>__tune_k8__</item>
     <item>__tune_knl__</item>
+    <item>__tune_knm__</item>
     <item>__tune_nehalem__</item>
     <item>__tune_nocona__</item>
     <item>__tune_pentium2__</item>
@@ -699,6 +721,8 @@
     <item>__tune_pentiumpro__</item>
     <item>__tune_sandybridge__</item>
     <item>__tune_silvermont__</item>
+    <item>__tune_skylake_avx512__</item>
+    <item>__tune_skylake__</item>
     <item>__tune_slm__</item>
     <item>__tune_znver1__</item>
     <item>__UINT16_C</item>
@@ -740,7 +764,10 @@
     <item>__USER_LABEL_PREFIX__</item>
     <item>__USING_SJLJ_EXCEPTIONS__</item>
     <item>__VA_ARGS__</item>
+    <item>__VAES__</item>
     <item>__VERSION__</item>
+    <item>__VPCLMULQDQ__</item>
+    <item>__WBNOINVD__</item>
     <item>__WCHAR_MAX__</item>
     <item>__WCHAR_MIN__</item>
     <item>__WCHAR_TYPE__</item>

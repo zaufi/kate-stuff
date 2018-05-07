@@ -63,6 +63,7 @@
 -march=k8-sse3          # opteron-sse3, athlon64-sse3
 -march=k8-sse3 -m32
 -march=knl
+-march=knm
 -march=nano
 -march=nano-1000
 -march=nano-2000
@@ -89,6 +90,8 @@
 -march=winchip-c6 -m32
 -march=winchip2 -m32
 -march=znver1
+
+-marchh=samuel-2 -m32
 
 --machine-mmx
 --machine-sse
@@ -221,6 +224,11 @@
 -march=znver1
 -mtune=znver1
 
+# introduced by gcc 8.1
+-march=cannonlake
+-march=icelake-client
+-march=icelake-server
+
 # C++ specific options
 -xc++ -std=c++0x
 -xc++ -std=gnu++0x
@@ -234,6 +242,8 @@
 -xc++ -std=gnu++17
 -xc++ -std=c++1z
 -xc++ -std=gnu++1z
+-xc++ -std=c++2a
+-xc++ -std=gnu++2a
 -std=c11
 -std=gnu11
 -pthread
@@ -262,6 +272,7 @@
 -fsanitize=object-size
 -fsanitize=alignment
 -fsanitize=undefined
+-fsanitize=signed-integer-overflow
 -fgnu-tm
 -fopenmp
 
@@ -277,6 +288,12 @@
 -fnew-ttp-matching
 -fno-new-ttp-matching
 
+# GCC 8.1
+-fcf-protection
+-mibt
+-mshstk
+-mcet
+-mprefer-vector-width=128
 
 -m128bit-long-double
 -m16
@@ -449,3 +466,7 @@
 -mxsaveopt
 -mxsaves
 -msse2avx
+
+# Need -g
+-g -fvar-tracking
+-g -fvar-tracking-uninit
