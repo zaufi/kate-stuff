@@ -7,8 +7,9 @@ BUILDDIR=cpp-kate-syntax-${VERSION}
 
 all: ${BUILDDIR}.tar.gz
 
-${BUILDDIR}.tar.gz: cpp.xml qt4.xml gcc.xml install.sh README.md examples/
+${BUILDDIR}.tar.gz: cpp.xml qt4.xml gcc.xml install.sh README.md examples/highlight.cc
 	mkdir -p ${BUILDDIR}/examples
 	cp -r $^ ${BUILDDIR}
+	mv ${BUILDDIR}/highlight.cc ${BUILDDIR}/examples/
 	tar -jcf ${BUILDDIR}.tar.gz ${BUILDDIR}
 	rm -rf ${BUILDDIR}
