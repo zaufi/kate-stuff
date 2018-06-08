@@ -887,7 +887,9 @@
       <item>VERSION</item>
     </list>
     <list name="project_sargs">
+      <item>ASM</item>
       <item>C</item>
+      <item>CUDA</item>
       <item>CXX</item>
       <item>Fortran</item>
       <item>NONE</item>

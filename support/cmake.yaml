@@ -2145,7 +2145,7 @@ project-commands:
           , HOMEPAGE_URL                                    # Since 3.12
           , LANGUAGES
           ]
-        special-args: [NONE, C, CXX, RC, Fortran]
+        special-args: [NONE, C, CXX, RC, CUDA, Fortran, ASM]
     -
         name: qt_wrap_cpp
     -
