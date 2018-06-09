@@ -1649,6 +1649,7 @@
       <item>CPACK_OSX_PACKAGE_VERSION</item>
       <item>CPACK_OUTPUT_CONFIG_FILE</item>
       <item>CPACK_PACKAGE_CHECKSUM</item>
+      <item>CPACK_PACKAGE_CONTACT</item>
       <item>CPACK_PACKAGE_DESCRIPTION</item>
       <item>CPACK_PACKAGE_DESCRIPTION_FILE</item>
       <item>CPACK_PACKAGE_DESCRIPTION_SUMMARY</item>
