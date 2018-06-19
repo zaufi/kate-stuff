@@ -25,7 +25,6 @@ C++:Keyword=1,ffc8c500,fffffb00,1,0,0,0,,,,---
 C++:Normal Text=0,ffcacaca,ffcacaca,0,0,0,0,,,,---
 C++:Octal=4,ff40b0d0,ff40b0d0,0,0,0,0,,,,---
 C++:Preprocessor=9,ff239423,ff239423,0,0,0,0,,,,---
-C++:QT/KDE Extensions=1,ff0095ff,ff0095ff,0,1,0,0,,,,---
 C++:Region Marker=12,ff826c4a,ff826b4a,0,1,0,0,ff201f1f,,,---
 C++:Separator Symbol=0,ff75a7e3,ff75a7e3,0,0,0,0,,,,---
 C++:Standard Attribute=1,ffc8c500,ffc8c500,0,1,0,0,,,,---
