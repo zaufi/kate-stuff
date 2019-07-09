@@ -45,6 +45,9 @@ def try_transform_placeholder_string_to_regex(name):
     if 'CMAKE_MATCH_' in m:
         return '\\bCMAKE_MATCH_[0-9]+\\b'
 
+    if 'CMAKE_ARGV' in m:
+        return '\\bCMAKE_ARGV[0-9]+\\b'
+
     return '\\b{}\\b'.format('&id_re;'.join(list(m))) if 1 < len(m) else name
 
 
