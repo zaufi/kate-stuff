@@ -2271,6 +2271,7 @@ project-commands:
     -
         name: add_test
         named-args: [NAME, COMMAND, CONFIGURATIONS, WORKING_DIRECTORY]
+        nested-parentheses?: true
     -
         name: aux_source_directory
     -

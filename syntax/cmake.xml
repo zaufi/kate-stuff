@@ -3153,7 +3153,13 @@
         <DetectChar attribute="Normal Text" context="add_test_ctx_op" char="(" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="add_test_ctx_op">
+        <DetectChar attribute="Normal Text" context="add_test_ctx_op_nested" char="(" />
         <IncludeRules context="EndCmdPop2" />
+        <keyword attribute="Named Args" context="#stay" String="add_test_nargs" />
+        <IncludeRules context="User Function Args" />
+      </context>
+      <context attribute="Normal Text" lineEndContext="#stay" name="add_test_ctx_op_nested">
+        <IncludeRules context="EndCmdPop" />
         <keyword attribute="Named Args" context="#stay" String="add_test_nargs" />
         <IncludeRules context="User Function Args" />
       </context>
