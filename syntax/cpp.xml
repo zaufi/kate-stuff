@@ -19,7 +19,7 @@
 <language
     name="C++"
     section="Sources"
-    version="5"
+    version="6"
     kateversion="2.4"
     indenter="cppstyle"
     style="C++"
@@ -408,6 +408,19 @@
       <item>filesystem</item>
     </list>
 
+    <list name="IWYU-pragmas">
+      <item>associated</item>
+      <item>keep</item>
+      <item>export</item>
+      <item>begin_exports</item>
+      <item>end_exports</item>
+      <item>private</item>
+      <item>include</item>
+      <item>no_include</item>
+      <item>no_forward_declare</item>
+      <item>friend</item>
+    </list>
+
     <contexts>
       <context name="Normal" attribute="Normal Text" lineEndContext="#stay">
         <DetectSpaces />
@@ -638,6 +651,7 @@
         <DetectSpaces />
         <IncludeRules context="##Alerts" />
         <IncludeRules context="##Modelines" />
+        <IncludeRules context="DetectIWYUPragma" />
         <DetectIdentifier />
       </context>
 
@@ -647,6 +661,7 @@
         <Detect2Chars attribute="Comment" context="#pop" char="*" char1="/" endRegion="Comment" />
         <IncludeRules context="##Alerts" />
         <IncludeRules context="##Modelines" />
+        <IncludeRules context="DetectIWYUPragma" />
         <DetectIdentifier />
       </context>
 
@@ -773,6 +788,7 @@
         <LineContinue />
         <IncludeRules context="##Alerts" />
         <IncludeRules context="##Modelines" />
+        <IncludeRules context="DetectIWYUPragma" />
         <DetectIdentifier />
         <IncludeRules context="##Doxygen" />
         <IncludeRules context="AlignedComments" />
@@ -847,7 +863,7 @@
       <context name="Outscoped intern" attribute="Comment" lineEndContext="#stay">
         <DetectSpaces />
         <IncludeRules context="##Alerts" />
-        <IncludeRules context="##Modelines" />
+        <IncludeRules context="DetectIWYUPragma" />
         <DetectIdentifier />
         <IncludeRules context="##Doxygen" />
         <IncludeRules context="AlignedComments" />
@@ -868,6 +884,15 @@
             firstNonSpace="true"
             insensitive="false"
           />
+      </context>
+
+      <context name="DetectIWYUPragma" lineEndContext="#pop" attribute="Comment">
+        <RegExpr attribute="IWYU Pragma Intro" context="IWYUPragma" String="IWYU pragma: " />
+      </context>
+      <context name="IWYUPragma" lineEndContext="#pop" attribute="Comment">
+        <keyword attribute="IWYU Pragma" context="#stay" String="IWYU-pragmas" />
+        <RegExpr attribute="IWYU Pragma Arg" context="#stay" String="&lt;.*&gt;" />
+        <RegExpr attribute="IWYU Pragma Arg" context="#stay" String="&quot;.*&quot;" />
       </context>
 
       <context name="AlignedComments" lineEndContext="#stay" attribute="Comment">
@@ -924,6 +949,10 @@
       <itemData name="Internals"          defStyleNum="dsNormal"   spellChecking="false" color="#808080" selColor="#808080" />
       <itemData name="Region Marker"      defStyleNum="dsRegionMarker" spellChecking="false" />
       <itemData name="Error"              defStyleNum="dsError"    spellChecking="false" />
+      <itemData name="IWYU Pragma Intro"  defStyleNum="dsComment"  spellChecking="false" />
+      <itemData name="IWYU Pragma"        defStyleNum="dsComment"  spellChecking="false" />
+      <itemData name="IWYU Pragma Arg"    defStyleNum="dsComment"  spellChecking="false" />
+
     </itemDatas>
   </highlighting>
 
