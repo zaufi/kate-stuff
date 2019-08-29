@@ -10,7 +10,7 @@
 _Pragma("visibility push")
 _Pragma("listing on \"../other.dir\"")
 
-#include "some-local.h"
+#include "some-local.h"                                     // IWYU pragma: keep
 #include <boost/mpl/eval_if.hpp>                            // comment
 #include <boost/mpl/bool.hpp>                               /// \custom-tag comment
 #if __has_include(<optional>)
@@ -22,6 +22,12 @@ _Pragma("listing on \"../other.dir\"")
 #if defined(__GNUC__) && defined(__linux__)
 # define MY_OS "Linux"
 #endif
+
+// Highlight IWYU pragmas example
+// https://github.com/include-what-you-use/include-what-you-use/blob/master/docs/IWYUPragmas.md
+// IWYU pragma: private, include <public.h>
+// IWYU pragma: export
+// IWYU pragma: no_include "private.h"
 
 namespace mpl {
 /**
@@ -40,7 +46,7 @@ struct v_or;
  */
 template <typename T1, typename T2, typename... Tail>
 struct v_or<T1, T2, Tail...>
-  : boost::mpl::eval_if<
+  : boost::mpl::eval_if<                                    // NOLINT
       T1
     , boost::mpl::true_
     , v_or<T2, Tail...>
@@ -133,9 +139,10 @@ const char16_t* h = uR"!(Hello)!";
 const char32_t* i = UR"@@@(Hello)@@@";
 const std::string j = u8R"++(Hello)++";
 const std::string h = u8"привет"_RU;                        // user defined literal
-const auto s = "Hello"s;                                    // standard UDL
+const auto s = "Hello"s;                                    // standard string UDL
+const auto string_view = u8"Sample"sv;                      // standard string view UDL
+const auto smth_else = "Sample"inv;
 }                                                           // namespace strings
-
 
 namespace numbers {
 constexpr int a = 123;                                      // decimal
@@ -154,13 +161,6 @@ constexpr auto c = 0x1234'5678'9abc;                        // hex w/ delimiters
 constexpr auto z = 0b1010110001110;                         // binary w/ delimiters
 constexpr auto z1 = 0b1'0101'1000'1110;                     // binary w/ delimiters
 constexpr auto binary_invalid = 0b012;
-
-const auto t0 = 123ns;                                      // 123 nanoseconds
-const auto t1 = 123us;                                      // 123 microseconds
-const auto t2 = 123ms;                                      // 123 miliseconds
-const auto t3 = 123s;                                       // 123 seconds
-const auto t4 = 123min;                                     // 123 minutes
-const auto t5 = 123h;                                       // 123 hours
 
 const std::complex c = {0, -1i};
 
@@ -194,6 +194,12 @@ const auto t = 10us;                                        //                  
 const auto t = 10ns;                                        //                            -- 10 nanoseconds
 
 }                                                           // namespace numbers
+
+namespace StringLiterals {
+const auto string = "Sample"s;
+const auto string_view = u8"Sample"sv;
+const auto not_a_valid_literal = "Sample"nv;
+}
 
 extern void foo() __attribute__((weak));                    // GCC specific attributes
 
