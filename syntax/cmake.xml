@@ -1759,6 +1759,7 @@
       <item>CPACK_PACKAGE_INSTALL_DIRECTORY</item>
       <item>CPACK_PACKAGE_INSTALL_REGISTRY_KEY</item>
       <item>CPACK_PACKAGE_NAME</item>
+      <item>CPACK_PACKAGE_RELOCATABLE</item>
       <item>CPACK_PACKAGE_VENDOR</item>
       <item>CPACK_PACKAGE_VERSION</item>
       <item>CPACK_PACKAGE_VERSION_MAJOR</item>

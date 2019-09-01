@@ -1457,8 +1457,6 @@ variables:
     # - CPack
     - CPACK_PACKAGE_NAME
     - CPACK_PACKAGE_VENDOR
-      # `CPACK_PACKAGE_CONTACT` used by some modules (like Deb and NSIS),
-      # but not documented yet...
     - CPACK_PACKAGE_CONTACT
     - CPACK_PACKAGE_DIRECTORY
     - CPACK_PACKAGE_VERSION_MAJOR
@@ -1497,6 +1495,12 @@ variables:
     - CPACK_PACKAGE_INSTALL_REGISTRY_KEY
     - CPACK_CREATE_DESKTOP_LINKS
     - CPACK_BINARY_<GENNAME>
+    # The following variables used by CPack and some CMake modules,
+    # but not documented (yet):
+    # used by some modules like Deb and NSIS
+    - CPACK_PACKAGE_CONTACT
+    # - used in CPack.cmake as default value for `CPACK_RPM_PACKAGE_RELOCATABLE`
+    - CPACK_PACKAGE_RELOCATABLE
     # - CPackWIX
     - CPACK_WIX_UPGRADE_GUID
     - CPACK_WIX_PRODUCT_GUID
