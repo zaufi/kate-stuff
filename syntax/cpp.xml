@@ -19,7 +19,7 @@
 <language
     name="C++"
     section="Sources"
-    version="6"
+    version="7"
     kateversion="2.4"
     indenter="cppstyle"
     style="C++"
@@ -178,132 +178,174 @@
           https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations
           GCC since 4.9 supports some of them.
       -->
-      <!-- C++17 features -->
-      <item>__cpp_hex_float</item>
-      <item>__cpp_inline_variables</item>
-      <item>__cpp_aligned_new</item>
-      <item>__cpp_guaranteed_copy_elision</item>
-      <item>__cpp_noexcept_function_type</item>
-      <item>__cpp_fold_expressions</item>
-      <item>__cpp_capture_star_this</item>
-      <item>__cpp_if_constexpr</item>
-      <item>__cpp_deduction_guides</item>
-      <item>__cpp_nontype_template_parameter_auto</item>
-      <item>__cpp_namespace_attributes</item>
-      <item>__cpp_enumerator_attributes</item>
-      <item>__cpp_variadic_using</item>
-      <item>__cpp_structured_bindings</item>
+      <!-- Language Feature-Test Macros -->
       <item>__cpp_aggregate_bases</item>
-      <item>__cpp_nontype_template_args</item>
-      <item>__cpp_template_template_args</item>
-      <item>__cpp_lib_byte</item>
-      <item>__cpp_lib_hardware_interference_size</item>
-      <item>__cpp_lib_launder</item>
-      <item>__cpp_lib_uncaught_exceptions</item>
-      <item>__cpp_lib_as_const</item>
-      <item>__cpp_lib_make_from_tuple</item>
-      <item>__cpp_lib_apply</item>
-      <item>__cpp_lib_optional</item>
-      <item>__cpp_lib_any</item>
-      <item>__cpp_lib_memory_resource</item>
-      <item>__cpp_lib_boyer_moore_searcher</item>
-      <item>__cpp_lib_string_view</item>
-      <item>__cpp_lib_sample</item>
-      <item>__lib_cpp_any</item>
-      <item>__lib_cpp_optional</item>
-      <item>__cpp_lib_variant</item>
-      <item>__cpp_lib_addressof_constexpr</item>
-      <item>__cpp_lib_raw_memory_algorithms</item>
-      <item>__cpp_lib_transparent_operators</item>
-      <item>__cpp_lib_enable_shared_from_this</item>
-      <item>__cpp_lib_shared_ptr_weak_type</item>
-      <item>__cpp_lib_shared_ptr_arrays</item>
-      <item>__cpp_lib_invoke</item>
-      <item>__cpp_lib_not_fn</item>
-      <item>__cpp_lib_void_t</item>
-      <item>__cpp_lib_bool_constant</item>
-      <item>__cpp_lib_type_trait_variable_templates</item>
-      <item>__cpp_lib_logical_traits</item>
-      <item>__cpp_lib_is_swappable</item>
-      <item>__cpp_lib_is_invocable</item>
-      <item>__cpp_lib_has_unique_object_representations</item>
-      <item>__cpp_lib_is_aggregate</item>
-      <item>__cpp_lib_chrono</item>
-      <item>__lib_cpp_execution</item>
-      <item>__cpp_lib_parallel_algorithm</item>
-      <item>__cpp_lib_to_chars</item>
-      <item>__cpp_lib_string_view</item>
-      <item>__cpp_lib_allocator_traits_is_always_equal</item>
-      <item>__cpp_lib_incomplete_container_elements</item>
-      <item>__cpp_lib_map_try_emplace</item>
-      <item>__cpp_lib_unordered_map_try_emplace</item>
-      <item>__cpp_lib_node_extract</item>
-      <item>__cpp_lib_array_constexpr</item>
-      <item>__cpp_lib_nonmember_container_access</item>
-      <item>__cpp_lib_clamp</item>
-      <item>__cpp_lib_gcd_lcm</item>
-      <item>__cpp_lib_hypot</item>
-      <item>__cpp_lib_math_special_functions</item>
-      <item>__cpp_lib_filesystem</item>
-      <item>__cpp_lib_atomic_is_always_lock_free</item>
-      <item>__cpp_lib_shared_mutex</item>
-      <item>__cpp_lib_scoped_lock</item>
-      <!-- C++14 features -->
-      <item>__cpp_binary_literals</item>
-      <item>__cpp_digit_separators</item>
-      <item>__cpp_init_captures</item>
-      <item>__cpp_generic_lambdas</item>
-      <item>__cpp_sized_deallocation</item>
-      <item>__cpp_decltype_auto</item>
-      <item>__cpp_return_type_deduction</item>
       <item>__cpp_aggregate_nsdmi</item>
-      <item>__cpp_variable_templates</item>
-      <item>__cpp_lib_integer_sequence</item>
-      <item>__cpp_lib_exchange_function</item>
-      <item>__cpp_lib_tuples_by_type</item>
-      <item>__cpp_lib_tuple_element_t</item>
-      <item>__cpp_lib_make_unique</item>
-      <item>__cpp_lib_transparent_operators</item>
-      <item>__cpp_lib_result_of_sfinae</item>
-      <item>__cpp_lib_integral_constant_callable</item>
-      <item>__cpp_lib_transformation_trait_aliases</item>
-      <item>__cpp_lib_is_final</item>
-      <item>__cpp_lib_is_null_pointer</item>
-      <item>__cpp_lib_chrono_udls</item>
-      <item>__cpp_lib_string_udls</item>
-      <item>__cpp_lib_generic_associative_lookup</item>
-      <item>__cpp_lib_null_iterators</item>
-      <item>__cpp_lib_make_reverse_iterator</item>
-      <item>__cpp_lib_robust_nonmodifying_seq_ops</item>
-      <item>__cpp_lib_complex_udls</item>
-      <item>__cpp_lib_quoted_string_io</item>
-      <item>__cpp_lib_shared_timed_mutex</item>
-      <!-- C++11 features -->
-      <item>__cpp_unicode_characters</item>
+      <item>__cpp_aggregate_paren_init</item>
+      <item>__cpp_alias_templates</item>
+      <item>__cpp_aligned_new</item>
+      <item>__cpp_attributes</item>
+      <item>__cpp_binary_literals</item>
+      <item>__cpp_capture_star_this</item>
+      <item>__cpp_char8_t</item>
+      <item>__cpp_conditional_explicit</item>
+      <item>__cpp_constexpr</item>
+      <item>__cpp_constexpr_dynamic_alloc</item>
+      <item>__cpp_constinit</item>
+      <item>__cpp_coroutines</item>
+      <item>__cpp_decltype</item>
+      <item>__cpp_decltype_auto</item>
+      <item>__cpp_deduction_guides</item>
+      <item>__cpp_delegating_constructors</item>
+      <item>__cpp_enumerator_attributes</item>
+      <item>__cpp_exceptions</item>
+      <item>__cpp_fold_expressions</item>
+      <item>__cpp_generic_lambdas</item>
+      <item>__cpp_guaranteed_copy_elision</item>
+      <item>__cpp_hex_float</item>
+      <item>__cpp_if_constexpr</item>
+      <item>__cpp_impl_destroying_delete</item>
+      <item>__cpp_impl_three_way_comparison</item>
+      <item>__cpp_inheriting_constructors</item>
+      <item>__cpp_init_captures</item>
+      <item>__cpp_initializer_lists</item>
+      <item>__cpp_inline_variables</item>
+      <item>__cpp_lambdas</item>
+      <item>__cpp_modules</item>
+      <item>__cpp_namespace_attributes</item>
+      <item>__cpp_noexcept_function_type</item>
+      <item>__cpp_nontype_template_args</item>
+      <item>__cpp_nontype_template_parameter_auto</item>
+      <item>__cpp_nontype_template_parameter_class</item>
+      <item>__cpp_nsdmi</item>
+      <item>__cpp_range_based_for</item>
       <item>__cpp_raw_strings</item>
+      <item>__cpp_ref_qualifiers</item>
+      <item>__cpp_return_type_deduction</item>
+      <item>__cpp_rtti</item>
+      <item>__cpp_rvalue_references</item>
+      <item>__cpp_sized_deallocation</item>
+      <item>__cpp_static_assert</item>
+      <item>__cpp_structured_bindings</item>
+      <item>__cpp_template_template_args</item>
+      <item>__cpp_threadsafe_static_init</item>
+      <item>__cpp_unicode_characters</item>
       <item>__cpp_unicode_literals</item>
       <item>__cpp_user_defined_literals</item>
-      <item>__cpp_lambdas</item>
-      <item>__cpp_constexpr</item>
-      <item>__cpp_range_based_for</item>
-      <item>__cpp_static_assert</item>
-      <item>__cpp_decltype</item>
-      <item>__cpp_attributes</item>
-      <item>__cpp_rvalue_references</item>
+      <item>__cpp_using_enum</item>
+      <item>__cpp_variable_templates</item>
       <item>__cpp_variadic_templates</item>
-      <item>__cpp_initializer_lists</item>
-      <item>__cpp_delegating_constructors</item>
-      <item>__cpp_nsdmi</item>
-      <item>__cpp_inheriting_constructors</item>
-      <item>__cpp_ref_qualifiers</item>
-      <item>__cpp_alias_templates</item>
-      <!-- C++98 features -->
-      <item>__cpp_rtti</item>
-      <item>__cpp_exceptions</item>
+      <item>__cpp_variadic_using</item>
       <!-- Macros to test presense of #include/attribute -->
       <item>__has_cpp_attribute</item>
       <item>__has_include</item>
       <item>__has_include_next</item>
+      <!-- Library Feature-Test Macros -->
+      <item>__cpp_lib_addressof_constexpr</item>
+      <item>__cpp_lib_allocator_traits_is_always_equal</item>
+      <item>__cpp_lib_any</item>
+      <item>__cpp_lib_apply</item>
+      <item>__cpp_lib_array_constexpr</item>
+      <item>__cpp_lib_as_const</item>
+      <item>__cpp_lib_atomic_flag_test</item>
+      <item>__cpp_lib_atomic_is_always_lock_free</item>
+      <item>__cpp_lib_atomic_lock_free_type_aliases</item>
+      <item>__cpp_lib_atomic_ref</item>
+      <item>__cpp_lib_atomic_wait</item>
+      <item>__cpp_lib_barrier</item>
+      <item>__cpp_lib_bind_front</item>
+      <item>__cpp_lib_bit_cast</item>
+      <item>__cpp_lib_bitops</item>
+      <item>__cpp_lib_bool_constant</item>
+      <item>__cpp_lib_bounded_array_traits</item>
+      <item>__cpp_lib_boyer_moore_searcher</item>
+      <item>__cpp_lib_byte</item>
+      <item>__cpp_lib_char8_t</item>
+      <item>__cpp_lib_chrono</item>
+      <item>__cpp_lib_chrono_udls</item>
+      <item>__cpp_lib_clamp</item>
+      <item>__cpp_lib_complex_udls</item>
+      <item>__cpp_lib_concepts</item>
+      <item>__cpp_lib_constexpr</item>
+      <item>__cpp_lib_constexpr_algorithms</item>
+      <item>__cpp_lib_constexpr_dynamic_alloc</item>
+      <item>__cpp_lib_constexpr_invoke</item>
+      <item>__cpp_lib_constexpr_string</item>
+      <item>__cpp_lib_constexpr_vector</item>
+      <item>__cpp_lib_destroying_delete</item>
+      <item>__cpp_lib_enable_shared_from_this</item>
+      <item>__cpp_lib_endian</item>
+      <item>__cpp_lib_erase_if</item>
+      <item>__cpp_lib_exchange_function</item>
+      <item>__cpp_lib_execution</item>
+      <item>__cpp_lib_filesystem</item>
+      <item>__cpp_lib_format</item>
+      <item>__cpp_lib_gcd_lcm</item>
+      <item>__cpp_lib_generic_associative_lookup</item>
+      <item>__cpp_lib_generic_unordered_hash_lookup</item>
+      <item>__cpp_lib_generic_unordered_lookup</item>
+      <item>__cpp_lib_hardware_interference_size</item>
+      <item>__cpp_lib_has_unique_object_representations</item>
+      <item>__cpp_lib_hypot</item>
+      <item>__cpp_lib_incomplete_container_elements</item>
+      <item>__cpp_lib_integer_sequence</item>
+      <item>__cpp_lib_integral_constant_callable</item>
+      <item>__cpp_lib_interpolate</item>
+      <item>__cpp_lib_invoke</item>
+      <item>__cpp_lib_is_aggregate</item>
+      <item>__cpp_lib_is_constant_evaluated</item>
+      <item>__cpp_lib_is_final</item>
+      <item>__cpp_lib_is_invocable</item>
+      <item>__cpp_lib_is_layout_compatible</item>
+      <item>__cpp_lib_is_null_pointer</item>
+      <item>__cpp_lib_is_pointer_interconvertible</item>
+      <item>__cpp_lib_is_swappable</item>
+      <item>__cpp_lib_jthread</item>
+      <item>__cpp_lib_latch</item>
+      <item>__cpp_lib_launder</item>
+      <item>__cpp_lib_list_remove_return_type</item>
+      <item>__cpp_lib_logical_traits</item>
+      <item>__cpp_lib_make_from_tuple</item>
+      <item>__cpp_lib_make_reverse_iterator</item>
+      <item>__cpp_lib_make_unique</item>
+      <item>__cpp_lib_map_try_emplace</item>
+      <item>__cpp_lib_math_constants</item>
+      <item>__cpp_lib_math_special_functions</item>
+      <item>__cpp_lib_memory_resource</item>
+      <item>__cpp_lib_node_extract</item>
+      <item>__cpp_lib_nonmember_container_access</item>
+      <item>__cpp_lib_not_fn</item>
+      <item>__cpp_lib_null_iterators</item>
+      <item>__cpp_lib_optional</item>
+      <item>__cpp_lib_parallel_algorithm</item>
+      <item>__cpp_lib_quoted_string_io</item>
+      <item>__cpp_lib_ranges</item>
+      <item>__cpp_lib_raw_memory_algorithms</item>
+      <item>__cpp_lib_result_of_sfinae</item>
+      <item>__cpp_lib_robust_nonmodifying_seq_ops</item>
+      <item>__cpp_lib_sample</item>
+      <item>__cpp_lib_scoped_lock</item>
+      <item>__cpp_lib_semaphore</item>
+      <item>__cpp_lib_shared_mutex</item>
+      <item>__cpp_lib_shared_ptr_arrays</item>
+      <item>__cpp_lib_shared_ptr_weak_type</item>
+      <item>__cpp_lib_shared_timed_mutex</item>
+      <item>__cpp_lib_source_location</item>
+      <item>__cpp_lib_spaceship</item>
+      <item>__cpp_lib_string_udls</item>
+      <item>__cpp_lib_string_view</item>
+      <item>__cpp_lib_three_way_comparison</item>
+      <item>__cpp_lib_to_array</item>
+      <item>__cpp_lib_to_chars</item>
+      <item>__cpp_lib_transformation_trait_aliases</item>
+      <item>__cpp_lib_transparent_operators</item>
+      <item>__cpp_lib_tuple_element_t</item>
+      <item>__cpp_lib_tuples_by_type</item>
+      <item>__cpp_lib_type_trait_variable_templates</item>
+      <item>__cpp_lib_uncaught_exceptions</item>
+      <item>__cpp_lib_unordered_map_try_emplace</item>
+      <item>__cpp_lib_variant</item>
+      <item>__cpp_lib_void_t</item>
     </list>
     <list name="StdHeaders">
       <!-- http://en.cppreference.com/w/cpp/header -->
@@ -532,9 +574,13 @@
         <StringDetect attribute="Boost Stuff" context="Boost Stuff" String="boost::" />
         <StringDetect attribute="Boost Stuff" context="Boost Stuff" String="BOOST_" />
         <StringDetect attribute="Internals" context="InternalsNS" String="detail::" />
+        <StringDetect attribute="Internals" context="InternalsNS" String="Detail::" />
         <StringDetect attribute="Internals" context="InternalsNS" String="details::" />
+        <StringDetect attribute="Internals" context="InternalsNS" String="Details::" />
+        <StringDetect attribute="Internals" context="InternalsNS" String="Impl::" />
         <StringDetect attribute="Internals" context="InternalsNS" String="aux::" />
         <StringDetect attribute="Internals" context="InternalsNS" String="internals::" />
+        <StringDetect attribute="Internals" context="InternalsNS" String="Internals::" />
         <keyword attribute="Data Type" context="#stay" String="types" />
         <keyword attribute="Type Modifiers" context="#stay" String="modifiers" />
         <keyword attribute="Standard Macros" context="#stay" String="StdMacros" />
