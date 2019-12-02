@@ -3828,8 +3828,8 @@
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_MODULE_LINKER_FLAGS_&id_re;\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_MODULE_LINKER_FLAGS_&id_re;_INIT\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_PDB_OUTPUT_DIRECTORY_&id_re;\b" />
-        <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_POLICY_DEFAULT_CMP&id_re;\b" />
-        <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_POLICY_WARNING_CMP&id_re;\b" />
+        <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_POLICY_DEFAULT_CMP[0-9]{4}\b" />
+        <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_POLICY_WARNING_CMP[0-9]{4}\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_PROJECT_&id_re;_INCLUDE\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_RUNTIME_OUTPUT_DIRECTORY_&id_re;\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_SHARED_LINKER_FLAGS_&id_re;\b" />
