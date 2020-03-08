@@ -31,7 +31,7 @@
 
 <language
     name="CMake"
-    version="21"
+    version="22"
     kateversion="2.4"
     section="Other"
     extensions="CMakeLists.txt;*.cmake;*.cmake.in"
@@ -278,6 +278,7 @@
       </context>
 
       <context attribute="Comment" lineEndContext="#stay" name="Bracketed Comment" dynamic="true">
+        <LineContinue attribute="Comment" context="#stay" />
         <RegExpr attribute="Comment" context="#pop" String=".*\]%1\]" dynamic="true" />
         <IncludeRules context="##Alerts" />
         <IncludeRules context="##Modelines" />
