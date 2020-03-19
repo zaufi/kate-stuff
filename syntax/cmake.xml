@@ -2382,6 +2382,8 @@
       <item>LINK_SEARCH_START_STATIC</item>
       <item>LINK_WHAT_YOU_USE</item>
       <item>LOCATION</item>
+      <item>MACHO_COMPATIBILITY_VERSION</item>
+      <item>MACHO_CURRENT_VERSION</item>
       <item>MACOSX_BUNDLE</item>
       <item>MACOSX_BUNDLE_INFO_PLIST</item>
       <item>MACOSX_FRAMEWORK_INFO_PLIST</item>
