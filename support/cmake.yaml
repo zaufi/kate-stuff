@@ -1174,6 +1174,9 @@ variables:
     # - `function`
     - ARGC
     - ARGV<n>
+    # - `cmake_parse_arguments`
+    - <pfx>_UNPARSED_ARGUMENTS
+    - <pfx>_KEYWORDS_MISSING_VALUES
     # Well known CMake's official module's variables
     # - CheckCCompilerFlag
     # - CheckCSourceCompiles

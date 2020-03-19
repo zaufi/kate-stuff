@@ -3820,6 +3820,8 @@
         <RegExpr attribute="Builtin Variable" context="#stay" String="\b&id_re;_LIBRARY_DIRS\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\b&id_re;_VERSION_COUNT\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\b&id_re;_VERSION_STRING\b" />
+        <RegExpr attribute="Builtin Variable" context="#stay" String="\b&id_re;_KEYWORDS_MISSING_VALUES\b" />
+        <RegExpr attribute="Builtin Variable" context="#stay" String="\b&id_re;_UNPARSED_ARGUMENTS\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\b&id_re;_MODULE_NAME\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bARGV[0-9]+\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_&id_re;_POSTFIX\b" />
