@@ -54,6 +54,9 @@ def try_transform_placeholder_string_to_regex(name):
     if 'CMAKE_POLICY_WARNING_CMP' in m:
         return '\\bCMAKE_POLICY_WARNING_CMP[0-9]{4}\\b'
 
+    if 'ARGV' in m:
+        return '\\bARGV[0-9]+\\b'
+
     return '\\b{}\\b'.format('&id_re;'.join(list(m))) if 1 < len(m) else name
 
 

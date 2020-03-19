@@ -1244,6 +1244,7 @@
     <list name="variables">
       <item>ANDROID</item>
       <item>APPLE</item>
+      <item>ARGC</item>
       <item>BORLAND</item>
       <item>BUILD_SHARED_LIBS</item>
       <item>BUILD_TESTING</item>
@@ -3820,6 +3821,7 @@
         <RegExpr attribute="Builtin Variable" context="#stay" String="\b&id_re;_VERSION_COUNT\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\b&id_re;_VERSION_STRING\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\b&id_re;_MODULE_NAME\b" />
+        <RegExpr attribute="Builtin Variable" context="#stay" String="\bARGV[0-9]+\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_&id_re;_POSTFIX\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_&id_re;_ANDROID_TOOLCHAIN_MACHINE\b" />
         <RegExpr attribute="Builtin Variable" context="#stay" String="\bCMAKE_&id_re;_ANDROID_TOOLCHAIN_PREFIX\b" />

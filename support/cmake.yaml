@@ -557,7 +557,7 @@ generator-expressions:
     - SHELL_PATH
 
 variables:
-   # Variables that Provide Information
+    # Variables that Provide Information
     - CMAKE_AR
     - CMAKE_ARGC
     - CMAKE_ARGV<n>
@@ -1171,6 +1171,9 @@ variables:
     # Other standard variables/patterns
     # - `try_run`
     - <RUN_RESULT_VAR>__TRYRUN_OUTPUT
+    # - `function`
+    - ARGC
+    - ARGV<n>
     # Well known CMake's official module's variables
     # - CheckCCompilerFlag
     # - CheckCSourceCompiles
