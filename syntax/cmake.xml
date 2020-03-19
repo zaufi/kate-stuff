@@ -31,7 +31,7 @@
 
 <language
     name="CMake"
-    version="22"
+    version="23"
     kateversion="2.4"
     section="Other"
     extensions="CMakeLists.txt;*.cmake;*.cmake.in"
@@ -2669,11 +2669,11 @@
         <WordDetect String="continue" insensitive="true" attribute="Command" context="continue_ctx" />
         <WordDetect String="elseif" insensitive="true" attribute="Command" context="elseif_ctx" />
         <WordDetect String="else" insensitive="true" attribute="Command" context="else_ctx" />
-        <WordDetect String="endforeach" insensitive="true" attribute="Command" context="endforeach_ctx" />
-        <WordDetect String="endfunction" insensitive="true" attribute="Command" context="endfunction_ctx" />
-        <WordDetect String="endif" insensitive="true" attribute="Command" context="endif_ctx" />
-        <WordDetect String="endmacro" insensitive="true" attribute="Command" context="endmacro_ctx" />
-        <WordDetect String="endwhile" insensitive="true" attribute="Command" context="endwhile_ctx" />
+        <WordDetect String="endforeach" insensitive="true" attribute="Command" context="endforeach_ctx" endRegion="foreach" />
+        <WordDetect String="endfunction" insensitive="true" attribute="Command" context="endfunction_ctx" endRegion="function" />
+        <WordDetect String="endif" insensitive="true" attribute="Command" context="endif_ctx" endRegion="if" />
+        <WordDetect String="endmacro" insensitive="true" attribute="Command" context="endmacro_ctx" endRegion="macro" />
+        <WordDetect String="endwhile" insensitive="true" attribute="Command" context="endwhile_ctx" endRegion="while" />
         <WordDetect String="execute_process" insensitive="true" attribute="Command" context="execute_process_ctx" />
         <WordDetect String="file" insensitive="true" attribute="Command" context="file_ctx" />
         <WordDetect String="find_file" insensitive="true" attribute="Command" context="find_file_ctx" />
@@ -2681,17 +2681,17 @@
         <WordDetect String="find_package" insensitive="true" attribute="Command" context="find_package_ctx" />
         <WordDetect String="find_path" insensitive="true" attribute="Command" context="find_path_ctx" />
         <WordDetect String="find_program" insensitive="true" attribute="Command" context="find_program_ctx" />
-        <WordDetect String="foreach" insensitive="true" attribute="Command" context="foreach_ctx" />
-        <WordDetect String="function" insensitive="true" attribute="Command" context="function_ctx" />
+        <WordDetect String="foreach" insensitive="true" attribute="Command" context="foreach_ctx" beginRegion="foreach" />
+        <WordDetect String="function" insensitive="true" attribute="Command" context="function_ctx" beginRegion="function" />
         <WordDetect String="get_cmake_property" insensitive="true" attribute="Command" context="get_cmake_property_ctx" />
         <WordDetect String="get_directory_property" insensitive="true" attribute="Command" context="get_directory_property_ctx" />
         <WordDetect String="get_filename_component" insensitive="true" attribute="Command" context="get_filename_component_ctx" />
         <WordDetect String="get_property" insensitive="true" attribute="Command" context="get_property_ctx" />
-        <WordDetect String="if" insensitive="true" attribute="Command" context="if_ctx" />
+        <WordDetect String="if" insensitive="true" attribute="Command" context="if_ctx" beginRegion="if" />
         <WordDetect String="include" insensitive="true" attribute="Command" context="include_ctx" />
         <WordDetect String="include_guard" insensitive="true" attribute="Command" context="include_guard_ctx" />
         <WordDetect String="list" insensitive="true" attribute="Command" context="list_ctx" />
-        <WordDetect String="macro" insensitive="true" attribute="Command" context="macro_ctx" />
+        <WordDetect String="macro" insensitive="true" attribute="Command" context="macro_ctx" beginRegion="macro" />
         <WordDetect String="mark_as_advanced" insensitive="true" attribute="Command" context="mark_as_advanced_ctx" />
         <WordDetect String="math" insensitive="true" attribute="Command" context="math_ctx" />
         <WordDetect String="message" insensitive="true" attribute="Command" context="message_ctx" />
@@ -2705,7 +2705,7 @@
         <WordDetect String="string" insensitive="true" attribute="Command" context="string_ctx" />
         <WordDetect String="unset" insensitive="true" attribute="Command" context="unset_ctx" />
         <WordDetect String="variable_watch" insensitive="true" attribute="Command" context="variable_watch_ctx" />
-        <WordDetect String="while" insensitive="true" attribute="Command" context="while_ctx" />
+        <WordDetect String="while" insensitive="true" attribute="Command" context="while_ctx" beginRegion="while" />
         <WordDetect String="add_compile_definitions" insensitive="true" attribute="Command" context="add_compile_definitions_ctx" />
         <WordDetect String="add_compile_options" insensitive="true" attribute="Command" context="add_compile_options_ctx" />
         <WordDetect String="add_custom_command" insensitive="true" attribute="Command" context="add_custom_command_ctx" />

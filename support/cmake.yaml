@@ -1854,18 +1854,23 @@ scripting-commands:
     -
         name: endforeach
         nulary?: true
+        end-region: foreach
     -
         name: endfunction
         nulary?: true
+        end-region: function
     -
         name: endif
         nulary?: true
+        end-region: if
     -
         name: endmacro
         nulary?: true
+        end-region: macro
     -
         name: endwhile
         nulary?: true
+        end-region: while
     -
         name: execute_process
         named-args: [
@@ -2093,8 +2098,10 @@ scripting-commands:
           , ITEMS
           , ZIP_LISTS                                       # Since 3.17
           ]
+        start-region: foreach
     -
         name: function
+        start-region: function
     -
         name: get_cmake_property
         property-args: [global-properties]
@@ -2142,6 +2149,7 @@ scripting-commands:
         name: if
         named-args: *if
         nested-parentheses?: true
+        start-region: if
     -
         name: include
         named-args: [OPTIONAL, RESULT_VARIABLE, NO_POLICY_SCOPE]
@@ -2196,6 +2204,7 @@ scripting-commands:
         special-args: [STRING, FILE_BASENAME, SENSITIVE, INSENSITIVE, ASCENDING, DESCENDING]
     -
         name: macro
+        start-region: macro
     -
         name: mark_as_advanced
         named-args: [CLEAR, FORCE]
@@ -2311,6 +2320,7 @@ scripting-commands:
         name: while
         named-args: *if
         nested-parentheses?: true
+        start-region: while
 
 project-commands:
     -

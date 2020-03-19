@@ -101,6 +101,12 @@ def transform_command(cmd):
     if 'nulary?' in cmd and cmd['nulary?'] and not can_be_nulary:
         raise RuntimeError('Command `{}` w/ args declared nulary!?'.format(cmd['name']))
 
+    if 'start-region' in cmd:
+        cmd['start_region'] = cmd['start-region']
+
+    if 'end-region' in cmd:
+        cmd['end_region'] = cmd['end-region']
+
     return cmd
 
 

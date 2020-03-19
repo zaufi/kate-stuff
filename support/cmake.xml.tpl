@@ -31,7 +31,7 @@
 
 <language
     name="CMake"
-    version="22"
+    version="23"
     kateversion="2.4"
     section="Other"
     extensions="CMakeLists.txt;*.cmake;*.cmake.in"
@@ -95,7 +95,7 @@
       <context attribute="Normal Text" lineEndContext="#stay" name="Normal Text">
         <DetectSpaces/>
         {% for command in commands -%}
-        <WordDetect String="{{command.name}}" insensitive="true" attribute="Command" context="{{command.name}}_ctx" />
+        <WordDetect String="{{command.name}}" insensitive="true" attribute="Command" context="{{command.name}}_ctx"{% if command.start_region %} beginRegion="{{command.start_region}}"{% endif -%} {%- if command.end_region %} endRegion="{{command.end_region}}"{% endif %} />
         {% endfor -%}
         <RegExpr attribute="Region Marker" context="RST Documentation" String="^#\[(=*)\[\.rst:" column="0" />
         <RegExpr attribute="Comment" context="Bracketed Comment" String="#\[(=*)\[" />
