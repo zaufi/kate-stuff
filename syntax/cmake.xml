@@ -1245,6 +1245,7 @@
       <item>ANDROID</item>
       <item>APPLE</item>
       <item>ARGC</item>
+      <item>ARGN</item>
       <item>BORLAND</item>
       <item>BUILD_SHARED_LIBS</item>
       <item>BUILD_TESTING</item>
