@@ -31,7 +31,7 @@
 
 <language
     name="CMake"
-    version="23"
+    version="24"
     kateversion="2.4"
     section="Other"
     extensions="CMakeLists.txt;*.cmake;*.cmake.in"
@@ -204,24 +204,19 @@
 
       <context attribute="Normal Text" lineEndContext="#stay" name="Detect Variable Substitutions">
         <RegExpr attribute="Cache Variable Substitution" context="#stay" String="\$CACHE\{\s*[\w-]+\s*\}" />
-        <RegExpr attribute="Environment Variable Substitution" context="EnvVarSubst" String="\$ENV\{\s*[\w-]+\s*\}" lookAhead="true" />
+        <RegExpr attribute="Environment Variable Substitution" context="EnvVarSubst" String="\$?ENV\{" />
         <Detect2Chars attribute="Variable Substitution" context="VarSubst" char="$" char1="{" />
         <RegExpr attribute="@Variable Substitution" context="@VarSubst" String="@&id_re;@" lookAhead="true" />
       </context>
 
       <context attribute="Environment Variable Substitution" lineEndContext="#pop" name="EnvVarSubst">
-        <DetectIdentifier />
-        <DetectChar attribute="Environment Variable Substitution" context="EnvVarSubstVar" char="{" />
-        <DetectChar attribute="Environment Variable Substitution" context="#pop" char="}" />
-      </context>
-
-      <context attribute="Environment Variable Substitution" lineEndContext="#pop" name="EnvVarSubstVar">
         <keyword attribute="Standard Environment Variable" context="#stay" String="environment-variables" insensitive="false" />
         {%- for var in environment_variables.re %}
         <RegExpr attribute="Standard Environment Variable" context="#stay" String="{{var}}" />
         {%- endfor %}
         <DetectIdentifier />
-        <DetectChar attribute="Environment Variable Substitution" context="#pop#pop" char="}" />
+        <IncludeRules context="Detect Variable Substitutions" />
+        <DetectChar attribute="Environment Variable Substitution" context="#pop" char="}" />
       </context>
 
       <context attribute="Variable Substitution" lineEndContext="#pop" name="VarSubst">
