@@ -1174,6 +1174,7 @@ variables:
     # - `function`
     - ARGC
     - ARGN
+    - ARGV
     - ARGV<n>
     # - `cmake_parse_arguments`
     - <pfx>_UNPARSED_ARGUMENTS
@@ -1826,11 +1827,11 @@ scripting-commands:
             NOT
           , AND
           , OR
+          , COMMAND
           , POLICY
           , TARGET
           , TEST
           , EXISTS
-          , IS_NEWER_THAN
           , IS_NEWER_THAN
           , IS_DIRECTORY
           , IS_SYMLINK

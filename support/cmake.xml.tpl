@@ -227,6 +227,7 @@
       </context>
 
       <context attribute="@Variable Substitution" lineEndContext="#pop" name="@VarSubst">
+        <IncludeRules context="Detect Builtin Variables" />
         <DetectChar attribute="@Variable Substitution" context="VarSubst@" char="@" />
       </context>
 

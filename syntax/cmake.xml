@@ -218,6 +218,7 @@
     </list>
     <list name="elseif_nargs">
       <item>AND</item>
+      <item>COMMAND</item>
       <item>DEFINED</item>
       <item>EQUAL</item>
       <item>EXISTS</item>
@@ -526,6 +527,7 @@
     </list>
     <list name="if_nargs">
       <item>AND</item>
+      <item>COMMAND</item>
       <item>DEFINED</item>
       <item>EQUAL</item>
       <item>EXISTS</item>
@@ -722,6 +724,7 @@
     </list>
     <list name="while_nargs">
       <item>AND</item>
+      <item>COMMAND</item>
       <item>DEFINED</item>
       <item>EQUAL</item>
       <item>EXISTS</item>
@@ -1246,6 +1249,7 @@
       <item>APPLE</item>
       <item>ARGC</item>
       <item>ARGN</item>
+      <item>ARGV</item>
       <item>BORLAND</item>
       <item>BUILD_SHARED_LIBS</item>
       <item>BUILD_TESTING</item>
@@ -4023,6 +4027,7 @@
       </context>
 
       <context attribute="@Variable Substitution" lineEndContext="#pop" name="@VarSubst">
+        <IncludeRules context="Detect Builtin Variables" />
         <DetectChar attribute="@Variable Substitution" context="VarSubst@" char="@" />
       </context>
 
