@@ -70,6 +70,12 @@
     {%- endfor %}
     </list>
 
+    <list name="deprecated-or-internal-variables">
+    {%- for var in deprecated_or_internal_variables.kw %}
+      <item>{{var}}</item>
+    {%- endfor %}
+    </list>
+
     <list name="environment-variables">
     {%- for var in environment_variables.kw %}
       <item>{{var}}</item>
@@ -192,11 +198,15 @@
 
       <context attribute="Normal Text" lineEndContext="#stay" name="Detect Builtin Variables">
         <RegExpr attribute="Internal Name" context="#stay" String="\b_&id_re;\b" />
+        <keyword attribute="CMake Internal Variable" context="#stay" String="deprecated-or-internal-variables" insensitive="false" />
         <keyword attribute="Builtin Variable" context="#stay" String="variables" insensitive="false" />
         <IncludeRules context="Detect More Builtin Variables" />
       </context>
 
       <context attribute="Normal Text" lineEndContext="#stay" name="Detect More Builtin Variables">
+        {%- for var in deprecated_or_internal_variables.re %}
+        <RegExpr attribute="CMake Internal Variable" context="#stay" String="{{var}}" />
+        {%- endfor %}
         {%- for var in variables.re %}
         <RegExpr attribute="Builtin Variable" context="#stay" String="{{var}}" />
         {%- endfor %}
@@ -319,6 +329,7 @@
       <itemData name="Strings" defStyleNum="dsString" spellChecking="true" />
       <itemData name="Escapes" defStyleNum="dsChar" spellChecking="false" />
       <itemData name="Builtin Variable" defStyleNum="dsDecVal" color="#c09050" selColor="#c09050" spellChecking="false" />
+      <itemData name="CMake Internal Variable" defStyleNum="dsDecVal" color="#303030" selColor="#303030" spellChecking="false" />
       <itemData name="Internal Name" defStyleNum="dsDecVal" color="#303030" selColor="#303030" spellChecking="false" />
       <itemData name="Variable Substitution" defStyleNum="dsDecVal" spellChecking="false" />
       <itemData name="@Variable Substitution" defStyleNum="dsBaseN" spellChecking="false" />

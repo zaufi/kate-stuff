@@ -598,7 +598,6 @@ variables:
     - CMAKE_GENERATOR_NO_COMPILER_ENV                       # "Professional CMake" §17.4
     - CMAKE_GENERATOR_PLATFORM
     - CMAKE_GENERATOR_TOOLSET
-    - CMAKE_HOME_DIRECTORY
     - CMAKE_IMPORT_LIBRARY_PREFIX
     - CMAKE_IMPORT_LIBRARY_SUFFIX
     - CMAKE_JOB_POOL_COMPILE
@@ -650,7 +649,6 @@ variables:
     - CMAKE_VERBOSE_MAKEFILE
     - CMAKE_VERSION
     - CMAKE_VS_DEVENV_COMMAND
-    - CMAKE_VS_INTEL_Fortran_PROJECT_VERSION
     - CMAKE_VS_MSBUILD_COMMAND
     - CMAKE_VS_NsightTegra_VERSION
     - CMAKE_VS_PLATFORM_NAME
@@ -741,7 +739,6 @@ variables:
     - CMAKE_MAXIMUM_RECURSION_DEPTH                         # Since 3.14
     - CMAKE_MFC_FLAG
     - CMAKE_MODULE_PATH
-    - CMAKE_NOT_USING_CONFIG_FLAGS
     - CMAKE_POLICY_DEFAULT_CMP<NNNN>
     - CMAKE_POLICY_WARNING_CMP<NNNN>
     - CMAKE_PREFIX_PATH
@@ -786,8 +783,6 @@ variables:
     - CMAKE_XCODE_SCHEME_UNDEFINED_BEHAVIOUR_SANITIZER      # Since 3.13
     - CMAKE_XCODE_SCHEME_UNDEFINED_BEHAVIOUR_SANITIZER_STOP # Since 3.13
     - CMAKE_XCODE_SCHEME_ZOMBIE_OBJECTS                     # Since 3.13
-    - CMAKE_SUPPRESS_DEVELOPER_WARNINGS                     # Undocumented yet (CMake <= 3.10)
-    - CMAKE_SUPPRESS_DEVELOPER_ERRORS                       # Undocumented yet (CMake <= 3.10)
     # Variables that Describe the System
     - ANDROID
     - APPLE
@@ -1003,7 +998,6 @@ variables:
     - CMAKE_Fortran_MODDIR_DEFAULT
     - CMAKE_Fortran_MODDIR_FLAG
     - CMAKE_Fortran_MODOUT_FLAG
-    - CMAKE_INTERNAL_PLATFORM_ABI
     - CMAKE_<LANG>_ANDROID_TOOLCHAIN_MACHINE
     - CMAKE_<LANG>_ANDROID_TOOLCHAIN_PREFIX
     - CMAKE_<LANG>_ANDROID_TOOLCHAIN_SUFFIX
@@ -1011,7 +1005,6 @@ variables:
     - CMAKE_<LANG>_ARCHIVE_CREATE
     - CMAKE_<LANG>_ARCHIVE_FINISH
     - CMAKE_<LANG>_COMPILER
-    - CMAKE_<LANG>_COMPILER_ABI
     - CMAKE_<LANG>_COMPILER_EXTERNAL_TOOLCHAIN
     - CMAKE_<LANG>_COMPILER_ID
     - CMAKE_<LANG>_COMPILER_LOADED
@@ -1047,7 +1040,6 @@ variables:
     - CMAKE_<LANG>_LINKER_WRAPPER_FLAG_SEP                  # Since 3.13
     - CMAKE_<LANG>_LINK_EXECUTABLE
     - CMAKE_<LANG>_OUTPUT_EXTENSION
-    - CMAKE_<LANG>_PLATFORM_ID
     - CMAKE_<LANG>_SIMULATE_ID
     - CMAKE_<LANG>_SIMULATE_VERSION
     - CMAKE_<LANG>_SIZEOF_DATA_PTR
@@ -1134,7 +1126,6 @@ variables:
     - CPACK_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION
     - CPACK_INCLUDE_TOPLEVEL_DIRECTORY
     - CPACK_INSTALL_DEFAULT_DIRECTORY_PERMISSIONS           # Since 3.11
-    - CPACK_INSTALL_SCRIPT                                  # Deprecated since 3.16
     - CPACK_INSTALL_SCRIPTS                                 # Since 3.16
     - CPACK_PACKAGING_INSTALL_PREFIX
     - CPACK_SET_DESTDIR
@@ -1323,9 +1314,9 @@ variables:
     - CPACK_COMMAND_SETFILE
     - CPACK_COMMAND_REZ
     # -CPackExt (Since 3.13)
-    - CPACK_EXT_REQUESTED_VERSIONS
-    - CPACK_EXT_ENABLE_STAGING
-    - CPACK_EXT_PACKAGE_SCRIPT
+    - CPACK_EXTERNAL_REQUESTED_VERSIONS
+    - CPACK_EXTERNAL_ENABLE_STAGING
+    - CPACK_EXTERNAL_PACKAGE_SCRIPT
     # - CPackIFW
     - CPACK_IFW_ROOT
     - QTIFWDIR
@@ -1546,7 +1537,6 @@ variables:
     # - CPack
     - CPACK_PACKAGE_NAME
     - CPACK_PACKAGE_VENDOR
-    - CPACK_PACKAGE_CONTACT
     - CPACK_PACKAGE_DIRECTORY
     - CPACK_PACKAGE_VERSION_MAJOR
     - CPACK_PACKAGE_VERSION_MINOR
@@ -1584,12 +1574,6 @@ variables:
     - CPACK_PACKAGE_INSTALL_REGISTRY_KEY
     - CPACK_CREATE_DESKTOP_LINKS
     - CPACK_BINARY_<GENNAME>
-    # The following variables used by CPack and some CMake modules,
-    # but not documented (yet):
-    # used by some modules like Deb and NSIS
-    - CPACK_PACKAGE_CONTACT
-    # - used in CPack.cmake as default value for `CPACK_RPM_PACKAGE_RELOCATABLE`
-    - CPACK_PACKAGE_RELOCATABLE
     # - CPackWIX
     - CPACK_WIX_UPGRADE_GUID
     - CPACK_WIX_PRODUCT_GUID
@@ -1714,6 +1698,30 @@ variables:
     - SWIG_OUTFILE_DIR
     - SWIG_MODULE_<name>_EXTRA_DEPS
     - SWIG_SOURCE_FILE_EXTENSIONS                           # Since 3.14
+
+deprecated-or-internal-variables:
+    - CMAKE_HOME_DIRECTORY
+    - CMAKE_INTERNAL_PLATFORM_ABI
+    - CMAKE_<LANG>_COMPILER_ABI
+    - CMAKE_<LANG>_COMPILER_ARCHITECTURE_ID
+    - CMAKE_<LANG>_COMPILER_VERSION_INTERNAL
+    - CMAKE_<LANG>_PLATFORM_ID
+    - CMAKE_NOT_USING_CONFIG_FLAGS
+    - CMAKE_VS_INTEL_Fortran_PROJECT_VERSION
+    - CPACK_INSTALL_SCRIPT                                  # Deprecated since 3.16
+    # Various undocumented variables (yet)
+    - CMAKE_SUPPRESS_DEVELOPER_WARNINGS                     # CMake <= 3.10
+    - CMAKE_SUPPRESS_DEVELOPER_ERRORS                       # CMake <= 3.10
+    # The following variables used by CPack and some CMake modules,
+    # but not documented (yet):
+    # used by CPack Archive generator
+    - CPACK_ARCHIVE_THREADS
+    # used by some modules like Deb and NSIS
+    - CPACK_PACKAGE_CONTACT
+    # - used in CPack.cmake as default value for `CPACK_RPM_PACKAGE_RELOCATABLE`
+    - CPACK_PACKAGE_RELOCATABLE
+    # Mentioned but not documented (yet)
+    - CPACK_TEMPORARY_DIRECTORY
 
 # https://cmake.org/cmake/help/latest/manual/cmake-env-variables.7.html
 # NOTE Added to syntax file version 14 at 3.15.0 version of CMake

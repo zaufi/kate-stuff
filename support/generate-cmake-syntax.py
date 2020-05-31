@@ -33,7 +33,7 @@ _PROPERTY_KEYS = [
   , 'install-properties'
   ]
 _KW_RE_LIST = ['kw', 're']
-_VAR_KIND_LIST = ['variables', 'environment-variables']
+_VAR_KIND_LIST = ['variables', 'deprecated-or-internal-variables', 'environment-variables']
 
 
 def try_transform_placeholder_string_to_regex(name):
@@ -168,8 +168,10 @@ def cli(input_yaml, template):
 
     # Fix node names to be accessible from Jinja template
     data['generator_expressions'] = data['generator-expressions']
+    data['deprecated_or_internal_variables'] = data['deprecated-or-internal-variables']
     data['environment_variables'] = data['environment-variables']
     del data['generator-expressions']
+    del data['deprecated-or-internal-variables']
     del data['environment-variables']
 
     env = jinja2.Environment(
