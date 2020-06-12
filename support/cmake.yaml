@@ -148,6 +148,7 @@ target-properties:
     - <CONFIG>_OUTPUT_NAME
     - <CONFIG>_POSTFIX
     - CROSSCOMPILING_EMULATOR
+    - CUDA_ARCHITECTURES                                    # Since 3.18
     - CUDA_PTX_COMPILATION
     - CUDA_SEPARABLE_COMPILATION
     - CUDA_RESOLVE_DEVICE_SYMBOLS
@@ -176,7 +177,9 @@ target-properties:
     - FOLDER
     - Fortran_FORMAT
     - Fortran_MODULE_DIRECTORY
+    - Fortran_PREPROCESS                                    # Since 3.18
     - FRAMEWORK
+    - FRAMEWORK_MULTI_CONFIG_POSTFIX_<CONFIG>               # Since 3.18
     - FRAMEWORK_VERSION
     - GENERATOR_FILE_NAME
     - GNUtoMS
@@ -277,6 +280,7 @@ target-properties:
     - OSX_COMPATIBILITY_VERSION                             # Since 3.17
     - OUTPUT_NAME_<CONFIG>
     - OUTPUT_NAME
+    - PCH_WARN_INVALID                                      # Since 3.18
     - PDB_NAME_<CONFIG>
     - PDB_NAME
     - PDB_OUTPUT_DIRECTORY_<CONFIG>
@@ -312,6 +316,7 @@ target-properties:
     - UNITY_BUILD_BATCH_SIZE                                # Since 3.16
     - UNITY_BUILD_CODE_AFTER_INCLUDE                        # Since 3.16
     - UNITY_BUILD_CODE_BEFORE_INCLUDE                       # Since 3.16
+    - UNITY_BUILD_MODE                                      # Since 3.18
     - VERSION
     - VISIBILITY_INLINES_HIDDEN
     - VS_CONFIGURATION_TYPE
@@ -338,13 +343,15 @@ target-properties:
     - VS_MOBILE_EXTENSIONS_VERSION
     - VS_NO_SOLUTION_DEPLOY                                 # Since 3.15
     - VS_PACKAGE_REFERENCES                                 # Since 3.15
+    - VS_PLATFORM_TOOLSET                                   # Since 3.18
     - VS_PROJECT_IMPORT                                     # Since 3.15
-    - VS_PACKAGE_REFERENCES
     - VS_SCC_AUXPATH
     - VS_SCC_LOCALPATH
     - VS_SCC_PROJECTNAME
     - VS_SCC_PROVIDER
     - VS_SDK_REFERENCES
+    - VS_SOLUTION_DEPLOY                                    # Since 3.18
+    - VS_SOURCE_SETTINGS_<tool>                             # Since 3.18
     - VS_USER_PROPS
     - VS_WINDOWS_TARGET_PLATFORM_MIN_VERSION
     - VS_WINRT_COMPONENT
@@ -414,6 +421,7 @@ source-properties:
     - COMPILE_OPTIONS                                       # Since 3.11
     - EXTERNAL_OBJECT
     - Fortran_FORMAT
+    - Fortran_PREPROCESS                                    # Since 3.18
     - GENERATED
     - HEADER_FILE_ONLY
     - INCLUDE_DIRECTORIES                                   # Since 3.11
@@ -439,6 +447,7 @@ source-properties:
     - VS_DEPLOYMENT_LOCATION
     - VS_INCLUDE_IN_VSIX
     - VS_RESOURCE_GENERATOR
+    - VS_SETTINGS                                           # Since 3.18
     - VS_SHADER_DISABLE_OPTIMIZATIONS                       # Since 3.11
     - VS_SHADER_ENABLE_DEBUG                                # Since 3.11
     - VS_SHADER_ENTRYPOINT
@@ -505,6 +514,10 @@ generator-expressions:
     - COMPILE_FEATURES
     - COMPILE_LANG_AND_ID                                   # Since 3.15
     - COMPILE_LANGUAGE
+    - LINK_LANG_AND_ID                                      # Since 3.18
+    - LINK_LANGUAGE                                         # Since 3.18
+    - DEVICE_LINK                                           # Since 3.18
+    - HOST_LINK                                             # Since 3.18
     # String-Valued Generator Expressions
     #   * Escaped Characters
     - ANGLE-R
@@ -893,8 +906,10 @@ variables:
     - CMAKE_EXE_LINKER_FLAGS_INIT
     - CMAKE_FOLDER                                          # Since 3.12
     - CMAKE_FRAMEWORK                                       # Since 3.15
+    - CMAKE_FRAMEWORK_MULTI_CONFIG_POSTFIX_<CONFIG>         # Since 3.18
     - CMAKE_Fortran_FORMAT
     - CMAKE_Fortran_MODULE_DIRECTORY
+    - CMAKE_Fortran_PREPROCESS                              # Since 3.18
     - CMAKE_GLOBAL_AUTOGEN_TARGET                           # Since 3.14
     - CMAKE_GLOBAL_AUTOGEN_TARGET_NAME                      # Since 3.14
     - CMAKE_GLOBAL_AUTORCC_TARGET                           # Since 3.14
@@ -939,6 +954,7 @@ variables:
     - CMAKE_OSX_ARCHITECTURES
     - CMAKE_OSX_DEPLOYMENT_TARGET
     - CMAKE_OSX_SYSROOT
+    - CMAKE_PCH_WARN_INVALID                                # Since 3.18
     - CMAKE_PDB_OUTPUT_DIRECTORY
     - CMAKE_PDB_OUTPUT_DIRECTORY_<CONFIG>
     - CMAKE_POSITION_INDEPENDENT_CODE
@@ -981,6 +997,7 @@ variables:
     - CMAKE_COMPILER_IS_GNUCC
     - CMAKE_COMPILER_IS_GNUCXX
     - CMAKE_COMPILER_IS_GNUG77
+    - CMAKE_CUDA_ARCHITECTURES                              # Since 3.18
     - CMAKE_CUDA_COMPILE_FEATURES                           # Since 3.17
     - CMAKE_CUDA_HOST_COMPILER                              # Since 3.17
     - CMAKE_CUDA_EXTENSIONS
@@ -1105,6 +1122,8 @@ variables:
     - CTEST_P4_COMMAND
     - CTEST_P4_OPTIONS
     - CTEST_P4_UPDATE_OPTIONS
+    - CTEST_RESOURCE_SPEC_FILE                              # Since 3.18
+    - CTEST_RUN_CURRENT_SCRIPT                              # Since 3.11
     - CTEST_SCP_COMMAND
     - CTEST_SITE
     - CTEST_SUBMIT_URL                                      # Since 3.14
@@ -1222,6 +1241,7 @@ variables:
     - CPACK_ARCHIVE_FILE_NAME
     - CPACK_ARCHIVE_<COMPONENT>_FILE_NAME
     - CPACK_ARCHIVE_COMPONENT_INSTALL
+    - CPACK_ARCHIVE_THREADS                                 # Since 3.18
     # - CPackBundle
     - CPACK_BUNDLE_NAME
     - CPACK_BUNDLE_PLIST
@@ -1387,6 +1407,7 @@ variables:
     - CPACK_NSIS_FINISH_TITLE                               # Since 3.17
     - CPACK_NSIS_FINISH_TITLE_3LINES                        # Since 3.17
     - CPACK_NSIS_MUI_HEADERIMAGE                            # Since 3.17
+    - CPACK_NSIS_MANIFEST_DPI_AWARE                         # Since 3.18
     # - CPackNuGet (since 3.12)
     - CPACK_NUGET_COMPONENT_INSTALL
     - CPACK_NUGET_PACKAGE_NAME
@@ -1498,8 +1519,10 @@ variables:
     - CPACK_RPM_GENERATE_USER_BINARY_SPECFILE_TEMPLATE
     - CPACK_RPM_PRE_INSTALL_SCRIPT_FILE
     - CPACK_RPM_PRE_UNINSTALL_SCRIPT_FILE
+    - CPACK_RPM_PRE_TRANS_SCRIPT_FILE                       # Since 3.18
     - CPACK_RPM_POST_INSTALL_SCRIPT_FILE
     - CPACK_RPM_POST_UNINSTALL_SCRIPT_FILE
+    - CPACK_RPM_POST_TRANS_SCRIPT_FILE                      # Since 3.18
     - CPACK_RPM_USER_FILELIST
     - CPACK_RPM_<COMPONENT>_USER_FILELIST
     - CPACK_RPM_CHANGELOG_FILE
@@ -1714,14 +1737,14 @@ deprecated-or-internal-variables:
     - CMAKE_SUPPRESS_DEVELOPER_ERRORS                       # CMake <= 3.10
     # The following variables used by CPack and some CMake modules,
     # but not documented (yet):
-    # used by CPack Archive generator
-    - CPACK_ARCHIVE_THREADS
     # used by some modules like Deb and NSIS
     - CPACK_PACKAGE_CONTACT
-    # - used in CPack.cmake as default value for `CPACK_RPM_PACKAGE_RELOCATABLE`
+    # used in CPack.cmake as default value for `CPACK_RPM_PACKAGE_RELOCATABLE`
     - CPACK_PACKAGE_RELOCATABLE
-    # Mentioned but not documented (yet)
+    # mentioned in CPack External generator but not documented (yet)
     - CPACK_TEMPORARY_DIRECTORY
+    - CPACK_TOPLEVEL_DIRECTORY
+    - CPACK_INSTALL_PREFIX
 
 # https://cmake.org/cmake/help/latest/manual/cmake-env-variables.7.html
 # NOTE Added to syntax file version 14 at 3.15.0 version of CMake
@@ -1812,6 +1835,9 @@ scripting-commands:
           , OS_VERSION
           , OS_PLATFORM
           ]
+    -
+        name: cmake_language
+        named-args: [CALL, EVAL, CODE]
     -
         name: cmake_minimum_required
         named-args: [VERSION, FATAL_ERROR]
@@ -1906,6 +1932,8 @@ scripting-commands:
           , OUTPUT_STRIP_TRAILING_WHITESPACE
           , ERROR_STRIP_TRAILING_WHITESPACE
           , ENCODING
+          , ECHO_OUTPUT_VARIABLE                            # Since 3.18
+          , ECHO_ERROR_VARIABLE                             # Since 3.18
           ]
         special-args: [
             NONE
@@ -2008,6 +2036,19 @@ scripting-commands:
           , SIZE
             # New sub-options since 3.16
           , GET_RUNTIME_DEPENDENCIES
+            # New sub-options since 3.18
+          , ARCHIVE_CREATE
+          , FILES
+          , FORMAT
+          , TYPE
+          , MTIME
+          , VERBOSE
+          , ARCHIVE_EXTRACT
+          , LIST_ONLY
+          , CONFIGURE
+          , ESCAPE_QUOTES
+          , "@ONLY"
+          , NEWLINE_STYLE
           ]
         special-args: [
             UTF-8
@@ -2029,9 +2070,29 @@ scripting-commands:
           , WORLD_EXECUTE
           , SETUID
           , SETGID
-          , IGNORED                                         # NETRC options since 3.11
+            # Special args for NETRC options since 3.11
+          , IGNORED
           , OPTIONAL
           , REQUIRED
+            # Special args for `FORMAT` named argument since 3.18
+          , 7zip
+          , gnutar
+          , pax
+          , paxr
+          , raw
+          , zip
+            # Special args for `TYPE` named argument since 3.18
+          , None
+          , BZip2
+          , GZip
+          , XZ
+          , Zstd
+            # Special args for `NEWLINE_STYLE` named argument since 3.18
+          , UNIX
+          , DOS
+          , WIN32
+          , LF
+          , CRLF
           ]
     -
         name: find_file
@@ -2041,6 +2102,7 @@ scripting-commands:
           , PATHS
           , PATH_SUFFIXES
           , DOC
+          , REQUIRED                                        # Since 3.18
           , NO_DEFAULT_PATH
           , NO_PACKAGE_ROOT_PATH
           , NO_CMAKE_PATH
@@ -2060,6 +2122,7 @@ scripting-commands:
           , PATHS
           , PATH_SUFFIXES
           , DOC
+          , REQUIRED                                        # Since 3.18
           , NO_DEFAULT_PATH
           , NO_PACKAGE_ROOT_PATH
           , NO_CMAKE_PATH
@@ -2151,7 +2214,23 @@ scripting-commands:
           ]
     -
         name: get_property
-        named-args: [GLOBAL, DIRECTORY, TARGET, SOURCE, INSTALL, TEST, CACHE, VARIABLE, PROPERTY, SET, DEFINED, BRIEF_DOCS, FULL_DOCS]
+        named-args: [
+            GLOBAL
+          , DIRECTORY
+          , TARGET
+          , SOURCE
+          , TARGET_DIRECTORY                                # `SOURCE` sub-option since 3.18
+          , DIRECTORY                                       # `SOURCE` sub-option since 3.18
+          , INSTALL
+          , TEST
+          , CACHE
+          , VARIABLE
+          , PROPERTY
+          , SET
+          , DEFINED
+          , BRIEF_DOCS
+          , FULL_DOCS
+          ]
         property-args: &get-property [
             global-properties
           , directory-properties
@@ -2217,7 +2296,15 @@ scripting-commands:
           , POP_BACK
           ]
         # Since 3.13
-        special-args: [STRING, FILE_BASENAME, SENSITIVE, INSENSITIVE, ASCENDING, DESCENDING]
+        special-args: [
+            STRING
+          , FILE_BASENAME
+          , SENSITIVE
+          , INSENSITIVE
+          , ASCENDING
+          , DESCENDING
+          , NATURAL                                         # Since 3.18
+          ]
     -
         name: macro
         start-region: macro
@@ -2265,7 +2352,22 @@ scripting-commands:
         property-args: *get-property
     -
         name: set_property
-        named-args: [GLOBAL, DIRECTORY, TARGET, DIRECTORY, SOURCE, INSTALL, TEST, CACHE, VARIABLE, APPEND, APPEND_STRING, PROPERTY]
+        named-args: [
+            GLOBAL
+          , DIRECTORY
+          , TARGET
+          , DIRECTORY
+          , SOURCE
+          , TARGET_DIRECTORY                                # `SOURCE` sub-option since 3.18
+          , DIRECTORY                                       # `SOURCE` sub-option since 3.18
+          , INSTALL
+          , TEST
+          , CACHE
+          , VARIABLE
+          , APPEND
+          , APPEND_STRING
+          , PROPERTY
+          ]
         property-args: *get-property
     -
         name: set
@@ -2311,6 +2413,7 @@ scripting-commands:
           , SHA3_384
           , SHA3_512
           , ASCII
+          , HEX                                             # Since 3.18
           , CONFIGURE
           , "@ONLY"
           , ESCAPE_QUOTES
@@ -2445,6 +2548,11 @@ project-commands:
         name: fltk_wrap_ui
     -
         name: get_source_file_property
+        named-args: [
+            # Sice 3.18
+            TARGET_DIRECTORY
+          , DIRECTORY
+          ]
         property-args: &get_source_file_property [source-properties]
     -
         name: get_target_property
@@ -2564,7 +2672,11 @@ project-commands:
         name: remove_definitions
     -
         name: set_source_files_properties
-        named-args: [PROPERTIES]
+        named-args: [
+            PROPERTIES
+          , TARGET_DIRECTORY                                # Since 3.18
+          , DIRECTORY                                       # Since 3.18
+          ]
         property-args: *get_source_file_property
     -
         name: set_target_properties
@@ -2794,6 +2906,7 @@ ctest-commands:
           , PARALLEL_LEVEL
           , TEST_LOAD
           , SCHEDULE_RANDOM
+          , STOP_ON_FAILURE                                 # Since 3.18
           , STOP_TIME
           , RETURN_VALUE
           , CAPTURE_CMAKE_ERROR
