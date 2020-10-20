@@ -2040,7 +2040,7 @@ scripting-commands:
           , ARCHIVE_CREATE
           , FILES
           , FORMAT
-          , TYPE
+          , COMPRESSION
           , MTIME
           , VERBOSE
           , ARCHIVE_EXTRACT
