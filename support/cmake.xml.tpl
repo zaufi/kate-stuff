@@ -16,7 +16,7 @@
 
 <language
     name="CMake"
-    version="26"
+    version="28"
     kateversion="5.0"
     section="Other"
     extensions="CMakeLists.txt;*.cmake;*.cmake.in"
@@ -243,6 +243,7 @@
       </context>
 
       <context attribute="Normal Text" lineEndContext="#stay" name="Detect Special Values">
+        <RegExpr attribute="Version Arg" context="#stay" String="\b[0-9]+(.[0-9]+)+\b" />
         <!-- Source/cmStringAlgorithms.cxx: bool cmIsOff(cm::string_view val) -->
         <WordDetect attribute="True Special Arg" context="#stay" String="TRUE" insensitive="true" />
         <WordDetect attribute="True Special Arg" context="#stay" String="ON" insensitive="true" />
@@ -277,8 +278,7 @@
       <context attribute="Comment" lineEndContext="#pop" name="Comment">
         <LineContinue attribute="Comment" context="#pop" />
         <DetectSpaces />
-        <IncludeRules context="##Alerts" />
-        <IncludeRules context="##Modelines" />
+        <IncludeRules context="##Comments" />
       </context>
 
       <context attribute="Comment" lineEndContext="#stay" name="RST Documentation" dynamic="true">
@@ -290,8 +290,7 @@
         <LineContinue attribute="Comment" context="#stay" />
         <DetectSpaces />
         <StringDetect attribute="Comment" context="#pop" String="]%1]" dynamic="true" endRegion="BracketedComment" />
-        <IncludeRules context="##Alerts" />
-        <IncludeRules context="##Modelines" />
+        <IncludeRules context="##Comments" />
       </context>
 
       <context attribute="Strings" lineEndContext="#stay" name="String">
@@ -335,6 +334,7 @@
       <itemData name="Special Args" defStyleNum="dsOthers" spellChecking="false" />
       <itemData name="True Special Arg" defStyleNum="dsOthers" color="#30a030" selColor="#30a030" spellChecking="false" />
       <itemData name="False Special Arg" defStyleNum="dsOthers" color="#e05050" selColor="#e05050" spellChecking="false" />
+      <itemData name="Version Arg" defStyleNum="dsDataType" spellChecking="false" />
       <itemData name="Strings" defStyleNum="dsString" spellChecking="true" />
       <itemData name="Escapes" defStyleNum="dsSpecialChar" spellChecking="false" />
       <itemData name="Builtin Variable" defStyleNum="dsDecVal" color="#c09050" selColor="#c09050" spellChecking="false" />
@@ -358,7 +358,7 @@
       <comment name="singleLine" start="#" position="afterwhitespace" />
       <comment name="multiLine" start="#[[" end="]]" region="BracketedComment"/>
     </comments>
-    <keywords casesensitive="1" />
+    <keywords casesensitive="1" weakDeliminator="." />
   </general>
 </language>
 

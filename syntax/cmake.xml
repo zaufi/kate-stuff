@@ -16,7 +16,7 @@
 
 <language
     name="CMake"
-    version="26"
+    version="28"
     kateversion="5.0"
     section="Other"
     extensions="CMakeLists.txt;*.cmake;*.cmake.in"
@@ -33,7 +33,6 @@
         <item>cmake_language</item>
         <item>cmake_minimum_required</item>
         <item>cmake_parse_arguments</item>
-        <item>cmake_path</item>
         <item>cmake_policy</item>
         <item>configure_file</item>
         <item>continue</item>
@@ -190,50 +189,6 @@
     </list>
     <list name="cmake_parse_arguments_nargs">
       <item>PARSE_ARGV</item>
-    </list>
-    <list name="cmake_path_nargs">
-      <item>ABSOLUTE_PATH</item>
-      <item>APPEND</item>
-      <item>BASE_DIRECTORY</item>
-      <item>CMAKE_PATH</item>
-      <item>COMPARE</item>
-      <item>CONCAT</item>
-      <item>CONVERT</item>
-      <item>EQUAL</item>
-      <item>EXTENSION</item>
-      <item>FILENAME</item>
-      <item>GET</item>
-      <item>HASH</item>
-      <item>HAS_EXTENSION</item>
-      <item>HAS_FILENAME</item>
-      <item>HAS_PARENT_PATH</item>
-      <item>HAS_RELATIVE_PATH</item>
-      <item>HAS_ROOT_DIRECTORY</item>
-      <item>HAS_ROOT_NAME</item>
-      <item>HAS_ROOT_PATH</item>
-      <item>HAS_STEM</item>
-      <item>IS_ABSOLUTE</item>
-      <item>IS_PREFIX</item>
-      <item>IS_RELATIVE</item>
-      <item>LAST_ONLY</item>
-      <item>NATIVE_PATH</item>
-      <item>NORMALIZE</item>
-      <item>NORMAL_PATH</item>
-      <item>NOT_EQUAL</item>
-      <item>OUTPUT_VARIABLE</item>
-      <item>PARENT_PATH</item>
-      <item>PROXIMATE_PATH</item>
-      <item>RELATIVE_PATH</item>
-      <item>REMOVE_EXTENSION</item>
-      <item>REMOVE_FILENAME</item>
-      <item>REPLACE_EXTENSION</item>
-      <item>REPLACE_FILENAME</item>
-      <item>ROOT_DIRECTORY</item>
-      <item>ROOT_NAME</item>
-      <item>ROOT_PATH</item>
-      <item>STEM</item>
-      <item>TO_CMAKE_PATH_LIST</item>
-      <item>TO_NATIVE_PATH_LIST</item>
     </list>
     <list name="cmake_policy_nargs">
       <item>GET</item>
@@ -2832,7 +2787,6 @@
         <WordDetect String="cmake_language" insensitive="true" attribute="Command" context="cmake_language_ctx" />
         <WordDetect String="cmake_minimum_required" insensitive="true" attribute="Command" context="cmake_minimum_required_ctx" />
         <WordDetect String="cmake_parse_arguments" insensitive="true" attribute="Command" context="cmake_parse_arguments_ctx" />
-        <WordDetect String="cmake_path" insensitive="true" attribute="Command" context="cmake_path_ctx" />
         <WordDetect String="cmake_policy" insensitive="true" attribute="Command" context="cmake_policy_ctx" />
         <WordDetect String="configure_file" insensitive="true" attribute="Command" context="configure_file_ctx" />
         <WordDetect String="continue" insensitive="true" attribute="Command" context="continue_ctx" />
@@ -2980,14 +2934,6 @@
       <context attribute="Normal Text" lineEndContext="#stay" name="cmake_parse_arguments_ctx_op">
         <IncludeRules context="EndCmdPop2" />
         <keyword attribute="Named Args" context="#stay" String="cmake_parse_arguments_nargs" />
-        <IncludeRules context="User Function Args" />
-      </context>
-      <context attribute="Normal Text" lineEndContext="#stay" name="cmake_path_ctx">
-        <DetectChar attribute="Normal Text" context="cmake_path_ctx_op" char="(" />
-      </context>
-      <context attribute="Normal Text" lineEndContext="#stay" name="cmake_path_ctx_op">
-        <IncludeRules context="EndCmdPop2" />
-        <keyword attribute="Named Args" context="#stay" String="cmake_path_nargs" />
         <IncludeRules context="User Function Args" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="cmake_policy_ctx">
@@ -4241,6 +4187,7 @@
       </context>
 
       <context attribute="Normal Text" lineEndContext="#stay" name="Detect Special Values">
+        <RegExpr attribute="Version Arg" context="#stay" String="\b[0-9]+(.[0-9]+)+\b" />
         <!-- Source/cmStringAlgorithms.cxx: bool cmIsOff(cm::string_view val) -->
         <WordDetect attribute="True Special Arg" context="#stay" String="TRUE" insensitive="true" />
         <WordDetect attribute="True Special Arg" context="#stay" String="ON" insensitive="true" />
@@ -4275,8 +4222,7 @@
       <context attribute="Comment" lineEndContext="#pop" name="Comment">
         <LineContinue attribute="Comment" context="#pop" />
         <DetectSpaces />
-        <IncludeRules context="##Alerts" />
-        <IncludeRules context="##Modelines" />
+        <IncludeRules context="##Comments" />
       </context>
 
       <context attribute="Comment" lineEndContext="#stay" name="RST Documentation" dynamic="true">
@@ -4288,8 +4234,7 @@
         <LineContinue attribute="Comment" context="#stay" />
         <DetectSpaces />
         <StringDetect attribute="Comment" context="#pop" String="]%1]" dynamic="true" endRegion="BracketedComment" />
-        <IncludeRules context="##Alerts" />
-        <IncludeRules context="##Modelines" />
+        <IncludeRules context="##Comments" />
       </context>
 
       <context attribute="Strings" lineEndContext="#stay" name="String">
@@ -4333,6 +4278,7 @@
       <itemData name="Special Args" defStyleNum="dsOthers" spellChecking="false" />
       <itemData name="True Special Arg" defStyleNum="dsOthers" color="#30a030" selColor="#30a030" spellChecking="false" />
       <itemData name="False Special Arg" defStyleNum="dsOthers" color="#e05050" selColor="#e05050" spellChecking="false" />
+      <itemData name="Version Arg" defStyleNum="dsDataType" spellChecking="false" />
       <itemData name="Strings" defStyleNum="dsString" spellChecking="true" />
       <itemData name="Escapes" defStyleNum="dsSpecialChar" spellChecking="false" />
       <itemData name="Builtin Variable" defStyleNum="dsDecVal" color="#c09050" selColor="#c09050" spellChecking="false" />
@@ -4356,7 +4302,7 @@
       <comment name="singleLine" start="#" position="afterwhitespace" />
       <comment name="multiLine" start="#[[" end="]]" region="BracketedComment"/>
     </comments>
-    <keywords casesensitive="1" />
+    <keywords casesensitive="1" weakDeliminator="." />
   </general>
 </language>
 
