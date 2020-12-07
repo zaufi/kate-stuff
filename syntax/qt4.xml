@@ -1575,7 +1575,7 @@
   </contexts>
 
   <itemDatas>
-    <itemData name="Normal Text"    defStyleNum="dsNormal" spellChecking="false" />
+    <itemData name="Normal Text" defStyleNum="dsNormal" spellChecking="false" />
     <itemData name="Qt4 Macros" defStyleNum="dsKeyword" color="#0095ff" selColor="#ffffff" bold="1" italic="0" spellChecking="false" />
     <itemData name="Qt4 Types" defStyleNum="dsDataType" spellChecking="false" />
     <itemData name="Qt4 Classes" defStyleNum="dsOthers" spellChecking="false" />
