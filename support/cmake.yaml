@@ -2739,6 +2739,7 @@ project-commands:
           , EXCLUDE_FROM_ALL
           , RENAME
           , OPTIONAL
+          , TYPE                                            # Since 3.20
             # Installing Targets
           , TARGETS
           , EXPORT

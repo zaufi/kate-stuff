@@ -1027,6 +1027,7 @@
       <item>RUNTIME</item>
       <item>SCRIPT</item>
       <item>TARGETS</item>
+      <item>TYPE</item>
       <item>USE_SOURCE_PERMISSIONS</item>
     </list>
     <list name="install_sargs">
