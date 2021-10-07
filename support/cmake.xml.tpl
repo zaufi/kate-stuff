@@ -38,7 +38,8 @@
         <item><!--{command.name}--></item>
     <!--[- endfor ]-->
     </list>
-    <!--[ for command in commands -]-->
+
+    <!--[- for command in commands -]-->
       <!--[- if command.named_args and command.named_args.kw ]-->
     <list name="<!--{command.name}-->_nargs">
         <!--[- for arg in command.named_args.kw ]-->

@@ -22,7 +22,7 @@
 
 <language
     name="CMake"
-    version="34"
+    version="35"
     kateversion="5.0"
     section="Other"
     extensions="CMakeLists.txt;*.cmake;*.cmake.in"
@@ -144,7 +144,6 @@
         <item>ctest_update</item>
         <item>ctest_upload</item>
     </list>
-    
     <list name="cmake_host_system_information_nargs">
       <item>QUERY</item>
       <item>RESULT</item>

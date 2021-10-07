@@ -1,4 +1,4 @@
-version: 34
+version: 35
 
 global-properties:
     - ALLOW_DUPLICATE_CUSTOM_TARGETS
