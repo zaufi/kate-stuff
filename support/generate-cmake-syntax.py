@@ -121,6 +121,10 @@ def transform_command(cmd):
         cmd['has_target_name_after_kw'] = cmd['has-target-name-after-kw']
         can_be_nulary = False
 
+    if 'has-target-names-after-kw' in cmd:
+        cmd['has_target_names_after_kw'] = cmd['has-target-names-after-kw']
+        can_be_nulary = False
+
     if 'second-arg-is-target?' in cmd:
         cmd['second_arg_is_target'] = cmd['second-arg-is-target?']
         can_be_nulary = False

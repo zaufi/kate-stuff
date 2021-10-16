@@ -109,32 +109,33 @@
         <DetectChar attribute="Normal Text" context="<!--{command.name}-->_ctx_op<!--{'_tgt_first' if command.first_arg_is_target else '_tgts_first' if command.first_args_are_targets else ''}-->" char="(" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
-      <!--[- if command.first_arg_is_target ]-->
+        <!--[- if command.first_arg_is_target ]-->
       <context attribute="Normal Text" lineEndContext="#stay" name="<!--{command.name}-->_ctx_op_tgt_first">
-        <RegExpr attribute="Targets" context="<!--{command.name}-->_ctx_op" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="<!--{command.name}-->_ctx_op" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="<!--{command.name}-->_ctx_op" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
         <RegExpr attribute="Error" context="#stay" String=".*" />
       </context>
-      <!--[- endif ]-->
-      <!--[- if command.first_args_are_targets ]-->
+        <!--[- endif ]-->
+        <!--[- if command.first_args_are_targets ]-->
       <context attribute="Normal Text" lineEndContext="#stay" name="<!--{command.name}-->_ctx_op_tgts_first">
         <!--[- if command.named_args and command.named_args.kw ]-->
-        <!-- NOTE Handle the only case in CMake nowadays:
-            1. `set_target_properties` have a named keyword (`PROPERTIES`) after targets list
-        -->
+          <!-- NOTE Handle the only case in CMake nowadays:
+              1. `set_target_properties` have a named keyword (`PROPERTIES`) after targets list
+          -->
         <keyword context="<!--{command.name}-->_ctx_op" String="<!--{command.name}-->_nargs" lookAhead="true" />
-        <!--[- endif ]-->
+          <!--[- endif ]-->
+        <IncludeRules context="Detect Aliased Targets" />
         <RegExpr attribute="Targets" context="#stay" String="&tgt_name_re;" />
-        <RegExpr attribute="Aliased Targets" context="#stay" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
         <RegExpr attribute="Error" context="#stay" String=".*" />
       </context>
-      <!--[- endif ]-->
+        <!--[- endif ]-->
+        <!--[- if not command.first_args_are_targets or (command.named_args and command.named_args.kw) ]-->
       <context attribute="Normal Text" lineEndContext="#stay" name="<!--{command.name}-->_ctx_op">
         <!--[- if command.nested_parentheses ]-->
         <DetectChar attribute="Normal Text" context="<!--{command.name}-->_ctx_op_nested" char="(" />
@@ -143,6 +144,9 @@
         <!--[- if command.named_args and command.named_args.kw ]-->
           <!--[- if command.has_target_name_after_kw ]-->
         <WordDetect String="<!--{command.has_target_name_after_kw}-->" attribute="Named Args" context="Target Name" />
+          <!--[- endif ]-->
+          <!--[- if command.has_target_names_after_kw ]-->
+        <WordDetect String="<!--{command.has_target_names_after_kw}-->" attribute="Named Args" context="<!--{command.name}-->_tgts" />
           <!--[- endif ]-->
         <keyword attribute="Named Args" context="#stay" String="<!--{command.name}-->_nargs" />
         <!--[- endif ]-->
@@ -165,6 +169,18 @@
           <!--[- endif ]-->
         <!--[- endif ]-->
       </context>
+        <!--[- endif ]-->
+        <!--[- if command.has_target_names_after_kw ]-->
+      <context attribute="Normal Text" lineEndContext="#stay" name="<!--{command.name}-->_tgts">
+        <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
+        <keyword attribute="Named Args" context="#pop" String="<!--{command.name}-->_nargs" />
+        <RegExpr attribute="Aliased Targets" context="#stay" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="#stay" String="&tgt_name_re;" />
+        <IncludeRules context="User Function Args" />
+        <DetectSpaces />
+        <RegExpr attribute="Error" context="#stay" String=".*" />
+      </context>
+        <!--[- endif ]-->
         <!--[- if command.nested_parentheses ]-->
       <context attribute="Normal Text" lineEndContext="#stay" name="<!--{command.name}-->_ctx_op_nested">
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
@@ -255,8 +271,8 @@
       </context>
 
       <context attribute="Normal Text" lineEndContext="#stay" name="Target Name">
-        <RegExpr attribute="Targets" context="#pop" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="#pop" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="#pop" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />

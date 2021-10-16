@@ -3564,8 +3564,8 @@
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="add_custom_target_ctx_op_tgt_first">
-        <RegExpr attribute="Targets" context="add_custom_target_ctx_op" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="add_custom_target_ctx_op" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="add_custom_target_ctx_op" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
@@ -3595,24 +3595,20 @@
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="add_dependencies_ctx_op_tgts_first">
+        <IncludeRules context="Detect Aliased Targets" />
         <RegExpr attribute="Targets" context="#stay" String="&tgt_name_re;" />
-        <RegExpr attribute="Aliased Targets" context="#stay" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
         <RegExpr attribute="Error" context="#stay" String=".*" />
-      </context>
-      <context attribute="Normal Text" lineEndContext="#stay" name="add_dependencies_ctx_op">
-        <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
-        <IncludeRules context="User Function Args" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="add_executable_ctx">
         <DetectChar attribute="Normal Text" context="add_executable_ctx_op_tgt_first" char="(" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="add_executable_ctx_op_tgt_first">
-        <RegExpr attribute="Targets" context="add_executable_ctx_op" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="add_executable_ctx_op" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="add_executable_ctx_op" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
@@ -3628,8 +3624,8 @@
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="add_library_ctx_op_tgt_first">
-        <RegExpr attribute="Targets" context="add_library_ctx_op" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="add_library_ctx_op" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="add_library_ctx_op" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
@@ -3744,8 +3740,18 @@
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="export_ctx_op">
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
+        <WordDetect String="TARGETS" attribute="Named Args" context="export_tgts" />
         <keyword attribute="Named Args" context="#stay" String="export_nargs" />
         <IncludeRules context="User Function Args" />
+      </context>
+      <context attribute="Normal Text" lineEndContext="#stay" name="export_tgts">
+        <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
+        <keyword attribute="Named Args" context="#pop" String="export_nargs" />
+        <RegExpr attribute="Aliased Targets" context="#stay" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="#stay" String="&tgt_name_re;" />
+        <IncludeRules context="User Function Args" />
+        <DetectSpaces />
+        <RegExpr attribute="Error" context="#stay" String=".*" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="fltk_wrap_ui_ctx">
         <DetectChar attribute="Normal Text" context="fltk_wrap_ui_ctx_op" char="(" />
@@ -3817,9 +3823,19 @@
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="install_ctx_op">
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
+        <WordDetect String="TARGETS" attribute="Named Args" context="install_tgts" />
         <keyword attribute="Named Args" context="#stay" String="install_nargs" />
         <keyword attribute="Special Args" context="#stay" String="install_sargs" />
         <IncludeRules context="User Function Args" />
+      </context>
+      <context attribute="Normal Text" lineEndContext="#stay" name="install_tgts">
+        <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
+        <keyword attribute="Named Args" context="#pop" String="install_nargs" />
+        <RegExpr attribute="Aliased Targets" context="#stay" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="#stay" String="&tgt_name_re;" />
+        <IncludeRules context="User Function Args" />
+        <DetectSpaces />
+        <RegExpr attribute="Error" context="#stay" String=".*" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="link_directories_ctx">
         <DetectChar attribute="Normal Text" context="link_directories_ctx_op" char="(" />
@@ -3898,12 +3914,12 @@
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="set_target_properties_ctx_op_tgts_first">
-        <!-- NOTE Handle the only case in CMake nowadays:
-            1. `set_target_properties` have a named keyword (`PROPERTIES`) after targets list
-        -->
+          <!-- NOTE Handle the only case in CMake nowadays:
+              1. `set_target_properties` have a named keyword (`PROPERTIES`) after targets list
+          -->
         <keyword context="set_target_properties_ctx_op" String="set_target_properties_nargs" lookAhead="true" />
+        <IncludeRules context="Detect Aliased Targets" />
         <RegExpr attribute="Targets" context="#stay" String="&tgt_name_re;" />
-        <RegExpr attribute="Aliased Targets" context="#stay" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
@@ -3940,8 +3956,8 @@
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="target_compile_definitions_ctx_op_tgt_first">
-        <RegExpr attribute="Targets" context="target_compile_definitions_ctx_op" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="target_compile_definitions_ctx_op" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="target_compile_definitions_ctx_op" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
@@ -3957,8 +3973,8 @@
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="target_compile_features_ctx_op_tgt_first">
-        <RegExpr attribute="Targets" context="target_compile_features_ctx_op" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="target_compile_features_ctx_op" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="target_compile_features_ctx_op" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
@@ -3975,8 +3991,8 @@
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="target_compile_options_ctx_op_tgt_first">
-        <RegExpr attribute="Targets" context="target_compile_options_ctx_op" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="target_compile_options_ctx_op" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="target_compile_options_ctx_op" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
@@ -3992,8 +4008,8 @@
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="target_include_directories_ctx_op_tgt_first">
-        <RegExpr attribute="Targets" context="target_include_directories_ctx_op" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="target_include_directories_ctx_op" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="target_include_directories_ctx_op" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
@@ -4009,8 +4025,8 @@
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="target_link_directories_ctx_op_tgt_first">
-        <RegExpr attribute="Targets" context="target_link_directories_ctx_op" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="target_link_directories_ctx_op" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="target_link_directories_ctx_op" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
@@ -4026,8 +4042,8 @@
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="target_link_libraries_ctx_op_tgt_first">
-        <RegExpr attribute="Targets" context="target_link_libraries_ctx_op" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="target_link_libraries_ctx_op" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="target_link_libraries_ctx_op" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
@@ -4043,8 +4059,8 @@
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="target_link_options_ctx_op_tgt_first">
-        <RegExpr attribute="Targets" context="target_link_options_ctx_op" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="target_link_options_ctx_op" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="target_link_options_ctx_op" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
@@ -4060,8 +4076,8 @@
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="target_precompile_headers_ctx_op_tgt_first">
-        <RegExpr attribute="Targets" context="target_precompile_headers_ctx_op" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="target_precompile_headers_ctx_op" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="target_precompile_headers_ctx_op" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
@@ -4077,8 +4093,8 @@
         <DetectChar attribute="Normal Text" context="#pop" char=")" />
       </context>
       <context attribute="Normal Text" lineEndContext="#stay" name="target_sources_ctx_op_tgt_first">
-        <RegExpr attribute="Targets" context="target_sources_ctx_op" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="target_sources_ctx_op" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="target_sources_ctx_op" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
@@ -4294,8 +4310,8 @@
       </context>
 
       <context attribute="Normal Text" lineEndContext="#stay" name="Target Name">
-        <RegExpr attribute="Targets" context="#pop" String="&tgt_name_re;" />
         <RegExpr attribute="Aliased Targets" context="#pop" String="&tgt_name_re;::&tgt_name_re;(?:\:\:&tgt_name_re;)*" />
+        <RegExpr attribute="Targets" context="#pop" String="&tgt_name_re;" />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
         <IncludeRules context="User Function Args" />
         <DetectSpaces />
