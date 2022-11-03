@@ -7,7 +7,7 @@
 #
 # To install prerequisites:
 #
-#   $ pip install --user click jinja2 yaml
+#   $ pip install --user click jinja2 pyyaml
 #
 # To use:
 #
@@ -34,6 +34,19 @@ _PROPERTY_KEYS = [
   ]
 _KW_RE_LIST = ['kw', 're']
 _VAR_KIND_LIST = ['variables', 'deprecated-or-internal-variables', 'environment-variables']
+_CONTROL_FLOW_LIST = set((
+    'break'
+  , 'continue'
+  , 'elseif'
+  , 'else'
+  , 'endforeach'
+  , 'endif'
+  , 'endwhile'
+  , 'foreach'
+  , 'if'
+  , 'return'
+  , 'while'
+))
 
 
 def try_transform_placeholder_string_to_regex(name):
@@ -107,7 +120,7 @@ def transform_command(cmd):
         assert new_cmd == cmd
         can_be_nulary = False
 
-    cmd['nested_parentheses'] = cmd['nested-parentheses?'] if 'nested-parentheses?' in cmd else False
+    cmd['nested_parentheses'] = cmd.get('nested-parentheses?', False)
 
     if 'first-arg-is-target?' in cmd:
         cmd['first_arg_is_target'] = cmd['first-arg-is-target?']
@@ -137,6 +150,8 @@ def transform_command(cmd):
 
     if 'end-region' in cmd:
         cmd['end_region'] = cmd['end-region']
+
+    cmd['attribute'] = 'Control Flow' if cmd['name'] in _CONTROL_FLOW_LIST else 'Command'
 
     return cmd
 
