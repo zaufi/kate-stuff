@@ -66,6 +66,8 @@
       <item>RUN</item>
       <item>COPY</item>
       <item>ARG</item>
+      <item>LET</item>
+      <item>SET</item>
       <item>SAVE</item>
       <item>ARTIFACT</item>
       <item>AS</item>
@@ -163,6 +165,8 @@
         <DetectChar char="#" attribute="Comment" context="Comment" />
         <!-- The whole file is a collection of recipes -->
         <WordDetect String="ARG" attribute="Command" context="ARG_ctx" />
+        <WordDetect String="LET" attribute="Command" context="LET_ctx" />
+        <WordDetect String="SET" attribute="Command" context="SET_ctx" />
         <WordDetect String="FROM" attribute="Command" context="FROM_ctx" />
         <WordDetect String="BUILD" attribute="Command" context="BUILD_ctx" />
         <WordDetect String="GIT" attribute="Command" context="GIT_ctx" />
@@ -334,6 +338,20 @@
         <DetectChar char="=" attribute="Operator" context="#pop!RecipeContent" />
       </context>
 
+      <!-- ATTENTION `SET` and `LET` are just recentry added features. No docs yet... -->
+      <context name="LET_ctx" attribute="Normal Text" lineEndContext="#pop">
+        <RegExpr String="_&var_name_re;" attribute="Internal/Local Variable" context="#stay" />
+        <keyword String="variables" attribute="Builtin Variable" context="#stay" />
+        <DetectIdentifier attribute="Variable" context="#stay" />
+        <DetectChar char="=" attribute="Operator" context="#pop!RecipeContent" />
+      </context>
+      <context name="SET_ctx" attribute="Normal Text" lineEndContext="#pop">
+        <RegExpr String="_&var_name_re;" attribute="Internal/Local Variable" context="#stay" />
+        <keyword String="variables" attribute="Builtin Variable" context="#stay" />
+        <DetectIdentifier attribute="Variable" context="#stay" />
+        <DetectChar char="=" attribute="Operator" context="#pop!RecipeContent" />
+      </context>
+
       <!-- https://docs.earthly.dev/docs/earthfile#build -->
       <context name="BUILD_ctx" attribute="Normal Text" lineEndContext="#pop">
         <StringDetect String="--platform" attribute="Command Option" context="#stay" />
@@ -454,6 +472,7 @@
         <StringDetect String="--wait-block" attribute="Command Option" context="#stay" />
         <StringDetect String="--try" attribute="Command Option" context="#stay" />
         <StringDetect String="--git-branch" attribute="Command Option" context="#stay" />
+        <StringDetect String="--arg-scope-and-set" attribute="Command Option" context="#stay" />
         <RegExpr String="[0-9](\.[0-9])*" context="#pop" />
       </context>
 
