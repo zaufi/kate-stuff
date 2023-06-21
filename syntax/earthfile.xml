@@ -338,13 +338,15 @@
         <DetectChar char="=" attribute="Operator" context="#pop!RecipeContent" />
       </context>
 
-      <!-- ATTENTION `SET` and `LET` are just recentry added features. No docs yet... -->
+      <!-- https://docs.earthly.dev/docs/earthfile#let-experimental -->
       <context name="LET_ctx" attribute="Normal Text" lineEndContext="#pop">
         <RegExpr String="_&var_name_re;" attribute="Internal/Local Variable" context="#stay" />
         <keyword String="variables" attribute="Builtin Variable" context="#stay" />
         <DetectIdentifier attribute="Variable" context="#stay" />
         <DetectChar char="=" attribute="Operator" context="#pop!RecipeContent" />
       </context>
+
+      <!-- https://docs.earthly.dev/docs/earthfile#set-experimental -->
       <context name="SET_ctx" attribute="Normal Text" lineEndContext="#pop">
         <RegExpr String="_&var_name_re;" attribute="Internal/Local Variable" context="#stay" />
         <keyword String="variables" attribute="Builtin Variable" context="#stay" />
@@ -470,6 +472,7 @@
         <StringDetect String="--use-pipelines" attribute="Command Option" context="#stay" />
         <StringDetect String="--earthly-git-author-args" attribute="Command Option" context="#stay" />
         <StringDetect String="--wait-block" attribute="Command Option" context="#stay" />
+        <StringDetect String="--use-docker-ignore" attribute="Command Option" context="#stay" />
         <StringDetect String="--try" attribute="Command Option" context="#stay" />
         <StringDetect String="--git-branch" attribute="Command Option" context="#stay" />
         <StringDetect String="--arg-scope-and-set" attribute="Command Option" context="#stay" />
