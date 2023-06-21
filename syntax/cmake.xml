@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE language SYSTEM "language.dtd"
+<!DOCTYPE language
 [
   <!-- NOTE See https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#variable-references -->
   <!ENTITY var_ref_re "[/\.\+\-_0-9A-Za-z]+">
@@ -26,7 +26,7 @@
 <language
     name="CMake"
     version="47"
-    kateversion="5.0"
+    kateversion="5.62"
     section="Other"
     extensions="CMakeLists.txt;*.cmake;*.cmake.in"
     style="CMake"
