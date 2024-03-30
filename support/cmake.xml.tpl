@@ -195,7 +195,9 @@
         <WordDetect String="<!--{command.has_target_name_after_kw}-->" attribute="Named Args" context="Target Name" />
           <!--[- endif ]-->
           <!--[- if command.has_target_names_after_kw ]-->
-        <WordDetect String="<!--{command.has_target_names_after_kw}-->" attribute="Named Args" context="<!--{command.name}-->_tgts" />
+            <!--[- for kw in command.has_target_names_after_kw ]-->
+        <WordDetect String="<!--{kw}-->" attribute="Named Args" context="<!--{command.name}-->_tgts" />
+            <!--[- endfor ]-->
           <!--[- endif ]-->
         <keyword attribute="Named Args" context="#stay" String="<!--{command.name}-->_nargs" />
         <!--[- endif ]-->
@@ -230,7 +232,7 @@
       <context attribute="Normal Text" lineEndContext="#stay" name="<!--{command.name}-->_tgts">
         <DetectSpaces />
         <DetectChar attribute="Normal Text" context="#pop" char=")" lookAhead="true" />
-        <keyword attribute="Named Args" context="#pop" String="<!--{command.name}-->_nargs" />
+        <keyword attribute="Named Args" context="#pop" String="<!--{command.name}-->_nargs" lookAhead="true" />
         <IncludeRules context="Detect Aliased Targets" />
         <IncludeRules context="Detect Targets" />
         <IncludeRules context="User Function Args" />

@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 #
 # Generate Kate syntax file for CMake
 #
-# SPDX-FileCopyrightText: 2017-2023 Alex Turbov <i.zaufi@gmail.com>
+# SPDX-FileCopyrightText: 2017-2024 Alex Turbov <i.zaufi@gmail.com>
 #
 # To install prerequisites:
 #
@@ -202,7 +201,6 @@ def is_first_subset_of_second(first, second):
 def try_optimize_known_alt_groups(groups: list[str]) -> list[str]:
     for case in _HEURISTICS:
         if is_first_subset_of_second(case[0], groups):
-            print(f'replace: {case[0]} -> {case[1]}', file=sys.stderr)
             groups = sorted([*filter(lambda item: item not in case[0], groups), case[1]])
     return groups
 
@@ -210,16 +208,10 @@ def try_optimize_known_alt_groups(groups: list[str]) -> list[str]:
 def try_optimize_trailing_var_ref_regex(groups: list[str]) -> list[str]:
     tail_var_ref_re = '_' + _VAR_REF_ENTITY.replace('_', '%')
     candidates = [*filter(lambda s: s.endswith(tail_var_ref_re), groups)]
-    if len(candidates) < 2:
-        return groups
-
-    res = sorted([
+    return sorted([
         *filter(lambda item: item not in candidates, groups)
       , f'({"|".join(try_optimize_known_alt_groups([s[:-len(tail_var_ref_re)] for s in candidates]))}){tail_var_ref_re}'
-      ])
-
-    print(f' optail: {groups} -> {res}', file=sys.stderr)
-    return res
+      ]) if len(candidates) > 1 else groups
 
 
 def build_regex(state: list[str], kv: tuple[str, RePartNode]) -> list[str]:
@@ -243,11 +235,9 @@ def build_regex(state: list[str], kv: tuple[str, RePartNode]) -> list[str]:
                     return [*state, f'{name}(_{alt_group[0]})?']
 
                 case (sz, False) if sz > 0:
-                    print(f'  merge: {name=}, {alt_group=}', file=sys.stderr)
                     return [*state, f'{name}_({"|".join(alt_group)})']
 
                 case (sz, True) if sz > 0:
-                    print(f'  merge: {name=}, {alt_group=}', file=sys.stderr)
                     return [*state, f'{name}(_({"|".join(alt_group)}))?']
 
                 case _:
@@ -340,7 +330,13 @@ def transform_command(cmd):
         can_be_nulary = False
 
     if 'has-target-names-after-kw' in cmd:
-        cmd['has_target_names_after_kw'] = cmd['has-target-names-after-kw']
+        match cmd['has-target-names-after-kw']:
+            case str():
+                cmd['has_target_names_after_kw'] = [cmd['has-target-names-after-kw']]
+            case list():
+                cmd['has_target_names_after_kw'] = cmd['has-target-names-after-kw']
+            case _:
+                raise TypeError('Unexpected type for `has-target-names-after-kw`')
         can_be_nulary = False
 
     if 'second-arg-is-target?' in cmd:
@@ -361,33 +357,30 @@ def transform_command(cmd):
     return cmd
 
 
-def remove_duplicate_list_nodes(contexts, highlighting):
+def remove_duplicate_list_nodes(root):
     remap = {}
-
     items_by_kws = {}
+
     # extract duplicate keyword list
-    for items in highlighting:
-        if items.tag != 'list':
-            break
-        k = '<'.join(item.text for item in items)
+    for items in root.iterfind('highlighting/list'):
+        key = '<'.join(item.text for item in items)
         name = items.attrib['name']
-        rename = items_by_kws.get(k)
-        if rename:
+        if rename := items_by_kws.get(key):
             remap[name] = rename
-            highlighting.remove(items)
+            items.getparent().remove(items)
         else:
-            items_by_kws[k] = name
+            items_by_kws[key] = name
 
     # update keyword list name referenced by each rule
-    for context in contexts:
-        for rule in context:
-            if rule.tag == 'keyword':
-                name = rule.attrib['String']
-                rule.attrib['String'] = remap.get(name, name)
+    for rule in root.iterfind('highlighting/contexts/context/keyword'):
+        name = rule.attrib['String']
+        rule.attrib['String'] = remap.get(name, name)
 
 
-def remove_duplicate_context_nodes(contexts):
+def remove_duplicate_context_nodes(root):
+    contexts = root[0].find('contexts')
     # 3 levels: ctx, ctx_op and ctx_op_nested
+    # TODO Refactor it!
     for _ in range(3):
         remap = {}
         duplicated = {}
@@ -415,12 +408,9 @@ def remove_duplicate_context_nodes(contexts):
 def remove_duplicate_nodes(xml_string):
     parser = etree.XMLParser(resolve_entities=False, collect_ids=False)
     root = etree.fromstring(xml_string.encode(), parser=parser)
-    highlighting = root[0]
 
-    contexts = highlighting.find('contexts')
-
-    remove_duplicate_list_nodes(contexts, highlighting)
-    remove_duplicate_context_nodes(contexts)
+    remove_duplicate_list_nodes(root)
+    remove_duplicate_context_nodes(root)
 
     # reformat comments
     xml = etree.tostring(root)
@@ -439,12 +429,12 @@ def remove_duplicate_nodes(xml_string):
     return f'{doctype}{xml.decode()}{last_comment}'
 
 
-#BEGIN Jinja filters
+# BEGIN Jinja filters
 
 def cmd_is_nulary(cmd):
     return cmd.setdefault('nulary?', False)
 
-#END Jinja filters
+# END Jinja filters
 
 
 @click.command()
