@@ -5809,7 +5809,7 @@ standard-module-commands:
       - USE_STAMP_FILE
       - WORKING_DIRECTORY
       - COMMENT
-      - CONFIG_FILE # Since 3.27
+      - CONFIG_FILE                                         # Since 3.27
   # FindEnvModules
   - name: env_module
     named-args:
